@@ -1,4 +1,5 @@
 class Api::SessionsController < ApplicationController
+  protect_from_forgery except: :create
   def create
     @user = User.find_by_credentials(
       params[:user][:username],
