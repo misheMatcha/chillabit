@@ -8,6 +8,6 @@ export default (state = [], action) => {
     case RECEIVE_ERRORS:
       return action.errors
     default:
-      state;
+      return state;
   }
 };
