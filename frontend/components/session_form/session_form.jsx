@@ -1,12 +1,19 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {username: '', email: '', password: ''}
     this.handleSubmit = this.handleSubmit.bind(this)
-    const isSignup = this.props.formType === 'Sign in'
+    this.isSignup = this.props.formType === 'Sign in'
   }
+
+  // componentDidUpdate(prevProps){
+  //   setTimeout(() => {
+  //     this.props.history.push("/index")
+  //   }, 5000)
+  // }
 
   handleInput(field){
     return e => this.setState({[field]: e.target.value})
@@ -15,11 +22,9 @@ class SessionForm extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     const nextState = Object.assign({}, this.state)
-
     if (this.isSignup) {
-      delete nextState.email      
+      delete nextState.email
     }
-    
     this.props.processForm(nextState)
   }
 
