@@ -15,6 +15,7 @@ class NavBar extends React.Component {
         <Link to="/">Home</Link>
         <Link to="/stream">Stream</Link>
         <Link to="/library">Library</Link>
+        <Link to="/uwucantfindme">Search Bar Placeholder</Link>
         <Link to="/upgrade">Upgrade</Link>
         <Link to="/upload">Upload</Link>
         <Link to={`/${this.props.currentUser.username}`}>{this.props.currentUser.username}</Link>

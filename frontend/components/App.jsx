@@ -6,14 +6,14 @@ import { AuthRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import loginFormContainer from './session_form/login_form_container';
 import signinFormContainer from './session_form/signup_form_container';
-import NavBarContainer from './navBar/navbar_container';
+import NavBarContainer from './nav_bar/nav_bar_container';
 
 const App = () => (
   <div>
     <header>
       <h1 className="app-title">chillabit</h1>
-      <NavBarContainer />
-      <GreetingContainer />
+      <Route path="/" component={GreetingContainer}/>
+      <Route path="/index" component={NavBarContainer}/>
     </header>
 
     <AuthRoute path="/login" component={loginFormContainer}/>
