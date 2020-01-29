@@ -3,8 +3,9 @@ import React from 'react';
 class SessionForm extends React.Component {
   constructor(props){
     super(props)
-    this.state = {username: '', password: ''}
+    this.state = {username: '', email: '', password: ''}
     this.handleSubmit = this.handleSubmit.bind(this)
+    const isSignup = this.props.formType === 'Sign in'
   }
 
   handleInput(field){
@@ -13,12 +14,16 @@ class SessionForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.processForm(this.state)
+    const nextState = Object.assign({}, this.state)
+
+    if (this.isSignup) {
+      delete nextState.email      
+    }
+    
+    this.props.processForm(nextState)
   }
 
   render(){
-    const isSignup = this.props.formType === 'Create account'
-
     return (
       <form className="sessionForm" onSubmit={this.handleSubmit}>
         <h1>{this.props.formType}</h1>
@@ -26,9 +31,9 @@ class SessionForm extends React.Component {
           <input type="text" value={this.state.username} onChange={this.handleInput('username')}/>
         </label>
         {
-          !isSignup ? null : (
-            <label>Email
-              <input type="text" value={this.state.email} onChange={this.handleInput('email')} />
+          this.isSignup ? null : (
+            <label>Email:
+              <input type="email" value={ this.state.email } onChange={this.handleInput('email')}/>
             </label>
           )
         }
