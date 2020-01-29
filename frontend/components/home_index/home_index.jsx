@@ -1,5 +1,7 @@
 import React from 'react';
 
-const HomeIndex = () => {};
+const HomeIndex = () => (
+  <p>homie page</p>
+);
 
 export default HomeIndex;
