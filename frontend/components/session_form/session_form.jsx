@@ -9,15 +9,6 @@ class SessionForm extends React.Component {
     this.isSignup = this.props.formType === 'Sign in'
   }
 
-  // Look into issue more about redirection after login
-    // current issue - keeps updating - login functions ok
-      // signup - after updating an input will redirect
-  // componentDidUpdate(prevProps){
-  //   setTimeout(() => {
-  //     this.props.history.push("/")
-  //   }, 5000)
-  // }
-
   handleInput(field){
     return e => this.setState({[field]: e.target.value})
   }
@@ -38,6 +29,7 @@ class SessionForm extends React.Component {
         <label>Username:
           <input type="text" value={this.state.username} onChange={this.handleInput('username')}/>
         </label>
+        <br/>
         {
           this.isSignup ? null : (
             <label>Email:
@@ -48,6 +40,7 @@ class SessionForm extends React.Component {
         <label>Password:
           <input type="password" value={this.state.password} onChange={this.handleInput('password')}/>
         </label>
+        <br/>
         <button>Submit</button>
         {this.props.navLink}
       </form>

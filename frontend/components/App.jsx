@@ -1,14 +1,18 @@
 import React from 'react';
-import GreetingContainer from './greeting/greeting_container';
 import { Route } from 'react-router-dom';
+import { AuthRoute } from '../util/route_util';
+
+// containers
+import GreetingContainer from './greeting/greeting_container';
 import loginFormContainer from './session_form/login_form_container';
 import signinFormContainer from './session_form/signup_form_container';
-import { AuthRoute } from '../util/route_util';
+import NavBarContainer from './navBar/navbar_container';
 
 const App = () => (
   <div>
     <header>
-      <h1>UwU</h1>
+      <h1 className="app-title">chillabit</h1>
+      <NavBarContainer />
       <GreetingContainer />
     </header>
 
