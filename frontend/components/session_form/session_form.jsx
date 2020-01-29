@@ -17,7 +17,7 @@ class SessionForm extends React.Component {
   }
 
   render(){
-    const isSignup = this.props.formType === 'signup';
+    const isSignup = this.props.formType === 'Create account'
 
     return (
       <form className="sessionForm" onSubmit={this.handleSubmit}>
@@ -26,7 +26,11 @@ class SessionForm extends React.Component {
           <input type="text" value={this.state.username} onChange={this.handleInput('username')}/>
         </label>
         {
-          
+          !isSignup ? null : (
+            <label>Email
+              <input type="text" value={this.state.email} onChange={this.handleInput('email')} />
+            </label>
+          )
         }
         <label>Password:
           <input type="password" value={this.state.password} onChange={this.handleInput('password')}/>
