@@ -8,7 +8,7 @@ const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state)
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return {id: action.currentUser.user.id}; // stops undefined nesting
+      return {id: action.currentUser.id}; // stops undefined nesting
       case LOGOUT_CURRENT_USER:
         return _nullUser
     default:

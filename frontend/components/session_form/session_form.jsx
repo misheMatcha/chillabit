@@ -9,11 +9,14 @@ class SessionForm extends React.Component {
     this.isSignup = this.props.formType === 'Sign in'
   }
 
-  componentDidUpdate(prevProps){
-    setTimeout(() => {
-      this.props.history.push("/")
-    }, 5000)
-  }
+  // Look into issue more about redirection after login
+    // current issue - keeps updating - login functions ok
+      // signup - after updating an input will redirect
+  // componentDidUpdate(prevProps){
+  //   setTimeout(() => {
+  //     this.props.history.push("/")
+  //   }, 5000)
+  // }
 
   handleInput(field){
     return e => this.setState({[field]: e.target.value})
