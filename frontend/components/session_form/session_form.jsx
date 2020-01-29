@@ -9,11 +9,11 @@ class SessionForm extends React.Component {
     this.isSignup = this.props.formType === 'Sign in'
   }
 
-  // componentDidUpdate(prevProps){
-  //   setTimeout(() => {
-  //     this.props.history.push("/index")
-  //   }, 5000)
-  // }
+  componentDidUpdate(prevProps){
+    setTimeout(() => {
+      this.props.history.push("/")
+    }, 5000)
+  }
 
   handleInput(field){
     return e => this.setState({[field]: e.target.value})
