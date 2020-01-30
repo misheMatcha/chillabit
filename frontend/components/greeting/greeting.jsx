@@ -20,13 +20,20 @@ const Greeting = ({currentUser, logout}) => {
 
   const sessionLinks = () => (
     <nav className="login-signup">
-      <i className="fab fa-soundcloud"></i>
-      <span>chillabit</span>
-      <div>
+      <div className="id-logo">
+        <i className="fab fa-soundcloud"></i>
+        <span>chillabit</span>
+      </div>
+      <div className="lead">
+        <h2>What's next in lo-fi is first on chillabit</h2>
+        <p>Upload your first track and begin your journey. chillabit gives you space to create, find your fans, connect with other artists, and to chill a bit.</p>
+        <Link to="/">Start uploading today</Link>
+      </div>
+      <div className="auth-nav">
         <ul className="login-signup-links">
-          <li className="login-button"><Link to='/login'>Sign in</Link></li>
-          <li className="signup-button"><Link to='/signup'>Create account</Link></li>
-          <li className="creator-button"><Link to='/creator'>For Creators</Link></li>
+          <li><Link className="login-button" to='/login'>Sign in</Link></li>
+          <li><Link className="signup-button" to='/signup'>Create account</Link></li>
+          <li><Link className="creator-button"to='/creator'>For Creators</Link></li>
         </ul>
       </div>
     </nav>

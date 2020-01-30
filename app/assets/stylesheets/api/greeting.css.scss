@@ -1,30 +1,55 @@
 // Session Links
 .login-signup {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   border: 1px solid black;
   width: auto;
   height: 456px;
-  justify-content: space-between;
   background-image: image-url("session_links_banner.jpg");
   background-position: -100px -100px;
-  align-items: center;
+  align-items: flex-start;
   width: auto;
+  // position: relative;
+  // flex-direction: row;
+  background-repeat: no-repeat;
 }
 
 .login-signup-links {
   display: flex;
   font-family: 'Amatic SC', cursive;
-  margin-bottom: 433px;
+  // margin-bottom: 433px;
+}
+
+.login-signup-links li {
+  padding-right: 10px;
 }
 
 .login-signup span {
   text-align: center;
   font-family: 'Amatic SC', cursive;
-  font-size: 100px;
+  font-size: 21px;
   color: white;
   filter: drop-shadow(2px 2px 2px black);
-  width: 80%;
+  // width: 80%;
+}
+
+.lead {
+  align-self: center;
+  color: white;
+}
+
+.id-logo {
+  margin-left: 10px;
+}
+
+.fab fa-soundcloud {
+  size: 50px;
+}
+
+.auth-nav {
+  // position: absolute;
+  // top: 0;
+  // right: 0;
 }
 
 .login-button {
@@ -51,4 +76,10 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+  }
+
+  .root-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1100px;
   }

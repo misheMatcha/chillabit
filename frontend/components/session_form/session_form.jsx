@@ -36,8 +36,8 @@ class SessionForm extends React.Component {
             </label>
           )
         }
-        <label>Password:
-          <input className="sessionForm-input" type="password" value={this.state.password} onChange={this.handleInput('password')}/>
+        <label>
+          <input placeholder="Password" className="sessionForm-input" type="password" value={this.state.password} onChange={this.handleInput('password')}/>
         </label>
         <button>Submit</button>
         {this.props.navLink}
