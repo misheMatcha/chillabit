@@ -12,10 +12,7 @@ import HomeIndex from './home_index/home_index_container';
 const App = () => (
   <div>
     <header>
-      <h1 className="app-title">
-        <span>chillabit</span>
-        </h1>
-      <Route exact path="/" component={GreetingContainer}/>
+      <Route path="/" component={GreetingContainer}/>
       <ProtectdRoute path="/index" component={NavBarContainer}/>
     </header>
 

@@ -8,7 +8,9 @@
     "babel-loader": "^8.0.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-modal": "^3.11.1",
     "react-redux": "^7.1.3",
+    "react-responsive-modal": "^4.0.1",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
@@ -35,5 +37,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3"
+  }
 }
