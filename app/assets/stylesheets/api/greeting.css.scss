@@ -42,3 +42,13 @@
 }
 
 // Logged Greeting - add later
+.navbar-header {
+  background-color: rgb(26, 47, 72);
+  height: 50px;
+}
+
+  .navbar-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }

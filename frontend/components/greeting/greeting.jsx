@@ -1,13 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Think about changing name for to be more explicit
 const Greeting = ({currentUser, logout}) => {
-  // Need to refactor like session links
   const loggedGreeting = () => (
-    <hgroup className="greeting-group">
-      <h2 className="greeting-name">What's up home-skillet biscuit {currentUser.username}!</h2>
-      <button className="greeting-button" onClick={logout}>Log Out</button>
-    </hgroup>
+      <div className="navbar-header">
+        <ul className="navbar-links">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/stream">Stream</Link></li>
+          <li><Link to="/library">Library</Link></li>
+          <li><Link to="/uwucantfindme">Search Bar Placeholder</Link></li>
+          <li><Link to="/upgrade">Upgrade</Link></li>
+          <li><Link to="/upload">Upload</Link></li>
+          <li><Link to={`/${currentUser.username}`}>{currentUser.username}</Link></li>
+          <li><button className="greeting-button" onClick={logout}>Log Out</button></li>
+        </ul>
+      </div>
   );
 
   const sessionLinks = () => (

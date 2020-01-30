@@ -18,7 +18,15 @@ const App = () => (
 
     <AuthRoute path="/login" component={loginFormContainer}/>
     <AuthRoute path="/signup" component={signinFormContainer}/>
-    <ProtectdRoute path="/index" component={HomeIndex}/>
+    <Switch>
+      <ProtectdRoute path="/stream" component={HomeIndex}/>
+      <ProtectdRoute path="/library" component={HomeIndex}/>
+      <ProtectdRoute path="/uwucantfindme" component={HomeIndex}/>
+      <ProtectdRoute path="/upgrade" component={HomeIndex}/>
+      <ProtectdRoute path="/upload" component={HomeIndex}/>
+      {/* <ProtectdRoute path="" component={HomeIndex}/> */}
+      <ProtectdRoute path="/index" component={HomeIndex}/>
+    </Switch>
   </div>
 );
 

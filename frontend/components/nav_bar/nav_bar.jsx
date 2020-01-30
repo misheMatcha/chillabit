@@ -12,7 +12,7 @@ class NavBar extends React.Component {
   render(){
     return (
       <div className="navBar-header-group">
-        <Link to="/">Home</Link>
+        <Link to="/index">Home</Link>
         <Link to="/stream">Stream</Link>
         <Link to="/library">Library</Link>
         <Link to="/uwucantfindme">Search Bar Placeholder</Link>
