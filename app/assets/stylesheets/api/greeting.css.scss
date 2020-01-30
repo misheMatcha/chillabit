@@ -1,100 +1,83 @@
-// Session Links
+// Session Links - parent
 .login-signup {
   font-family: sans-serif;
   display: flex;
   justify-content: space-between;
-  // border: 1px solid black;
   width: auto;
   height: 456px;
   background-image: image-url("session_links_banner.jpg");
   background-position: -100px -100px;
   align-items: flex-start;
   width: auto;
-  // position: relative;
-  // flex-direction: row;
   background-repeat: no-repeat;
 }
 
-.login-signup-links {
-  display: flex;
-  // font-family: 'Amatic SC', cursive;
-  // font-family: 'Shadows Into Light', cursive;
-  // margin-bottom: 433px;
+// icon and title
+.id-logo {
+  margin-left: 10px;
+  margin-top: 20px;
 }
+  .fab {
+    font-size: 35px;
+    color: white;
+    margin-right: 7px;
+  }
+    .login-signup span {
+      text-align: center;
+      // font-family: 'Amatic SC', cursive;
+      // font-family: 'Waiting for the Sunrise', cursive;
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 21px;
+      color: white;
+      filter: drop-shadow(2px 2px 2px black);
+    }
 
-.login-signup-links li {
-  padding-right: 10px;
-}
-
-.login-signup span {
-  text-align: center;
-  // font-family: 'Amatic SC', cursive;
-  // font-family: 'Waiting for the Sunrise', cursive;
-  font-family: 'Shadows Into Light', cursive;
-  font-size: 21px;
-  color: white;
-  filter: drop-shadow(2px 2px 2px black);
-  // width: 80%;
-}
-
+// main text
 .lead {
   align-self: center;
   color: white;
-  // font-family: 'Amatic SC', cursive;
   text-align: center;
-  // font-size: 20px;
-  // width: 65%;
 }
-
-.lead h2 {
+  .lead h2 {
     font-family: 'Shadows Into Light', cursive;
-    // font-family: 'Amatic SC', cursive;
-    // font-family: 'Shadows Into Light', cursive;
     font-size: 35px;
     filter: drop-shadow(2px 1px 4px black);
   }
-
   .lead p {
-    // font-family: 'Waiting for the Sunrise', cursive;
     filter: drop-shadow(2px 1px 4px black);
-  }
-
+  }  
   .lead a {
-    // border: 1px solid white;
-    padding: 5px 15px 5px 15px;
-    background-color: rgb(70, 81, 94);
+    padding: 13px 18px 13px 18px;
+    // background-color: rgb(70, 81, 94);
+    background-color: rgb(26, 47, 72);
     border-radius: 3px;
   }
 
-.id-logo {
-  margin-left: 10px;
-}
-
-#ico {
-  font-size: 35px;
-  color: white;
-  margin-right: 7px;
-}
-
+  // signup/in links
 .auth-nav {
-  // position: absolute;
-  // top: 0;
-  // right: 0;
+  margin-top: 20px;
 }
-
-.login-button {
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.signup-button {
-  border-radius: 5px;
-  background-color: rgb(26, 47, 72);
-  color: white
-}
-
-.creator-button {
-}
+  .login-signup-links {
+    display: flex;
+  }
+    .login-signup-links li {
+      padding-right: 10px;
+      font-size: 13px;
+      color: white;
+    }
+      .login-button {
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 5px 13px 5px 13px;
+      }
+      .signup-button {
+        border-radius: 5px;
+        background-color: rgb(26, 47, 72);
+        padding: 5px 13px 5px 13px;
+      }
+      .creator-button {
+        padding: 5px 13px 5px 13px;
+      }
 
 // Logged Greeting - add later
 .navbar-header {
@@ -106,10 +89,4 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-  }
-
-  .root-wrap {
-    margin-left: auto;
-    margin-right: auto;
-    width: 1100px;
   }

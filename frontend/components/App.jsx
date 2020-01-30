@@ -8,9 +8,11 @@ import loginFormContainer from './session_form/login_form_container';
 import signinFormContainer from './session_form/signup_form_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import HomeIndex from './home_index/home_index_container';
+import Modal from '../components/modal/modal';
 
 const App = () => (
   <div>
+    <Modal />
     <header>
       <Route path="/" component={GreetingContainer}/>
       {/* <ProtectdRoute path="/index" component={NavBarContainer}/> */}

@@ -14,3 +14,10 @@
  *= require_tree .
  *= require_self
  */
+ 
+ /* Wrapped around yeild in application.html.erb to allow left/right margins */
+.root-wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1100px;
+}
