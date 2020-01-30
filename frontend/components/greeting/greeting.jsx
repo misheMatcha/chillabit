@@ -14,11 +14,13 @@ const Greeting = ({currentUser, logout}) => {
     <nav className="login-signup">
       <i className="fab fa-soundcloud"></i>
       <span>chillabit</span>
+      <div>
         <ul className="login-signup-links">
           <li className="login-button"><Link to='/login'>Sign in</Link></li>
           <li className="signup-button"><Link to='/signup'>Create account</Link></li>
           <li className="creator-button"><Link to='/creator'>For Creators</Link></li>
         </ul>
+      </div>
     </nav>
   );
   

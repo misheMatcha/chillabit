@@ -1,68 +1,7 @@
-.app-title {
-  display: flex;
-  font-size: 50px;
-  height: 250px;
-  justify-content: center;
-  align-items: center;
-  background-position: -228px -623px;
-  width: 90%;
-}
-
-  .app-title span {
-    color: white;
-    filter: drop-shadow(0 0 5px black);
-    font-size: 26px;
-}
-
-.login-signup {
-  display: flex;
-  justify-content: center;
-  border: 1px solid #D5AAFF;
-  width: auto;
-  height: 456px;
-  justify-content: space-between;
-  background-image: image-url("session_links_banner.jpg");
-  background-position: -100px -100px;
-}
-
-.login-signup-links {
-  border: 1px solid red;
-  display: flex;
-  font-family: 'Amatic SC', cursive;
-  margin-bottom: 433px;
-}
-
-.login-signup span {
-  border: 1px solid #D5AAFF;
-  text-align: center;
-  font-family: 'Amatic SC', cursive;
-  font-size: 100px;
-  color: white;
-  filter: drop-shadow(2px 2px 2px black);
-  width: 80%;
-}
-
-.login-button {
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: transparent;
-  // padding: 6px 18px 6px 18px;
-}
-
-.signup-button {
-  border: 1px solid red;
-  border-radius: 5px;
-  // padding: 6px 18px 6px 18px;
-}
-
-.creator-button {
-  border: 1px solid red;
-  // padding: 6px 18px 6px 18px;
-}
-
+// Session Form
 .sessionForm {
   width: 250px;
-  margin: auto;
+  margin: 50px 50px 50px 50px;
   display: flex;
   border: 1px solid black;
   flex-direction: column;
@@ -71,7 +10,6 @@
   font-family: 'Amatic SC', cursive;
 }
   .sessionForm-title {
-    // border: 1px solid black;
     font-size: 29px;
   }
 
@@ -95,16 +33,3 @@
       font-family: 'Amatic SC', cursive;
       font-size: 15px;
     }
-
-.splash-header {
-  display: flex;
-  background-image: image-url("girl.jpg");
-  height: 150px;
-  width: 1000px;
-  justify-content: center;
-  align-items: center;
-}
-
-.splash-header span {
-  
-}
