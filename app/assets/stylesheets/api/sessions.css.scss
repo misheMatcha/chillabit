@@ -1,0 +1,70 @@
+
+.greeting-name {
+  border: 1px solid #D5AAFF;
+}
+
+.greeting-button {
+  border: 1px solid #D5AAFF;
+}
+
+.greeting-group {
+  border: 1px solid #D5AAFF;
+}
+
+.app-title {
+  display: flex;
+  border: 1px solid #D5AAFF;
+  font-size: 50px;
+  background-image: image-url("djheadphones.jpeg");
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
+  .app-title span {
+    color: red;
+}
+
+.login-signup {
+  border: 1px solid #D5AAFF;
+}
+
+.sessionForm {
+  width: 250px;
+  margin: auto;
+  display: flex;
+  border: 1px solid #D5AAFF;
+  flex-direction: column;
+  align-items: center;
+  /* font-family: 'Josefin Sans', sans-serif; */
+  font-family: 'Amatic SC', cursive;
+}
+  .sessionForm-title {
+    border: 1px solid #D5AAFF;
+    font-size: 29px;
+  }
+
+  .sessionForm-input {
+    border: 1px solid #D5AAFF;
+    font-size: 15px;
+    margin-left: 9px;
+    text-align: left;
+  }
+
+    .sessionForm label {
+      margin-top: 10px;
+    }
+
+    .sessionForm button {
+      margin-top: 10px;
+      background-color: #6A94A1;
+      border: 1px solid #6A85A1;
+      border-radius: 6px;
+      color: white;
+      font-family: 'Amatic SC', cursive;
+      font-size: 15px;
+    }
+
+.app-title {
+  border: 1px solid #D5AAFF;
+}

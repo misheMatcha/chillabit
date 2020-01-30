@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Greeting = ({currentUser, logout}) => {
   const loggedGreeting = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">What's up home-skillet biscuit {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
+    <hgroup className="greeting-group">
+      <h2 className="greeting-name">What's up home-skillet biscuit {currentUser.username}!</h2>
+      <button className="greeting-button" onClick={logout}>Log Out</button>
     </hgroup>
   );
 
