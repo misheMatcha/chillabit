@@ -6,7 +6,8 @@ const Greeting = ({currentUser, logout}) => {
   const loggedGreeting = () => (
       <div className="navbar-header">
         <ul className="navbar-links">
-          <li><Link to="/">Home</Link></li>
+          <li><Link to="/index"><i className="fab fa-soundcloud"></i></Link></li>
+          <li><Link to="/discover">Home</Link></li>
           <li><Link to="/stream">Stream</Link></li>
           <li><Link to="/library">Library</Link></li>
           <li><Link to="/uwucantfindme">Search Bar Placeholder</Link></li>
@@ -21,12 +22,12 @@ const Greeting = ({currentUser, logout}) => {
   const sessionLinks = () => (
     <nav className="login-signup">
       <div className="id-logo">
-        <i className="fab fa-soundcloud"></i>
+        <i id="ico" className="fab fa-soundcloud"></i>
         <span>chillabit</span>
       </div>
       <div className="lead">
         <h2>What's next in lo-fi is first on chillabit</h2>
-        <p>Upload your first track and begin your journey. chillabit gives you space to create, find your fans, connect with other artists, and to chill a bit.</p>
+        {/* <p>Upload your first track and begin your journey. chillabit gives you space to create, find your fans, connect with other artists, and to chill a bit.</p> */}
         <Link to="/">Start uploading today</Link>
       </div>
       <div className="auth-nav">

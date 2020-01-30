@@ -13,12 +13,13 @@ const App = () => (
   <div>
     <header>
       <Route path="/" component={GreetingContainer}/>
-      <ProtectdRoute path="/index" component={NavBarContainer}/>
+      {/* <ProtectdRoute path="/index" component={NavBarContainer}/> */}
     </header>
 
-    <AuthRoute path="/login" component={loginFormContainer}/>
-    <AuthRoute path="/signup" component={signinFormContainer}/>
+    {/* <AuthRoute path="/login" component={loginFormContainer}/>
+    <AuthRoute path="/signup" component={signinFormContainer}/> */}
     <Switch>
+      <ProtectdRoute path="/discover" component={HomeIndex}/>
       <ProtectdRoute path="/stream" component={HomeIndex}/>
       <ProtectdRoute path="/library" component={HomeIndex}/>
       <ProtectdRoute path="/uwucantfindme" component={HomeIndex}/>

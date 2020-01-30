@@ -1,8 +1,9 @@
 // Session Links
 .login-signup {
+  font-family: sans-serif;
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  // border: 1px solid black;
   width: auto;
   height: 456px;
   background-image: image-url("session_links_banner.jpg");
@@ -16,7 +17,8 @@
 
 .login-signup-links {
   display: flex;
-  font-family: 'Amatic SC', cursive;
+  // font-family: 'Amatic SC', cursive;
+  // font-family: 'Shadows Into Light', cursive;
   // margin-bottom: 433px;
 }
 
@@ -26,7 +28,9 @@
 
 .login-signup span {
   text-align: center;
-  font-family: 'Amatic SC', cursive;
+  // font-family: 'Amatic SC', cursive;
+  // font-family: 'Waiting for the Sunrise', cursive;
+  font-family: 'Shadows Into Light', cursive;
   font-size: 21px;
   color: white;
   filter: drop-shadow(2px 2px 2px black);
@@ -36,14 +40,40 @@
 .lead {
   align-self: center;
   color: white;
+  // font-family: 'Amatic SC', cursive;
+  text-align: center;
+  // font-size: 20px;
+  // width: 65%;
 }
+
+.lead h2 {
+    font-family: 'Shadows Into Light', cursive;
+    // font-family: 'Amatic SC', cursive;
+    // font-family: 'Shadows Into Light', cursive;
+    font-size: 35px;
+    filter: drop-shadow(2px 1px 4px black);
+  }
+
+  .lead p {
+    // font-family: 'Waiting for the Sunrise', cursive;
+    filter: drop-shadow(2px 1px 4px black);
+  }
+
+  .lead a {
+    // border: 1px solid white;
+    padding: 5px 15px 5px 15px;
+    background-color: rgb(70, 81, 94);
+    border-radius: 3px;
+  }
 
 .id-logo {
   margin-left: 10px;
 }
 
-.fab fa-soundcloud {
-  size: 50px;
+#ico {
+  font-size: 35px;
+  color: white;
+  margin-right: 7px;
 }
 
 .auth-nav {
