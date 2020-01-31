@@ -6,8 +6,8 @@ import { AuthRoute, ProtectdRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import loginFormContainer from './session_form/login_form_container';
 import signinFormContainer from './session_form/signup_form_container';
-import NavBarContainer from './nav_bar/nav_bar_container';
 import HomeIndex from './home_index/home_index_container';
+import SplashPage from './splash_page/splash_page';
 import Modal from '../components/modal/modal';
 
 const App = () => (
@@ -15,11 +15,12 @@ const App = () => (
     <Modal />
     <header>
       <Route path="/" component={GreetingContainer}/>
-      {/* <ProtectdRoute path="/index" component={NavBarContainer}/> */}
     </header>
 
     {/* <AuthRoute path="/login" component={loginFormContainer}/>
     <AuthRoute path="/signup" component={signinFormContainer}/> */}
+    <AuthRoute path="/" component={SplashPage}/>
+    
     <Switch>
       <ProtectdRoute path="/discover" component={HomeIndex}/>
       <ProtectdRoute path="/stream" component={HomeIndex}/>
