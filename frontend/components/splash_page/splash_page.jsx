@@ -36,14 +36,16 @@ class SplashPage extends React.Component {
         </div>
 
         <Link className="splash-explore" to="/home">Explore tending playlists</Link>
-        <div className="splash-appstore">
-          probably some img here
-          text
-          app store googleplay
+        <div className="splash-upgrade">
+            <div className="splash-upgrade-box">
+              <h1>Never stop listening</h1>
+              <hr/>
+              <p>Coming soon to Android and iOS.</p>
+              <p>You'll never miss a chill beat.</p>
+          </div>
         </div>
 
         <div className="splash-creator">
-          use background image
           <h1>Calling all creators</h1>
           <p>Get on chillabit to connect with fans, share your sounds, and grow your audience. What are you waiting for?</p>
           <Link to="/creator">Find out more</Link>

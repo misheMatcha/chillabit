@@ -21,3 +21,7 @@
   margin-right: auto;
   width: 1100px;
 }
+
+body {
+  background-color: rgb(86, 100, 120);
+}
