@@ -108,7 +108,9 @@
   height: 342px;
   background-image: image-url("splash_creators.jpg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  background-position: 0px -31px;
+  color: white;
 }
 
 // footer
