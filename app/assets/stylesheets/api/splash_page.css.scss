@@ -1,3 +1,5 @@
+// DRY up css later - buttons could be general class to be used multiple times
+
 .splash{
   border: 1px solid black;
   font-family: sans-serif;
@@ -72,7 +74,7 @@
   border-radius: 3px;
 }
 
-// Upgrade - replaces app store/google play
+// Upgrade - rename later
 .splash-upgrade {
   height: 445px;
   background-image: image-url("splash_listen.jpg");
@@ -87,7 +89,7 @@
     // border: 1px solid black;
     height: 100%;
     width: 500px;
-    margin-left: 597px;
+    margin-left: 599px;
     // background-color: rgb(26, 47, 72);
     background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(26, 47, 72));
   }
@@ -104,14 +106,40 @@
     }
 
 .splash-creator {
-  border: 1px solid black;
+  // border: 1px solid black;
   height: 342px;
   background-image: image-url("splash_creators.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0px -31px;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.creator-transbg {
+  background-color: rgba(26, 47, 72, 0.73);
+  width: 82%;
+  height: 68%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+  .creator-transbg a {
+    padding: 13px 15px 13px 15px;
+    border-radius: 3px;
+    background-color: rgb(26, 47, 72);
+  }
+  .splash-creator h1 {
+    // border: 1px solid black;
+    font-size: 50px;
+    // padding: 6px 1px 14px 1px;
+  }
+  .splash-creator p {
+    // border: 1px solid black;
+    width: 65%;
+  }
 
 // footer
 .splash-footer {

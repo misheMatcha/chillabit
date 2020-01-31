@@ -37,7 +37,7 @@ class SplashPage extends React.Component {
 
         <Link className="splash-explore" to="/home">Explore tending playlists</Link>
         <div className="splash-upgrade">
-            <div className="splash-upgrade-box">
+          <div className="splash-upgrade-box">
             <h1>Never stop listening</h1>
             <hr/>
             <p>Coming soon to Android and iOS.</p>
@@ -46,9 +46,11 @@ class SplashPage extends React.Component {
         </div>
 
         <div className="splash-creator">
-          <h1>Calling all creators</h1>
-          <p>Get on chillabit to connect with fans, share your sounds, and grow your audience. What are you waiting for?</p>
-          <Link to="/creator">Find out more</Link>
+          <div className="creator-transbg">
+            <h1>Calling all creators</h1>
+            <p>Get on chillabit to connect with fans, share your sounds, and grow your audience. What are you waiting for?</p>
+            <Link to="/creator">Find out more</Link>
+          </div>
         </div>
         
         <div className="splash-footer">
