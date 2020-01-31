@@ -2,7 +2,7 @@
 .login-signup {
   font-family: sans-serif;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: auto;
   height: 456px;
   background-image: image-url("session_links_banner.jpg");
@@ -10,6 +10,13 @@
   align-items: flex-start;
   width: auto;
   background-repeat: no-repeat;
+  align-content: center;
+}
+
+.thebar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 // icon and title
@@ -32,11 +39,21 @@
       filter: drop-shadow(2px 2px 2px black);
     }
 
+.lead-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // main text
 .lead {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
   color: white;
   text-align: center;
+  width: 750px;
 }
   .lead h2 {
     font-family: 'Shadows Into Light', cursive;
@@ -44,9 +61,16 @@
     filter: drop-shadow(2px 1px 4px black);
   }
   .lead p {
+    margin-top: 15px;
     filter: drop-shadow(2px 1px 4px black);
-  }  
+  }
+  .lead-div {
+    margin-top: 50px;
+    font-family: sans-serif;
+  }
   .lead a {
+    width: 161px;
+    margin-top: 50px;
     padding: 13px 18px 13px 18px;
     // background-color: rgb(70, 81, 94);
     background-color: rgb(26, 47, 72);

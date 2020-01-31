@@ -21,21 +21,25 @@ const Greeting = ({currentUser, logout}) => {
 
   const sessionLinks = () => (
     <nav className="login-signup">
-      <div className="id-logo">
-        <i id="ico" className="fab fa-soundcloud"></i>
-        <span>chillabit</span>
+      <div className="thebar">
+        <div className="id-logo">
+          <i id="ico" className="fab fa-soundcloud"></i>
+          <span>chillabit</span>
+        </div>
+        <div className="auth-nav">
+          <ul className="login-signup-links">
+            <li><Link className="login-button" to='/login'>Sign in</Link></li>
+            <li><Link className="signup-button" to='/signup'>Create account</Link></li>
+            <li><Link className="creator-button"to='/creator'>For Creators</Link></li>
+          </ul>
+        </div>
       </div>
-      <div className="lead">
-        <h2>What's next in lo-fi is first on chillabit</h2>
-        {/* <p>Upload your first track and begin your journey. chillabit gives you space to create, find your fans, connect with other artists, and to chill a bit.</p> */}
-        <Link to="/">Start uploading today</Link>
-      </div>
-      <div className="auth-nav">
-        <ul className="login-signup-links">
-          <li><Link className="login-button" to='/login'>Sign in</Link></li>
-          <li><Link className="signup-button" to='/signup'>Create account</Link></li>
-          <li><Link className="creator-button"to='/creator'>For Creators</Link></li>
-        </ul>
+      <div className="lead-box">
+        <div className="lead">
+          <h2>What's next in lo-fi is first on chillabit</h2>
+          <p>Upload your first track and begin your journey. chillabit gives you space to create, find your fans, connect with other artists, and to chill a bit.</p>
+          <div className="lead-div"><Link to="/">Start uploading today</Link></div>
+        </div>
       </div>
     </nav>
   );
