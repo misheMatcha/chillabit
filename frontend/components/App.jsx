@@ -8,6 +8,7 @@ import loginFormContainer from './session_form/login_form_container';
 import signinFormContainer from './session_form/signup_form_container';
 import HomeIndex from './home_index/home_index_container';
 import SplashPage from './splash_page/splash_page';
+import Error404Page from './error_404_page';
 import Modal from '../components/modal/modal';
 
 const App = () => (
@@ -19,9 +20,10 @@ const App = () => (
 
     {/* <AuthRoute path="/login" component={loginFormContainer}/>
     <AuthRoute path="/signup" component={signinFormContainer}/> */}
-    <AuthRoute path="/" component={SplashPage}/>
     
     <Switch>
+      <Route exact path="/404" component={Error404Page} />
+      <AuthRoute path="/" component={SplashPage}/>
       <ProtectdRoute path="/discover" component={HomeIndex}/>
       <ProtectdRoute path="/stream" component={HomeIndex}/>
       <ProtectdRoute path="/library" component={HomeIndex}/>
