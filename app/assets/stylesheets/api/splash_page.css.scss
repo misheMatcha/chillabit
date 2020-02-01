@@ -1,8 +1,4 @@
-// DRY up css later - buttons could be general class to be used multiple times
-
-.splash{
-  // font-family: sans-serif;
-  // font-family: 'Montserrat', sans-serif;
+#splash{
   font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
@@ -11,18 +7,17 @@
   color: #333333;
 }
 
-// Search bar and upload
-.splash-search-bar {
+// Search bar section
+.searchbar {
   height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  // margin: auto;
   align-items: flex-end;
   align-content: center;
-  
 }
-  .search-bar {
+
+  .sbcontainer {
     background-color: #F2F2F2;
     border-radius: 5px;
     width: 500px;
@@ -31,28 +26,30 @@
     justify-content: space-around;
     align-items: baseline;
   }
-  .search-bar input {
-    width: 453px;
-    height: 44px;
-    text-align: left;
-    border-radius: 3px;
-    background-color: #F2F2F2;
-    color: rgb(191, 187, 187);
-    padding-left: 10px;
-  }
+    input {
+      width: 453px;
+      height: 44px;
+      text-align: left;
+      border-radius: 3px;
+      background-color: #F2F2F2;
+      color: rgb(191, 187, 187);
+      padding-left: 10px;
+    }
+
   .fas {
     font-size: 25px;
   }
+
   #or {
     padding: 12px;
   }
-  .splash-s-b-link {
-    padding: 13px 15px 13px 15px;
-    border-radius: 3px;
-    background-color: rgb(26, 47, 72);
-    color: white;
-  }
 
+.searchbar .upload {
+  padding: 13px 15px 13px 15px;
+  border-radius: 3px;
+  background-color: rgb(26, 47, 72);
+  color: white;
+}
 
 // trending
 .splash-trending {
@@ -80,7 +77,7 @@
       color: white;
     }
 
-.splash-explore {
+#splash .explore {
   padding: 10px 0px 10px 0px;
   width: 204px;
   align-self: center;
@@ -90,8 +87,8 @@
   border-radius: 3px;
 }
 
-// Upgrade - rename later
-.splash-upgrade {
+// App section
+#splash .upgrade {
   height: 445px;
   background-image: image-url("splash_listen.jpg");
   background-repeat: no-repeat;
@@ -100,44 +97,48 @@
   flex-direction: column;
   align-content: flex-end;
 }
-  .splash-u-grad {
+
+  .ucontainer {
     height: 100%;
     width: 432px;
     margin-left: 668px;
     background-color: #F2F2F2;
   }
-  .splash-u-box {
-    text-align: left;
-    height: 45%;
-    width: 368px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin-left: 10px;
-  }
-    .splash-u-b-title {
-      margin: 0;
-      font-size: 36px;
-      padding-top: 25px;
-      letter-spacing: 2px;
-      }
-    .splash-u-box hr {
-      border: none;
-      width: 80px;
-      padding: 3px 0px 0px 0px;
-      background-image: linear-gradient(to right, purple , blue);
-    }
-    .splash-u-b-details {
-      font-size: 22px;
-    }
-    .splash-u-b-girl {
-      background-image: image-url("splash_creators_girl.jpg");
-      height: 245px;
-      width: 432px;
-      background-repeat: no-repeat;
-      background-position: -47px -34px;
+
+    .splash-u-box {
+      text-align: left;
+      height: 45%;
+      width: 368px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin-left: 10px;
     }
 
+      .splash-u-b-title {
+        margin: 0;
+        font-size: 36px;
+        padding-top: 25px;
+        letter-spacing: 2px;
+        }
+      .splash-u-box hr {
+        border: none;
+        width: 80px;
+        padding: 3px 0px 0px 0px;
+        background-image: linear-gradient(to right, purple , blue);
+      }
+      .splash-u-b-details {
+        font-size: 22px;
+      }
+      .splash-u-b-girl {
+        background-image: image-url("splash_creators_girl.jpg");
+        height: 245px;
+        width: 432px;
+        background-repeat: no-repeat;
+        background-position: -47px -34px;
+      }
+
+// Creators secton
 .splash-creator {
   height: 342px;
   background-image: image-url("splash_creators.jpg");
