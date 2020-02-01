@@ -17,7 +17,7 @@
   align-content: center;
 }
 
-  .sbcontainer {
+  .sb-container {
     background-color: #F2F2F2;
     border-radius: 5px;
     width: 500px;
@@ -51,31 +51,54 @@
   color: white;
 }
 
-// trending
-.splash-trending {
-  font-size: 23px;
-  padding: 32px 0px 33px 0px;
+// trending section
+.trending-section {
+  display: flex;
+  flex-direction: column;
 }
 
-.splash-tracks {
-  // border: 1px solid black;
-}
-  .splash-tracks ul {
-    // border: 1px solid black;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    // width: auto;
+  .trending-title {
+    font-size: 23px;
+    padding: 32px 0px 33px 0px;
   }
-    .splash-tracks ul li {
+
+  .album-track-display {
+    // border: 1px solid black;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+    .album-track-display ul {
       // border: 1px solid black;
-      padding: 88px 55px 80px 55px;
-      margin: 0px 17px 13px 0px;
-      // margin-right: 20px;
-      // margin-bottom: 83px;
-      background-color: rgba(26, 47, 72, 0.53);
-      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      height: 423px;
+      width: 99%;
+      align-content: center;
     }
+      .album-track-display ul li {
+        // border: 1px solid black;
+        padding: 0px 0px 0px 0px;
+        margin: 10px;
+        text-align: left;
+        // margin-right: 20px;
+        // margin-bottom: 83px;
+        // background-color: rgba(26, 47, 72, 0.53);
+      }
+
+.album-cover {
+  // to be filled in later
+}
+
+.track-title {
+  font-size: 16px;
+}
+
+.artist-name {
+  color: #999999;
+  font-size: 13px;
+}
 
 #splash .explore {
   padding: 10px 0px 10px 0px;
@@ -141,7 +164,7 @@
       }
 
 // Creators secton
-.splash-creator {
+.creators-section {
   height: 342px;
   background-image: image-url("splash_creators.jpg");
   background-repeat: no-repeat;
@@ -152,26 +175,28 @@
   justify-content: center;
   align-items: center;
 }
-.creator-transbg {
-  background-color: rgba(26, 47, 72, 0.35);
-  width: 82%;
-  height: 68%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-  .creator-transbg a {
-    padding: 13px 15px 13px 15px;
-    border-radius: 3px;
-    background-color: rgb(26, 47, 72);
+
+  .trans-bg {
+    background-color: rgba(26, 47, 72, 0.35);
+    width: 82%;
+    height: 68%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
-  .splash-creator h1 {
+    .trans-bg a {
+      padding: 13px 15px 13px 15px;
+      border-radius: 3px;
+      background-color: rgb(26, 47, 72);
+    }
+
+  .creators-section h1 {
     font-size: 42px;
     letter-spacing: 2px;
     filter: drop-shadow(2px 3px 3px black);
   }
-  .splash-creator p {
+  .creators-section p {
     width: 65%;
     font-size: 20px;
     filter: drop-shadow(2px 3px 3px black);

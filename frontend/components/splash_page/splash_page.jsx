@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { splashTracks } from './splash_tracks.jsx'
 
 // would most likely need a component in the future to render album cover, track, artist
 
@@ -8,7 +9,7 @@ class SplashPage extends React.Component {
     return (
       <div id="splash">
         <div className="searchbar">
-          <div className="sbcontainer">
+          <div className="sb-container">
             <input type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
               <Link to="/404"><i className="fas fa-search"></i></Link>
           </div>
@@ -16,26 +17,17 @@ class SplashPage extends React.Component {
             <Link className="upload" to="upload">Upload your own</Link>
         </div>
 
-        <h1 className="splash-trending">Hear what’s trending for free in the chillabit community</h1>
+        <div className="trending-section">
+          <h1 className="trending-title">Hear what’s trending for free in the chillabit community</h1>
 
-        <div className="splash-tracks">
-          <ul>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-            <li><p>(´･ω･`)</p><p>track</p><p>artist</p></li>
-          </ul>
+          <div className="album-track-display">
+            <ul>
+              { splashTracks.map(track => track) }
+            </ul>
+          </div>
+
+          <Link className="explore" to="/home">Explore tending playlists</Link>
         </div>
-
-        <Link className="explore" to="/home">Explore tending playlists</Link>
 
         <div className="app-section">
           <div className="app-container">
@@ -54,8 +46,8 @@ class SplashPage extends React.Component {
           </div>
         </div>
 
-        <div className="splash-creator">
-          <div className="creator-transbg">
+        <div className="creators-section">
+          <div className="trans-bg">
             <h1>Calling all creators</h1>
             <p>Get on chillabit to connect with fans, share your sounds, and grow your audience. What are you waiting for?</p>
             <Link to="/creator">Find out more</Link>
