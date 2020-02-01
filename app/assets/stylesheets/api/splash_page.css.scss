@@ -13,30 +13,44 @@
 
 // Search bar and upload
 .splash-search-bar {
-  border: 1px solid black;
-  position: relative;
+  height: 100px;
   display: flex;
-  min-width: 190px;
+  flex-direction: row;
+  justify-content: center;
+  // margin: auto;
+  align-items: flex-end;
+  align-content: center;
+  
 }
   .search-bar {
-    border: 1px solid black;
-    width: 351px;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
   }
-    .search-bar input {
-      border: 1px solid black;
-      width: 100%;
-      background-color: rgba(216, 219, 222, 0.495);
-    }
-
+  .search-bar input {
+    width: 453px;
+    height: 44px;
+    text-align: left;
+    border-radius: 3px;
+    background-color: #F2F2F2;
+    color: rgb(191, 187, 187);
+    padding-left: 10px;
+  }
   .fas {
-    border: 1px solid black;
-    // position: absolute;
+    font-size: 25px;
   }
-
-  .splash-search-bar a {
-    border: 1px solid black;
-    color: white;
+  #or {
+    padding: 12px;
+  }
+  .splash-s-b-link {
+    padding: 13px 15px 13px 15px;
+    border-radius: 3px;
     background-color: rgb(26, 47, 72);
+    color: white;
   }
 
 
@@ -90,7 +104,7 @@
     height: 100%;
     width: 432px;
     margin-left: 668px;
-    background-color: rgb(226, 226, 227);
+    background-color: #F2F2F2;
   }
   .splash-u-box {
     text-align: left;
@@ -119,7 +133,7 @@
     .splash-u-b-girl {
       background-image: image-url("splash_creators_girl.jpg");
       height: 245px;
-      width: 433px;
+      width: 432px;
       background-repeat: no-repeat;
       background-position: -47px -34px;
     }

@@ -10,10 +10,10 @@ class SplashPage extends React.Component {
         <div className="splash-search-bar">
           <div className="search-bar">
             <input type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
-            <Link to="/404"><i className="fas fa-search"></i></Link>
+              <Link to="/404"><i className="fas fa-search"></i></Link>
           </div>
-            &emsp;or&ensp;
-            <Link to="upload">Upload your own</Link>
+          <p id="or">or</p>
+            <Link className="splash-s-b-link" to="upload">Upload your own</Link>
         </div>
 
         <h1 className="splash-trending">Hear what’s trending for free in the chillabit community</h1>
