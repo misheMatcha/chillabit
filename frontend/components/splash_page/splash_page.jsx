@@ -37,11 +37,19 @@ class SplashPage extends React.Component {
 
         <Link className="splash-explore" to="/home">Explore tending playlists</Link>
         <div className="splash-upgrade">
-          <div className="splash-upgrade-box">
-            <h1>Never stop listening</h1>
-            <hr/>
-            <p>Coming soon to Android and iOS.</p>
-            <p>You'll never miss a chill beat.</p>
+          <div className="splash-u-grad">
+            <div className="splash-u-box">
+              <div>
+                <p className="splash-u-b-title">Never stop listening</p>
+                <hr/>
+                <p className="splash-u-b-details">
+                  Coming soon to Android and iOS.
+                  <br/>
+                  You'll never miss a chill ❄️ beat.
+                </p>
+              </div>
+            </div>
+            <div className="splash-u-b-girl"></div>
           </div>
         </div>
 

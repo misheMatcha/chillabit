@@ -87,28 +87,47 @@
   align-content: flex-end;
   color: white;
 }
-  .splash-upgrade-box {
-    // border: 1px solid black;
+  .splash-u-grad {
     height: 100%;
-    width: 500px;
-    margin-left: 600px;
+    width: 432px;
+    margin-left: 668px;
+    background-color: rgb(86, 100, 120);
     // background-color: rgb(26, 47, 72);
-    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(26, 47, 72));
+    // background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(26, 47, 72));
   }
-  .splash-upgrade h1 {
-    font-size: 50px;
-    padding-top: 25px;
-    }
-    .splash-upgrade hr {
+  .splash-u-box {
+    text-align: left;
+    height: 45%;
+    width: 368px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 10px;
+  }
+    .splash-u-b-title {
+      margin: 0;
+      font-size: 36px;
+      padding-top: 25px;
+      letter-spacing: 2px;
+      }
+    .splash-u-box hr {
       border: none;
-      // border: 2px solid white;
       width: 80px;
       padding: 3px 0px 0px 0px;
       background-image: linear-gradient(to right, purple , blue);
     }
+    .splash-u-b-details {
+      font-size: 22px;
+    }
+    .splash-u-b-girl {
+      background-image: image-url("splash_creators_girl.jpg");
+      height: 245px;
+      width: 433px;
+      background-repeat: no-repeat;
+      background-position: -47px -34px;
+    }
 
 .splash-creator {
-  // border: 1px solid black;
   height: 342px;
   background-image: image-url("splash_creators.jpg");
   background-repeat: no-repeat;
@@ -134,13 +153,14 @@
     background-color: rgb(26, 47, 72);
   }
   .splash-creator h1 {
-    // border: 1px solid black;
-    font-size: 50px;
-    // padding: 6px 1px 14px 1px;
+    font-size: 42px;
+    letter-spacing: 2px;
+    filter: drop-shadow(2px 3px 3px black);
   }
   .splash-creator p {
-    // border: 1px solid black;
     width: 65%;
+    font-size: 20px;
+    filter: drop-shadow(2px 3px 3px black);
   }
 
 // footer
