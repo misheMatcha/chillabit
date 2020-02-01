@@ -37,20 +37,20 @@ class SplashPage extends React.Component {
 
         <Link className="explore" to="/home">Explore tending playlists</Link>
 
-        <div className="upgrade">
-          <div className="ucontainer">
-            <div className="splash-u-box">
+        <div className="app-section">
+          <div className="app-container">
+            <div className="app-details">
               <div>
-                <p className="splash-u-b-title">Never stop listening</p>
+                <p className="app-title">Never stop listening</p>
                 <hr/>
-                <p className="splash-u-b-details">
+                <p className="app-details-text">
                   Coming soon to Android and iOS.
                   <br/>
                   You'll never miss a chill ❄️ beat.
                 </p>
               </div>
             </div>
-            <div className="splash-u-b-girl"></div>
+            <div className="app-image"></div>
           </div>
         </div>
 
@@ -62,8 +62,8 @@ class SplashPage extends React.Component {
           </div>
         </div>
         
-        <div className="footer-wrap">
-          <div className="foo">
+        <div className="splash-footer-wrap">
+          <div className="splash-footer">
             <h1>Thanks for listening. Now join in.</h1>
             <p>Save tracks, follow artists and build playlists. All for free.</p>
             <Link className="splash-f-signup" to="signup">Create account</Link>

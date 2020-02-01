@@ -88,7 +88,7 @@
 }
 
 // App section
-#splash .upgrade {
+#splash .app-section {
   height: 445px;
   background-image: image-url("splash_listen.jpg");
   background-repeat: no-repeat;
@@ -98,14 +98,14 @@
   align-content: flex-end;
 }
 
-  .ucontainer {
+  .app-container {
     height: 100%;
     width: 432px;
     margin-left: 668px;
     background-color: #F2F2F2;
   }
 
-    .splash-u-box {
+    .app-details {
       text-align: left;
       height: 45%;
       width: 368px;
@@ -115,22 +115,24 @@
       margin-left: 10px;
     }
 
-      .splash-u-b-title {
+      .app-title {
         margin: 0;
         font-size: 36px;
         padding-top: 25px;
         letter-spacing: 2px;
         }
-      .splash-u-box hr {
+      .app-details hr {
         border: none;
         width: 80px;
         padding: 3px 0px 0px 0px;
         background-image: linear-gradient(to right, purple , blue);
       }
-      .splash-u-b-details {
+
+      .app-details-text {
         font-size: 22px;
       }
-      .splash-u-b-girl {
+
+      .app-image {
         background-image: image-url("splash_creators_girl.jpg");
         height: 245px;
         width: 432px;
@@ -175,29 +177,30 @@
     filter: drop-shadow(2px 3px 3px black);
   }
 
-// footer
-  .splash-footer-wrap {
+// footer section
+.splash-footer-wrap {
   height: 375px;
   display: flex;
   align-self: center;
-  margin-top: 69px; // nice
+  margin-top: 69px;
 }
-.splash-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 70%;
-  width: 699px;
-}
-  .splash-footer h1 {
-    font-size: 33px;
-    letter-spacing: 2px;
+
+  .splash-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70%;
+    width: 699px;
   }
-  .splash-footer p {
-    font-size: 22px;
-    letter-spacing: 1px;
-  }
+    .splash-footer h1 {
+      font-size: 33px;
+      letter-spacing: 2px;
+    }
+    .splash-footer p {
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
 
   .splash-f-signup {
     padding: 13px 50px 13px 50px;
@@ -215,13 +218,13 @@
     justify-content: space-between;
     margin-top: 10px;
   }
-  .splash-f-nav p {
-    font-size: 13px;
-    margin: auto;
-  }
+    .splash-f-nav p {
+      font-size: 13px;
+      margin: auto;
+    }
 
-  .splash-f-login {
-    border: 1px solid rgba(182, 171, 171, 0.742);
-    padding: 10px 15px 10px 15px;
-    border-radius: 3px;
-  }
+    .splash-f-login {
+      border: 1px solid rgba(182, 171, 171, 0.742);
+      padding: 10px 15px 10px 15px;
+      border-radius: 3px;
+    }
