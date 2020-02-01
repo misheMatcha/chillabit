@@ -53,13 +53,15 @@ class SplashPage extends React.Component {
           </div>
         </div>
         
-        <div className="splash-footer">
-          <h1>Thanks for listening. Now join in.</h1>
-          <p>Save tracks, follow artists and build playlists. All for free.</p>
-          <Link to="signup">Create account</Link>
-          <div>
-            Already have an account?
-            <Link to="/login">Sign in</Link>
+        <div className="splash-footer-wrap">
+          <div className="splash-footer">
+            <h1>Thanks for listening. Now join in.</h1>
+            <p>Save tracks, follow artists and build playlists. All for free.</p>
+            <Link className="splash-f-signup" to="signup">Create account</Link>
+            <div className="splash-f-nav">
+              <p>Already have an account?</p>
+              <Link className="splash-f-login" to="/login">Sign in</Link>
+            </div>
           </div>
         </div>
       </div>

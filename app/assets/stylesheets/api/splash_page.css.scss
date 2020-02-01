@@ -1,12 +1,14 @@
 // DRY up css later - buttons could be general class to be used multiple times
 
 .splash{
-  border: 1px solid black;
-  font-family: sans-serif;
+  // font-family: sans-serif;
+  // font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   text-align: center;
   background-color: white;
+  color: #333333;
 }
 
 // Search bar and upload
@@ -89,7 +91,7 @@
     // border: 1px solid black;
     height: 100%;
     width: 500px;
-    margin-left: 599px;
+    margin-left: 600px;
     // background-color: rgb(26, 47, 72);
     background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(26, 47, 72));
   }
@@ -118,7 +120,7 @@
   align-items: center;
 }
 .creator-transbg {
-  background-color: rgba(26, 47, 72, 0.73);
+  background-color: rgba(26, 47, 72, 0.35);
   width: 82%;
   height: 68%;
   align-items: center;
@@ -142,18 +144,52 @@
   }
 
 // footer
-.splash-footer {
-  border: 1px solid black;
+  .splash-footer-wrap {
   height: 375px;
+  display: flex;
+  align-self: center;
+  margin-top: 69px; // nice
+}
+.splash-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70%;
+  width: 699px;
 }
   .splash-footer h1 {
-    border: 1px solid black;
-    font-size: 37px;
-    margin-top: 80px;
+    font-size: 33px;
+    letter-spacing: 2px;
   }
   .splash-footer p {
-    border: 1px solid black;
+    font-size: 22px;
+    letter-spacing: 1px;
   }
-  .splash-footer a {
-    border: 1px solid black;
+
+  .splash-f-signup {
+    padding: 13px 50px 13px 50px;
+    border-radius: 3px;
+    background-color: rgb(26, 47, 72);
+    color: white;
+    height: auto;
+    margin-top: 7px;
+  }
+
+  .splash-f-nav {
+    display: flex;
+    flex-direction: row;
+    width: 255px;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .splash-f-nav p {
+    font-size: 13px;
+    margin: auto;
+  }
+
+  .splash-f-login {
+    border: 1px solid rgba(182, 171, 171, 0.742);
+    padding: 10px 15px 10px 15px;
+    border-radius: 3px;
   }
