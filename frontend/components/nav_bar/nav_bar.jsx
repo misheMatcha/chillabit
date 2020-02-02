@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 // continue later
+// dropping another scaling note
 const NavBar = ({currentUser, logout}) => {
   const protectedNav = () => (
     <div className="protected-nav">

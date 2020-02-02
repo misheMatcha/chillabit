@@ -13,7 +13,7 @@ import Modal from '../components/modal/modal';
 
 const App = () => (
   <div>
-    <Modal />
+    {/* <Modal /> look into after homepage */}
     <header>
       <Route path="/" component={NavBarContainer}/>
     </header>
@@ -23,17 +23,17 @@ const App = () => (
     <AuthRoute path="/signup" component={signinFormContainer}/>
     
     <Switch>
-      <Route exact path="/404" component={Error404Page} />
-      <AuthRoute path="/" component={SplashPage}/>
-      <ProtectdRoute path="/stream" component={Discover}/>
-      <ProtectdRoute path="/library" component={Discover}/>
-      <ProtectdRoute path="/uwucantfindme" component={Discover}/>
-      <ProtectdRoute path="/upgrade" component={Discover}/>
-      <ProtectdRoute path="/upload" component={Discover}/>
-      <ProtectdRoute path="/discover" component={Discover}/>
-      {/* <ProtectdRoute path="" component={Discover}/> */}
-      {/* <ProtectdRoute path="/index" component={Discover}/> */}
+      <ProtectdRoute exact to="/discover" component={Discover}/>
+      <ProtectdRoute exact to="/stream" component={Discover}/>
+      <ProtectdRoute exact to="/library" component={Discover}/>
+      <ProtectdRoute exact to="/upgrade" component={Discover}/>
+      <ProtectdRoute exact to="/upload" component={Discover}/>
+      {/* need userpage link in future */}
+      <ProtectdRoute exact to="/messages" component={Discover}/>
+      <ProtectdRoute exact to="/notifications" component={Discover}/>
     </Switch>
+    {/* made an error page, implement later maybe */}
+    <AuthRoute path="/" component={SplashPage}/>
   </div>
 );
 
