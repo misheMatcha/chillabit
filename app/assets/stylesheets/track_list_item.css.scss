@@ -1,0 +1,31 @@
+// template and placeholder
+.track-item {
+}
+  .track-item.container {
+    align-content: center;
+    height: 230px;
+    text-align: left;
+  }
+    .track-item.album-cover {
+      background-image: image-url("notturna_okho.jpg");
+      background-size: cover;
+      height: 180px;
+      width: 180px;
+    }
+    .track-item.detail-container {
+      display: flex;
+      flex-direction: column;
+      height: 22%;
+      justify-content: center;
+    }
+      .track-item.title {
+        font-size: 15px;
+        letter-spacing: 1px;
+        // height: 50px;
+        padding-bottom: 2px;
+      }
+      .track-item.artist {
+        font-size: 13px;
+        color: #999999;
+        // height: 50px;
+      }

@@ -1,0 +1,62 @@
+.discover {
+  border: 1px solid black;
+  display: flex;
+  // justify-content: space-evenly;
+  height: -webkit-fill-available;
+  background-color: white;
+  // position: relative;
+}
+
+  .main-content {
+    border: 1px solid black;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    // overflow: auto;
+  }
+    .track {
+      border: 1px solid black;
+      height: 400px;
+    }
+      ul li {
+        display: flex;
+      }
+        .track.details {
+          display: flex;
+        }
+        .playstats {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+    .track.carousel {
+      // this might need to live somewhere else depending on implementation
+      border: 1px solid black;
+    }
+    .player.list {
+      border: 1px solid black;
+    }
+
+.sidebar {
+  border: 1px solid #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30%;
+}
+  .sidebar-box {
+    height: 25%;
+  }
+    .ad {
+    border: 1px solid black;
+    }
+    .follow-sug {
+      border: 1px solid black;
+    }
+    .likes {
+      border: 1px solid black;
+    }
+    .history {
+      border: 1px solid black;
+    }
