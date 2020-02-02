@@ -22,6 +22,7 @@ class SessionForm extends React.Component {
     this.props.processForm(nextState)
   }
 
+  // will probably need to redo the forms and styling after modal has been implemented
   render(){
     return (
       <form className="sessionForm" onSubmit={this.handleSubmit}>

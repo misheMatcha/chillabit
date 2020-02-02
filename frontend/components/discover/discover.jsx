@@ -1,7 +1,7 @@
 import React from 'react';
 
-const HomeIndex = () => (
+const Discover = () => (
   <p>homie page</p>
 );
 
-export default HomeIndex;
+export default Discover;
