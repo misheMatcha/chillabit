@@ -1,4 +1,7 @@
+// general note - need proportional scaling
+
 #splash{
+  // position: absolute;
   font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
@@ -123,14 +126,14 @@
 
   .app-container {
     height: 100%;
-    width: 432px;
+    width: 601px;
     margin-left: 668px;
     background-color: #F2F2F2;
   }
 
     .app-details {
       text-align: left;
-      height: 45%;
+      // height: 45%;
       width: 368px;
       display: flex;
       flex-direction: column;
@@ -157,10 +160,11 @@
 
       .app-image {
         background-image: image-url("splash_creators_girl.jpg");
-        height: 245px;
-        width: 432px;
+        height: 304px;
+        width: 601px;
         background-repeat: no-repeat;
-        background-position: -47px -34px;
+        background-position: 0px -47px;
+        background-size: cover;
       }
 
 // Creators secton

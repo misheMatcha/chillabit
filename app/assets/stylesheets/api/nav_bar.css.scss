@@ -1,12 +1,83 @@
-// Session Links - parent
+// Protected Nav Section
+.protected-nav {
+  // border: 1px solid black;
+  display: flex;
+  background-color: #333333;
+  color: #CCCCCC;
+  font-family: 'Roboto', sans-serif;
+  height: 45px;
+  font-size: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+  .nav-content {
+    display: flex;
+    // justify-content: center;
+    // flex-direction: row;
+    width: 25%;
+  }
+    .content-link {
+      display: flex;
+      align-self: auto;
+      // border: 1px solid #111111;
+      border-left: 1px solid #111111;
+      border-right: 1px solid #111111;
+      padding: 0px 30px 25px 30px;
+      margin-right: -1px;
+    }
+      .nav-active {
+        background-color: #111111;
+        color: white;
+      }
+      .nav-upgrade {
+        border: 1px dotted rgb(77, 129, 193);
+        color: rgb(77, 129, 193);
+      }
+
+  .nav-search {
+    // border: 1px solid white;
+    width: auto;
+    // position: relative;
+  }
+    .nav-search input {
+      height: 27px;
+      // width: 50%;
+      // position: absolute;
+      position: relative;
+      width: 427px;
+      border-radius: 4px;
+    }
+    .fas.fa-search {
+      position: absolute;
+      font-size: 17px;
+      margin-top: 5px;
+      margin-right: 1px;
+    }
+  
+  .nav-user-actions {
+    padding: 1px 0px 0px 0px;
+    height: 100%;
+    // display: flex;
+    justify-content: space-evenly;
+    width: 29%;
+  }
+    .actions-link {
+      padding: 1px 1px 1px 1px;
+      height: 100%;
+      width: 100%;
+    }
+
+// Auth Nav Section
 .login-signup {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   width: auto;
   height: 456px;
   background-image: image-url("session_links_banner.jpg");
-  background-position: -100px -100px;
+  background-position: 0px -100px;
   align-items: flex-start;
   width: auto;
   background-repeat: no-repeat;
@@ -24,15 +95,13 @@
   margin-left: 10px;
   margin-top: 20px;
 }
-  .fab {
+  .fab.fa-soundcloud {
     font-size: 35px;
     color: white;
     margin-right: 7px;
   }
     .login-signup span {
       text-align: center;
-      // font-family: 'Amatic SC', cursive;
-      // font-family: 'Waiting for the Sunrise', cursive;
       font-family: 'Shadows Into Light', cursive;
       font-size: 21px;
       color: white;
@@ -102,15 +171,3 @@
       .creator-button {
         padding: 5px 13px 5px 13px;
       }
-
-// Logged Greeting - add later
-.navbar-header {
-  background-color: rgb(26, 47, 72);
-  height: 50px;
-}
-
-  .navbar-links {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  }

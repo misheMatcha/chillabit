@@ -1,32 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-// Think about changing name for to be more explicit
+// continue later
 const NavBar = ({currentUser, logout}) => {
   const protectedNav = () => (
-    // <div className="logged-in-nav">
-    //   homie page
-    // </div>
-      <div className="navbar-header">
-        <ul className="navbar-links">
-          <li><Link to="/index"><i className="fab fa-soundcloud"></i></Link></li>
-          <li><Link to="/discover">Home</Link></li>
-          <li><Link to="/stream">Stream</Link></li>
-          <li><Link to="/library">Library</Link></li>
-          <li><Link to="/uwucantfindme">Search Bar Placeholder</Link></li>
-          <li><Link to="/upgrade">Upgrade</Link></li>
-          <li><Link to="/upload">Upload</Link></li>
-          <li><Link to={`/${currentUser.username}`}>{currentUser.username}</Link></li>
-          <li><button className="greeting-button" onClick={logout}>Log Out</button></li>
-        </ul>
+    <div className="protected-nav">
+      <div className="icon">
+        <Link to="/"><i className="fab fa-soundcloud home"></i></Link>
       </div>
+      <div className="nav-content">
+        <NavLink className="content-link" activeClassName="nav-active" to="/discover">Home</NavLink> 
+        <NavLink className="content-link" activeClassName="nav-active" to="/stream">Stream</NavLink> 
+        <NavLink className="content-link" activeClassName="nav-active" to="/library">Library</NavLink> 
+      </div>
+      <div className="nav-search">
+        <input type="text" placeholder="Search"/>
+        <i className="fas fa-search"></i>
+      </div>
+      <div className="nav-user-actions">
+        <NavLink className="actions-link" activeClassName="nav-upgrade" to="/upgrade">Upgrade</NavLink>  
+        <NavLink className="actions-link" activeClassName="nav-active" to="/upload">Upload</NavLink>  
+        {/* user may need img, could */}
+        <NavLink className="actions-link" activeClassName="nav-active" to={`/${currentUser.username}`}>{currentUser.username}</NavLink> 
+        <NavLink className="actions-link" activeClassName="nav-active" to="/notifications"><i className="fas fa-bell"></i></NavLink>  
+        <NavLink className="actions-link" activeClassName="nav-active" to="/messages"><i className="fas fa-envelope"></i></NavLink> 
+        <button onClick={logout}>Sign out</button>  
+      </div>
+    </div>
   );
 
   const authNav = () => (
     <nav className="login-signup">
       <div className="thebar">
         <div className="id-logo">
-          <i id="ico" className="fab fa-soundcloud"></i>
+          <i className="fab fa-soundcloud"></i>
           <span>chillabit</span>
         </div>
         <div className="auth-nav">
