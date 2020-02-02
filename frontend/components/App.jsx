@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectdRoute } from '../util/route_util';
 
 // containers
-import GreetingContainer from './greeting/greeting_container';
+import NavBarContainer from './nav_bar/nav_bar_container';
 import loginFormContainer from './session_form/login_form_container';
 import signinFormContainer from './session_form/signup_form_container';
 import Discover from './discover/discover_container';
@@ -15,7 +15,7 @@ const App = () => (
   <div>
     <Modal />
     <header>
-      <Route path="/" component={GreetingContainer}/>
+      <Route path="/" component={NavBarContainer}/>
     </header>
 
     {/* adding routes back until modal is complete */}
@@ -25,14 +25,14 @@ const App = () => (
     <Switch>
       <Route exact path="/404" component={Error404Page} />
       <AuthRoute path="/" component={SplashPage}/>
-      <ProtectdRoute path="/discover" component={Discover}/>
       <ProtectdRoute path="/stream" component={Discover}/>
       <ProtectdRoute path="/library" component={Discover}/>
       <ProtectdRoute path="/uwucantfindme" component={Discover}/>
       <ProtectdRoute path="/upgrade" component={Discover}/>
       <ProtectdRoute path="/upload" component={Discover}/>
+      <ProtectdRoute path="/discover" component={Discover}/>
       {/* <ProtectdRoute path="" component={Discover}/> */}
-      <ProtectdRoute path="/index" component={Discover}/>
+      {/* <ProtectdRoute path="/index" component={Discover}/> */}
     </Switch>
   </div>
 );

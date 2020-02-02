@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Think about changing name for to be more explicit
-const Greeting = ({currentUser, logout}) => {
-  const loggedGreeting = () => (
+const NavBar = ({currentUser, logout}) => {
+  const protectedNav = () => (
+    // <div className="logged-in-nav">
+    //   homie page
+    // </div>
       <div className="navbar-header">
         <ul className="navbar-links">
           <li><Link to="/index"><i className="fab fa-soundcloud"></i></Link></li>
@@ -19,7 +22,7 @@ const Greeting = ({currentUser, logout}) => {
       </div>
   );
 
-  const sessionLinks = () => (
+  const authNav = () => (
     <nav className="login-signup">
       <div className="thebar">
         <div className="id-logo">
@@ -44,7 +47,7 @@ const Greeting = ({currentUser, logout}) => {
     </nav>
   );
   
-  return currentUser ? loggedGreeting() : sessionLinks();
+  return currentUser ? protectedNav() : authNav();
 };
 
-export default Greeting;
+export default NavBar;
