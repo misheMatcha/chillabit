@@ -13,7 +13,7 @@ class SplashPage extends React.Component {
         <div className="searchbar">
           <div className="sb-container">
             <input type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
-              <Link to="/404"><i className="fas fa-search"></i></Link>
+              <Link to="/404"><i className="fas fa-search splash"></i></Link>
           </div>
           <p id="or">or</p>
             <Link className="upload" to="upload">Upload your own</Link>
@@ -60,10 +60,10 @@ class SplashPage extends React.Component {
           <div className="splash-footer">
             <h1>Thanks for listening. Now join in.</h1>
             <p>Save tracks, follow artists and build playlists. All for free.</p>
-            <Link className="splash-f-signup" to="signup">Create account</Link>
+            <Link className="splash-f-signup" to="/">Create account</Link>
             <div className="splash-f-nav">
               <p>Already have an account?</p>
-              <Link className="splash-f-login" to="/login">Sign in</Link>
+              <Link className="splash-f-login" to="/">Sign in</Link>
             </div>
           </div>
         </div>

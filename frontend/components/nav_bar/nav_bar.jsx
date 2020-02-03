@@ -17,7 +17,7 @@ const NavBar = ({currentUser, logout, signup, login}) => {
       </div>
       <div className="nav-search">
         <input type="text" placeholder="Search"/>
-        <i className="fas fa-search"></i>
+        <i className="fas fa-search nav"></i>
       </div>
       <div className="nav-user-actions">
         <NavLink className="actions-link" activeClassName="nav-upgrade" to="/upgrade">Upgrade</NavLink>  

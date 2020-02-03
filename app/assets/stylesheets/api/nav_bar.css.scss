@@ -1,9 +1,9 @@
 // Protected Nav Section
 .protected-nav {
-  position: fixed;
-  top: 0;
-  left: 39;
-  z-index: 999;
+  // position: fixed;
+  // top: 0;
+  // left: 39;
+  // z-index: 999;
   display: flex;
   background-color: #333333;
   color: #CCCCCC;
@@ -38,11 +38,12 @@
       }
 
   .nav-search {
-    // border: 1px solid white;
+    border: 1px solid black;
     width: auto;
     // position: relative;
   }
     .nav-search input {
+      border: 1px solid black;
       height: 27px;
       // width: 50%;
       // position: absolute;
@@ -50,7 +51,8 @@
       width: 427px;
       border-radius: 4px;
     }
-    .fas.fa-search {
+    .fas.fa-search.nav {
+      border: 1px solid black;
       position: absolute;
       font-size: 17px;
       margin-top: 5px;

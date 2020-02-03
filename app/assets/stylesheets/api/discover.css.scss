@@ -2,7 +2,7 @@
   // border: 1px solid black;
   display: flex;
   padding-top: 50px;
-  flex-direction: column;
+  flex-direction: row;
   // justify-content: space-evenly;
   // height: -webkit-fill-available;
   background-color: white;
@@ -65,9 +65,9 @@
   flex-direction: column;
   justify-content: space-evenly;
   width: 340px;
-  position: fixed;
-  top: 44px;
-  right: 91px;
+  // position: fixed;
+  // top: 44px;
+  // right: 91px;
 }
   .sidebar-box {
     height: 25%;
