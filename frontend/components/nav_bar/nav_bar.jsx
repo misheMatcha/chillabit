@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { openModal } from '../../actions/modal_actions';
 
 // continue later
 // dropping another scaling note
-const NavBar = ({currentUser, logout}) => {
+const NavBar = ({currentUser, logout, signup, login}) => {
   const protectedNav = () => (
     <div className="protected-nav">
       <div className="icon">
@@ -39,8 +40,11 @@ const NavBar = ({currentUser, logout}) => {
         </div>
         <div className="auth-nav">
           <ul className="login-signup-links">
-            <li><Link className="login-button" to='/login'>Sign in</Link></li>
-            <li><Link className="signup-button" to='/signup'>Create account</Link></li>
+            {/* <li><button className="login-button" onClick={() => signup}>Login</button></li> */}
+              <li>{login}</li>
+              <li>{signup}</li>
+            {/* <li><Link className="login-button" to='/login'>Sign in</Link></li>
+            <li><Link className="signup-button" to='/signup'>Create account</Link></li> */}
             <li><Link className="creator-button"to='/creator'>For Creators</Link></li>
           </ul>
         </div>

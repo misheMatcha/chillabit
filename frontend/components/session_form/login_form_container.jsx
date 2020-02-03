@@ -14,7 +14,7 @@ const mSTP = ({ errors }) => ({
 const mDTP = dispatch => ({
   processForm: user => dispatch(login(user)),
   otherForm: (
-    <button onClick={() => dispatch(openModal)}>
+    <button onClick={() => dispatch(openModal("login"))}>
       Signup
     </button>
   ),

@@ -1,0 +1,24 @@
+.track.track-list {
+  // border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 364px;
+  // padding-top: 17px;
+}
+.track-details {
+  // border: 1px solid black;
+  // color: red;
+  // padding-top: 10px;
+  // font-family: 'Roboto', sans-serif;
+}
+.track-details.title {
+  letter-spacing: 2px;
+  // border: 1px solid black;
+  font-size: 21px;
+}
+.track-details.description {
+  // border: 1px solid black;
+  font-size: 14px;
+  color: #999999;
+  }

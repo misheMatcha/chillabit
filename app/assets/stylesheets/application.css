@@ -10,7 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require variables
+ *= require_variables
  *= require reset
  *= require_tree .
  *= require_self
@@ -21,9 +21,9 @@
   margin-left: auto;
   margin-right: auto;
   width: 1269px;
+  /* position: relative; */
 }
 
 body {
-  /* position: relative; */
   background-color:#F2F2F2;
 }

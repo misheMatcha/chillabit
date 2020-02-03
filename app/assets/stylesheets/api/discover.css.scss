@@ -1,23 +1,44 @@
 .discover {
-  border: 1px solid black;
+  // border: 1px solid black;
   display: flex;
+  padding-top: 50px;
+  flex-direction: column;
   // justify-content: space-evenly;
-  height: -webkit-fill-available;
+  // height: -webkit-fill-available;
   background-color: white;
+  padding-top: 10px;
+  // height: 1380px;
   // position: relative;
+  // overflow: scroll;
 }
 
-  .main-content {
-    border: 1px solid black;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    // overflow: auto;
+.space {
+  margin-top: -15px;
+  height: 50px;
+}
+
+.main-content {
+  padding: 0px 25px 0px 25px;
+  // border: 1px solid black;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  // overflow: scroll;
+  // overflow: auto;
+  // height: 100%;
+  // margin-top: 33px;
+
+
+  // overflow-y:hidden
   }
+  // .main-content::-webkit-scrollbar {
+  //   width: 0px;
+  //   background: transparent;
+  // }
     .track {
-      border: 1px solid black;
-      height: 400px;
+      // border: 1px solid black;
+      // height: 400px;
     }
       ul li {
         display: flex;
@@ -32,10 +53,10 @@
 
     .track.carousel {
       // this might need to live somewhere else depending on implementation
-      border: 1px solid black;
+      // border: 1px solid black;
     }
     .player.list {
-      border: 1px solid black;
+      // border: 1px solid black;
     }
 
 .sidebar {
@@ -43,7 +64,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 30%;
+  width: 340px;
+  position: fixed;
+  top: 44px;
+  right: 91px;
 }
   .sidebar-box {
     height: 25%;

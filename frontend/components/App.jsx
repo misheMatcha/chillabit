@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectdRoute } from '../util/route_util';
 
 // containers
-import NavBarContainer from './nav_bar/nav_bar_container';
+import NavBarContainer from './nav_bar/nav_bar_container.jsx';
 import loginFormContainer from './session_form/login_form_container';
 import signinFormContainer from './session_form/signup_form_container';
 import Discover from './discover/discover_container';
@@ -14,6 +14,7 @@ import Modal from '../components/modal/modal';
 const App = () => (
   <div>
     {/* <Modal /> look into after homepage */}
+    <Modal />
     <header>
       <Route path="/" component={NavBarContainer}/>
     </header>

@@ -1,10 +1,20 @@
 // template and placeholder
+
+.track-container {
+  // width: 70%;
+  // overflow: hidden;
+  overflow: scroll;
+  overflow-y:hidden
+}
+
 .track-item {
+  // padding: 1px 0px 0px 0px;
 }
   .track-item.container {
     align-content: center;
     height: 230px;
     text-align: left;
+    padding-right: 25px;
   }
     .track-item.album-cover {
       background-image: image-url("notturna_okho.jpg");
@@ -15,7 +25,7 @@
     .track-item.detail-container {
       display: flex;
       flex-direction: column;
-      height: 22%;
+      height: 21%;
       justify-content: center;
     }
       .track-item.title {

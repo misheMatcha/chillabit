@@ -1,6 +1,9 @@
 // Protected Nav Section
 .protected-nav {
-  // border: 1px solid black;
+  position: fixed;
+  top: 0;
+  left: 39;
+  z-index: 999;
   display: flex;
   background-color: #333333;
   color: #CCCCCC;
@@ -9,13 +12,11 @@
   font-size: 15px;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+  width: 1269px;
 }
 
   .nav-content {
     display: flex;
-    // justify-content: center;
-    // flex-direction: row;
     width: 25%;
   }
     .content-link {
