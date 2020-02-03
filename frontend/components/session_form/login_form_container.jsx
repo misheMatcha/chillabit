@@ -6,8 +6,11 @@ import SessionForm from './session_form';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mSTP = ({ errors }) => ({
-  formType: 'Sign in',
-  navLink: <Link to="/signup">Create account</Link>,
+  formType: 'login',
+  formTitle: (
+    <h3 className="sessionForm-title">chillabit</h3>
+  ),
+  formButton: <button className="sessionForm-button">Sign in</button>,
   errors: errors.session
 });
 
