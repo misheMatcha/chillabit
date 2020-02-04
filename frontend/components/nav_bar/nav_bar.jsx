@@ -8,7 +8,7 @@ const NavBar = ({currentUser, logout, signup, login}) => {
   const protectedNav = () => (
     <div className="protected-nav">
       <div className="icon">
-        <Link to="/"><i className="fab fa-soundcloud home"></i></Link>
+        <NavLink className="nav-icon-link" activeClassName="nav-active-icon" to="/"><i className="fab fa-soundcloud home"></i></NavLink>
       </div>
       <div className="nav-content">
         <NavLink className="content-link" activeClassName="nav-active" to="/discover">Home</NavLink> 

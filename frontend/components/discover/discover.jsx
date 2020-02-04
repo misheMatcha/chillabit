@@ -9,7 +9,7 @@ class Discover extends React.Component {
   render(){
     return (
       <div className="discover">
-        <div className="space"></div>
+        {/* <div className="space"></div> */}
         <div className="main-content">
           <DiscoverSection />
           <DiscoverSection />
