@@ -12,9 +12,9 @@ class Discover extends React.Component {
         {/* <div className="space"></div> */}
         <div className="main-content">
           <DiscoverSection />
+          {/* <DiscoverSection />
           <DiscoverSection />
-          <DiscoverSection />
-          <DiscoverSection />
+          <DiscoverSection /> */}
           {/* <DiscoverSection /> */}
         </div>
         <div className="sidebar container">
