@@ -24,17 +24,22 @@ class SessionForm extends React.Component {
   }
 
   renderErrors(){
+    // debugger;
     return (
       <ul>
         {
           this.props.errors.map((error, i) => (
             <li key={`error-${i}`}>
-              {error.responseText}
+              {error}
             </li>
           ))
         }
       </ul>
     );
+  }
+
+  componentWillUnmount(){
+    this.props.clearSessionErrors()
   }
 
   // maybe remove container, doesn't seem to be a use for it
@@ -43,7 +48,7 @@ class SessionForm extends React.Component {
       <div className="session-form-container">
         <form className="sessionForm" onSubmit={this.handleSubmit}>
           {this.props.formTitle}
-          {/* {this.renderErrors()} */}
+          {this.renderErrors()}
           <label>
             <input placeholder="username"
             className="sessionForm-input"
