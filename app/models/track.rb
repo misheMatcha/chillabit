@@ -8,4 +8,8 @@ class Track < ApplicationRecord
   has_many :albums,
     through: :artists,
     source: :albums
+
+  # active storage for AWS
+  has_one_attached :song
+  # has_one_attached :track_cover
 end
