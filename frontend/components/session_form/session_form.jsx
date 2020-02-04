@@ -20,11 +20,9 @@ class SessionForm extends React.Component {
       delete nextState.email
     }
     this.props.processForm(nextState)
-    // this.props.closeModal()
   }
 
   renderErrors(){
-    // debugger;
     return (
       <ul>
         {
