@@ -20,7 +20,21 @@ class SessionForm extends React.Component {
       delete nextState.email
     }
     this.props.processForm(nextState)
-    this.props.closeModal()
+    // this.props.closeModal()
+  }
+
+  renderErrors(){
+    return (
+      <ul>
+        {
+          this.props.errors.map((error, i) => (
+            <li key={`error-${i}`}>
+              {error.responseText}
+            </li>
+          ))
+        }
+      </ul>
+    );
   }
 
   // maybe remove container, doesn't seem to be a use for it
@@ -29,18 +43,30 @@ class SessionForm extends React.Component {
       <div className="session-form-container">
         <form className="sessionForm" onSubmit={this.handleSubmit}>
           {this.props.formTitle}
+          {/* {this.renderErrors()} */}
           <label>
-            <input placeholder="username" className="sessionForm-input" type="text" value={this.state.username} onChange={this.handleInput('username')}/>
+            <input placeholder="username"
+            className="sessionForm-input"
+            type="text" value={this.state.username}
+            onChange={this.handleInput('username')}/>
           </label>
           {
             this.isSignup ? null : (
               <label>
-                <input placeholder="email" className="sessionForm-input" type="email" value={ this.state.email } onChange={this.handleInput('email')}/>
+                <input placeholder="email"
+                className="sessionForm-input"
+                type="email"
+                value={ this.state.email }
+                onChange={this.handleInput('email')}/>
               </label>
             )
           }
           <label>
-            <input placeholder="password" className="sessionForm-input" type="password" value={this.state.password} onChange={this.handleInput('password')}/>
+            <input placeholder="password"
+            className="sessionForm-input"
+            type="password"
+            value={this.state.password}
+            onChange={this.handleInput('password')}/>
           </label>
           {this.props.formButton}
           {

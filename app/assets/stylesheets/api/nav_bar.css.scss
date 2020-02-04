@@ -6,17 +6,33 @@
   font-family: 'Roboto', sans-serif;
   height: 46px;
   font-size: 15px;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 1269px;
 }
-  .nav-icon-link {
+
+  .icon {
     height: 100%;
+    width: 75px;
+    background-image: linear-gradient(rgb(57, 101, 155), rgb(26, 47, 72));
+    // display: flex;
+    // justify-content: center;
+    // align-content: center;
   }
-  .nav-active-icon {
-    background-color: rgb(26, 47, 72);
-    width: 100px;
-  }
+    .nav-icon-link {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+    }
+    .nav-active-icon {
+      background-color: rgb(26, 47, 72);
+      // width: 100px;
+    }
+      .fab.fa-soundcloud.home {
+        font-size: 35px;
+        color: white;
+      }
 
   .nav-content {
     display: flex;
@@ -49,7 +65,7 @@
       height: 27px;
       position: relative;
       border-radius: 4px;
-      margin-right: 500px;
+      // margin-right: 500px;
     }
     .fas.fa-search.nav {
       position: absolute;
@@ -76,9 +92,28 @@
     }
 
   .nav-user-actions button {
-    border: 1px solid black;
+    // border: 1px solid black;
     padding: 4px 5px 5px 4px;
   }
+
+// Drop down section
+.dropdown {}
+  .dropdown.li {
+    display: block;
+  }
+    .dropdown.li.ul {
+      // visibility: hidden;
+      overflow: hidden;
+      opacity: 0;
+      position: absolute;
+      margin-top: 1rem;
+      left: 0;
+      display: none;
+    }
+      .dropdown.li.ul.li {}
+        .show {
+          // display: ;
+        }
 
 // Auth Nav Section
 .login-signup {
@@ -106,7 +141,7 @@
   margin-left: 10px;
   margin-top: 20px;
 }
-  .fab.fa-soundcloud {
+  .fab.fa-soundcloud.splash {
     font-size: 35px;
     color: white;
     margin-right: 7px;

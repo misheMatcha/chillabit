@@ -7,10 +7,10 @@ import { openModal } from '../../actions/modal_actions';
 const NavBar = ({currentUser, logout, signup, login}) => {
   const protectedNav = () => (
     <div className="protected-nav">
-      <div className="icon">
-        <NavLink className="nav-icon-link" activeClassName="nav-active-icon" to="/"><i className="fab fa-soundcloud home"></i></NavLink>
-      </div>
       <div className="nav-content">
+        <div className="icon">
+          <NavLink className="nav-icon-link" activeClassName="nav-active-icon" to="/discover"><i className="fab fa-soundcloud home"></i></NavLink>
+        </div>
         <NavLink className="content-link" activeClassName="nav-active" to="/discover">Home</NavLink> 
         <NavLink className="content-link" activeClassName="nav-active" to="/stream">Stream</NavLink> 
         <NavLink className="content-link" activeClassName="nav-active" to="/library">Library</NavLink> 
@@ -25,8 +25,14 @@ const NavBar = ({currentUser, logout, signup, login}) => {
         {/* user may need img, could */}
         <NavLink className="actions-link" activeClassName="nav-active" to={`/${currentUser.username}`}>{currentUser.username}</NavLink> 
         <NavLink className="actions-link" activeClassName="nav-active" to="/notifications"><i className="fas fa-bell"></i></NavLink>  
-        <NavLink className="actions-link" activeClassName="nav-active" to="/messages"><i className="fas fa-envelope"></i></NavLink> 
-        <button onClick={logout}>Sign out</button>  
+        <NavLink className="actions-link" activeClassName="nav-active" to="/messages"><i className="fas fa-envelope"></i></NavLink>
+        {/* fix dropdown later */}
+        <ul className="dropdown">
+          <li className="dropdown li"><button onClick={logout}><i className="fas fa-ellipsis-h"></i></button></li>
+            <ul className="dropdown li ul">
+              <li className="dropdown li ul li show">logouts</li>
+            </ul>
+        </ul>
       </div>
     </div>
   );
@@ -35,16 +41,13 @@ const NavBar = ({currentUser, logout, signup, login}) => {
     <nav className="login-signup">
       <div className="thebar">
         <div className="id-logo">
-          <i className="fab fa-soundcloud"></i>
+          <i className="fab fa-soundcloud splash"></i>
           <span>chillabit</span>
         </div>
         <div className="auth-nav">
           <ul className="login-signup-links">
-            {/* <li><button className="login-button" onClick={() => signup}>Login</button></li> */}
               <li>{login}</li>
               <li>{signup}</li>
-            {/* <li><Link className="login-button" to='/login'>Sign in</Link></li>
-            <li><Link className="signup-button" to='/signup'>Create account</Link></li> */}
             <li><Link className="creator-button"to='/creator'>For Creators</Link></li>
           </ul>
         </div>
