@@ -1,7 +1,10 @@
 class Api::AlbumsController < ApplicationController
+  def index
+    @albums = Album.all
+  end
+
   def create
-    @album = Album.create(album_params)
-    @album.artist_id = current_user.id
+    @album = current_user.albums.new(album_params)
     if @album.save
       render '/api/albums/show'
     else
@@ -10,9 +13,14 @@ class Api::AlbumsController < ApplicationController
   end
 
   def update
+    @album = current_user.albums.find(params[:id])
+    if @album.update(album_params)
+      render '/api/albums/show'
+    end
   end
 
   def destory
+    render '/api/albums/show'
   end
 
   private
