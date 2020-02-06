@@ -20,13 +20,5 @@ document.addEventListener("DOMContentLoaded", () => {
     delete window.currentUser;
   }
 
-  // Add back for testing - remove later
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
-    window.login = login;
-    window.logout = logout;
-    window.signup = signup;
-    window.requestAllAlbums = requestAllAlbums;
-
   ReactDOM.render(<Root store={store}/>, root)
 });
