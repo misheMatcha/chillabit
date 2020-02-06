@@ -1,8 +1,7 @@
-export const fetchAllAlbums = albums => (
+export const fetchAllAlbums = () => (
   $.ajax({
     method: 'GET',
-    url: `/api/albums`,
-    data: { albums }
+    url: `/api/albums`
   })
 );
 
@@ -29,7 +28,7 @@ export const updateAlbum = album => (
   })
 );
 
-export const deleteAlbum = albumId => (
+export const removeAlbum = albumId => (
   $.ajax({
     method: 'DELETE',
     url: `/api/albums/${albumId}`,
