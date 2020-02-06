@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import { login, logout, signup} from './actions/session_actions';
+import { requestAllAlbums, requestAlbum } from './actions/album_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root')
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.login = login;
     window.logout = logout;
     window.signup = signup;
+    window.requestAllAlbums = requestAllAlbums;
 
   ReactDOM.render(<Root store={store}/>, root)
 });

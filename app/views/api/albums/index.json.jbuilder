@@ -1,5 +1,5 @@
-@albums.each do |album|
+json.array! @albums do |album|
   json.set! album.id do
-    json.extract! :id, :name, :single, :genre, :artist_id
+    json.partial! '/api/albums/album', album: album
   end
 end
