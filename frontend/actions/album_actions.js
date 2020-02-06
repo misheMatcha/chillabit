@@ -31,5 +31,5 @@ export const createAlbum = album => dispatch => AlbumUtil.createAlbum(album)
 export const updateAlbum = album => dispatch => AlbumUtil.updateAlbum(album)
   .then(modifiedAlbum => dispatch(receiveAlbum(modifiedAlbum)))
 
-export const removeAlbum = albumId => dispatch => AlbumUtil.removeAlbum(albumId)
+export const deleteAlbum = albumId => dispatch => AlbumUtil.removeAlbum(albumId)
   .then(() => dispatch(removeAlbum()))
