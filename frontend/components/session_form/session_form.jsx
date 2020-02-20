@@ -6,6 +6,7 @@ class SessionForm extends React.Component {
     super(props)
     this.state = {username: '', email: '', password: ''}
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDemo = this.handleDemo.bind(this)
     this.isSignup = this.props.formType === 'login'
   }
 
@@ -20,6 +21,15 @@ class SessionForm extends React.Component {
       delete nextState.email
     }
     this.props.processForm(nextState)
+  }
+
+  handleDemo(){
+    const demo = {
+      username: "guest",
+      password: "password"
+    }
+
+    this.props.processDemo(demo)
   }
 
   renderErrors(){
@@ -78,6 +88,9 @@ class SessionForm extends React.Component {
             )
           }
         </form>
+        <div>
+          <button className="sessionForm-button" onClick={this.handleDemo}>Demo Login</button>
+        </div>
       </div>
     )
   }
