@@ -46,25 +46,24 @@ class SplashPage extends React.Component {
           </div>
         </div>
 
-
-        {/* next section */}
-
-        <div className="creators-section">
-          <div className="trans-bg">
-            <h1>Calling all creators</h1>
-            <p>Get on chillabit to connect with fans, share your sounds, and grow your audience. What are you waiting for?</p>
-            <Link to="/creator">Find out more</Link>
+        <div className="splash-creators-container">
+          <img className="splash-creators-bg" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/splash_creators.jpg" />
+          {/* <div className="splash-creators-bg"></div> */}
+          <div className="splash-creators-bg-trans">
+            <h1 className="splash-creators-bg-trans-title">Calling all creators</h1>
+            <p className="splash-creators-bg-trans-desc">Get on chillabit to connect with fans, share your sounds, and grow your audience. What are you waiting for?</p>
+            <Link className="splash-creators-bg-trans-link" to="/creator">Find out more</Link>
           </div>
         </div>
         
-        <div className="splash-footer-wrap">
+        <div className="splash-footer-container">
           <div className="splash-footer">
-            <h1>Thanks for listening. Now join in.</h1>
-            <p>Save tracks, follow artists and build playlists. All for free.</p>
-            <Link className="splash-f-signup" to="/">Create account</Link>
-            <div className="splash-f-nav">
-              <p>Already have an account?</p>
-              <Link className="splash-f-login" to="/">Sign in</Link>
+            <h1 className="splash-footer-title">Thanks for listening. Now join in.</h1>
+            <p className="splash-footer-desc">Save tracks, follow artists and build playlists. All for free.</p>
+            {this.props.footerSignup}
+            <div className="splash-footer-nav">
+              <p className="splash-footer-nav-p">Already have an account?</p>
+              {this.props.footerLogin}
             </div>
           </div>
         </div>

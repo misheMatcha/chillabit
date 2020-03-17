@@ -117,11 +117,15 @@
   width: 100%;
 }
   .splash-app-image-1{
+    // position: relative;
     width: 59%;
+    // border-right: 1px solid black;
   }
 
   .splash-app-image-2{
+    // position: relative;
     height: 68.4%;
+    // border-top: 1px solid black;
   }
 
 
@@ -132,6 +136,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
+      background-color: #F2F2F2;
     }
       .splash-app-title{
         font-size: 36px;
@@ -149,93 +154,94 @@
         font-size: 22px;
       }
 
-// // Creators secton
-// .creators-section {
-//   height: 342px;
-//   background-image: image-url("splash_creators.jpg");
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-position: 0px -31px;
-//   color: white;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+// Creators Section
+.splash-creators-container{
+  color: white;
+}
+.splash-creators-bg{
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  max-height: 100%;
+  }
 
-//   .trans-bg {
-//     background-color: rgba(26, 47, 72, 0.35);
-//     width: 82%;
-//     height: 68%;
-//     align-items: center;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-evenly;
-//   }
-//     .trans-bg a {
-//       padding: 13px 15px 13px 15px;
-//       border-radius: 3px;
-//       background-color: rgb(26, 47, 72);
-//     }
+  .splash-creators-bg-trans{
+    position: absolute;
+    background-color: rgba(26, 47, 72, 0.35);
+    width: 84%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    bottom: 29%;
+    height: 15%;
+    left: 8%;
+  }
+    .splash-creators-bg-trans-link{
+      padding: 13px 15px 13px 15px;
+      border-radius: 3px;
+      background-color: rgb(26, 47, 72);
+    }
 
-//   .creators-section h1 {
-//     font-size: 42px;
-//     letter-spacing: 2px;
-//     filter: drop-shadow(2px 3px 3px black);
-//   }
-//   .creators-section p {
-//     width: 65%;
-//     font-size: 20px;
-//     filter: drop-shadow(2px 3px 3px black);
-//   }
+  .splash-creators-bg-trans-title{
+    font-size: 42px;
+    letter-spacing: 2px;
+    filter: drop-shadow(2px 3px 3px black);
+  }
+  .splash-creators-bg-trans-desc{
+    width: 65%;
+    font-size: 20px;
+    filter: drop-shadow(2px 3px 3px black);
+  }
 
-// // footer section
-// .splash-footer-wrap {
-//   height: 375px;
-//   display: flex;
-//   align-self: center;
-//   margin-top: 69px;
-// }
+// Footer Section
+.splash-footer-container{
+  height: 375px;
+  display: flex;
+  align-self: center;
+  margin-top: 69px;
+}
 
-//   .splash-footer {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-evenly;
-//     align-items: center;
-//     height: 70%;
-//     width: 699px;
-//   }
-//     .splash-footer h1 {
-//       font-size: 33px;
-//       letter-spacing: 2px;
-//     }
-//     .splash-footer p {
-//       font-size: 22px;
-//       letter-spacing: 1px;
-//     }
+  .splash-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70%;
+    width: 699px;
+  }
+    .splash-footer-title{
+      font-size: 33px;
+      letter-spacing: 2px;
+    }
+    .splash-footer-desc{
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
 
-//   .splash-f-signup {
-//     padding: 13px 50px 13px 50px;
-//     border-radius: 3px;
-//     background-color: rgb(26, 47, 72);
-//     color: white;
-//     height: auto;
-//     margin-top: 7px;
-//   }
+  .splash-footer-signup{
+    padding: 13px 50px 13px 50px;
+    border-radius: 3px;
+    background-color: rgb(26, 47, 72);
+    color: white;
+    height: auto;
+    margin-top: 7px;
+  }
 
-//   .splash-f-nav {
-//     display: flex;
-//     flex-direction: row;
-//     width: 255px;
-//     justify-content: space-between;
-//     margin-top: 10px;
-//   }
-//     .splash-f-nav p {
-//       font-size: 13px;
-//       margin: auto;
-//     }
+  .splash-footer-nav{
+    display: flex;
+    flex-direction: row;
+    width: 255px;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+    .splash-footer-nav-p{
+      font-size: 13px;
+      margin: auto;
+    }
 
-//     .splash-f-login {
-//       border: 1px solid rgba(182, 171, 171, 0.742);
-//       padding: 10px 15px 10px 15px;
-//       border-radius: 3px;
-//     }
+    .splash-footer-login{
+      border: 1px solid rgba(182, 171, 171, 0.742);
+      padding: 10px 15px 10px 15px;
+      border-radius: 3px;
+    }

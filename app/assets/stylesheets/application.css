@@ -26,6 +26,7 @@ body {
   width: 90%;
   display: flex;
   justify-content: center;
+  position: absolute;
 }
 
 .app-container{
@@ -33,8 +34,11 @@ body {
   width: 100%;
   /* border: 1px solid red; */
   max-width: 1240px;
-  min-width: 1003px;
+  /* min-width: 1003px; */
 }
 
 @media all and (max-width: 1240px){
+  .app-container{
+    min-width: 800px;
+  }
 }
