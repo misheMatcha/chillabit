@@ -37,6 +37,8 @@ const NavBar = ({currentUser, logout, signup, login}) => {
     </div>
   );
 
+  // note: add functionality, if user clicks upload and not logged in display modal
+
   const authNav = () => (
     <nav className="auth-nav">
       <img className="auth-nav-banner" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/splash_nav_banner.jpg"/>
@@ -44,7 +46,7 @@ const NavBar = ({currentUser, logout, signup, login}) => {
         <div className="auth-nav-splash">
           <div className="auth-nav-splash-logo">
             <i className="fab fa-soundcloud splash"></i>
-            <p>chillabit</p>
+            <p className="auth-nav-splash-title">chillabit</p>
           </div>
           <div className="auth-nav-links">
             <ul className="auth-nav-links-ul">

@@ -30,7 +30,7 @@ body {
 
 .app-container{
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   max-width: 1240px;
   min-width: 800px;
 }
