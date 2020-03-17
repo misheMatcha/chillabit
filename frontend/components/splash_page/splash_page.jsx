@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TrackList from '../track_list/track_list.jsx'
 
 class SplashPage extends React.Component {
   render(){
-    // console.log(this.props)
     return (
       <div className="splash-container">
         <div className="splash-searchbar-container">
@@ -48,7 +46,6 @@ class SplashPage extends React.Component {
 
         <div className="splash-creators-container">
           <img className="splash-creators-bg" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/splash_creators.jpg" />
-          {/* <div className="splash-creators-bg"></div> */}
           <div className="splash-creators-bg-trans">
             <h1 className="splash-creators-bg-trans-title">Calling all creators</h1>
             <p className="splash-creators-bg-trans-desc">Get on chillabit to connect with fans, share your sounds, and grow your audience. What are you waiting for?</p>

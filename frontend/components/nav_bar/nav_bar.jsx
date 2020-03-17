@@ -1,31 +1,28 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { openModal } from '../../actions/modal_actions';
 
-// continue later
-// dropping another scaling note
 const NavBar = ({currentUser, logout, signup, login, upload}) => {
   const protectedNav = () => (
     <div className="protected-nav">
-      <div className="nav-content">
-        <div className="icon">
-          <NavLink className="nav-icon-link" activeClassName="nav-active-icon" to="/discover"><i className="fab fa-soundcloud home"></i></NavLink>
+      <div className="protected-nav-content">
+        <div className="protected-nav-content-icon">
+          <NavLink className="protected-nav-content-icon-link" activeClassName="protected-nav-content-icon-link-active" to="/discover"><i className="fab fa-soundcloud home"></i></NavLink>
         </div>
-        <NavLink className="content-link" activeClassName="nav-active" to="/discover">Home</NavLink> 
-        <NavLink className="content-link" activeClassName="nav-active" to="/stream">Stream</NavLink> 
-        <NavLink className="content-link" activeClassName="nav-active" to="/library">Library</NavLink> 
+        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/discover">Home</NavLink> 
+        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/stream">Stream</NavLink> 
+        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/library">Library</NavLink> 
       </div>
-      <div className="nav-search">
-        <input type="text" placeholder="Search"/>
+      <div className="protected-nav-search">
+        <input className="protected-nav-search-input" type="text" placeholder="Search"/>
         <i className="fas fa-search nav"></i>
       </div>
-      <div className="nav-user-actions">
-        <NavLink className="actions-link" activeClassName="nav-upgrade" to="/upgrade">Upgrade</NavLink>  
-        <NavLink className="actions-link" activeClassName="nav-active" to="/upload">Upload</NavLink>  
+      <div className="protected-nav-user-content">
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-user-content-link-upgrade" to="/upgrade">Upgrade</NavLink>  
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/upload">Upload</NavLink>  
         {/* user may need img, could */}
-        <NavLink className="actions-link" activeClassName="nav-active" to={`/${currentUser.username}`}>{currentUser.username}</NavLink> 
-        <NavLink className="actions-link" activeClassName="nav-active" to="/notifications"><i className="fas fa-bell"></i></NavLink>  
-        <NavLink className="actions-link" activeClassName="nav-active" to="/messages"><i className="fas fa-envelope"></i></NavLink>
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to={`/${currentUser.username}`}>{currentUser.username}</NavLink> 
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/notifications"><i className="fas fa-bell"></i></NavLink>  
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/messages"><i className="fas fa-envelope"></i></NavLink>
         {/* fix dropdown later */}
         <ul className="dropdown">
           <li className="dropdown li"><button onClick={logout}><i className="fas fa-ellipsis-h"></i></button></li>
