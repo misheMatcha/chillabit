@@ -1,49 +1,49 @@
-// Session Form
-.session-form-container {
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: #333333;
-  align-items: center;
-}
-  .sessionForm {
-    height: 402px;
-    width: 440px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    margin-bottom: 10px;
-  }
-    .sessionForm-title {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 36px;
-      margin: 0;
-      color: rgb(26, 47, 72);
-      padding-bottom: 10px;
-    }
-    .sessionForm-input {
-      width: 333px;
-      color: rgb(26, 47, 72);
-      margin-bottom: 10px;
-    }
-    .sessionForm-button {
-      background-color: rgb(26, 47, 72);
-      color: white;
-      border-radius: 4px;
-      text-align: center;
-      padding: 10px 105px 10px 105px;
-    }
-    .disclaimer-box {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      height: 33%;
-      padding: 10px;
-    }
-      .sessionForm-disclaimer {
-        font-size: 13px;
-      }
+// // Session Form
+// .session-form-container {
+//   font-family: 'Roboto', sans-serif;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-evenly;
+//   color: #333333;
+//   align-items: center;
+// }
+//   .sessionForm {
+//     height: 402px;
+//     width: 440px;
+//     background-color: white;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     border-radius: 3px;
+//     margin-bottom: 10px;
+//   }
+//     .sessionForm-title {
+//       font-family: 'Shadows Into Light', cursive;
+//       font-size: 36px;
+//       margin: 0;
+//       color: rgb(26, 47, 72);
+//       padding-bottom: 10px;
+//     }
+//     .sessionForm-input {
+//       width: 333px;
+//       color: rgb(26, 47, 72);
+//       margin-bottom: 10px;
+//     }
+//     .sessionForm-button {
+//       background-color: rgb(26, 47, 72);
+//       color: white;
+//       border-radius: 4px;
+//       text-align: center;
+//       padding: 10px 105px 10px 105px;
+//     }
+//     .disclaimer-box {
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: space-evenly;
+//       height: 33%;
+//       padding: 10px;
+//     }
+//       .sessionForm-disclaimer {
+//         font-size: 13px;
+//       }

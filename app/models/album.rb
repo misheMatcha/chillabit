@@ -9,4 +9,6 @@ class Album < ApplicationRecord
   has_many :tracks,
     through: :artists,
     source: :tracks
+
+  has_one_attached :album_cover
 end

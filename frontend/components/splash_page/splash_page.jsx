@@ -8,6 +8,7 @@ import TrackList from '../track_list/track_list.jsx'
 
 class SplashPage extends React.Component {
   render(){
+    console.log(this.props)
     return (
       <div id="splash">
         <div className="searchbar">

@@ -14,6 +14,7 @@ class Api::AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    render '/api/albums/show'
   end
 
   def update

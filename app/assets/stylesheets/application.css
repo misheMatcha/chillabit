@@ -15,15 +15,24 @@
  *= require_tree .
  *= require_self
  */
- 
- /* Wrapped around yeild in application.html.erb to allow left/right margins */
-.root-wrap {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1269px;
-  /* position: relative; */
-}
 
 body {
   background-color:#F2F2F2;
+  display: flex;
+  justify-content: center;
+}
+
+#root{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.app-container{
+  width: 100%;
+  border: 1px solid red;
+  max-width: 1240px;
+}
+
+@media all and (max-width: 1240px){
 }
