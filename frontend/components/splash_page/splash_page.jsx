@@ -16,8 +16,8 @@ class SplashPage extends React.Component {
           {this.props.login}
         </div>
 
-        <div className="trending-section">
-          <h1 className="trending-title">Hear what’s trending for free in the chillabit community</h1>
+        <div className="splash-trending-container">
+          <h1 className="splash-trending-title">Hear what’s trending for free in the chillabit community</h1>
 
           <div className="album-track-display">
             <ul>
@@ -25,25 +25,29 @@ class SplashPage extends React.Component {
             </ul>
           </div>
 
-          <Link className="explore" to="/home">Explore tending playlists</Link>
+          <Link className="splash-trending-explore" to="/home">Explore tending playlists</Link>
         </div>
 
-        <div className="app-section">
-          <div className="app-container">
-            <div className="app-details">
+        <div className="splash-app-container">
+          <img className="splash-app-image-1" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/splash_listen.jpg"/>
+          <div className="splash-app">
+            <div className="splash-app-details">
               <div>
-                <p className="app-title">Never stop listening</p>
-                <hr/>
-                <p className="app-details-text">
+                <p className="splash-app-title">Never stop listening</p>
+                <hr className="splash-app-hr"/>
+                <p className="splash-app-text">
                   Coming soon to Android and iOS.
                   <br/>
                   You'll never miss a chill ❄️ beat.
                 </p>
               </div>
             </div>
-            <div className="app-image"></div>
+            <img className="splash-app-image-2" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/splash_creators_girl.jpg" />
           </div>
         </div>
+
+
+        {/* next section */}
 
         <div className="creators-section">
           <div className="trans-bg">

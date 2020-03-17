@@ -52,118 +52,102 @@
   color: white;
 }
 
-// // trending section
-// .trending-section {
-//   display: flex;
-//   flex-direction: column;
-// }
+// Trending Section
+.splash-trending-container{
+  display: flex;
+  flex-direction: column;
+}
 
-//   .trending-title {
-//     font-size: 23px;
-//     padding: 32px 0px 33px 0px;
-//   }
+  .splash-trending-title{
+    font-size: 23px;
+    padding: 32px 0px 33px 0px;
+  }
 
-//   // .album-track-display {
-//   //   // border: 1px solid black;
-//   //   height: auto;
-//   //   display: flex;
-//   //   justify-content: center;
-//   // }
-//   //   .album-track-display ul {
-//   //     // border: 1px solid black;
-//   //     display: flex;
-//   //     flex-wrap: wrap;
-//   //     justify-content: space-evenly;
-//   //     height: 423px;
-//   //     width: 99%;
-//   //     align-content: center;
-//   //   }
-//   //     .album-track-display ul li {
-//   //       // border: 1px solid black;
-//   //       padding: 0px 0px 0px 0px;
-//   //       margin: 10px;
-//   //       text-align: left;
-//   //       // margin-right: 20px;
-//   //       // margin-bottom: 83px;
-//   //       // background-color: rgba(26, 47, 72, 0.53);
-//   //     }
+  // .album-track-display {
+  //   // border: 1px solid black;
+  //   height: auto;
+  //   display: flex;
+  //   justify-content: center;
+  // }
+  //   .album-track-display ul {
+  //     // border: 1px solid black;
+  //     display: flex;
+  //     flex-wrap: wrap;
+  //     justify-content: space-evenly;
+  //     height: 423px;
+  //     width: 99%;
+  //     align-content: center;
+  //   }
+  //     .album-track-display ul li {
+  //       // border: 1px solid black;
+  //       padding: 0px 0px 0px 0px;
+  //       margin: 10px;
+  //       text-align: left;
+  //       // margin-right: 20px;
+  //       // margin-bottom: 83px;
+  //       // background-color: rgba(26, 47, 72, 0.53);
+  //     }
 
-// .album-cover {
-//   // to be filled in later
-// }
+.album-cover {
+  // to be filled in later
+}
 
-// .track-title {
-//   font-size: 16px;
-// }
+.track-title {
+  font-size: 16px;
+}
 
-// .artist-name {
-//   color: #999999;
-//   font-size: 13px;
-// }
+.artist-name {
+  color: #999999;
+  font-size: 13px;
+}
 
-// #splash .explore {
-//   padding: 10px 0px 10px 0px;
-//   width: 204px;
-//   align-self: center;
-//   margin: 28px 0px 56px 0px;
-//   background-color: rgb(26, 47, 72);
-//   color: white;
-//   border-radius: 3px;
-// }
+.splash-trending-explore{
+  padding: 10px 0px 10px 0px;
+  width: 204px;
+  align-self: center;
+  margin: 28px 0px 56px 0px;
+  background-color: rgb(26, 47, 72);
+  color: white;
+  border-radius: 3px;
+}
 
-// // App section
-// #splash .app-section {
-//   height: 445px;
-//   background-image: image-url("splash_listen.jpg");
-//   background-repeat: no-repeat;
-//   background-size: contain;
-//   display: flex;
-//   flex-direction: column;
-//   align-content: flex-end;
-// }
+// App Section
+.splash-app-container{
+  display: flex;
+  width: 100%;
+}
+  .splash-app-image-1{
+    width: 59%;
+  }
 
-//   .app-container {
-//     height: 100%;
-//     width: 601px;
-//     margin-left: 668px;
-//     background-color: #F2F2F2;
-//   }
+  .splash-app-image-2{
+    height: 68.4%;
+  }
 
-//     .app-details {
-//       text-align: left;
-//       // height: 45%;
-//       width: 368px;
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: space-evenly;
-//       margin-left: 10px;
-//     }
 
-//       .app-title {
-//         margin: 0;
-//         font-size: 36px;
-//         padding-top: 25px;
-//         letter-spacing: 2px;
-//         }
-//       .app-details hr {
-//         border: none;
-//         width: 80px;
-//         padding: 3px 0px 0px 0px;
-//         background-image: linear-gradient(to right, purple , blue);
-//       }
+  .splash-app{
+  }
+    .splash-app-details{
+      height: 31.6%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+      .splash-app-title{
+        font-size: 36px;
+        letter-spacing: 2px;
+        }
 
-//       .app-details-text {
-//         font-size: 22px;
-//       }
+      .splash-app-hr{
+        border: none;
+        width: 80px;
+        padding: 3px 0px 0px 0px;
+        background-image: linear-gradient(to right, purple , blue);
+      }
 
-//       .app-image {
-//         background-image: image-url("splash_creators_girl.jpg");
-//         height: 304px;
-//         width: 601px;
-//         background-repeat: no-repeat;
-//         background-position: 0px -47px;
-//         background-size: cover;
-//       }
+      .splash-app-text{
+        font-size: 22px;
+      }
 
 // // Creators secton
 // .creators-section {
