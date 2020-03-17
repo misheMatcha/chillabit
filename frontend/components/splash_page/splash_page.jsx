@@ -4,16 +4,16 @@ import TrackList from '../track_list/track_list.jsx'
 
 class SplashPage extends React.Component {
   render(){
-    console.log(this.props)
+    // console.log(this.props)
     return (
-      <div id="splash">
-        <div className="searchbar">
-          <div className="sb-container">
-            <input type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
+      <div className="splash-container">
+        <div className="splash-searchbar-container">
+          <div className="splash-searchbar-search">
+            <input className="splash-searchbar-input" type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
               <Link to="/404"><i className="fas fa-search splash"></i></Link>
           </div>
-          <p id="or">or</p>
-            <Link className="upload" to="upload">Upload your own</Link>
+          <p className="splash-searchbar-or">or</p>
+          {this.props.login}
         </div>
 
         <div className="trending-section">
@@ -21,7 +21,7 @@ class SplashPage extends React.Component {
 
           <div className="album-track-display">
             <ul>
-              <TrackList />
+              {/* <TrackList /> */}
             </ul>
           </div>
 

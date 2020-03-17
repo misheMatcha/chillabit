@@ -1,60 +1,56 @@
-// // general note - need proportional scaling
+.splash-container{
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  color: #333333;
+}
 
-// #splash{
-//   // position: absolute;
-//   font-family: 'Roboto', sans-serif;
-//   display: flex;
-//   flex-direction: column;
-//   text-align: center;
-//   background-color: white;
-//   color: #333333;
-// }
+// Search Bar Section
+.splash-searchbar-container{
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: center;
+}
+  .splash-searchbar-search{
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+    .splash-searchbar-input{
+      width: 453px;
+      height: 44px;
+      text-align: left;
+      border-radius: 3px;
+      background-color: #F2F2F2;
+      color: rgb(191, 187, 187);
+      padding-left: 10px;
+    }
 
-// // Search bar section
-// .searchbar {
-//   height: 100px;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: flex-end;
-//   align-content: center;
-// }
+  .fas.fa-search.splash {
+    font-size: 25px;
+    margin-right: 10px;
+    margin-top: 7px;
+  }
 
-//   .sb-container {
-//     background-color: #F2F2F2;
-//     border-radius: 5px;
-//     width: 500px;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-around;
-//     // align-items: baseline;
-//   }
-//     input {
-//       width: 453px;
-//       height: 44px;
-//       text-align: left;
-//       border-radius: 3px;
-//       background-color: #F2F2F2;
-//       color: rgb(191, 187, 187);
-//       padding-left: 10px;
-//     }
+  .splash-searchbar-or{
+    padding: 12px;
+  }
 
-//   .fas.fa-search.splash {
-//     font-size: 25px;
-//     margin-right: 10px;
-//     margin-top: 7px;
-//   }
-
-//   #or {
-//     padding: 12px;
-//   }
-
-// .searchbar .upload {
-//   padding: 13px 15px 13px 15px;
-//   border-radius: 3px;
-//   background-color: rgb(26, 47, 72);
-//   color: white;
-// }
+.splash-searchbar-upload{
+  padding: 13px 15px 13px 15px;
+  border-radius: 3px;
+  background-color: rgb(26, 47, 72);
+  color: white;
+}
 
 // // trending section
 // .trending-section {
