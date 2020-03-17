@@ -139,13 +139,13 @@
     .auth-nav-splash{
       display: flex;
       justify-content: space-between;
-      height: 50px;
     }
       .auth-nav-splash-logo{
         display: flex;
         width: 153px;
         justify-content: space-between;
         align-items: center;
+        margin-left: 10px;
       }
         .fab.fa-soundcloud.splash{
           font-size: 55px;
@@ -173,7 +173,7 @@
           .signup-button {
             border-radius: 5px;
             background-color: rgb(26, 47, 72);
-            padding: 5px 13px 5px 13px;
+            padding: 10px 15px 10px 15px;
           }
           .creator-button {
             padding: 5px 13px 5px 13px;

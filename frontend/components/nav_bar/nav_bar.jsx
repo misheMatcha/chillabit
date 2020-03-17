@@ -4,7 +4,7 @@ import { openModal } from '../../actions/modal_actions';
 
 // continue later
 // dropping another scaling note
-const NavBar = ({currentUser, logout, signup, login}) => {
+const NavBar = ({currentUser, logout, signup, login, upload}) => {
   const protectedNav = () => (
     <div className="protected-nav">
       <div className="nav-content">
@@ -37,8 +37,6 @@ const NavBar = ({currentUser, logout, signup, login}) => {
     </div>
   );
 
-  // note: add functionality, if user clicks upload and not logged in display modal
-
   const authNav = () => (
     <nav className="auth-nav">
       <img className="auth-nav-banner" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/splash_nav_banner.jpg"/>
@@ -60,7 +58,7 @@ const NavBar = ({currentUser, logout, signup, login}) => {
           <div className="auth-nav-lead-wrap">
             <h2 className="auth-nav-lead-title">What's next in lo-fi is first on chillabit</h2>
             <p className="auth-nav-lead-desc">Upload your first track and begin your journey. chillabit gives you space to create, find your fans, connect with other artists, and to chill a bit.</p>
-            <div className="auth-nav-lead-upload"><Link to="/">Start uploading today</Link></div>
+            {upload}
           </div>
         </div>
       </div>

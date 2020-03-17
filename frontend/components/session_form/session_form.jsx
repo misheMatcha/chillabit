@@ -33,7 +33,7 @@ class SessionForm extends React.Component {
 
   renderErrors(){
     return (
-      <ul>
+      <ul className="session-form-errors">
         {
           this.props.errors.map((error, i) => (
             <li key={`error-${i}`}>
@@ -48,17 +48,18 @@ class SessionForm extends React.Component {
   componentWillUnmount(){
     this.props.clearSessionErrors()
   }
-
-  // maybe remove container, doesn't seem to be a use for it
+  
   render(){
     return (
       <div className="session-form-container">
-        <form className="sessionForm" onSubmit={this.handleSubmit}>
+        <form className="session-form" onSubmit={this.handleSubmit}>
           {this.props.formTitle}
-          {this.renderErrors()}
+          <div className="session-form-errors-wrap">
+            {this.renderErrors()}
+          </div>
           <label>
             <input placeholder="username"
-            className="sessionForm-input"
+              className="session-form-input"
             type="text" value={this.state.username}
             onChange={this.handleInput('username')}/>
           </label>
@@ -66,7 +67,7 @@ class SessionForm extends React.Component {
             this.isSignup ? null : (
               <label>
                 <input placeholder="email"
-                className="sessionForm-input"
+                className="session-form-input"
                 type="email"
                 value={ this.state.email }
                 onChange={this.handleInput('email')}/>
@@ -75,7 +76,7 @@ class SessionForm extends React.Component {
           }
           <label>
             <input placeholder="password"
-            className="sessionForm-input"
+            className="session-form-input"
             type="password"
             value={this.state.password}
             onChange={this.handleInput('password')}/>
@@ -86,9 +87,10 @@ class SessionForm extends React.Component {
               this.props.terms
             )
           }
+          <button className="session-form-button" onClick={this.handleDemo}>Demo Login</button>
         </form>
         <div>
-          <button className="sessionForm-button" onClick={this.handleDemo}>Demo Login</button>
+          
         </div>
       </div>
     )
