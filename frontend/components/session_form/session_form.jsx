@@ -82,11 +82,12 @@ class SessionForm extends React.Component {
             onChange={this.handleInput('password')}/>
           </label>
           {this.props.formButton}
-          {
+          {/* disclaimers - omit for now */}
+          {/* {
             this.isSignup ? null : (
               this.props.terms
             )
-          }
+          } */}
           <button className="session-form-button" onClick={this.handleDemo}>Demo Login</button>
         </form>
         <div>

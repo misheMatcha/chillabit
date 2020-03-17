@@ -5,7 +5,7 @@ import SessionForm from './session_form';
 
 const mSTP = ({ errors }) => ({
   formType: 'signup',
-  formTitle: <h3 className="session-form-title">Create your chillabit account</h3>,
+  formTitle: <h3 className="session-form-title-signup">Create your chillabit account</h3>,
   formButton: <button className="session-form-button">Accept & continue</button>,
   errors: errors.session,
   terms: (

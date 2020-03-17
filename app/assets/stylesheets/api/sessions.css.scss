@@ -1,15 +1,9 @@
-// Session Form
+// Session Form Section
 .session-form-container{
-  // border: 1px solid red;
   font-family: 'Roboto', sans-serif;
   display: flex;
-  // flex-direction: column;
-  // justify-content: space-evenly;
-  // color: #333333;
-  // align-items: center;
 }
   .session-form{
-    // border: 1px solid red;
     height: 402px;
     width: 440px;
     background-color: white;
@@ -19,16 +13,22 @@
     align-items: center;
     border-radius: 11px;
   }
-    .session-form-title{
-      // border: 1px solid red;
-      // font-family: 'Shadows Into Light', cursive;
+    .session-form-title-login{
       font-size: 50px;
       margin: inherit;
       color: rgb(26, 47, 72);
       letter-spacing: 10px;
       filter: drop-shadow(2px 4px 4px rgba(26, 47, 72, 0.584));
-      // padding-bottom: 10px;
     }
+
+    .session-form-title-signup{
+      text-align: center;
+      font-size: 20px;
+      margin: inherit;
+      color: rgb(26, 47, 72);
+      letter-spacing: 10px;
+    }
+
     .session-form-input{
       border: 1px solid rgba(26, 47, 72, 0.646);
       color: rgb(26, 47, 72);
@@ -40,8 +40,8 @@
       .session-form-input::placeholder{
         text-align: center;
       }
+
     .session-form-button{
-      // border: 1px solid red;
       background-color: rgb(26, 47, 72);
       color: white;
       border-radius: 4px;
@@ -49,6 +49,7 @@
       padding: 10px 15px 10px 15px;
       margin-bottom: 10px;
     }
+
     .disclaimer-box{
       border: 1px solid red;
       // display: flex;
@@ -59,17 +60,17 @@
     }
       .session-form-disclaimer{
         border: 1px solid red;
-        // font-size: 13px;
+        font-size: 13px;
       }
+
 .session-form-errors-wrap{
   font-family: 'Roboto', sans-serif;
-  // border: 1px solid red;
   display: flex;
   height: 40px;
   align-items: center;
   margin-bottom: 10px;
 }
   .session-form-errors{
-    // border: 1px solid red;
     color: red;
+    list-style: circle;
   }

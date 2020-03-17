@@ -6,7 +6,7 @@ import SessionForm from './session_form';
 const mSTP = ({ errors }) => ({
   formType: 'login',
   formTitle: (
-    <h3 className="session-form-title">chillabit</h3>
+    <h3 className="session-form-title-login">chillabit</h3>
   ),
   formButton: <button className="session-form-button">Sign in</button>,
   errors: errors.session
