@@ -139,7 +139,7 @@
       background-color: #F2F2F2;
     }
       .splash-app-title{
-        font-size: 36px;
+        font-size: 3vw;
         letter-spacing: 2px;
         }
 
@@ -151,15 +151,18 @@
       }
 
       .splash-app-text{
-        font-size: 22px;
+        font-size: 2vw;
       }
 
 // Creators Section
 .splash-creators-container{
+  position: relative;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .splash-creators-bg{
-  position: relative;
   width: 100%;
   min-height: 150px;
   max-height: 100%;
@@ -169,13 +172,11 @@
     position: absolute;
     background-color: rgba(26, 47, 72, 0.35);
     width: 84%;
+    height: 75%;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    bottom: 29%;
-    height: 15%;
-    left: 8%;
   }
     .splash-creators-bg-trans-link{
       padding: 13px 15px 13px 15px;
@@ -184,13 +185,13 @@
     }
 
   .splash-creators-bg-trans-title{
-    font-size: 42px;
+    font-size: 4vw;
     letter-spacing: 2px;
     filter: drop-shadow(2px 3px 3px black);
   }
   .splash-creators-bg-trans-desc{
     width: 65%;
-    font-size: 20px;
+    font-size: 1.5vw;
     filter: drop-shadow(2px 3px 3px black);
   }
 
@@ -211,11 +212,11 @@
     width: 699px;
   }
     .splash-footer-title{
-      font-size: 33px;
+      font-size: 2.4vw;
       letter-spacing: 2px;
     }
     .splash-footer-desc{
-      font-size: 22px;
+      font-size: 1.5vw;
       letter-spacing: 1px;
     }
 
@@ -236,7 +237,7 @@
     margin-top: 10px;
   }
     .splash-footer-nav-p{
-      font-size: 13px;
+      font-size: 1vw;
       margin: auto;
     }
 

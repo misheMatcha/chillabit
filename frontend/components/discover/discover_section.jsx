@@ -18,7 +18,7 @@ class DiscoverSection extends React.Component {
             <ul>
               <li>
                 {/* map out list here */}
-                <TrackList />
+                {/* <TrackList /> */}
               </li>
             </ul>
           </div>

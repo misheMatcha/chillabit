@@ -11,7 +11,7 @@ class Discover extends React.Component {
       <div className="discover">
         {/* <div className="space"></div> */}
         <div className="main-content">
-          <DiscoverSection />
+          {/* <DiscoverSection /> */}
           {/* <DiscoverSection />
           <DiscoverSection />
           <DiscoverSection /> */}

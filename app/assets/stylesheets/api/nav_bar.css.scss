@@ -115,39 +115,43 @@
 
 // Auth Nav Section
 .auth-nav {
+  // border: 1px solid red;
   position: relative;
   font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
 }
   .auth-nav-banner{
-    position: relative;
+    // border: 1px solid red;
+    // position: relative;
   }
 
   .auth-nav-wrap{
+    // border: 1px solid red;
     position: absolute;
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
-    height: 406px;
+    height: 100%;
     top: 0px;
   }
+  // links
     .auth-nav-splash{
       display: flex;
       justify-content: space-between;
-      margin-top: 15px;
+      // margin-top: 15px;
     }
       .auth-nav-splash-logo{
         display: flex;
-        width: 153px;
+        width: 117px;
         justify-content: space-between;
         align-items: center;
         margin-left: 10px;
       }
         .fab.fa-soundcloud.splash{
-          font-size: 55px;
+          font-size: 2vw;
         }
         .auth-nav-splash-title{
           filter: drop-shadow(2px 4px 4px black);
@@ -156,7 +160,7 @@
         }
 
       .auth-nav-links{
-        width: 400px;
+        width: 340px;
       }
         .auth-nav-links-ul{
           display: flex;
@@ -178,9 +182,11 @@
             padding: 5px 13px 5px 13px;
           }
   
+          // desc
   .auth-nav-lead{
+    // border: 1px solid red;
     text-align: center;
-    height: 350px;
+    height: 71%;
     display: flex;
     justify-content: center;
   }

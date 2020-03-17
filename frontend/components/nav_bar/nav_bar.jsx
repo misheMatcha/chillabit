@@ -8,20 +8,20 @@ const NavBar = ({currentUser, logout, signup, login, upload}) => {
         <div className="protected-nav-content-icon">
           <NavLink className="protected-nav-content-icon-link" activeClassName="protected-nav-content-icon-link-active" to="/discover"><i className="fab fa-soundcloud home"></i></NavLink>
         </div>
-        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/discover">Home</NavLink> 
-        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/stream">Stream</NavLink> 
-        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/library">Library</NavLink> 
+        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/discover">Home</NavLink>
+        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/stream">Stream</NavLink>
+        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/library">Library</NavLink>
       </div>
       <div className="protected-nav-search">
         <input className="protected-nav-search-input" type="text" placeholder="Search"/>
         <i className="fas fa-search nav"></i>
       </div>
       <div className="protected-nav-user-content">
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-user-content-link-upgrade" to="/upgrade">Upgrade</NavLink>  
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/upload">Upload</NavLink>  
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-user-content-link-upgrade" to="/upgrade">Upgrade</NavLink>
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/upload">Upload</NavLink>
         {/* user may need img, could */}
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to={`/${currentUser.username}`}>{currentUser.username}</NavLink> 
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/notifications"><i className="fas fa-bell"></i></NavLink>  
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to={`/${currentUser.username}`}>{currentUser.username}</NavLink>
+        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/notifications"><i className="fas fa-bell"></i></NavLink>
         <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/messages"><i className="fas fa-envelope"></i></NavLink>
         {/* fix dropdown later */}
         <ul className="dropdown">
@@ -61,7 +61,7 @@ const NavBar = ({currentUser, logout, signup, login, upload}) => {
       </div>
     </nav>
   );
-  
+
   return currentUser ? protectedNav() : authNav();
 };
 
