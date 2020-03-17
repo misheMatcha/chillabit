@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TrackList from '../track_list/track_list.jsx'
-// import { splashTracks } from './splash_tracks.jsx'
-
-// would most likely need a component in the future to render album cover, track, artist
-// could have probably created components for each section.. hmmm....
 
 class SplashPage extends React.Component {
   render(){

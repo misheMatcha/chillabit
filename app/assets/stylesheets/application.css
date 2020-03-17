@@ -29,10 +29,11 @@ body {
 }
 
 .app-container{
+  position: relative;
   width: 100%;
   /* border: 1px solid red; */
   max-width: 1240px;
-  min-width: 800px;
+  min-width: 1003px;
 }
 
 @media all and (max-width: 1240px){
