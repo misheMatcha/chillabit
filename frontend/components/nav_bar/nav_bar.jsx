@@ -38,25 +38,28 @@ const NavBar = ({currentUser, logout, signup, login}) => {
   );
 
   const authNav = () => (
-    <nav className="login-signup">
-      <div className="thebar">
-        <div className="id-logo">
-          <i className="fab fa-soundcloud splash"></i>
-          <span>chillabit</span>
+    <nav className="auth-nav">
+      <img className="auth-nav-banner" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/splash_nav_banner.jpg"/>
+      <div className="auth-nav-wrap">
+        <div className="auth-nav-splash">
+          <div className="auth-nav-splash-logo">
+            <i className="fab fa-soundcloud splash"></i>
+            <p>chillabit</p>
+          </div>
+          <div className="auth-nav-links">
+            <ul className="auth-nav-links-ul">
+                <li>{login}</li>
+                <li>{signup}</li>
+              <li><Link className="creator-button"to='/creator'>For Creators</Link></li>
+            </ul>
+          </div>
         </div>
-        <div className="auth-nav">
-          <ul className="login-signup-links">
-              <li>{login}</li>
-              <li>{signup}</li>
-            <li><Link className="creator-button"to='/creator'>For Creators</Link></li>
-          </ul>
-        </div>
-      </div>
-      <div className="lead-box">
-        <div className="lead">
-          <h2>What's next in lo-fi is first on chillabit</h2>
-          <p>Upload your first track and begin your journey. chillabit gives you space to create, find your fans, connect with other artists, and to chill a bit.</p>
-          <div className="lead-div"><Link to="/">Start uploading today</Link></div>
+        <div className="auth-nav-lead">
+          <div className="auth-nav-lead-wrap">
+            <h2 className="auth-nav-lead-title">What's next in lo-fi is first on chillabit</h2>
+            <p className="auth-nav-lead-desc">Upload your first track and begin your journey. chillabit gives you space to create, find your fans, connect with other artists, and to chill a bit.</p>
+            <div className="auth-nav-lead-upload"><Link to="/">Start uploading today</Link></div>
+          </div>
         </div>
       </div>
     </nav>
