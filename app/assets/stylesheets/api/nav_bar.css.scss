@@ -1,6 +1,5 @@
 // Protected Nav Section
 .protected-nav{
-  // border: 1px solid red;
   display: flex;
   background-color: #333333;
   color: #CCCCCC;
@@ -12,7 +11,6 @@
   width: 1269px;
 }
   .protected-nav-content{
-    // border: 1px solid red;
     display: flex;
     height: 100%;
     text-align: center;
@@ -50,30 +48,32 @@
         background-color: #111111;
         color: white;
       }
-      
+
       .protected-nav-search{
-        width: 36%;
+        width: 38%;
+        position: relative;
       }
       .protected-nav-search-input{
         height: 27px;
-        position: relative;
         border-radius: 4px;
-        // margin-right: 500px;
+        background-color: white;
+        width: -webkit-fill-available;
+        text-align: center;
       }
-      
+
       .fas.fa-search.nav{
-        // position: absolute;
-        // font-size: 17px;
-        // margin-left: 439px;
-        // margin-top: -22px;
-        // z-index: 1;
-        // color: #4f5b66;
+        position: absolute;
+        font-size: 17px;
+        margin-left: -22px;
+        margin-top: 4px;
+        z-index: 1;
+        color: #4f5b66;
       }
-      
+
       .protected-nav-user-content{
         display: flex;
         height: 100%;
-        width: 29%;
+        width: 27%;
         justify-content: space-evenly;
         align-items: center;
         text-align: center;
@@ -88,46 +88,61 @@
           border: 1px dotted rgb(77, 129, 193);
           color: rgb(77, 129, 193);
         }
-      
-      //   .nav-user-actions button {
-        //     // border: 1px solid black;
-        //     padding: 4px 5px 5px 4px;
-        //   }
-        
-        // // Drop down section
-        // .dropdown {}
-        //   .dropdown.li {
-          //     display: block;
-          //   }
-          //     .dropdown.li.ul {
-//       // visibility: hidden;
-//       overflow: hidden;
-//       opacity: 0;
-//       position: absolute;
-//       margin-top: 1rem;
-//       left: 0;
-//       display: none;
-//     }
-//       .dropdown.li.ul.li {}
-//         .show {
-//           // display: ;
-//         }
+
+// Dropdown Section
+.nav-dropdown{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 10%;
+}
+.nav-dropdown-block{
+  background-color: #111111;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 10%;
+}
+  .nav-dropdown-content{
+    display: none;
+    position: absolute;
+  }
+  .nav-dropdown-content-block{
+    background-color: #111111;
+    display: block;
+    position: absolute;
+    margin-top: 35px;
+    right: -2px;
+  }
+    .nav-dropdown-content-block:hover{
+      background-color: #333333;
+    }
+    .nav-dropdown-li{
+      display: block;
+      width: 82px;
+      height: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
 
 // Auth Nav Section
 .auth-nav {
-  // border: 1px solid red;
+  font-size: 13px;
   position: relative;
   font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
 }
-  .auth-nav-banner{
-    // border: 1px solid red;
-    // position: relative;
-  }
+//   .auth-nav-banner{
+//   }
 
   .auth-nav-wrap{
-    // border: 1px solid red;
     position: absolute;
     color: white;
     display: flex;
@@ -137,15 +152,13 @@
     height: 100%;
     top: 0px;
   }
-  // links
     .auth-nav-splash{
       display: flex;
       justify-content: space-between;
-      // margin-top: 15px;
     }
       .auth-nav-splash-logo{
         display: flex;
-        width: 117px;
+        width: 119px;
         justify-content: space-between;
         align-items: center;
         margin-left: 10px;
@@ -178,13 +191,17 @@
             background-color: rgb(26, 47, 72);
             padding: 10px 15px 10px 15px;
           }
+          .upload-button {
+            border-radius: 5px;
+            background-color: rgb(26, 47, 72);
+            padding: 10px 15px 10px 15px;
+            font-size: 15px;
+          }
           .creator-button {
             padding: 5px 13px 5px 13px;
           }
-  
-          // desc
+
   .auth-nav-lead{
-    // border: 1px solid red;
     text-align: center;
     height: 71%;
     display: flex;
@@ -200,11 +217,12 @@
       height: 180px;
     }
       .auth-nav-lead-title{
-        font-size: 2em;
+        font-size: 3em;
         filter: drop-shadow(2px 4px 4px black);
       }
       .auth-nav-lead-desc{
         filter: drop-shadow(2px 4px 4px black);
+        font-size: 17px;
       }
       .auth-nav-lead-upload{
         width: 161px;

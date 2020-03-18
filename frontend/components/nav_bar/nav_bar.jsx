@@ -2,37 +2,47 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const NavBar = ({currentUser, logout, signup, login, upload}) => {
-  const protectedNav = () => (
-    <div className="protected-nav">
-      <div className="protected-nav-content">
-        <div className="protected-nav-content-icon">
-          <NavLink className="protected-nav-content-icon-link" activeClassName="protected-nav-content-icon-link-active" to="/discover"><i className="fab fa-soundcloud home"></i></NavLink>
+  const protectedNav = () => {
+    const dropdown = document.getElementsByClassName("nav-dropdown")[0];
+    const dropdownContent = document.getElementsByClassName("nav-dropdown-content")[0];
+    return(
+      <div className="protected-nav">
+        <div className="protected-nav-content">
+          <div className="protected-nav-content-icon">
+            <NavLink className="protected-nav-content-icon-link" activeClassName="protected-nav-content-icon-link-active" to="/discover"><i className="fab fa-soundcloud home"></i></NavLink>
+          </div>
+          <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/discover">Home</NavLink>
+          <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/stream">Stream</NavLink>
+          <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/library">Library</NavLink>
         </div>
-        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/discover">Home</NavLink>
-        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/stream">Stream</NavLink>
-        <NavLink className="protected-nav-content-link" activeClassName="protected-nav-content-link-active" to="/library">Library</NavLink>
-      </div>
-      <div className="protected-nav-search">
-        <input className="protected-nav-search-input" type="text" placeholder="Search"/>
-        <i className="fas fa-search nav"></i>
-      </div>
-      <div className="protected-nav-user-content">
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-user-content-link-upgrade" to="/upgrade">Upgrade</NavLink>
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/upload">Upload</NavLink>
-        {/* user may need img, could */}
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to={`/${currentUser.username}`}>{currentUser.username}</NavLink>
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/notifications"><i className="fas fa-bell"></i></NavLink>
-        <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/messages"><i className="fas fa-envelope"></i></NavLink>
-        {/* fix dropdown later */}
-        <ul className="dropdown">
-          <li className="dropdown li"><button onClick={logout}><i className="fas fa-ellipsis-h"></i></button></li>
-            <ul className="dropdown li ul">
-              <li className="dropdown li ul li show">logouts</li>
+        <div className="protected-nav-search">
+          <input className="protected-nav-search-input" type="text" placeholder="Search"/>
+          <i className="fas fa-search nav"></i>
+        </div>
+        <div className="protected-nav-user-content">
+          <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-user-content-link-upgrade" to="/upgrade">Upgrade</NavLink>
+          <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/upload">Upload</NavLink>
+          <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to={`/${currentUser.username}`}>{currentUser.username}</NavLink>
+          <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/notifications"><i className="fas fa-bell"></i></NavLink>
+          <NavLink className="protected-nav-user-content-link" activeClassName="protected-nav-content-link-active" to="/messages"><i className="fas fa-envelope"></i></NavLink>
+          <div className="nav-dropdown" onClick={() => {
+            const drpdwn = dropdown.className === "nav-dropdown";
+            if(drpdwn){
+              dropdown.className = "nav-dropdown-block";
+              dropdownContent.className = "nav-dropdown-content-block";
+            }else{
+              dropdown.className = "nav-dropdown";
+              dropdownContent.className = "nav-dropdown-content";
+            }
+          }}>
+            <i className="fas fa-ellipsis-h"></i>
+            <ul className="nav-dropdown-content">
+              <li className="nav-dropdown-li" onClick={logout}>logout</li>
             </ul>
-        </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  );
+  )};
 
   const authNav = () => (
     <nav className="auth-nav">

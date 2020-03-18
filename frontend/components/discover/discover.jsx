@@ -18,7 +18,7 @@ class Discover extends React.Component {
           {/* <DiscoverSection /> */}
         </div>
         <div className="sidebar container">
-          <Sidebar />
+          {/* <Sidebar /> */}
         </div>
       </div>
     )

@@ -21,7 +21,7 @@ const mDTP = dispatch => ({
     </button>
   ),
   upload: (
-    <button className="signup-button" onClick={() => dispatch(openModal("login"))}>
+    <button className="upload-button" onClick={() => dispatch(openModal("login"))}>
       Start uploading today
     </button>
   ),
