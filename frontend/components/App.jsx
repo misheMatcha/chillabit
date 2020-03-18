@@ -12,6 +12,7 @@ import SplashPageContainer from './splash_page/splash_page_container';
 import Error404Page from './error_404_page';
 import Modal from '../components/modal/modal';
 import Upload from './upload/upload.jsx'
+import TrackUpload from './track/track_upload_container';
 
 const App = () => (
   <div className="app-container">
@@ -21,14 +22,14 @@ const App = () => (
     </header>
     
     <Switch>
-      <ProtectdRoute exact to="/discover" component={Discover}/>
-      <ProtectdRoute exact to="/stream" component={Discover}/>
+      <ProtectdRoute exact to="/discover" component={TrackUpload}/>
+      {/* <ProtectdRoute exact to="/stream" component={Discover}/>
       <ProtectdRoute exact to="/library" component={Discover}/>
       <ProtectdRoute exact to="/upgrade" component={Discover}/>
-      <ProtectdRoute exact to="/upload" component={Upload}/>
+      <ProtectdRoute exact to="/upload" component={Upload}/> */}
       {/* need userpage link in future */}
-      <ProtectdRoute exact to="/messages" component={Discover}/>
-      <ProtectdRoute exact to="/notifications" component={Discover}/>
+      {/* <ProtectdRoute exact to="/messages" component={Discover}/>
+      <ProtectdRoute exact to="/notifications" component={Discover}/> */}
     </Switch>
     {/* made an error page, implement later maybe */}
     <AuthRoute path="/" component={SplashPageContainer}/>

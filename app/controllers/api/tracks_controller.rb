@@ -5,6 +5,12 @@ class Api::TracksController < ApplicationController
   end
 
   def create
+    @track = current_user.track.new(track_params)
+    if @track.save
+      render '/api/tracks/show'
+    else
+      render json: @track.errors.full_messages, status: 422
+    end
   end
 
   def show

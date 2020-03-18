@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import DiscoverSection from './discover_section.jsx';
 import Sidebar from '../sidebar/sidebar.jsx'
 import { withRouter } from 'react-router';
+import TrackUpload from '../track/track_upload.jsx';
 
 class Discover extends React.Component {
   constructor(props){
@@ -16,13 +17,7 @@ class Discover extends React.Component {
     return (
       <div className="discover-container">
         <div className="discover-main">
-          <p>
-            {
-              this.props.allAlbums.map(album => {
-              return <li key={album.id}>{album.name}</li>
-              })
-            }
-          </p>
+          <TrackUpload/>
         </div>
         <div className="discover-sidebar"></div>
       </div>
