@@ -2,6 +2,8 @@ import React from 'react';
 import TrackList from '../track_list/track_list.jsx';
 
 class DiscoverSection extends React.Component {
+  componentDidMount(){
+  }
   render(){
     return (
       <div>

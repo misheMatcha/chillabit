@@ -26,17 +26,17 @@ body {
   width: 90%;
   display: flex;
   justify-content: center;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .app-container{
-  position: relative;
+  /* position: relative; */
   width: 100%;
-  max-width: 1240px;
+  max-width: 1269px;
 }
 
 @media all and (max-width: 1240px){
   .app-container{
-    min-width: 800px;
+    min-width: 1003px;
   }
 }

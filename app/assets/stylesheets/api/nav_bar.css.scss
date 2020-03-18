@@ -1,6 +1,12 @@
 // Protected Nav Section
+// div.protected-nav{
+//   position: sticky;
+//   top: 0;
+// }
 .protected-nav{
+  // position: sticky;
   display: flex;
+  // top: 0;
   background-color: #333333;
   color: #CCCCCC;
   font-family: 'Roboto', sans-serif;
@@ -8,7 +14,7 @@
   font-size: 15px;
   justify-content: space-between;
   align-items: center;
-  width: 1269px;
+  width: 100%;
 }
   .protected-nav-content{
     display: flex;
