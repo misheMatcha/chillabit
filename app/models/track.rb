@@ -1,5 +1,5 @@
 class Track < ApplicationRecord
-  validates :name, :album_id, :artist_id, presence: true
+  validates :name, :artist_id, presence: true
 
   belongs_to :artists,
     foreign_key: :artist_id,

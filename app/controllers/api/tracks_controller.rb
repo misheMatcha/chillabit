@@ -1,5 +1,13 @@
 class Api::TracksController < ApplicationController
+  def index
+    @tracks = Track.all
+    render '/api/tracks/index'
+  end
+
   def create
+  end
+
+  def show
   end
 
   def update
@@ -10,6 +18,6 @@ class Api::TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:name, :album_id, :artist_id)
+    params.require(:track).permit(:name, :artist_id)
   end
 end
