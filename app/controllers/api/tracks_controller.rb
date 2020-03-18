@@ -8,6 +8,8 @@ class Api::TracksController < ApplicationController
   end
 
   def show
+    @track = Track.find(params[:id])
+    render '/api/tracks/show'
   end
 
   def update
