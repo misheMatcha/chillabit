@@ -3,26 +3,31 @@ import { Link } from 'react-router-dom'
 // import TrackList from '../track_list/track_list';
 import DiscoverSection from './discover_section.jsx';
 import Sidebar from '../sidebar/sidebar.jsx'
+import { withRouter } from 'react-router';
 
 class Discover extends React.Component {
-  // could probably map the title, descript and a playlist
+  constructor(props){
+    super(props)
+  }
+  componentDidMount(){
+    this.props.fetchAlbums()
+  }
   render(){
     return (
-      <div className="discover">
-        {/* <div className="space"></div> */}
-        <div className="main-content">
-          <DiscoverSection />
-          {/* <DiscoverSection />
-          <DiscoverSection />
-          <DiscoverSection /> */}
-          {/* <DiscoverSection /> */}
+      <div className="discover-container">
+        <div className="discover-main">
+          <p>
+            {
+              this.props.allAlbums.map(album => {
+              return <li key={album.id}>{album.name}</li>
+              })
+            }
+          </p>
         </div>
-        <div className="sidebar container">
-          <Sidebar />
-        </div>
+        <div className="discover-sidebar"></div>
       </div>
     )
   }
 }
 
-export default Discover;
+export default withRouter(Discover);

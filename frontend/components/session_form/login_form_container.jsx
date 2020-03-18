@@ -1,27 +1,20 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { login, clearSessionErrors } from '../../actions/session_actions';
 import SessionForm from './session_form';
-import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mSTP = ({ errors }) => ({
   formType: 'login',
   formTitle: (
-    <h3 className="sessionForm-title">chillabit</h3>
+    <h3 className="session-form-title-login">chillabit</h3>
   ),
-  formButton: <button className="sessionForm-button">Sign in</button>,
+  formButton: <button className="session-form-button">Sign in</button>,
   errors: errors.session
 });
 
 const mDTP = dispatch => ({
   processForm: user => dispatch(login(user)),
-  otherForm: (
-    <button onClick={() => dispatch(openModal("login"))}>
-      Signup
-    </button>
-  ),
-  closeModal: () => dispatch(closeModal()),
+  processDemo: user => dispatch(login(user)),
   clearSessionErrors: () => dispatch(clearSessionErrors())
 });
 

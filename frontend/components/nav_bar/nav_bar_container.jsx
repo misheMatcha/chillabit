@@ -20,6 +20,11 @@ const mDTP = dispatch => ({
       Create account
     </button>
   ),
+  upload: (
+    <button className="upload-button" onClick={() => dispatch(openModal("login"))}>
+      Start uploading today
+    </button>
+  ),
   closeModal: () => dispatch(closeModal)
 });
 

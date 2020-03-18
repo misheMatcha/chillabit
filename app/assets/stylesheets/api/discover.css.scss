@@ -1,5 +1,5 @@
-.discover {
-  // border: 1px solid black;
+.discover-container{
+  border: 1px solid black;
   display: flex;
   // padding-top: 50px;
   flex-direction: row;
@@ -10,77 +10,95 @@
   // height: 1380px;
   // position: relative;
   // overflow: scroll;\
+  height: 100%;
+  // width: 100%;
+  // min-width: 800px;
+  // max-width: 1268px;
+  // position: relative;
 }
-
-// .space {
-//   margin-top: -15px;
-//   height: 50px;
-// }
-
-.main-content {
-  padding: 0px 25px 0px 25px;
-  // border: 1px solid black;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  // overflow: scroll;
-  // overflow: auto;
-  // height: 100%;
-  // margin-top: 33px;
-
-
-  // overflow-y:hidden
-  }
-  // .main-content::-webkit-scrollbar {
-  //   width: 0px;
-  //   background: transparent;
-  // }
-    .track {
-      // border: 1px solid black;
-      // height: 400px;
-    }
-      ul li {
-        display: flex;
-      }
-        .track.details {
-          display: flex;
-        }
-        .playstats {
-          display: flex;
-          justify-content: flex-end;
-        }
-
-    .track.carousel {
-      // this might need to live somewhere else depending on implementation
-      // border: 1px solid black;
-    }
-    .player.list {
-      // border: 1px solid black;
-    }
-
-.sidebar {
-  border: 1px solid #F2F2F2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 340px;
-  // position: fixed;
-  // top: 44px;
-  // right: 91px;
-}
-  .sidebar-box {
-    height: 25%;
-  }
-    .ad {
+  .discover-main{
     border: 1px solid black;
+    height: 100%;
+    // position: absolute;
+    width: 70%;
     }
-    .follow-sug {
-      border: 1px solid black;
-    }
-    .likes {
-      border: 1px solid black;
-    }
-    .history {
-      border: 1px solid black;
-    }
+
+  .discover-sidebar{
+    border: 1px solid black;
+    height: 100%;
+    // position: absolute;
+    width: 30%;
+  }
+
+// // .space {
+// //   margin-top: -15px;
+// //   height: 50px;
+// // }
+
+// .main-content {
+//   padding: 0px 25px 0px 25px;
+//   // border: 1px solid black;
+//   width: 70%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-evenly;
+//   // overflow: scroll;
+//   // overflow: auto;
+//   // height: 100%;
+//   // margin-top: 33px;
+
+
+//   // overflow-y:hidden
+//   }
+//   // .main-content::-webkit-scrollbar {
+//   //   width: 0px;
+//   //   background: transparent;
+//   // }
+//     .track {
+//       // border: 1px solid black;
+//       // height: 400px;
+//     }
+//       ul li {
+//         display: flex;
+//       }
+//         .track.details {
+//           display: flex;
+//         }
+//         .playstats {
+//           display: flex;
+//           justify-content: flex-end;
+//         }
+
+//     .track.carousel {
+//       // this might need to live somewhere else depending on implementation
+//       // border: 1px solid black;
+//     }
+//     .player.list {
+//       // border: 1px solid black;
+//     }
+
+// .sidebar {
+//   border: 1px solid #F2F2F2;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-evenly;
+//   width: 340px;
+//   // position: fixed;
+//   // top: 44px;
+//   // right: 91px;
+// }
+//   .sidebar-box {
+//     height: 25%;
+//   }
+//     .ad {
+//     border: 1px solid black;
+//     }
+//     .follow-sug {
+//       border: 1px solid black;
+//     }
+//     .likes {
+//       border: 1px solid black;
+//     }
+//     .history {
+//       border: 1px solid black;
+//     }

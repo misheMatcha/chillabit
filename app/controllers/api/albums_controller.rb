@@ -1,6 +1,7 @@
 class Api::AlbumsController < ApplicationController
   def index
     @albums = Album.all
+    render '/api/albums/index'
   end
 
   def create
@@ -14,6 +15,7 @@ class Api::AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    render '/api/albums/show'
   end
 
   def update

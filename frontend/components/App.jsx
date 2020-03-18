@@ -14,7 +14,7 @@ import Modal from '../components/modal/modal';
 import Upload from './upload/upload.jsx'
 
 const App = () => (
-  <div>
+  <div className="app-container">
     <Modal />
     <header>
       <Route path="/" component={NavBarContainer}/>
