@@ -6,6 +6,7 @@ class TrackUpload extends React.Component{
     super(props)
     this.state = {
       name: "",
+      genre: "None",
       artist_id: this.props.currentUser.id,
       trackFile: null
     }
@@ -19,14 +20,7 @@ class TrackUpload extends React.Component{
     this.formData.append("track[name]", this.state.name)
     this.formData.append("track[artist_id]", this.state.artist_id)
     this.formData.append("track[song]", this.state.trackFile)
-
-    $.ajax({
-      url: "/api/tracks",
-      method: "POST",
-      data: this.formData,
-      contentType: false,
-      processData: false
-    });
+    this.props.upload(this.formData)
   }
 
   updateInput(field){
@@ -36,18 +30,20 @@ class TrackUpload extends React.Component{
   handleFile(e){
     this.setState({trackFile: e.currentTarget.files[0]})
   }
-  
 
+  // Add genre later so that albums can aggregate genres from tracks within
   render(){
-    console.log(this.state)
     return(
       <div>
         <form id="formy" onSubmit={this.handleUpload}>
-          <label>Track Title
-            <input placeholder="title" type="text" value={this.state.name} onChange={this.updateInput("name")}/>
-          </label>
           <input type="file" onChange={this.handleFile.bind(this)}/>
-          <button type="submit">click me</button>
+          <label>Title
+            <input placeholder="title"
+              type="text"
+              value={this.state.name}
+              onChange={this.updateInput("name")}/>
+          </label>
+          <button type="submit">Save</button>
         </form>
       </div>
     );

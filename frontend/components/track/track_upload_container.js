@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import TrackUpload from './track_upload.jsx';
 import { createTrack } from '../../actions/track_actions';
 
-const mSTP = ({ session, entities: { users } }) => ({
+const mSTP = ({ session, entities: { users, tracks } }) => ({
   currentUser: users[session.id]
 });
 
