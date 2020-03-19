@@ -14,7 +14,7 @@ const App = () => (
     <Modal />
     <Route path="/" component={NavBarContainer}/>
     <Switch>
-      <ProtectdRoute exact path="/" component={Discover}/>
+      <ProtectdRoute exact path="/" component={TrackUpload}/>
       <ProtectdRoute exact path="/discover" component={Discover}/>
       <ProtectdRoute exact path="/upload" component={TrackUpload}/>
     </Switch>

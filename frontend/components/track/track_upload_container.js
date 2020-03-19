@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import TrackUpload from './track_upload.jsx';
-import { createTrack } from '../../actions/track_actions';
+import { createTrack, requestAllTracks, requestTrack } from '../../actions/track_actions';
 
 const mSTP = ({ session, entities: { users, tracks } }) => ({
-  currentUser: users[session.id]
+  currentUser: users[session.id],
+  track: tracks
 });
 
 const mDTP = dispatch => ({

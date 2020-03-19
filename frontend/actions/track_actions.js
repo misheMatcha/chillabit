@@ -1,16 +1,16 @@
 import * as TrackUtil from '../util/track_util';
 
-export const RECEIEVE_ALL_TRACKS = 'RECEIEVE_ALL_TRACKS';
-export const RECEIEVE_TRACK = 'RECEIEVE_TRACK';
+export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
+export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const REMOVE_TRACK = 'REMOVE_TRACK';
 
 const receiveAllTracks = tracks => ({
-  type: RECEIEVE_ALL_TRACKS,
+  type: RECEIVE_ALL_TRACKS,
   tracks
 });
 
 const receiveTrack = track => ({
-  type: RECEIEVE_TRACK,
+  type: RECEIVE_TRACK,
   track
 });
 
