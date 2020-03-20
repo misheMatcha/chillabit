@@ -6,7 +6,7 @@ class TrackUpload extends React.Component{
     super(props)
     this.state = {
       name: "",
-      genre: "None",
+      // genre: "None",
       artist_id: this.props.currentUser.id,
       trackFile: null
     }
@@ -17,10 +17,13 @@ class TrackUpload extends React.Component{
 
   handleUpload(e){
     e.preventDefault();
+    const trackForm = this;
     this.formData.append("track[name]", this.state.name)
     this.formData.append("track[artist_id]", this.state.artist_id)
     this.formData.append("track[song]", this.state.trackFile)
-    this.props.upload(this.formData)
+    this.props.upload(this.formData).then(newTrack => {
+      trackForm.props.history.push(`/${this.props.currentUser.username}/${newTrack.name}`)
+    })
   }
 
   updateInput(field){
@@ -35,7 +38,7 @@ class TrackUpload extends React.Component{
   render(){
     return(
       <div>
-        <form id="formy" onSubmit={this.handleUpload}>
+        <form onSubmit={this.handleUpload}>
           <input type="file" onChange={this.handleFile.bind(this)}/>
           <label>Title
             <input placeholder="title"

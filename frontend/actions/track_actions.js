@@ -26,7 +26,10 @@ export const requestTrack = trackId => dispatch => TrackUtil.fetchTrack(trackId)
   .then(track => dispatch(receiveTrack(track)));
 
 export const createTrack = track => dispatch => TrackUtil.createTrack(track)
-  .then(newTrack => dispatch(receiveTrack(newTrack)));
+  .then(newTrack => {
+    dispatch(receiveTrack(newTrack));
+    return newTrack;
+  });
 
 export const updateTrack = track => dispatch => TrackUtil.updateTrack(track)
   .then(modifiedTrack => dispatch(receiveTrack(modifiedTrack)));

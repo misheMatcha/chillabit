@@ -1,24 +1,26 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectdRoute } from '../util/route_util';
 
 // Components
-import NavBarContainer from './nav_bar/nav_bar_container.jsx';
-import Discover from './discover/discover_container';
-import SplashPageContainer from './splash_page/splash_page_container';
+import NavBar from './nav_bar/nav_bar_container.jsx';
 import Modal from '../components/modal/modal';
+import SplashPage from './splash_page/splash_page_container';
+import Discover from './discover/discover_container';
 import TrackUpload from './track/track_upload_container';
+import TrackShow from './track/track_show_container';
 
 const App = () => (
   <div className="app-container">
     <Modal />
-    <Route path="/" component={NavBarContainer}/>
+    <Route path="/" component={NavBar}/>
     <Switch>
       <ProtectdRoute exact path="/" component={TrackUpload}/>
       <ProtectdRoute exact path="/discover" component={Discover}/>
       <ProtectdRoute exact path="/upload" component={TrackUpload}/>
+      <ProtectdRoute exact path="/:username/:trackName" component={TrackShow}/>
     </Switch>
-    <AuthRoute path="/" component={SplashPageContainer}/>
+    <AuthRoute path="/" component={SplashPage}/>
   </div>
 );
 
