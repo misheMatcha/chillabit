@@ -28,6 +28,7 @@ export const requestTrack = trackId => dispatch => TrackUtil.fetchTrack(trackId)
 export const createTrack = track => dispatch => TrackUtil.createTrack(track)
   .then(newTrack => {
     dispatch(receiveTrack(newTrack));
+    // return data to be used for track information to redirect
     return newTrack;
   });
 

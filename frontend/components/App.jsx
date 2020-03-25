@@ -9,17 +9,19 @@ import SplashPage from './splash_page/splash_page_container';
 import Discover from './discover/discover_container';
 import TrackUpload from './track/track_upload_container';
 import TrackShow from './track/track_show_container';
+import SoundBar from './sound/sound_bar_container';
 
 const App = () => (
   <div className="app-container">
     <Modal />
     <Route path="/" component={NavBar}/>
     <Switch>
-      <ProtectdRoute exact path="/" component={TrackUpload}/>
+      {/* <ProtectdRoute exact path="/" component={TrackUpload}/> */}
       <ProtectdRoute exact path="/discover" component={Discover}/>
       <ProtectdRoute exact path="/upload" component={TrackUpload}/>
-      <ProtectdRoute exact path="/:username/:trackName" component={TrackShow}/>
+      <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow}/>
     </Switch>
+    {/* <Route path="/" component={SoundBar}/> */}
     <AuthRoute path="/" component={SplashPage}/>
   </div>
 );

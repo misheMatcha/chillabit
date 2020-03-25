@@ -11,5 +11,4 @@ class Track < ApplicationRecord
 
   # active storage for AWS
   has_one_attached :song
-  # has_one_attached :track_cover
 end

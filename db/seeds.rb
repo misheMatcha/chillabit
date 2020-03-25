@@ -9,4 +9,13 @@
 users = User.create([
   {username: 'mishe', email: 'mishe@chillabit.com', password: 'password'},
   {username: 'guest', email: 'guest@chillabit.com', password: 'password'},
+  {username: 'ocha', email: 'ocha@chillabit.com', password: 'password'},
+])
+
+# tracks = Track.create([
+#   {name: 'test', artist_id: 3}
+# ])
+
+albums = Album.create([
+  {name: 'Love Story', single: false, genre: 'lofi', artist_id: 3},
 ])
