@@ -1,24 +1,35 @@
 import React from 'react';
 
+var audio,
+  audioContext,
+  analyzer,
+  source;
+
 class Sound extends React.Component{
   constructor(props){
     super(props)
-    this.audio;
-    this.audioContext;
+  }
+  
+  componentDidMount(){
+    audio = new Audio(this.props.source);
   }
 
-  componentDidMount(){
-    this.audio = new Audio();
+  startSound(){
+    audioContext = audioContext || new AudioContext(audio);
+    audio.play();
+  }
+
+  stopSound(){
+    audio.pause();
   }
 
   render(){
-    console.log(this.props)
     return(
-      <div>
-        <audio controls>
-          <source src={this.props.source}/>
-        </audio>
-      </div>
+      // <div className="soundtest" onClick={this.audioSetup}>
+      //   <p className="thisisatest" onClick={this.startSound}>play</p>
+      //   <p className="thisisatest" onClick={this.stopSound}>stop</p>
+      // </div>
+      <div id="audio"></div>
     );
   }
 };
