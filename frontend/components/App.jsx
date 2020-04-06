@@ -14,6 +14,7 @@ import SoundBar from './sound/sound_bar_container';
 class App extends React.Component{
   constructor(props){
     super(props)
+    this.soundBar = React.createRef();
   }
   
   render(){
@@ -22,12 +23,12 @@ class App extends React.Component{
         <Modal />
         <Route path="/" component={NavBar}/>
         <Switch>
-          {/* <ProtectdRoute exact path="/" component={TrackUpload}/> */}
           <ProtectdRoute exact path="/discover" component={Discover}/>
           <ProtectdRoute exact path="/upload" component={TrackUpload}/>
-          <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow}/>
+          {/* <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow}/> */}
+          <ProtectdRoute exact path="/" component={TrackShow}/>
         </Switch>
-        <SoundBar/>
+        <SoundBar soundBar={this.soundBar}/>
         <AuthRoute path="/" component={SplashPage}/>
       </div>
     );

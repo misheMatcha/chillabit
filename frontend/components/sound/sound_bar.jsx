@@ -12,7 +12,7 @@ class SoundBar extends React.Component{
         {/* <audio controls>
           <source src={this.props.track.trackURL}/>
         </audio> */}
-        hello
+        sound bar
       </div>
     );
   }

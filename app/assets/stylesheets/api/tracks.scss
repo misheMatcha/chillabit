@@ -1,3 +1,36 @@
 // Place all the styles related to the api/tracks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.track-show{
+  border: 1px solid orange;
+  display: flex;
+  padding: 1rem;
+  background-image: linear-gradient(to right, red , yellow)
+}
+
+.track-show-details-wrap{
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.track-show-details{
+  border: 1px solid purple;
+  display: flex;
+  justify-content: space-between;
+}
+
+.track-show-details.audio-wrap{
+  border: 1px solid green;
+  display: flex;
+}
+
+.fas.fa-play-circle{
+  color: goldenrod;
+}
+
+.track-show-cover{
+  width: 20rem;
+}
