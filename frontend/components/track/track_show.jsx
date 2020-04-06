@@ -19,9 +19,9 @@ class TrackShow extends React.Component{
                 <p className="track-details title">{this.props.track.name}</p>
               </div>
             </div>
-            <div className="audio-wrap track-details">
-              <p className="track-details date">3 months ago</p>
-              <p className="track-details genre">#lofi</p>
+            <div className="misc-wrap">
+              <p className="misc-wrap date">3 months ago</p>
+              <p className="misc-wrap genre"># lofi</p>
             </div>
           </div>
           <div className="track-show-visuals">
