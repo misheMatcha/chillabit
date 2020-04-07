@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Sound from './sound.jsx';
 
 const mSTP = state => ({
-  src: ownProps.source
+  src: ownProps.trackSource
 });
 
 const mDTP = dispatch => ({});
