@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Sound from './sound.jsx';
 
-const mSTP = state => ({
+const mSTP = (state, ownProps) => ({
   src: ownProps.trackSource
 });
 

@@ -1,6 +1,10 @@
 import React from 'react';
 
 class SoundBar extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  
   componentDidMount(){
     // this.props.fetchTrack(this.props.match.params.id)
   }

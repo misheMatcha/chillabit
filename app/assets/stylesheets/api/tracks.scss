@@ -72,8 +72,10 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin-right: .75rem;
-  width: fit-content;
+  width: max-content;
   font-size: .85rem;
+  align-items: flex-end;
+  text-align: center;
 }
 
 .misc-wrap.genre{
@@ -88,4 +90,8 @@
 }
 
 .track-show-visuals{
+}
+
+#track-show-play{
+  border: 1px solid black;
 }
