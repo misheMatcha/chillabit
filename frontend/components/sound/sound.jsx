@@ -6,13 +6,12 @@ class Sound extends React.Component{
     this.state = {
       audio: null,
       audioContext: null,
-      toggleAction: 'play'
+      toggleAction: 'play',
+      toggleStyle: 'fas fa-play-circle'
     }
     this.audio = this.state.audio;
     this.audioCtx = this.state.audioContext;
     this.handleButton = this.handleButton.bind(this);
-    // this.playAudio = this.playAudio.bind(this);
-    this.pauseAudio = this.pauseAudio.bind(this);
     this.audioSetup = this.audioSetup.bind(this);
   }
   
@@ -36,7 +35,10 @@ class Sound extends React.Component{
         console.log('context resumed');
       });
     }
-    this.setState({toggleAction: 'pause'});
+    this.setState({
+      toggleAction: 'pause',
+      toggleStyle: 'fas fa-pause-circle'
+    });
     this.audio.play();
   }
 
@@ -46,15 +48,16 @@ class Sound extends React.Component{
         console.log('context suspended');
       });
     }
-    this.setState({toggleAction: 'play'});
+    this.setState({
+      toggleAction: 'play',
+      toggleStyle: 'fas fa-play-circle'
+    });
     this.audio.pause();
   }
 
   render(){
     return(
-      <div>
-        <p onClick={this.handleButton}>{this.state.toggleAction}</p>
-      </div>
+      <button onClick={this.handleButton} className={this.state.toggleStyle}></button>
     );
   }
 };

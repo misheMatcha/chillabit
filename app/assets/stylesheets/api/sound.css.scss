@@ -1,0 +1,30 @@
+.sound-bar-container{
+  // border: 1px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  // background-color: #F2F2F2;
+  background-color: white;
+}
+
+.artists-details{
+  // border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  width: 12%;
+}
+
+.the-details{
+  // border: 1px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  // width: 20%;
+}
+
+.albumcover{
+  width: 30px;
+  height: 30px;
+}
