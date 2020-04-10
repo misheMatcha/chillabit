@@ -3,7 +3,8 @@ import { requestTrack } from '../../actions/track_actions';
 import SoundBar from './sound_bar';
 
 const mSTP = (state, ownProps) => ({
-  track: state.entities.tracks
+  track: state.entities.tracks,
+  audioPlayer: ownProps.audioRef
 });
 
 const mDTP = dispatch => ({

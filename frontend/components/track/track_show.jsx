@@ -16,7 +16,7 @@ class TrackShow extends React.Component{
             <div className="track-show-details">
               <div className="track-show-details audio-wrap">
                 {/* <button id="track-show-play" className="fas fa-play-circle"></button> */}
-                <Sound trackSource={this.props.track.trackURL}/>
+                <Sound trackSource={this.props.track.trackURL} buttonStyle="fas fa-play-circle"/>
                 <div className="audio-wrap track-details">
                   <p className="track-details artist">{this.props.track.artist}</p>
                   <p className="track-details title">{this.props.track.name}</p>
