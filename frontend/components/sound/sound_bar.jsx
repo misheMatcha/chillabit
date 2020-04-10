@@ -4,7 +4,11 @@ import Sound from './sound';
 class SoundBar extends React.Component{
   constructor(props){
     super(props)
-    this.handlePlay = this.handlePlay.bind(this);
+    this.state = {
+      toggleAction: 'play',
+      iconStyle: 'fas fa-play'
+    }
+    this.handlePlayPause = this.handlePlayPause.bind(this);
   }
 
   componentDidMount(){
@@ -12,8 +16,20 @@ class SoundBar extends React.Component{
     this.props.fetchTrack(1);
   }
 
-  handlePlay(){
-    this.props.audioPlayer.current.play();
+  handlePlayPause(){
+    if(this.state.toggleAction === 'play'){
+      this.props.audioPlayer.current.play();
+      this.setState({
+        toggleAction: 'pause',
+        iconStyle: 'fas fa-pause'
+      })
+    }else{
+      this.props.audioPlayer.current.pause();
+      this.setState({
+        toggleAction: 'play',
+        iconStyle: 'fas fa-play'
+      })
+    }
   }
   
   render(){
@@ -26,13 +42,13 @@ class SoundBar extends React.Component{
           src={this.props.track.trackURL}
         />
         <div className="sound-bar-container">
-          <i className="fas fa-angle-left"></i>
-          {/* <Sound trackSource={this.props.track.trackURL} buttonStyle="fas fa-play soundbar"/> */}
-          <i className="fas fa-angle-right" onClick={this.handlePlay}></i>
-          <i className="fas fa-random"></i>
-          <i className="fas fa-undo"></i>
+          <i className="fas fa-angle-left"/>
+          <i className={this.state.iconStyle} onClick={this.handlePlayPause}/>
+          <i className="fas fa-angle-right"/>
+          <i className="fas fa-random"/>
+          <i className="fas fa-undo"/>
           <p>status bar</p>
-          <i className="fas fa-volume-up"></i>
+          <i className="fas fa-volume-up"/>
           <div className="artists-details">
             <div className="the-details">
               <img className="albumcover" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" />
