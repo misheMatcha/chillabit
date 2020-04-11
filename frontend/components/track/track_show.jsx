@@ -2,21 +2,34 @@ import React from 'react';
 import Sound from '../sound/sound.jsx';
 
 class TrackShow extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      buttonStyle: 'fas fa-play-circle'
+    };
+  }
+
   componentDidMount(){
     // this.props.fetchTrack(this.props.match.params.id)
     this.props.fetchTrack(1)
   }
 
   render(){
-    // console.log(this.props.track.trackURL)
     return(
       <div className="track-show">
         <div className="track-show-wrap">
           <div className="track-show-details-wrap">
             <div className="track-show-details">
               <div className="track-show-details audio-wrap">
-                {/* <button id="track-show-play" className="fas fa-play-circle"></button> */}
-                <Sound trackSource={this.props.track.trackURL} buttonStyle="fas fa-play-circle"/>
+                <button className={this.state.buttonStyle} onClick={() => {
+                  if(this.props.playing === false){
+                    this.props.playTrack()
+                    this.setState({buttonStyle: 'fas fa-pause-circle'})
+                  }else{
+                    this.props.pauseTrack()
+                    this.setState({buttonStyle: 'fas fa-play-circle'})
+                  }
+                }} onChange={this.togglePlayPause}></button>
                 <div className="audio-wrap track-details">
                   <p className="track-details artist">{this.props.track.artist}</p>
                   <p className="track-details title">{this.props.track.name}</p>
@@ -33,7 +46,6 @@ class TrackShow extends React.Component{
           </div>
           <img className="track-show-cover" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg"/>
         </div>
-        {/* <Sound trackSource={this.props.track.trackURL}/> */}
       </div>
     );
   }
