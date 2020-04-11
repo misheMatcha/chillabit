@@ -1,5 +1,5 @@
 import React from 'react';
-import { debug } from 'webpack';
+import Sound from '../../sound/sound.jsx';
 
 class TrackShow extends React.Component{
   constructor(props){
@@ -12,8 +12,7 @@ class TrackShow extends React.Component{
   }
 
   render(){
-    debugger
-    console.log(this.props)
+    // console.log(this.props)
     return(
       <div className="track-show">
         <div className="track-show-wrap">
@@ -21,7 +20,7 @@ class TrackShow extends React.Component{
             <div className="track-show-details">
               <div className="track-show-details audio-wrap">
                 {
-                  // this.props.playing === false ? <button className="fas fa-play-circle" onClick={this.props.playTrack} /> : <button className="fas fa-pause-circle" onClick={this.props.pauseTrack}/>
+                  this.props.playing === false ? <button className="fas fa-play-circle" onClick={this.props.playTrack} /> : <button className="fas fa-pause-circle" onClick={this.props.pauseTrack} />
                 }
                 <div className="audio-wrap track-details">
                   <p className="track-details artist">{this.props.track.artist}</p>
