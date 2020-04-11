@@ -6,11 +6,13 @@ class TrackPlayer extends React.Component{
   }
 
   render(){
-    console.log(this.props.playing)
+    // console.log(this.props)
     return(
       <>
        <i className="fas fa-angle-left" onClick={this.props.playTrack}/>
-       <p>space here</p>
+       {
+         this.props.playing === false ? <button className="" onClick={this.props.playTrack}>play</button> : <button className="" onClick={this.props.pauseTrack}>pause</button>
+       }
        <i className="fas fa-angle-right" onClick={this.props.pauseTrack}/>
       </>
     )
