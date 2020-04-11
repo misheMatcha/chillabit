@@ -1,11 +1,19 @@
 import { PLAY_TRACK, PAUSE_TRACK, NEXT_TRACK, PREV_TRACK } from '../actions/track_player_actions';
 
-const trackPlayerReducer = (state = null, action) => {
+const initialState = {
+  playing: false
+};
+
+const trackPlayerReducer = (state = initialState, action) => {
+  Object.freeze(state)
+  let newState = Object.assign({}, state);
   switch (action.type) {
     case PLAY_TRACK:
-      return action.track;
+      newState.playing = true;
+      return newState;
     case PAUSE_TRACK:
-      return action.track;
+      newState.playing = false;
+      return newState;
     default:
       return state;
   }
