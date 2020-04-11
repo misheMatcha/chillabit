@@ -34,7 +34,7 @@ class SoundBar extends React.Component{
   
   render(){
     const thetrack = this.props.track
-    console.log(this.props.audioPlayer)
+    // console.log(this.props.audioPlayer)
     return(
       <>
         <audio id=""
