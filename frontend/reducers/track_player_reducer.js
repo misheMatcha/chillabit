@@ -1,9 +1,13 @@
 import { PLAY_TRACK, PAUSE_TRACK, PREV_TRACK, NEXT_TRACK, ADD_TRACK, REMOVE_TRACK } from '../actions/track_player_actions';
 
+// created separate arrays for id for quick querying
+// possible refactor later
 const initialState = {
   playing: false,
-  prevTracks: [],
-  trackQueue: []
+  visisted: [],
+  queue: [],
+  visistedId: [],
+  queueId: []
 };
 
 const trackPlayerReducer = (state = initialState, action) => {
@@ -20,9 +24,13 @@ const trackPlayerReducer = (state = initialState, action) => {
     case PREV_TRACK:
     case NEXT_TRACK:
     case ADD_TRACK:
-      newState.prevTracks.push(action.track);
+      newState.queue.push(action.track);
+      newState.queueId.push(action.track.id);
       return newState;
     case REMOVE_TRACK:
+      newState.visisted.push(action.track);
+      newState.visistedId.push(action.track.id);
+      return newState;
     default:
       return state;
   }

@@ -5,7 +5,11 @@ import TrackShow from './track_show.jsx';
 
 const mSTP = state => ({
   track: state.entities.tracks,
-  playing: state.ui.trackPlayer.playing
+  playing: state.ui.trackPlayer.playing,
+  prevTracks: state.ui.trackPlayer.visisted,
+  currTracks: state.ui.trackPlayer.queue,
+  prevTrackIds: state.ui.trackPlayer.visistedId,
+  currTrackIds: state.ui.trackPlayer.queueId
 });
 
 const mDTP = dispatch => ({
