@@ -1,7 +1,9 @@
-import { PLAY_TRACK, PAUSE_TRACK, NEXT_TRACK, PREV_TRACK } from '../actions/track_player_actions';
+import { PLAY_TRACK, PAUSE_TRACK, PREV_TRACK, NEXT_TRACK, ADD_TRACK, REMOVE_TRACK } from '../actions/track_player_actions';
 
 const initialState = {
-  playing: false
+  playing: false,
+  prevTracks: [],
+  trackQueue: []
 };
 
 const trackPlayerReducer = (state = initialState, action) => {
@@ -14,6 +16,13 @@ const trackPlayerReducer = (state = initialState, action) => {
     case PAUSE_TRACK:
       newState.playing = false;
       return newState;
+
+    case PREV_TRACK:
+    case NEXT_TRACK:
+    case ADD_TRACK:
+      newState.prevTracks.push(action.track);
+      return newState;
+    case REMOVE_TRACK:
     default:
       return state;
   }

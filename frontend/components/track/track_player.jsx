@@ -19,7 +19,6 @@ class TrackPlayer extends React.Component{
   }
 
   render(){
-    console.log(this.props)
     return(
       <>
         <audio id=""
