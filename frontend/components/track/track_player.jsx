@@ -11,7 +11,7 @@ class TrackPlayer extends React.Component{
   }
 
   render(){
-    console.log(this.props.audioPlayer)
+    console.log(this.props)
     return(
       <>
         <audio id=""
@@ -25,8 +25,8 @@ class TrackPlayer extends React.Component{
               this.props.playTrack();
               this.props.audioPlayer.current.play();
             }}/> : <button className="fas fa-pause" onClick={() => {
-              this.props.audioPlayer.current.pause();
               this.props.pauseTrack();
+              this.props.audioPlayer.current.pause();
             }}/>
           }
           <i className="fas fa-angle-right" />
