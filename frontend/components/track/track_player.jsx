@@ -17,7 +17,7 @@ class TrackPlayer extends React.Component{
           ref={this.props.audioPlayer}
           src={this.props.track.trackURL}
         />
-        <div className="sound-bar-container">
+        <div className="track-player-container">
           <i className="fas fa-angle-left" />
           {
             this.props.playing === false ? <button className="fas fa-play" onClick={this.props.playTrack}/> : <button className="fas fa-pause" onClick={this.props.pauseTrack}/>

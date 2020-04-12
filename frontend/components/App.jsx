@@ -9,7 +9,6 @@ import SplashPage from './splash_page/splash_page_container';
 import Discover from './discover/discover_container';
 import TrackUpload from './track/track_upload/track_upload_container';
 import TrackShow from './track/track_show/track_show_container';
-import SoundBar from './sound/sound_bar_container';
 import TrackPlayer from './track/track_player_container';
 
 class App extends React.Component{
@@ -26,11 +25,9 @@ class App extends React.Component{
         <Switch>
           <ProtectdRoute exact path="/discover" component={Discover}/>
           <ProtectdRoute exact path="/upload" component={TrackUpload}/>
-          {/* <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow} audioRef={this.audioRef}/> */}
-          <ProtectdRoute exact path="/" component={TrackShow}/>
+          <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow} audioRef={this.audioRef}/>
         </Switch>
-        <TrackPlayer/>
-        {/* <SoundBar audioRef={this.audioRef}/> */}
+        <TrackPlayer audioRef={this.audioRef}/>
         <AuthRoute path="/" component={SplashPage}/>
       </div>
     );

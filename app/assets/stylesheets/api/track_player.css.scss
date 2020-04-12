@@ -1,4 +1,4 @@
-.sound-bar-container{
+.track-player-container{
   // border: 1px solid black;
   display: flex;
   justify-content: space-evenly;
@@ -11,24 +11,24 @@
   background-color: rgb(184, 182, 182);
 }
 
-.fas.fa-play.soundbar{
+.fas.fa-play{
   color: rgb(14, 30, 99);
   font-size: .75rem;
   // filter: drop-shadow(0 0 0.35rem rgba(55, 49, 49, 0.714));
 }
 
-.fas.fa-play.soundbar:hover{
+.fas.fa-play:hover{
   color: red;
   transition: .75s;
 }
 
-.fas.fa-pause.soundbar{
+.fas.fa-pause{
   color: blue;
   font-size: 3.75rem;
   // filter: drop-shadow(0 0 0.35rem rgba(55, 49, 49, 0.714));
 }
 
-.fas.fa-pause.soundbar:hover{
+.fas.fa-pause:hover{
   color: green;
   transition: .75s;
 }
