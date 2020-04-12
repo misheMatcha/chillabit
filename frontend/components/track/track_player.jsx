@@ -11,6 +11,7 @@ class TrackPlayer extends React.Component{
   }
 
   render(){
+    console.log(this.props.audioPlayer)
     return(
       <>
         <audio id=""
@@ -20,7 +21,13 @@ class TrackPlayer extends React.Component{
         <div className="track-player-container">
           <i className="fas fa-angle-left" />
           {
-            this.props.playing === false ? <button className="fas fa-play" onClick={this.props.playTrack}/> : <button className="fas fa-pause" onClick={this.props.pauseTrack}/>
+            this.props.playing === false ? <button className="fas fa-play" onClick={() => {
+              this.props.playTrack();
+              this.props.audioPlayer.current.play();
+            }}/> : <button className="fas fa-pause" onClick={() => {
+              this.props.audioPlayer.current.pause();
+              this.props.pauseTrack();
+            }}/>
           }
           <i className="fas fa-angle-right" />
           <i className="fas fa-random" />
