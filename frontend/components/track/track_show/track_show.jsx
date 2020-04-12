@@ -1,5 +1,4 @@
 import React from 'react';
-import Sound from '../../sound/sound.jsx';
 
 class TrackShow extends React.Component{
   constructor(props){
