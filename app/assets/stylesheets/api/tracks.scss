@@ -1,3 +1,108 @@
 // Place all the styles related to the api/tracks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.track-show{
+  border: 1px solid blue;
+}
+
+.track-show-wrap{
+  display: flex;
+  padding: 1rem;
+  background-image: linear-gradient(to right, #DF7B6C , #6578CB);
+  color: white;
+}
+
+.track-show-details-wrap{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 20rem;
+  justify-content: space-between;
+}
+
+.track-show-details{
+  display: flex;
+  justify-content: space-between;
+}
+
+.track-show-details.audio-wrap{
+  display: flex;
+  width: 17%;
+}
+
+.fas.fa-play-circle{
+  color: rgb(79, 96, 172);
+  font-size: 3.75rem;
+  // filter: drop-shadow(0 0 0.35rem rgba(55, 49, 49, 0.714));
+}
+
+.fas.fa-play-circle:hover{
+  color: rgb(60, 76, 145);
+  transition: .75s;
+}
+
+.fas.fa-pause-circle{
+  color: rgb(79, 96, 172);
+  font-size: 3.75rem;
+  // filter: drop-shadow(0 0 0.35rem rgba(55, 49, 49, 0.714));
+}
+
+.fas.fa-pause-circle:hover{
+  color: rgb(60, 76, 145);
+  transition: .75s;
+}
+
+.audio-wrap.track-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: space-between;
+}
+
+.track-details.artist{
+  background-color: #6578CB;
+  text-align: center;
+  font-size: .85rem;
+  width: fit-content;
+  padding: .1rem .25rem .1rem 0.25rem;
+  filter: drop-shadow(0 0 0.35rem rgba(55, 49, 49, 0.714));
+}
+
+.track-details.title{
+  background-color: #6578CB;
+  text-align: center;
+  font-size: 1.35rem;
+  width: fit-content;
+  padding: .1rem .25rem .1rem 0.25rem;
+  filter: drop-shadow(0 0 0.35rem rgba(55, 49, 49, 0.714));
+}
+
+.misc-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-right: .75rem;
+  width: max-content;
+  font-size: .85rem;
+  align-items: flex-end;
+  text-align: center;
+}
+
+.misc-wrap.genre{
+  background-color: rgba(118, 100, 100, 0.571);
+  width: 2.5rem;
+  border-radius: .7rem;
+  padding: .1rem .25rem .1rem 0.25rem;
+}
+
+.track-show-cover{
+  width: 20rem;
+}
+
+.track-show-visuals{
+}
+
+#track-show-play{
+  border: 1px solid black;
+}

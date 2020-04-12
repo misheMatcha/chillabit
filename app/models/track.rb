@@ -1,5 +1,5 @@
 class Track < ApplicationRecord
-  validates :name, :album_id, :artist_id, presence: true
+  validates :name, :artist_id, presence: true
 
   belongs_to :artists,
     foreign_key: :artist_id,
@@ -11,5 +11,4 @@ class Track < ApplicationRecord
 
   # active storage for AWS
   has_one_attached :song
-  # has_one_attached :track_cover
 end
