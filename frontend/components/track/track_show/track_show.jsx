@@ -17,15 +17,23 @@ class TrackShow extends React.Component{
   }
 
   render(){
-    // console.log(this.props)
+    console.log("show: ", this.props)
     return(
       <div className="track-show">
+        <audio ref={this.props.audioPlayer}
+          src={this.props.track.trackURL}
+        />
         <div className="track-show-wrap">
           <div className="track-show-details-wrap">
             <div className="track-show-details">
               <div className="track-show-details audio-wrap">
                 {
-                  this.props.playing === false ? <button className="fas fa-play-circle" onClick={this.props.playTrack} /> : <button className="fas fa-pause-circle" onClick={this.props.pauseTrack} />
+                  this.props.playing === false ? <button className="fas fa-play-circle" onClick={() => {
+                    this.props.playTrack()
+                    this.props.updateTrack(this.props.aud)
+                  }} /> : <button className="fas fa-pause-circle" onClick={() => {
+                    this.props.pauseTrack()
+                  }} />
                 }
                 <div className="audio-wrap track-details">
                   <p className="track-details artist">{this.props.track.artist}</p>

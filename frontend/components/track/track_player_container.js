@@ -10,7 +10,8 @@ const mSTP = (state, ownProps) => ({
   prevTracks: state.ui.trackPlayer.visisted,
   currTracks: state.ui.trackPlayer.queue,
   prevTrackIds: state.ui.trackPlayer.visistedId,
-  currTrackIds: state.ui.trackPlayer.queueId
+  currTrackIds: state.ui.trackPlayer.queueId,
+  // trackId: state.ui.trackPlayer.id
 });
 
 const mDTP = dispatch => ({

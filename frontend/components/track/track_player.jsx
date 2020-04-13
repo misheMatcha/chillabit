@@ -19,7 +19,7 @@ class TrackPlayer extends React.Component{
   }
 
   render(){
-    console.log(this.props.audioPlayer)
+    console.log("player: ", this.props)
     let currSource;
     this.props.currTracks.forEach(track => {
       if(!currSource) currSource = track.trackURL;
@@ -31,6 +31,7 @@ class TrackPlayer extends React.Component{
           ref={this.props.audioPlayer}
           src={currSource}
         />
+        <div className="track-player-bg"/>
         <div className="track-player-container">
           <div className="track-player-controls">
             <button className="fas fa-step-backward" />
