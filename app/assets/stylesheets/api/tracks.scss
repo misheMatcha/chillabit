@@ -106,3 +106,53 @@
 #track-show-play{
   border: 1px solid black;
 }
+
+
+// mini
+.single-track-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  font-size: 14px;
+  width: 15%;
+  height: 89.3%;
+}
+
+.single-track-cover{
+  border: 1px solid #cecece;
+  max-width: 179px;
+  max-height: 179px;
+  position: relative;
+}
+
+.single-track-hover{
+  border: 1px solid blue;
+  position: absolute;
+  // display: none;
+}
+
+.single-track-hover:hover{
+  border: 1px solid green;
+  // display: block;
+  color: blue;
+}
+
+.single-track-details{
+  // border: 1px solid purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 94.045%;
+  // height: 2.5rem;
+}
+
+.single-track-name{
+  color: #333;
+}
+
+.single-track-artist{
+  color: #999;
+  font-size: 12px;
+}
