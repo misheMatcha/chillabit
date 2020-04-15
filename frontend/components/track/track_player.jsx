@@ -10,41 +10,51 @@ class TrackPlayer extends React.Component{
     this.props.fetchTrack(1);
   }
 
+  componentDidUpdate(){
+    if(this.props.playing === true){
+      this.props.audioPlayer.current.play();
+    }else{
+      this.props.audioPlayer.current.pause();
+    }
+  }
+
   render(){
-    console.log(this.props)
+    console.log("player: ", this.props)
+
     return(
       <>
         <audio id=""
           ref={this.props.audioPlayer}
           src={this.props.track.trackURL}
         />
+        <div className="track-player-bg"/>
         <div className="track-player-container">
-          <i className="fas fa-angle-left" />
-          {
-            this.props.playing === false ? <button className="fas fa-play" onClick={() => {
-              this.props.playTrack();
-              this.props.audioPlayer.current.play();
-            }}/> : <button className="fas fa-pause" onClick={() => {
-              this.props.pauseTrack();
-              this.props.audioPlayer.current.pause();
-            }}/>
-          }
-          <i className="fas fa-angle-right" />
-          <i className="fas fa-random" />
-          <i className="fas fa-undo" />
-          <p>status bar</p>
-          <i className="fas fa-volume-up" />
-          <div className="artists-details">
-            <div className="the-details">
-              <img className="albumcover" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" />
-              <div>
+          <div className="track-player-controls">
+            <button className="fas fa-step-backward" />
+            {
+              this.props.playing === false ? <button className="fas fa-play" onClick={() => this.props.playTrack()}/> : <button className="fas fa-pause" onClick={() => this.props.pauseTrack()}/>
+            }
+            <button className="fas fa-step-forward" />
+            <button className="fas fa-random" />
+            <button className="fas fa-undo" />
+          </div>
+          <div className="track-player-progress-wrap">
+            <p>0:00</p>
+            <div className="track-player-progress"/>
+            <p>5:00</p>
+          </div>
+          <button className="fas fa-volume-up" />
+          <div className="track-player-current-details">
+            <div className="track-player-track-info">
+              <img className="track-album-cover" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" />
+              <div className="">
                 <p>{this.props.track.artist}</p>
                 <p>{this.props.track.name}</p>
               </div>
             </div>
-            <div>
-              <i className="fas fa-heart"></i>
-              <i className="fas fa-list-ul"></i>
+            <div className="track-player-misc">
+              <button className="fas fa-heart"></button>
+              <button className="fas fa-list-ul"></button>
             </div>
           </div>
         </div>

@@ -1,5 +1,13 @@
-import { PLAY_TRACK, PAUSE_TRACK, NEXT_TRACK, PREV_TRACK } from '../actions/track_player_actions';
+import { 
+  PLAY_TRACK,
+  PAUSE_TRACK,
+  ADD_TRACK,
+  REMOVE_TRACK,
+  RECEIVE_TRACK
+} from '../actions/track_player_actions';
 
+// created separate arrays for id for quick querying
+// possible refactor later
 const initialState = {
   playing: false
 };
@@ -14,6 +22,9 @@ const trackPlayerReducer = (state = initialState, action) => {
     case PAUSE_TRACK:
       newState.playing = false;
       return newState;
+    case ADD_TRACK:
+    case REMOVE_TRACK:
+    case RECEIVE_TRACK:
     default:
       return state;
   }
