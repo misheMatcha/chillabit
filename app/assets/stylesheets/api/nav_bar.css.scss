@@ -1,8 +1,14 @@
 // Protected Nav Section
-// div.protected-nav{
-//   position: sticky;
-//   top: 0;
-// }
+.protected-nav-bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 46px;
+  background-color: #333333;
+  color: #CCCCCC;
+  z-index: -1;
+}
 .protected-nav{
   // position: sticky;
   display: flex;

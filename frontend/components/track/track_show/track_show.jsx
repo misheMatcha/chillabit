@@ -9,12 +9,6 @@ class TrackShow extends React.Component{
     // this.props.fetchTrack(this.props.match.params.id)
     this.props.fetchTrack(1)
   }
-  
-  componentDidUpdate(){
-    if(!this.props.currTracks.length){
-      this.props.addTrack(this.props.track)
-    }
-  }
 
   render(){
     console.log("show: ", this.props)

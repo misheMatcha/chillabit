@@ -9,13 +9,7 @@ import {
 // created separate arrays for id for quick querying
 // possible refactor later
 const initialState = {
-  playing: false,
-  visisted: [],
-  queue: [],
-  visistedId: [],
-  queueId: [],
-  id: null,
-  ended: false
+  playing: false
 };
 
 const trackPlayerReducer = (state = initialState, action) => {
@@ -29,17 +23,8 @@ const trackPlayerReducer = (state = initialState, action) => {
       newState.playing = false;
       return newState;
     case ADD_TRACK:
-      newState.queue.push(action.track);
-      newState.queueId.push(action.track.id);
-      return newState;
     case REMOVE_TRACK:
-      newState.visisted.push(action.track);
-      newState.visistedId.push(action.track.id);
-      return newState;
     case RECEIVE_TRACK:
-      newState.id = action.track.id;
-      newState.ended = action.track.ended;
-      return newState;
     default:
       return state;
   }

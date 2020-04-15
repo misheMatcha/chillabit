@@ -20,16 +20,12 @@ class TrackPlayer extends React.Component{
 
   render(){
     console.log("player: ", this.props)
-    let currSource;
-    this.props.currTracks.forEach(track => {
-      if(!currSource) currSource = track.trackURL;
-    });
 
     return(
       <>
         <audio id=""
           ref={this.props.audioPlayer}
-          src={currSource}
+          src={this.props.track.trackURL}
         />
         <div className="track-player-bg"/>
         <div className="track-player-container">
