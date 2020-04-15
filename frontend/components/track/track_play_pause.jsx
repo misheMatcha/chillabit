@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CurrentTrack extends React.Component{
+class TrackPlayPause extends React.Component{
   render(){
     return(
       <div>
@@ -10,4 +10,4 @@ class CurrentTrack extends React.Component{
   }
 }
 
-export default CurrentTrack;
+export default TrackPlayPause;
