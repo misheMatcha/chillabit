@@ -124,28 +124,26 @@
   border: 1px solid #cecece;
   max-width: 179px;
   max-height: 179px;
-  position: relative;
+  // position: relative;
+  z-index: -1;
 }
 
 .single-track-hover{
-  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
   position: absolute;
-  // display: none;
-}
-
-.single-track-hover:hover{
-  border: 1px solid green;
-  // display: block;
-  color: blue;
+  width: 11.19rem;
+  height: 11.19rem;
+  margin-top: -.9rem;
+  opacity: 0;
+  background-image: linear-gradient(rgba(255,0,0,0), rgba(61, 57, 80, 0.639));
 }
 
 .single-track-details{
-  // border: 1px solid purple;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   width: 94.045%;
-  // height: 2.5rem;
 }
 
 .single-track-name{
