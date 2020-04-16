@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TrackShowMini from './track_show_mini';
+import TrackListItem from './track_list_item.jsx';
 import { requestTrack } from '../../../actions/track_actions'
 
 const mSTP = (state, ownProps) => ({
@@ -10,4 +10,4 @@ const mDTP = dispatch => ({
   fetchTrack: trackId => dispatch(requestTrack(trackId))
 });
 
-export default connect(mSTP, mDTP)(TrackShowMini);
+export default connect(mSTP, mDTP)(TrackListItem);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TrackShowMini extends React.Component{
+class TrackListItem extends React.Component{
   componentDidMount(){
     this.props.fetchTrack(2);
   }
@@ -30,4 +30,4 @@ class TrackShowMini extends React.Component{
   }
 };
 
-export default TrackShowMini;
+export default TrackListItem;

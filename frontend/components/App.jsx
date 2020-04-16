@@ -11,7 +11,7 @@ import TrackUpload from './track/track_upload/track_upload_container';
 import TrackShow from './track/track_show/track_show_container';
 import TrackPlayer from './track/track_player/track_player_container';
 import TrackPlayPause from './track/track_play_pause_container';
-import TrackShowMini from './track/track_show/track_show_mini_container';
+import TrackListItem from './track/track_list/track_list_item_container';
 
 class App extends React.Component{
   constructor(props){
@@ -30,7 +30,7 @@ class App extends React.Component{
           <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow} audioRef={this.audioRef}/>
         </Switch>
         <TrackPlayPause />
-        <TrackShowMini />
+        <TrackListItem />
         <TrackPlayer audioRef={this.audioRef}/>
         <AuthRoute path="/" component={SplashPage}/>
       </div>
