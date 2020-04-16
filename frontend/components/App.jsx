@@ -33,7 +33,7 @@ class App extends React.Component{
         <TrackPlayPause />
         {/* <TrackListItem /> */}
         <TrackList />
-        {/* <TrackPlayer audioRef={this.audioRef}/> */}
+        <TrackPlayer audioRef={this.audioRef}/>
         <AuthRoute path="/" component={SplashPage}/>
       </div>
     );

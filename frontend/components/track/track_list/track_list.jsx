@@ -13,11 +13,11 @@ class TrackList extends React.Component{
         <p>Track list</p>
         <ul>
           {
-            this.props.allTracks.map(track => (
-              <li key={track.id}>
-                <TrackListItem track={track} />
-              </li>
-            ))
+            // this.props.allTracks.map(track => (
+            //   <li key={track.id}>
+            //     <TrackListItem track={track} />
+            //   </li>
+            // ))
           }
         </ul>
       </div>
