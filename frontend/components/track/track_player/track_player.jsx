@@ -7,7 +7,7 @@ class TrackPlayer extends React.Component{
 
   componentDidMount() {
     // this.props.fetchTrack(this.props.match.params.id)
-    this.props.fetchTrack(2);
+    this.props.fetchTrack(1);
   }
 
   componentDidUpdate(){

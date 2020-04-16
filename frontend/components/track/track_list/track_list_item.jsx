@@ -1,10 +1,6 @@
 import React from 'react';
 
 class TrackListItem extends React.Component{
-  componentDidMount(){
-    this.props.fetchTrack(2);
-  }
-
   onHover(e){
     e.target.style.opacity = '100%';
   }
@@ -14,7 +10,6 @@ class TrackListItem extends React.Component{
   }
 
   render(){
-    console.log("mini: ", this.props)
     return(
       <div className="single-track-container">
         <div className="single-track-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
