@@ -4,7 +4,8 @@ import { requestAllTracks } from '../../../actions/track_actions'
 
 const mSTP = (state, ownProps) => ({
   allTracks: Object.values(state.entities.tracks),
-  numTracks: ownProps.numTracks
+  discTitle: ownProps.title,
+  discDesc: ownProps.desc
 });
 
 const mDTP = dispatch => ({

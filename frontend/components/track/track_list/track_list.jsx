@@ -9,7 +9,8 @@ class TrackList extends React.Component{
   render(){
     return(
       <div className="">
-        <p>Track list</p>
+        <p>{this.props.discTitle}</p>
+        <p>{this.props.discDesc}</p>
         <ul>
           {
             this.props.allTracks.map((track, idx) => {
