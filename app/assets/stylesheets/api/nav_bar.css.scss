@@ -10,9 +10,7 @@
   z-index: -1;
 }
 .protected-nav{
-  // position: sticky;
   display: flex;
-  // top: 0;
   background-color: #333333;
   color: #CCCCCC;
   font-family: 'Roboto', sans-serif;
@@ -168,9 +166,9 @@
       display: flex;
       justify-content: space-between;
     }
-      .auth-nav-splash-logo{
+    .auth-nav-splash-logo{
         display: flex;
-        width: 119px;
+        width: 8rem;
         justify-content: space-between;
         align-items: center;
         margin-left: 10px;
@@ -200,14 +198,20 @@
           }
           .signup-button {
             border-radius: 5px;
-            background-color: rgb(26, 47, 72);
+            background-color: rgb(116, 78, 106);
             padding: 10px 15px 10px 15px;
+          }
+          .signup-button:hover {
+            background-color: #A77A9B;
           }
           .upload-button {
             border-radius: 5px;
-            background-color: rgb(26, 47, 72);
+            background-color: rgb(116, 78, 106);
             padding: 10px 15px 10px 15px;
             font-size: 15px;
+          }
+          .upload-button:hover{
+            background-color: #A77A9B;
           }
           .creator-button {
             padding: 5px 13px 5px 13px;
