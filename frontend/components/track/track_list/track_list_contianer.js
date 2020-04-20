@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import TrackList from './track_list.jsx';
 import { requestAllTracks } from '../../../actions/track_actions'
 
-const mSTP = state => ({
-  allTracks: Object.values(state.entities.tracks)
+const mSTP = (state, ownProps) => ({
+  allTracks: Object.values(state.entities.tracks),
+  numTracks: ownProps.numTracks
 });
 
 const mDTP = dispatch => ({

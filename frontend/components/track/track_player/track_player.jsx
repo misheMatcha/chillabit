@@ -3,11 +3,18 @@ import React from 'react';
 class TrackPlayer extends React.Component{
   constructor(props){
     super(props)
+    this.state = {
+      artist: '',
+      title: '',
+      src: '',
+      cover: '',
+    }
   }
 
   componentDidMount() {
+    // may not need this if i pass the src as a ui props
     // this.props.fetchTrack(this.props.match.params.id)
-    this.props.fetchTrack(1);
+    // this.props.fetchTrack(1);
   }
 
   componentDidUpdate(){
@@ -19,13 +26,11 @@ class TrackPlayer extends React.Component{
   }
 
   render(){
-    console.log("player: ", this.props)
-
     return(
       <>
         <audio id=""
           ref={this.props.audioPlayer}
-          src={this.props.track.trackURL}
+          src={this.state.src}
         />
         <div className="track-player-bg"/>
         <div className="track-player-container">
@@ -48,8 +53,8 @@ class TrackPlayer extends React.Component{
             <div className="track-player-track-info">
               <img className="track-album-cover" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" />
               <div className="">
-                <p>{this.props.track.artist}</p>
-                <p>{this.props.track.name}</p>
+                <p>{this.state.artist}</p>
+                <p>{this.state.title}</p>
               </div>
             </div>
             <div className="track-player-misc">

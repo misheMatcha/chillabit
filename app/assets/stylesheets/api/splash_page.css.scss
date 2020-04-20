@@ -246,3 +246,68 @@
       padding: 7px 13px 7px 13px;
       border-radius: 3px;
     }
+
+// tracks
+
+.splash-tracks-ul{
+  // border: 1px solid blue;
+  display: flex;
+  height: 32rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.splash-tracks{
+  // border: 1px solid white;
+  max-height: 257.98px;
+  // margin-right: 1rem;
+  // margin-left: 2rem;
+  font-size: 14px;
+  // display: flex;
+  // padding-left: 10rem;
+}
+.splash-tracks-cover{
+  border: 1px solid #cecece;
+  max-width: 179px;
+  max-height: 179px;
+  // position: relative;
+  // z-index: -1;
+}
+.splash-tracks-details{
+  // border: 1px solid purple;
+  // height: 4.77rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: .3rem;
+}
+.splash-tracks-title{
+  // border: 1px solid blue;
+}
+.splash-tracks-artist{
+  // border: 1px solid blue;
+  color: #999;
+  font-size: 12px;
+  margin-top: .1rem;
+}
+.splash-tracks-container{
+  border: 1px solid white;
+  // width: 10rem;
+}
+
+.album-track-display{
+  // border: 1px solid blue;
+  // width: 100%;
+  // wid
+}
+
+.splash-tracks-hover{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 11.19rem;
+  height: 11rem;
+  margin-top: -11rem;
+  // margin-left: 1rem;
+  opacity: 0;
+  background-image: linear-gradient(rgba(255,0,0,0), rgba(61, 57, 80, 0.639));
+}

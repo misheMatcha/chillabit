@@ -3,20 +3,23 @@ import React from 'react';
 class TrackShow extends React.Component{
   constructor(props){
     super(props)
+    this.state = {
+      test1: ''
+    }
   }
 
   componentDidMount(){
-    // this.props.fetchTrack(this.props.match.params.id)
-    this.props.fetchTrack(1)
+    this.props.fetchTrack(this.props.match.params.id)
   }
 
   render(){
-    console.log("show: ", this.props)
+    // console.log("show: ", this.props)
     return(
       <div className="track-show">
-        <audio ref={this.props.audioPlayer}
-          src={this.props.track.trackURL}
-        />
+        {/* <audio
+          ref={this.props.audioPlayer}
+          src={this.state.test1}
+        /> */}
         <div className="track-show-wrap">
           <div className="track-show-details-wrap">
             <div className="track-show-details">
@@ -25,6 +28,7 @@ class TrackShow extends React.Component{
                   this.props.playing === false ? <button className="fas fa-play-circle" onClick={() => {
                     this.props.playTrack()
                     this.props.updateTrack(this.props.aud)
+                    this.props.testadd(this.props.track)
                   }} /> : <button className="fas fa-pause-circle" onClick={() => {
                     this.props.pauseTrack()
                   }} />

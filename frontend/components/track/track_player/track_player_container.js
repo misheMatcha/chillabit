@@ -5,8 +5,8 @@ import TrackPlayer from './track_player';
 
 const mSTP = (state, ownProps) => ({
   playing: state.ui.trackPlayer.playing,
-  track: state.entities.tracks,
-  audioPlayer: ownProps.audioRef
+  audioPlayer: ownProps.audioRef,
+  currentTrack: state.entities.currentTrack
 });
 
 const mDTP = dispatch => ({

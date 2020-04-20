@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import SplashPage from './splash_page.jsx'
-import { closeModal, openModal } from '../../actions/modal_actions';
-import { requestAlbum, requestAllAlbums } from '../../actions/album_actions'
+import { openModal } from '../../actions/modal_actions';
+import { requestAllTracks } from '../../actions/track_actions';
 
 const mSTP = state => ({
-  album: state.entities.albums
+  tracks: Object.values(state.entities.tracks)
 });
 
 const mDTP = dispatch => ({
@@ -24,6 +24,7 @@ const mDTP = dispatch => ({
       Create account
     </button>
   ),
+  fetchAllTracks: () => dispatch(requestAllTracks())
 });
 
 export default connect(mSTP ,mDTP)(SplashPage);

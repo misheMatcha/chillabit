@@ -7,17 +7,20 @@ class TrackList extends React.Component{
   }
 
   render(){
-    console.log(this.props.allTracks)
     return(
       <div className="">
         <p>Track list</p>
         <ul>
           {
-            // this.props.allTracks.map(track => (
-            //   <li key={track.id}>
-            //     <TrackListItem track={track} />
-            //   </li>
-            // ))
+            this.props.allTracks.map((track, idx) => {
+              if(idx <= 12){
+                return(
+                  <li key={track.id}>
+                    <TrackListItem track={track} />
+                  </li>
+                )
+              }
+            })
           }
         </ul>
       </div>
