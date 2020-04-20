@@ -6,8 +6,6 @@ import {
   RECEIVE_TRACK
 } from '../actions/track_player_actions';
 
-// created separate arrays for id for quick querying
-// possible refactor later
 const initialState = {
   playing: false
 };

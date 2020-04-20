@@ -1,8 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import TrackList from '../track/track_list/track_list_contianer';
 
 class SplashPage extends React.Component {
+  componentDidMount(){
+    this.props.fetchAllTracks();
+  }
+  
+  onHover(e){
+    e.target.style.opacity = '100%';
+  }
+
+  offHover(e){
+    e.target.style.opacity = '0%';
+  }
+
   render(){
+    console.log(this.props.tracks)
     return (
       <div className="splash-container">
         <div className="splash-searchbar-container">
@@ -18,8 +32,27 @@ class SplashPage extends React.Component {
           <h1 className="splash-trending-title">Hear what’s trending for free in the chillabit community</h1>
 
           <div className="album-track-display">
-            <ul>
-              {/* <TrackList /> */}
+            <ul className="splash-tracks-ul">
+              {
+                this.props.tracks.map((track, idx) => {
+                  if(idx <= 12){
+                    return(
+                      <div key={track.id} className="splash-tracks-container">
+                        <li className="splash-tracks">
+                          <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/the_day.jpg" className="splash-tracks-cover"/>
+                          <div className="splash-tracks-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
+                            <button className="fas fa-play-circle"/>
+                          </div>
+                          <div className="splash-tracks-details">
+                            <p className="splash-tracks-title">{track.name}</p>
+                            <p className="splash-tracks-artist">{track.artist}</p>
+                          </div>
+                        </li>
+                    </div>
+                    )
+                  }
+                })
+              }
             </ul>
           </div>
 

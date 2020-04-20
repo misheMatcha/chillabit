@@ -106,3 +106,61 @@
 #track-show-play{
   border: 1px solid black;
 }
+
+
+
+
+
+
+
+// ITEM
+.single-track-container{
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // // border: 1px solid red;
+  // font-size: 14px;
+  // width: 15%;
+  // height: 89.3%;
+}
+
+.single-track-cover{
+  border: 1px solid #cecece;
+  max-width: 179px;
+  max-height: 179px;
+  // position: relative;
+  z-index: -1;
+}
+
+.single-track-hover{
+  // display: flex;
+  // justify-content: center;
+  // position: absolute;
+  // width: 11.19rem;
+  // height: 11.19rem;
+  // margin-top: -.9rem;
+  // opacity: 0;
+  // background-image: linear-gradient(rgba(255,0,0,0), rgba(61, 57, 80, 0.639));
+}
+
+.single-track-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 94.045%;
+}
+
+.single-track-name{
+  color: #333;
+}
+
+.single-track-artist{
+  color: #999;
+  font-size: 12px;
+}
+
+
+
+
+// TRACK LIST
