@@ -10,9 +10,30 @@ class Discover extends React.Component {
     return (
       <div className="discover-container">
         <div className="discover-main">
-          <TrackList title={'More of what you like'} desc={`Suggestions based on what you've liked or played`} />
+          <p>main</p>
+          <div>
+            main stuff
+          </div>
         </div>
-        <div className="discover-sidebar"></div>
+
+        
+        <div className="discover-sidebar">
+          <p>hello</p>
+          <div className="discover-sidebar-advert">
+            <div className="discover-sidebar-advert-details">
+              <div className="discover-sidebar-advert-gradient">HEY HEY</div>
+              <div className="discover-sidebar-advert-text-bold">
+                Swap tracks
+                <br/>
+                Keep the stats
+              </div>
+              <div className="discover-sidebar-advert-text">
+                A pro account lets you replace tracks without losing stats
+              </div>
+            </div>
+            <button className="discover-sidebar-advert-button">Get pro</button>
+          </div>
+        </div>
       </div>
     )
   }
