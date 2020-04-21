@@ -1,10 +1,11 @@
 .sidebar-container{
   display: flex;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
   width: 25%;
   font-size: 14px;
+  margin-top: 3rem;
 }
   .discover-sidebar-advert{
     display: flex;
@@ -67,7 +68,7 @@
       justify-content: space-between;
       width: 100%;
       padding-bottom: .5rem;
-      padding-top: 1rem;
+      padding-top: 1.5rem;
     }
       .sidebar-section-nav-title{
         display: flex;
