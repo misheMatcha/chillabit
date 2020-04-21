@@ -11,14 +11,14 @@ class TrackListItem extends React.Component{
 
   render(){
     return(
-      <div className="single-track-container">
-        <div className="single-track-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
+      <div className="track-list-item">
+        <div className="track-list-item-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
           <button className="fas fa-play-circle"/>
         </div>
-        <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/the_day.jpg" className="single-track-cover"/>
-        <div className="single-track-details">
-          <p className="single-track-name">{this.props.track.name}</p>
-          <p className="single-track-artist">{this.props.track.artist}</p>
+        <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/the_day.jpg" className="track-list-item-cover"/>
+        <div className="track-list-item-details">
+          <p className="track-list-item-title">{this.props.track.name}</p>
+          <p className="track-list-item-artist">{this.props.track.artist}</p>
         </div>
       </div>
     );

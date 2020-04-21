@@ -25,7 +25,19 @@ class Discover extends React.Component {
           followers: '18,367',
           numTracks: '3'
         }
-      ]
+      ],
+      isFollowing: false
+    }
+    this.toggleFollow = this.toggleFollow.bind(this)
+  }
+
+  toggleFollow(){
+    if(this.state.isFollowing === false){
+      this.setState({isFollowing: true});
+      console.log('Followed')
+    }else{
+      this.setState({isFollowing: false});
+      console.log('Unfollowed')
     }
   }
 
@@ -33,10 +45,7 @@ class Discover extends React.Component {
     return (
       <div className="discover-container">
         <div className="discover-main">
-          <p>main</p>
-          <div>
-            main stuff
-          </div>
+          <TrackList title={`New Music Now`} desc={`The latest hits, updated all the time`} />
         </div>
 
 
@@ -87,13 +96,13 @@ class Discover extends React.Component {
                                   <p className="sidebar-section-list-follower-details-info-p">{follower.followers}</p>
                                 </div>
                                 <div className="sidebar-section-list-follower-details-info margin">
-                                  <i class="fas fa-tag"/>
+                                  <i className="fas fa-tag"/>
                                   <p className="sidebar-section-list-follower-details-info-p">{follower.numTracks}</p>
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <button className="sidebar-section-list-follower-button"><i className="fas fa-user-plus"/> Follow
+                          <button className="sidebar-section-list-follower-button" onClick={this.toggleFollow}><i className="fas fa-user-plus"/> Follow
                           </button>
                         </div>
                       </li>
