@@ -56,6 +56,7 @@
   .sidebar-section{
     // border: 1px solid blue;
     display: flex;
+    flex-direction: column;
     width: 18.625rem;
     color: #999;
   }
@@ -66,11 +67,70 @@
       justify-content: space-between;
       width: 100%;
       padding-bottom: .5rem;
+      padding-top: 1rem;
     }
       .sidebar-section-nav-title{
         display: flex;
-        justify-content: space-between;
       }
         .sidebar-section-nav-title-text{
           margin-left: .3rem;
+        }
+    .sidebar-section-list{
+      height: 100%;
+    }
+      .sidebar-section-list-ul{
+      }
+        .sidebar-section-list-li{
+          padding-top: 1rem;
+        }
+          .sidebar-section-list-follower{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+          }
+          .sidebar-section-list-follower-wrap{
+            display: flex;
+          }
+            .sidebar-section-list-photo{
+              width: 50px;
+              height: 50px;
+              border: 1px solid #e5e5e5;
+              border-radius: 2rem;
+            }
+            .sidebar-section-list-follower-details{
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              margin-left: .3rem;
+              padding-bottom: .3rem;
+            }
+              .sidebar-section-list-follower-details-username{
+                color: black;
+                margin-bottom: .2rem;
+              }
+              .sidebar-section-list-follower-details-text{
+                display: flex;
+                width: auto;
+                font-size: 11px;
+              }
+              .sidebar-section-list-follower-details-info{
+                display: flex;
+              }
+                .sidebar-section-list-follower-details-info-p{
+                  margin-left: .2rem;
+                }
+                .sidebar-section-list-follower-details-info-p.p-margin{
+                }
+              .sidebar-section-list-follower-details-info.margin{
+                margin-left: .7rem;
+              }
+        .sidebar-section-list-follower-button{
+          display: flex;
+          justify-content: space-evenly;
+          text-align: center;
+          height: 1.35rem;
+          width: 4rem;
+          border: 1px solid #e5e5e5;
+          border-radius: .3rem;
+          font-size: 11px;
         }

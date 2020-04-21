@@ -5,10 +5,30 @@ class Discover extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      likes: 205
+      likes: 205,
+      followers: [
+        {
+          profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/harold.jpg',
+          username: 'harold',
+          followers: 76,
+          numTracks: 2
+        },
+        {
+          profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/jen.jpg',
+          username: 'jen',
+          followers: '54',
+          numTracks: '5'
+        },
+        {
+          profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/moss.jpg',
+          username: 'moss',
+          followers: '18,367',
+          numTracks: '3'
+        }
+      ]
     }
   }
-  
+
   render(){
     return (
       <div className="discover-container">
@@ -19,7 +39,7 @@ class Discover extends React.Component {
           </div>
         </div>
 
-        
+
         <div className="sidebar-container">
           <div className="discover-sidebar-advert">
             <div className="sidebar-advert-details">
@@ -50,6 +70,38 @@ class Discover extends React.Component {
                 <p className="sidebar-section-nav-title-text">Refresh</p>
               </div>
             </div>
+            <div className="sidebar-section-list">
+              <ul className="sidebar-section-list-ul">
+                {
+                  this.state.followers.map((follower, idx) => {
+                    return(
+                      <li key={idx} className="sidebar-section-list-li">
+                        <div className="sidebar-section-list-follower">
+                          <div className="sidebar-section-list-follower-wrap">
+                            <img src={follower.profileImg} className="sidebar-section-list-photo"/>
+                            <div className="sidebar-section-list-follower-details">
+                              <p className="sidebar-section-list-follower-details-username">{follower.username}</p>
+                              <div className="sidebar-section-list-follower-details-text">
+                                <div className="sidebar-section-list-follower-details-info">
+                                  <i className="fas fa-user-friends"/>
+                                  <p className="sidebar-section-list-follower-details-info-p">{follower.followers}</p>
+                                </div>
+                                <div className="sidebar-section-list-follower-details-info margin">
+                                  <i class="fas fa-tag"/>
+                                  <p className="sidebar-section-list-follower-details-info-p">{follower.numTracks}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button className="sidebar-section-list-follower-button"><i className="fas fa-user-plus"/> Follow
+                          </button>
+                        </div>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+            </div>
           </div>
 
           <div className="sidebar-section">
@@ -67,7 +119,7 @@ class Discover extends React.Component {
           <div className="sidebar-section">
             <div className="sidebar-section-nav">
               <div className="sidebar-section-nav-title">
-                <i class="far fa-calendar"/>
+                <i className="far fa-calendar"/>
                 <p className="sidebar-section-nav-title-text">Listening history</p>
               </div>
               <div className="sidebar-section-nav-title">
@@ -75,9 +127,6 @@ class Discover extends React.Component {
               </div>
             </div>
           </div>
-
-          
-
 
         </div>
       </div>
