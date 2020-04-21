@@ -18,20 +18,34 @@ class Discover extends React.Component {
 
         
         <div className="discover-sidebar">
-          <p>hello</p>
           <div className="discover-sidebar-advert">
             <div className="discover-sidebar-advert-details">
-              <div className="discover-sidebar-advert-gradient">HEY HEY</div>
-              <div className="discover-sidebar-advert-text-bold">
-                Swap tracks
-                <br/>
-                Keep the stats
-              </div>
+              <div className="discover-sidebar-advert-gradient">HEY<br/>HEY</div>
               <div className="discover-sidebar-advert-text">
-                A pro account lets you replace tracks without losing stats
+                <div className="discover-sidebar-advert-text-bold">
+                  Swap tracks
+                  <br/>
+                  Keep the stats
+                </div>
+                <div className="discover-sidebar-advert-text-normal">
+                  A pro account lets you replace tracks without losing stats
+                </div>
               </div>
             </div>
             <button className="discover-sidebar-advert-button">Get pro</button>
+          </div>
+
+          <div className="discover-sidebar-follow">
+            <div className="discover-sidebar-follow-nav">
+              <div className="discover-sidebar-follow-nav-title">
+                <i class="fas fa-user-friends"/>
+                <p className="">Who to follow</p>
+              </div>
+              <div className="">
+                <i class="fas fa-redo"/>
+                <p className="">Refresh</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
