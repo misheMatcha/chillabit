@@ -1,0 +1,76 @@
+.sidebar-container{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  font-size: 14px;
+}
+  .discover-sidebar-advert{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    border: 1px solid #e5e5e5;
+    height: 13.063rem;
+    width: 18.625rem;
+  }
+    .sidebar-advert-details{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      height: 6rem;
+      width: 15rem;
+    }
+      .sidebar-advert-gradient{
+        font-weight: 900;
+        font-size: 2.5rem;
+        background: -webkit-linear-gradient(#DF7B6C, #6578CB);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .sidebar-advert-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 7rem;
+        height: 5rem;
+      }
+        .sidebar-advert-text-bold{
+          font-weight: 700;
+        }
+        .sidebar-advert-text-normal{
+          font-size: 12px;
+        }
+    .sidebar-advert-button{
+      background-color: #DF7B6C;
+      width: 4rem;
+      height: 2rem;
+      border-radius: .2rem;
+      color: white;
+      margin-top: .5rem;
+      text-align: center;
+    }
+
+  .sidebar-section{
+    // border: 1px solid blue;
+    display: flex;
+    width: 18.625rem;
+    color: #999;
+  }
+    .sidebar-section-nav{
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      padding-bottom: .5rem;
+    }
+      .sidebar-section-nav-title{
+        display: flex;
+        justify-content: space-between;
+      }
+        .sidebar-section-nav-title-text{
+          margin-left: .3rem;
+        }
