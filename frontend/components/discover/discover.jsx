@@ -44,8 +44,11 @@ class Discover extends React.Component {
   render(){
     return (
       <div className="discover-container">
+        {/* <div className="discover-bg"/> */}
         <div className="discover-main">
           <TrackList title={`New Music Now`} desc={`The latest hits, updated all the time`} />
+          <TrackList title={`More of what you like`} desc={`Suggestions based on what you've liked or played`} />
+          <TrackList title={`Stay Home`} desc={`Tunes of isolation and self-care`} />
         </div>
 
 
