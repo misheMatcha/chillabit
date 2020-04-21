@@ -41,7 +41,7 @@ class Discover extends React.Component {
                 <i class="fas fa-user-friends"/>
                 <p className="">Who to follow</p>
               </div>
-              <div className="">
+              <div className="discover-sidebar-follow-nav-refresh">
                 <i class="fas fa-redo"/>
                 <p className="">Refresh</p>
               </div>
