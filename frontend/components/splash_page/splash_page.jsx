@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TrackList from '../track/track_list/track_list_contianer';
 import TrackListItem from '../track/track_list/track_list_item.jsx';
+import { TRACKS } from '../placeholder_seeds';
 
 class SplashPage extends React.Component {
   constructor(props){
@@ -14,7 +14,7 @@ class SplashPage extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchAllTracks();
+    // this.props.fetchAllTracks();
   }
   
   onHover(e){
@@ -52,10 +52,10 @@ class SplashPage extends React.Component {
           <div className="album-track-display">
             <ul className="splash-tracks-ul">
               {
-                this.props.tracks.map((track, idx) => {
+                TRACKS.map((track, idx) => {
                   if(idx <= 12){
                     return(
-                      <div key={track.id} className="splash-tracks-container">
+                      <div key={idx} className="splash-tracks-container">
                         <li className="splash-tracks">
                           <TrackListItem track={track} />
                         </li>

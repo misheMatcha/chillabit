@@ -4,6 +4,7 @@
 
 .track-show{
   // border: 1px solid blue;
+  margin-top: 2.86rem;
 }
 
 .track-show-wrap{
@@ -189,12 +190,19 @@
   display: flex;
   flex-direction: column;
   margin-top: .3rem;
+  text-align: left;
+  // white-space: nowrap;
+  // width: 172.97px;
   // justify-content: space-evenly;
   // width: 94.045%;
 }
 
 .track-list-item-title{
-  // color: #333;
+  // display: inline;
+  color: #333;
+  // font-size: 14px;
+  width: 172.97px;
+  // white-space: nowrap;
 }
 
 .track-list-item-artist{

@@ -33,9 +33,9 @@ class TrackListItem extends React.Component{
         <div className="track-list-item-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
           <button className="fas fa-play-circle" onClick={this.togglePlay}/>
         </div>
-        <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/the_day.jpg" className="track-list-item-cover"/>
+        <img src={this.props.track.cover} className="track-list-item-cover"/>
         <div className="track-list-item-details">
-          <p className="track-list-item-title">{this.props.track.name}</p>
+          <p className="track-list-item-title">{this.props.track.title}</p>
           <p className="track-list-item-artist">{this.props.track.artist}</p>
         </div>
       </div>
