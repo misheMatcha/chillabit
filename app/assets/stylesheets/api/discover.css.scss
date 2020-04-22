@@ -1,3 +1,6 @@
+@import "variables";
+// $yo: black;
+
 .discover-container{
   display: flex;
   flex-direction: row;
@@ -11,11 +14,12 @@
 }
 
 .discover-main{
-  border-right: 1px solid #e5e5e5;
+  border-right: 1px solid $snow;
   width: 72%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  // color: $yo;
   // overflow: hidden;
 }
 
