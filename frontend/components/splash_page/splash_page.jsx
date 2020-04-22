@@ -44,15 +44,15 @@ class SplashPage extends React.Component {
                     return(
                       <div key={track.id} className="splash-tracks-container">
                         <li className="splash-tracks">
-                          <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/the_day.jpg" className="splash-tracks-cover"/>
+                          {/* <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/the_day.jpg" className="splash-tracks-cover"/>
                           <div className="splash-tracks-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
                             <button className="fas fa-play-circle"/>
                           </div>
                           <div className="splash-tracks-details">
                             <p className="splash-tracks-title">{track.name}</p>
                             <p className="splash-tracks-artist">{track.artist}</p>
-                          </div>
-                          {/* <TrackListItem track={track} /> */}
+                          </div> */}
+                          <TrackListItem track={track} />
                         </li>
                     </div>
                     )
@@ -61,7 +61,6 @@ class SplashPage extends React.Component {
               }
             </ul>
           </div>
-
           <Link className="splash-trending-explore" to="/home">Explore tending playlists</Link>
         </div>
 

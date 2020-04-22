@@ -71,11 +71,17 @@
   border: 1px solid white;
 }
 
+.album-track-display{
+  display: flex;
+  justify-content: center;
+}
+
 .splash-tracks-ul{
   display: flex;
   height: 32rem;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 96%;
 }
   .splash-tracks{
     max-height: 257.98px;
@@ -115,7 +121,7 @@
   padding: 10px 0px 10px 0px;
   width: 204px;
   align-self: center;
-  margin: 28px 0px 56px 0px;
+  margin: 0px 0px 56px 0px;
   background-color: #DF7B6C;
   color: white;
   border-radius: 3px;
