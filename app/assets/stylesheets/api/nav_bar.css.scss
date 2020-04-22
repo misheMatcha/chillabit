@@ -1,5 +1,6 @@
 // Protected Nav Section
 .protected-nav-bg{
+  // border: 1px solid blue;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +11,8 @@
   z-index: -1;
 }
 .protected-nav{
+  position: fixed;
+  // border: 1px solid red;
   display: flex;
   background-color: #333333;
   color: #CCCCCC;
@@ -18,7 +21,7 @@
   font-size: 15px;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 79.29rem;
 }
   .protected-nav-content{
     display: flex;
