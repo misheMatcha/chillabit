@@ -37,7 +37,7 @@ class TrackUpload extends React.Component{
   // Add genre later so that albums can aggregate genres from tracks within
   render(){
     return(
-      <div>
+      <div className="track-upload-container">
         <form onSubmit={this.handleUpload}>
           <label>Upload
           <input type="file" onChange={this.handleFile}/>

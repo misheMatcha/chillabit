@@ -66,7 +66,7 @@ class TrackShow extends React.Component{
                     </div>
                   </div>
                 </div>
-                <button className="sidebar-section-list-follower-button" onClick={this.toggleFollow}>
+                <button className="sidebar-section-list-follower-button profile" onClick={this.toggleFollow}>
                   <i className="fas fa-user-plus"/> Follow
                 </button>
               </div>
@@ -77,9 +77,9 @@ class TrackShow extends React.Component{
                   Thx for listening I really appreciate you.<br/>
                   <br/>
                   Digital DL:<br/>
-                  ochamusic.bandcamp.com/releases<br/>
+                  <a href="ochamusic.bandcamp.com/releases" target="blank">ochamusic.bandcamp.com/releases</a><br/>
                   <br/>
-                  Merch: teespring.com/stores/ochashop
+                  Merch: <a href="teespring.com/stores/ochashop" target="blank">teespring.com/stores/ochashop</a>
                 </div>
               </div>
             </div>
