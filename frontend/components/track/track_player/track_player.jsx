@@ -1,5 +1,7 @@
 import React from 'react';
+import { TRACKS } from '../../placeholder_seeds';
 
+const randomTrack = Math.floor(Math.random(5));
 class TrackPlayer extends React.Component{
   constructor(props){
     super(props)
@@ -47,6 +49,7 @@ class TrackPlayer extends React.Component{
   }
 
   render(){
+    console.log(randomTrack)
     return(
       <>
         <audio id=""

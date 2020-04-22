@@ -1,9 +1,10 @@
 import React from 'react';
 import TrackListItem from './track_list_item_container';
+import { TRACKS } from '../../placeholder_seeds';
 
 class TrackList extends React.Component{
   componentDidMount(){
-    this.props.fetchAllTracks();
+    // this.props.fetchAllTracks();
   }
 
   render(){
@@ -13,10 +14,10 @@ class TrackList extends React.Component{
         <p className="track-list-desc">{this.props.discDesc}</p>
         <ul className="track-list-ul">
           {
-            this.props.allTracks.map((track, idx) => {
+            TRACKS.map((track, idx) => {
               if(idx <= 11){
                 return(
-                  <li key={track.id}>
+                  <li key={idx}>
                     <TrackListItem track={track} />
                   </li>
                 )
