@@ -109,37 +109,67 @@
 }
 
 .track-show-social{
-  // border: 1px solid black;
   display: flex;
   justify-content: space-evenly;
   align-content: center;
   background-color: white;
   height: 100%;
+  font-size: 14px;
+  color: #333;
 }
   .track-show-social-main{
+    // border: 1px solid black;
     border-right: 1px solid #e5e5e5;
     width: 68%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
   }
   .track-show-social-combar-wrap{
-    // border: 1px solid black;
+    // border: 1px solid green;
     width: 100%;
   }
   .track-show-social-details{
-    // border: 1px solid black;
-    // width: 100%;
+    // border: 1px solid red;
+    width: 95%;
     display: flex;
+    // justify-content: center;
+    margin-top: 1rem;
   }
   .track-show-social-details-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     // border: 1px solid black;
+    height: 12.75rem;
     // width: 10rem;
   }
   .track-show-social-details-profile-img{
     border-radius: 5rem;
     width: 120px;
   }
+  .track-show-social-details-profile-artist{
+    // border: 1px solid purple;
+  }
+  .track-show-social-details-profile-stats{
+    // border: 1px solid purple;
+    font-size: 12px;
+    color: #999999;
+  }
   .track-show-social-details-com{
-    border: 1px solid black;
-    width: 100%;
+    // border: 1px solid black;
+    width: 81%;
+    margin-left: 2rem;
+  }
+  .sidebar-section-list-follower-button.profile{
+    background-color: #DF7B6C;
+    border: 1px solid rgb(225, 103, 85);
+    color: white;
+    transition: 1s;
+  }
+  .sidebar-section-list-follower-button.profile:hover{
+    background-color: rgb(230, 150, 64);
   }
 
 
@@ -243,4 +273,10 @@
   color: #999;
   font-size: 12px;
   margin-top: .15rem;
+}
+
+
+.track-upload-container{
+  // probably change margin in app instead of each component
+  margin-top: 2.86rem;
 }
