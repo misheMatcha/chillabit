@@ -49,7 +49,40 @@ class TrackShow extends React.Component{
         </div>
         <div className="track-show-social">
           <div className="track-show-social-main">
-            main
+            {/* <div className="track-show-social-combar-wrap">comment bar</div> */}
+            <div className="track-show-social-details">
+              <div className="track-show-social-details-profile">
+                <img className="track-show-social-details-profile-img" src={IRIDSCNT.profile} />
+                <p className="track-show-social-details-profile-artist">{IRIDSCNT.artist}</p>
+                <div className="track-show-social-details-profile-stats">
+                  <div className="sidebar-section-list-follower-details-text">
+                    <div className="sidebar-section-list-follower-details-info">
+                      <i className="fas fa-user-friends"/>
+                      <p className="sidebar-section-list-follower-details-info-p">{IRIDSCNT.followers}</p>
+                    </div>
+                    <div className="sidebar-section-list-follower-details-info margin">
+                      <i className="fas fa-tag"/>
+                      <p className="sidebar-section-list-follower-details-info-p">{IRIDSCNT.tracks}</p>
+                    </div>
+                  </div>
+                </div>
+                <button className="sidebar-section-list-follower-button" onClick={this.toggleFollow}>
+                  <i className="fas fa-user-plus"/> Follow
+                </button>
+              </div>
+              <div className="track-show-social-details-com">
+                <div>
+                  19 new songs {`<3`}<br/>
+                  I have put every drop of my creativity and time into this project.<br/>
+                  Thx for listening I really appreciate you.<br/>
+                  <br/>
+                  Digital DL:<br/>
+                  ochamusic.bandcamp.com/releases<br/>
+                  <br/>
+                  Merch: teespring.com/stores/ochashop
+                </div>
+              </div>
+            </div>
           </div>
           {/* <div className="track-show-social-sidebar">
             side
