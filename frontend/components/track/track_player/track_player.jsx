@@ -1,15 +1,13 @@
 import React from 'react';
 import { TRACKS } from '../../placeholder_seeds';
-
-const randomTrack = Math.floor(Math.random(5));
 class TrackPlayer extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      artist: 'ocha',
-      title: 'iridscnt',
-      cover: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg',
-      url: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha+-+Love+Story+-+10+iridscnt..mp3',
+      artist: TRACKS[8].artist,
+      title: TRACKS[8].title,
+      cover: TRACKS[8].cover,
+      url: TRACKS[8].url,
       currentTime: '00:00',
       duration: '02:37',
       vol: 1
@@ -49,7 +47,6 @@ class TrackPlayer extends React.Component{
   }
 
   render(){
-    console.log(randomTrack)
     return(
       <>
         <audio id=""

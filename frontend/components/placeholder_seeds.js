@@ -72,3 +72,31 @@ export const TRACKS = [
     url: `https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha+-+Love+Story+-+10+iridscnt..mp3`
   }
 ];
+
+export const IRIDSCNT = {
+  title: `iridscnt`,
+  artist: `ocha`,
+  cover: `https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg`,
+  url: `https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha+-+Love+Story+-+10+iridscnt..mp3`
+}
+
+export const USERS = [
+  {
+    profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/harold.jpg',
+    username: 'harold',
+    followers: 76,
+    numTracks: 2
+  },
+  {
+    profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/jen.jpg',
+    username: 'jen',
+    followers: '54',
+    numTracks: '5'
+  },
+  {
+    profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/moss.jpg',
+    username: 'moss',
+    followers: '18,367',
+    numTracks: '3'
+  }
+];

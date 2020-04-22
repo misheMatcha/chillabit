@@ -23,8 +23,10 @@ class App extends React.Component{
         <Modal />
         <Route path="/" component={NavBar}/>
         <Switch>
-          <ProtectdRoute exact path="/" component={Discover}/>
+          {/* <ProtectdRoute exact path="/" component={Discover}/> */}
+          <ProtectdRoute exact path="/" component={TrackShow}/>
           <ProtectdRoute exact path="/discover" component={Discover}/>
+          <ProtectdRoute exact path="/Stream" component={TrackShow}/>
           <ProtectdRoute exact path="/upload" component={TrackUpload}/>
           <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow} audioRef={this.audioRef}/>
         </Switch>

@@ -1,25 +1,20 @@
 import React from 'react';
+import { IRIDSCNT } from '../../placeholder_seeds';
 
 class TrackShow extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      test1: ''
     }
   }
 
   componentDidMount(){
-    this.props.fetchTrack(this.props.match.params.id)
+    // this.props.fetchTrack(this.props.match.params.id)
   }
 
   render(){
-    // console.log("show: ", this.props)
     return(
       <div className="track-show">
-        {/* <audio
-          ref={this.props.audioPlayer}
-          src={this.state.test1}
-        /> */}
         <div className="track-show-wrap">
           <div className="track-show-details-wrap">
             <div className="track-show-details">
@@ -34,8 +29,8 @@ class TrackShow extends React.Component{
                   }} />
                 }
                 <div className="audio-wrap track-details">
-                  <p className="track-details artist">{this.props.track.artist}</p>
-                  <p className="track-details title">{this.props.track.name}</p>
+                  <p className="track-details artist">{IRIDSCNT.artist}</p>
+                  <p className="track-details title">{IRIDSCNT.title}</p>
                 </div>
               </div>
               <div className="misc-wrap">
@@ -47,7 +42,7 @@ class TrackShow extends React.Component{
               wavys
             </div>
           </div>
-          <img className="track-show-cover" src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg"/>
+          <img className="track-show-cover" src={IRIDSCNT.cover}/>
         </div>
       </div>
     );

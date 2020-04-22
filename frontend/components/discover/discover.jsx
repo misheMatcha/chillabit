@@ -1,31 +1,13 @@
 import React from 'react';
 import TrackList from '../track/track_list/track_list_contianer';
+import { USERS } from '../placeholder_seeds';
 
 class Discover extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       likes: 205,
-      followers: [
-        {
-          profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/harold.jpg',
-          username: 'harold',
-          followers: 76,
-          numTracks: 2
-        },
-        {
-          profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/jen.jpg',
-          username: 'jen',
-          followers: '54',
-          numTracks: '5'
-        },
-        {
-          profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/moss.jpg',
-          username: 'moss',
-          followers: '18,367',
-          numTracks: '3'
-        }
-      ],
+      followers: USERS,
       isFollowing: false
     }
     this.toggleFollow = this.toggleFollow.bind(this)
