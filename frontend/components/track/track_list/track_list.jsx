@@ -1,22 +1,23 @@
 import React from 'react';
 import TrackListItem from './track_list_item_container';
+import { TRACKS } from '../../placeholder_seeds';
 
 class TrackList extends React.Component{
   componentDidMount(){
-    this.props.fetchAllTracks();
+    // this.props.fetchAllTracks();
   }
 
   render(){
     return(
-      <div className="">
-        <p>{this.props.discTitle}</p>
-        <p>{this.props.discDesc}</p>
-        <ul>
+      <div className="track-list">
+        <p className="track-list-title">{this.props.discTitle}</p>
+        <p className="track-list-desc">{this.props.discDesc}</p>
+        <ul className="track-list-ul">
           {
-            this.props.allTracks.map((track, idx) => {
-              if(idx <= 12){
+            TRACKS.map((track, idx) => {
+              if(idx <= 11){
                 return(
-                  <li key={track.id}>
+                  <li key={idx}>
                     <TrackListItem track={track} />
                   </li>
                 )

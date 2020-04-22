@@ -1,5 +1,6 @@
 // Protected Nav Section
 .protected-nav-bg{
+  // border: 1px solid blue;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,9 +11,9 @@
   z-index: -1;
 }
 .protected-nav{
-  // position: sticky;
+  position: fixed;
+  // border: 1px solid red;
   display: flex;
-  // top: 0;
   background-color: #333333;
   color: #CCCCCC;
   font-family: 'Roboto', sans-serif;
@@ -20,7 +21,7 @@
   font-size: 15px;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 79.45rem;
 }
   .protected-nav-content{
     display: flex;
@@ -30,7 +31,7 @@
     .protected-nav-content-icon{
       height: 100%;
       width: 75px;
-      background-image: linear-gradient(rgb(57, 101, 155), rgb(26, 47, 72));
+      background-image: linear-gradient(45deg, #DF7B6C , #6578CB);
     }
       .protected-nav-content-icon-link{
         align-items: center;
@@ -39,7 +40,8 @@
         height: 100%;
       }
         .protected-nav-content-icon-link-active{
-          background-color: rgb(26, 47, 72);
+          // background-color: rgb(26, 47, 72);
+          background-color: #A77A9B;
         }
           .fab.fa-soundcloud.home {
             font-size: 35px;
@@ -97,8 +99,9 @@
         height: 100%;
       }
         .protected-nav-user-content-link-upgrade{
-          border: 1px dotted rgb(77, 129, 193);
-          color: rgb(77, 129, 193);
+          border: 1px dotted #DF7B6C;
+          // color: rgb(77, 129, 193);
+          color: #DF7B6C;
         }
 
 // Dropdown Section
@@ -128,7 +131,7 @@
     display: block;
     position: absolute;
     margin-top: 35px;
-    right: -2px;
+    right: 0px;
   }
     .nav-dropdown-content-block:hover{
       background-color: #333333;
@@ -168,9 +171,9 @@
       display: flex;
       justify-content: space-between;
     }
-      .auth-nav-splash-logo{
+    .auth-nav-splash-logo{
         display: flex;
-        width: 119px;
+        width: 8rem;
         justify-content: space-between;
         align-items: center;
         margin-left: 10px;
@@ -200,14 +203,22 @@
           }
           .signup-button {
             border-radius: 5px;
-            background-color: rgb(26, 47, 72);
+            background-color: #DF7B6C;
             padding: 10px 15px 10px 15px;
+            transition: 1s;
+          }
+          .signup-button:hover {
+            background-color: rgb(230, 150, 64);
           }
           .upload-button {
             border-radius: 5px;
-            background-color: rgb(26, 47, 72);
+            background-color: #DF7B6C;
             padding: 10px 15px 10px 15px;
             font-size: 15px;
+            transition: 1s;
+          }
+          .upload-button:hover{
+            background-color: rgb(230, 150, 64);
           }
           .creator-button {
             padding: 5px 13px 5px 13px;
