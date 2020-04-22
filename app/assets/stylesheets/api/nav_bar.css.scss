@@ -200,20 +200,22 @@
           }
           .signup-button {
             border-radius: 5px;
-            background-color: rgb(116, 78, 106);
+            background-color: #DF7B6C;
             padding: 10px 15px 10px 15px;
+            transition: 1s;
           }
           .signup-button:hover {
-            background-color: #A77A9B;
+            background-color: rgb(230, 150, 64);
           }
           .upload-button {
             border-radius: 5px;
-            background-color: rgb(116, 78, 106);
+            background-color: #DF7B6C;
             padding: 10px 15px 10px 15px;
             font-size: 15px;
+            transition: 1s;
           }
           .upload-button:hover{
-            background-color: #A77A9B;
+            background-color: rgb(230, 150, 64);
           }
           .creator-button {
             padding: 5px 13px 5px 13px;

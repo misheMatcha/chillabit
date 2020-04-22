@@ -48,11 +48,12 @@
 .splash-searchbar-upload{
   padding: 13px 15px 13px 15px;
   border-radius: 3px;
-  background-color: rgb(116, 78, 106);
+  background-color: #DF7B6C;
   color: white;
+  transition: 1s;
 }
 .splash-searchbar-upload:hover{
-  background-color: #A77A9B;
+  background-color: rgb(230, 150, 64);
 }
 
 // Trending Section
@@ -115,12 +116,13 @@
   width: 204px;
   align-self: center;
   margin: 28px 0px 56px 0px;
-  background-color: rgb(116, 78, 106);
+  background-color: #DF7B6C;
   color: white;
   border-radius: 3px;
+  transition: 1s;
 }
 .splash-trending-explore:hover{
-  background-color: #A77A9B;
+  background-color: rgb(230, 150, 64);
 }
 
 // App Section
@@ -152,7 +154,7 @@
         border: none;
         width: 80px;
         padding: 3px 0px 0px 0px;
-        background-image: linear-gradient(to right, purple , blue);
+        background-image: linear-gradient(to right, #DF7B6C , #6578CB);
       }
 
       .splash-app-text{
@@ -175,7 +177,7 @@
 
   .splash-creators-bg-trans{
     position: absolute;
-    background-color: rgba(62, 26, 72, 0.35);
+    background-color: rgba(132, 101, 203, 0.276);
     width: 84%;
     height: 75%;
     align-items: center;
@@ -186,10 +188,11 @@
     .splash-creators-bg-trans-link{
       padding: 13px 15px 13px 15px;
       border-radius: 3px;
-      background-color: rgb(116, 78, 106);
+      background-color: #DF7B6C;
+      transition: 1s;
     }
     .splash-creators-bg-trans-link:hover{
-      background-color: #A77A9B;
+      background-color: rgb(230, 150, 64);
     }
 
   .splash-creators-bg-trans-title{
@@ -231,13 +234,14 @@
   .splash-footer-signup{
     padding: 13px 50px 13px 50px;
     border-radius: 3px;
-    background-color: rgb(116, 78, 106);
+    background-color: #DF7B6C;
     color: white;
     height: auto;
     margin-top: 7px;
+    transition: 1s;
   }
   .splash-footer-signup:hover{
-    background-color: #A77A9B;
+    background-color: rgb(230, 150, 64);
   }
 
   .splash-footer-nav{

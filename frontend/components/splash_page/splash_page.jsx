@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import TrackList from '../track/track_list/track_list_contianer';
+import TrackList from '../track/track_list/track_list_contianer';
+import TrackListItem from '../track/track_list/track_list_item.jsx';
 
 class SplashPage extends React.Component {
   componentDidMount(){
     this.props.fetchAllTracks();
+    this.state = {
+      searchInput: ''
+    }
   }
   
   onHover(e){
@@ -15,14 +19,15 @@ class SplashPage extends React.Component {
     e.target.style.opacity = '0%';
   }
 
+
   render(){
     console.log(this.props.tracks)
     return (
       <div className="splash-container">
         <div className="splash-searchbar-container">
           <div className="splash-searchbar-search">
-            <input className="splash-searchbar-input" type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
-              <Link to="/404"><i className="fas fa-search splash"></i></Link>
+            <input className="splash-searchbar-input" type="text" placeholder="Search for artists, bands, tracks, podcasts" />
+            <button className="fas fa-search splash"/>
           </div>
           <p className="splash-searchbar-or">or</p>
           {this.props.login}
@@ -47,6 +52,7 @@ class SplashPage extends React.Component {
                             <p className="splash-tracks-title">{track.name}</p>
                             <p className="splash-tracks-artist">{track.artist}</p>
                           </div>
+                          {/* <TrackListItem track={track} /> */}
                         </li>
                     </div>
                     )
