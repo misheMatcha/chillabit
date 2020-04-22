@@ -77,7 +77,8 @@ export const IRIDSCNT = {
   title: `iridscnt`,
   artist: `ocha`,
   cover: `https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg`,
-  url: `https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha+-+Love+Story+-+10+iridscnt..mp3`
+  url: `https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha+-+Love+Story+-+10+iridscnt..mp3`,
+  profile: `https://chillabit-pro.s3-us-west-1.amazonaws.com/placeholder_data/users/ocha.jpg`
 }
 
 export const USERS = [
