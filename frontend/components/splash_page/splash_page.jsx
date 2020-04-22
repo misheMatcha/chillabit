@@ -4,11 +4,17 @@ import TrackList from '../track/track_list/track_list_contianer';
 import TrackListItem from '../track/track_list/track_list_item.jsx';
 
 class SplashPage extends React.Component {
-  componentDidMount(){
-    this.props.fetchAllTracks();
+  constructor(props){
+    super(props)
     this.state = {
       searchInput: ''
     }
+
+    this.searchInput = this.searchInput.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.fetchAllTracks();
   }
   
   onHover(e){
@@ -19,15 +25,22 @@ class SplashPage extends React.Component {
     e.target.style.opacity = '0%';
   }
 
+  handleInput(field){
+    return e => this.setState({[field]: e.target.value})
+  }
+
+  searchInput(e){
+    e.preventDefault()
+    console.log(`Searching for '`, this.state.searchInput, `'`);
+  }
 
   render(){
-    console.log(this.props.tracks)
     return (
       <div className="splash-container">
         <div className="splash-searchbar-container">
           <div className="splash-searchbar-search">
-            <input className="splash-searchbar-input" type="text" placeholder="Search for artists, bands, tracks, podcasts" />
-            <button className="fas fa-search splash"/>
+            <input className="splash-searchbar-input" type="text" placeholder="Search for artists, bands, tracks, podcasts" value={this.state.searchInput} onChange={this.handleInput('searchInput')}/>
+            <button className="fas fa-search splash" type="submit" onClick={this.searchInput}/>
           </div>
           <p className="splash-searchbar-or">or</p>
           {this.props.login}
@@ -44,14 +57,6 @@ class SplashPage extends React.Component {
                     return(
                       <div key={track.id} className="splash-tracks-container">
                         <li className="splash-tracks">
-                          {/* <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/the_day.jpg" className="splash-tracks-cover"/>
-                          <div className="splash-tracks-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
-                            <button className="fas fa-play-circle"/>
-                          </div>
-                          <div className="splash-tracks-details">
-                            <p className="splash-tracks-title">{track.name}</p>
-                            <p className="splash-tracks-artist">{track.artist}</p>
-                          </div> */}
                           <TrackListItem track={track} />
                         </li>
                     </div>
