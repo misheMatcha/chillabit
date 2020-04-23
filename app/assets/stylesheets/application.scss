@@ -12,6 +12,7 @@
  *
  *= require variables
  *= require reset
+ *= require error
  *= require_self
  *= require_tree .
  */
@@ -33,7 +34,7 @@ body {
   /* position: relative; */
   width: 100%;
   max-width: 1269px;
-  margin-top: 2.86rem;
+  // margin-top: 2.86rem;
 }
 
 @media all and (max-width: 1240px){

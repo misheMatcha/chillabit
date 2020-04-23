@@ -1,14 +1,24 @@
-// COLORS
+// TEXT COLORS
 $black: #333333;
-$light-gray: #999999;
+$gray: #999999;
+$light-gray: #CCCCCC;
+$search-gray: #4f5b66;
+
+// UI COLORS
 $white: #FFFFFF;
 $snow: #F2F2F2;
 $input-gray: rgb(191, 187, 187);
 $coral: #DF7B6C;
 $gold: rgb(230, 150, 64);
-$pastel: #6578CB;
+$lavandula: #6578CB;
+$thistle: #A77A9B;
+$border: #e5e5e5;
+$nav-border: #111111;
+
+// MISC
+$top-margin: 2.86rem;
 
 // FONTS
-$normal-size: 14px;
-$small-size: 11px;
+$normal: 14px;
+$small: 11px;
 $roboto: 'Roboto', sans-serif;

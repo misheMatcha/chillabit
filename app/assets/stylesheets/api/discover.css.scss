@@ -1,34 +1,18 @@
 @import "variables";
-// $yo: black;
 
-.discover-container{
+.discover{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 100%;
-  background-color: white;
-  font-family: 'Roboto', sans-serif;
-  margin-top: 2.86rem;
-  // position: relative;
-  // overflow: hidden;
+  margin-top: $top-margin;
+  background-color: $white;
+  font-family: $roboto;
 }
 
 .discover-main{
-  border-right: 1px solid $snow;
-  width: 72%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  // color: $yo;
-  // overflow: hidden;
-}
-
-.discover-bg{
-  // position: absolute;
-  // border: 1px solid black;
-  // height: 100%;
-  // width: 100%;
-  // top: 0;
-  // left: 0;
-  // z-index: -1;
+  width: 72%;
+  border-right: 1px solid $border;
 }
