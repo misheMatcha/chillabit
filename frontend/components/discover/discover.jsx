@@ -32,6 +32,7 @@ class Discover extends React.Component {
           <TrackList title={`More of what you like`} desc={`Suggestions based on what you've liked or played`} />
           <TrackList title={`Stay Home`} desc={`Tunes of isolation and self-care`} />
           <TrackList title={`Chillabit Charts`} desc={`The most played tracks on Chillabit this week`} />
+          <div className="discover-main-buffer"/>
         </div>
         <div className="sidebar-container">
           <Sidebar />

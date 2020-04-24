@@ -21,20 +21,18 @@ body {
   background-color:#F2F2F2;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 #root{
   width: 90%;
   display: flex;
   justify-content: center;
-  /* position: absolute; */
 }
 
 .app-container{
-  /* position: relative; */
   width: 100%;
   max-width: 1269px;
-  // margin-top: 2.86rem;
 }
 
 @media all and (max-width: 1240px){

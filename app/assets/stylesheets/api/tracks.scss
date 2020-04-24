@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+
 .track-show{
   // border: 1px solid blue;
   margin-top: 2.86rem;
@@ -9,17 +11,17 @@
 
 .track-show-wrap{
   display: flex;
+  background-image: linear-gradient(to right, $coral , $lavandula);
   padding: 1rem;
-  background-image: linear-gradient(to right, #DF7B6C , #6578CB);
   color: white;
 }
 
 .track-show-details-wrap{
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: 20rem;
-  justify-content: space-between;
 }
 
 .track-show-details{
@@ -62,7 +64,7 @@
 }
 
 .track-details.artist{
-  background-color: #6578CB;
+  background-color: $lavandula;
   text-align: center;
   font-size: .85rem;
   width: fit-content;
@@ -71,7 +73,7 @@
 }
 
 .track-details.title{
-  background-color: #6578CB;
+  background-color: $lavandula;
   text-align: center;
   font-size: 1.35rem;
   width: fit-content;
@@ -119,7 +121,7 @@
 }
   .track-show-social-main{
     // border: 1px solid black;
-    border-right: 1px solid #e5e5e5;
+    border-right: 1px solid $border;
     width: 68%;
     display: flex;
     flex-direction: column;
@@ -155,7 +157,7 @@
   .track-show-social-details-profile-stats{
     // border: 1px solid purple;
     font-size: 12px;
-    color: #999999;
+    color: $light-gray;
   }
   .track-show-social-details-com{
     // border: 1px solid black;
@@ -163,13 +165,13 @@
     margin-left: 2rem;
   }
   .sidebar-section-list-follower-button.profile{
-    background-color: #DF7B6C;
+    background-color: $coral;
     border: 1px solid rgb(225, 103, 85);
     color: white;
     transition: 1s;
   }
   .sidebar-section-list-follower-button.profile:hover{
-    background-color: rgb(230, 150, 64);
+    background-color: $gold;
   }
 
 
@@ -177,18 +179,13 @@
 // TRACKLIST
 .track-list{
   // border: 1px solid blue;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $border;
   margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  // align-content: center;
   font-size: 14px;
   color: #333;
-  // margin-left: 1rem;
   width: 54rem;
   height: 20.375rem;
-  // overflow: hidden;
+  overflow: hidden;
 }
 .track-list-title{
   font-size: 23px;
@@ -204,11 +201,8 @@
   // height: 16.563rem;
   // width: 10rem;
   margin-top: 1rem;
-  overflow: hidden;
+  // overflow: hidden;
 }
-  // .track-list-ul::-webkit-scrollbar{
-  //   display: none;
-  // }
 
 .track-list-ul li{
   // border: 1px solid red;
@@ -277,6 +271,5 @@
 
 
 .track-upload-container{
-  // probably change margin in app instead of each component
   margin-top: 2.86rem;
 }
