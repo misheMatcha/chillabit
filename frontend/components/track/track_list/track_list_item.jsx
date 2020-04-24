@@ -31,6 +31,7 @@ class TrackListItem extends React.Component{
     return(
       <div className="track-list-item">
         <div className="track-list-item-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
+        {/* <div className="track-list-item-hover"> */}
           <button className="fas fa-play-circle" onClick={this.togglePlay}/>
         </div>
         <img src={this.props.track.cover} className="track-list-item-cover"/>
