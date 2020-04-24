@@ -9,7 +9,7 @@ class TrackShow extends React.Component{
       likes: 205,
       followers: USERS,
       isFollowing: false,
-      comment: ''
+      comment: '',
     }
     this.submitComment = this.submitComment.bind(this);
   }
@@ -73,7 +73,17 @@ class TrackShow extends React.Component{
                 </div>
               </div>
               <div className="track-show-social-combar-stats">
-                stats
+                <div className="track-show-social-combar-stats-links">
+                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-heart"/> Like</button>
+                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-retweet"/> Repost</button>
+                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-list-ul"/> Add to Next up</button>
+                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-ellipsis-h"/> More</button>
+                </div>
+                <div className="track-show-social-combar-stats-stats">
+                  <p className="track-show-social-combar-stats-details"><i class="fas fa-play"/> {IRIDSCNT.plays}</p>
+                  <p className="track-show-social-combar-stats-details"><i class="fas fa-heart"/> {IRIDSCNT.likes}</p>
+                  <p className="track-show-social-combar-stats-details"><i class="fas fa-retweet"/> {IRIDSCNT.reposts}</p>
+                </div>
               </div>
             </div>
             <div className="track-show-social-details">

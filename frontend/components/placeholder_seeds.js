@@ -80,7 +80,10 @@ export const IRIDSCNT = {
   url: `https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha+-+Love+Story+-+10+iridscnt..mp3`,
   profile: `https://chillabit-pro.s3-us-west-1.amazonaws.com/placeholder_data/users/ocha.jpg`,
   followers: '6,358',
-  tracks: 72
+  tracks: 72,
+  plays: '29.1K',
+  reposts: 47,
+  likes: 457
 }
 
 export const USERS = [

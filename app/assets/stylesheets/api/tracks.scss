@@ -7,6 +7,9 @@
 // TRACK SHOW
 .track-show{
   margin-top: 2.86rem;
+  font-family: $roboto;
+  font-size: $normal;
+  color: $black;
 }
 
 .track-show-wrap{
@@ -157,41 +160,59 @@
       .track-show-social-combar-form-form{
         display: flex;
         justify-content: center;
-        width: 40rem;
+        width: 47rem;
         border: 1px solid $border;
         border-radius: .2rem;
         background-color: $white;
         color: $black;
       }
         .track-show-social-combar-form-input{
-          width: 39rem;
+          width: 46rem;
           height: 1.8rem;
         }
         .track-show-social-combar-form-input::placeholder{
           color: $gray;
         }
 
-
     .track-show-social-combar-stats{
-      border: 1px solid blue;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       height: 33px;
+      width: 99%;
     }
+      .track-show-social-combar-stats-links{
+        display: flex;
+        justify-content: space-evenly;
+        width: 43%;
+      }
+        .track-show-social-combar-stats-links-button{
+          border: 1px solid $border;
+          padding: 0.3rem .5rem 0.3rem .5rem;
+          border-radius: .3rem;
+        }
+
+
+      .track-show-social-combar-stats-stats{
+        display: flex;
+        font-size: $small;
+        color: $gray;
+      }
+        .track-show-social-combar-stats-details{
+          padding-left: 1rem;
+        }
 
 
   .track-show-social-details{
-    // border: 1px solid red;
     width: 95%;
     display: flex;
-    // justify-content: center;
     margin-top: 1rem;
   }
   .track-show-social-details-profile{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    // border: 1px solid black;
     height: 12.75rem;
-    // width: 10rem;
   }
   .track-show-social-details-profile-img{
     border-radius: 5rem;
