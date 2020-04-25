@@ -73,9 +73,9 @@ class TrackPlayer extends React.Component{
           <div className="track-player-current-details">
             <div className="track-player-track-info">
               <img className="track-album-cover" src={this.state.cover} />
-              <div className="">
-                <p>{this.state.artist}</p>
-                <p>{this.state.title}</p>
+              <div className="track-album-details">
+                <p className="track-album-details-artist">{this.state.artist}</p>
+                <p className="track-album-details-title">{this.state.title}</p>
               </div>
             </div>
             <div className="track-player-misc">
