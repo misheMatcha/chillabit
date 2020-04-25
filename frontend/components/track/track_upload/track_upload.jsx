@@ -40,31 +40,34 @@ class TrackUpload extends React.Component{
     return(
       <div className="track-upload-container">
         <UploadBar />
-        <div className="track-upload-advert">
-          <div className="">
-            <div className="">
-              <p>0% of free uploads used</p>
-              <i class="fas fa-chevron-down"/>
+        <div className="track-upload-main">
+
+          <div className="track-upload-advert-wrap">
+            <div className="track-upload-advert-details">
+              <div className="track-upload-advert-percentages">
+                <p className="track-upload-advert-percentages-p">0% of free uploads used</p>
+                <i class="fas fa-chevron-down"/>
+              </div>
+              <div className="track-upload-advert-percentages-bar"/>
+              <p className="track-upload-advert-percentages-ad"><a href="" target="blank">Try Pro Unlimited</a> for unlimited uploads.</p>
             </div>
-            <div className=""/>
-            <div className="">
-              <p className=""><a href="" target="blank">Try Pro Unlimited</a> for unlimited uploads.</p>
-            </div>
+            <button className="track-upload-advert-percentages-button">Try Pro Unlimited</button>
           </div>
-          <button className="">Try Pro Unlimited</button>
+
+          <form onSubmit={this.handleUpload}>
+            <label>Upload
+            <input type="file" onChange={this.handleFile}/>
+            </label>
+            <label>Title
+              <input placeholder="title"
+                type="text"
+                value={this.state.name}
+                onChange={this.updateInput("name")}/>
+            </label>
+            <button type="submit">Save</button>
+          </form>
+
         </div>
-        <form onSubmit={this.handleUpload}>
-          <label>Upload
-          <input type="file" onChange={this.handleFile}/>
-          </label>
-          <label>Title
-            <input placeholder="title"
-              type="text"
-              value={this.state.name}
-              onChange={this.updateInput("name")}/>
-          </label>
-          <button type="submit">Save</button>
-        </form>
       </div>
     );
   }

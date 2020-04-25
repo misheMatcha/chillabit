@@ -379,11 +379,8 @@
 }
 
 .track-list-item-title{
-  // display: inline;
   color: #333;
-  // font-size: 14px;
   width: 172.97px;
-  // white-space: nowrap;
 }
 
 .track-list-item-artist{
@@ -394,19 +391,64 @@
 
 // TRACK UPLOAD
 .track-upload-container{
-  border: 1px solid purple;
+  // border: 1px solid black;
   margin-top: 2.86rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: $white;
   color: $black;
   font-size: $normal;
 }
-  .track-upload-advert{
-    border: 1px solid purple;
+  .track-upload-main{
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 10rem;
+  }
+  .track-upload-advert-wrap{
+    border: 1px solid $border;
+    border-radius: .2rem;
     display: flex;
     justify-content: space-between;
-    width: 75%;
+    align-items: center;
+    width: 57%;
+    height: 54px;
+    // padding: 0 1rem 0 1rem;
+    padding: 1rem;
   }
+    .track-upload-advert-details{
+      // border: 1px solid red;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 63px;
+    }
+      .track-upload-advert-percentages{
+        display: flex;
+        justify-content: space-between;
+      }
+        .track-upload-advert-percentages-p{
+          font-weight: bold;
+        }
+        .track-upload-advert-percentages-bar{
+          background-color: $border;
+          height: 4px;
+          width: 410px;
+          font-weight: 410px;
+        }
+        .track-upload-advert-percentages-ad{
+          font-size: $small;
+          color: $gray;
+        }
+          .track-upload-advert-percentages-ad a{
+            color: blue;
+          }
+        .track-upload-advert-percentages-button{
+          border: 1px solid $coral;
+          border-radius: .2rem;
+          color: $coral;
+          height: 30px;
+          padding: 0rem .5rem 0rem 0.5rem;
+        }
