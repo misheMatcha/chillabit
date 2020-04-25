@@ -392,7 +392,21 @@
   margin-top: .15rem;
 }
 
-
+// TRACK UPLOAD
 .track-upload-container{
+  border: 1px solid purple;
   margin-top: 2.86rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $white;
+  color: $black;
+  font-size: $normal;
 }
+  .track-upload-advert{
+    border: 1px solid purple;
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+  }

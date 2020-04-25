@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import UploadBar from '../../upload/upload_bar.jsx';
 
 class TrackUpload extends React.Component{
   constructor(props){
@@ -38,6 +39,20 @@ class TrackUpload extends React.Component{
   render(){
     return(
       <div className="track-upload-container">
+        <UploadBar />
+        <div className="track-upload-advert">
+          <div className="">
+            <div className="">
+              <p>0% of free uploads used</p>
+              <i class="fas fa-chevron-down"/>
+            </div>
+            <div className=""/>
+            <div className="">
+              <p className=""><a href="" target="blank">Try Pro Unlimited</a> for unlimited uploads.</p>
+            </div>
+          </div>
+          <button className="">Try Pro Unlimited</button>
+        </div>
         <form onSubmit={this.handleUpload}>
           <label>Upload
           <input type="file" onChange={this.handleFile}/>
