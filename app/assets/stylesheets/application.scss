@@ -10,27 +10,27 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_variables
+ *= require variables
  *= require reset
- *= require_tree .
+ *= require error
  *= require_self
+ *= require_tree .
  */
 
 body {
   background-color:#F2F2F2;
   display: flex;
   justify-content: center;
+  // overflow-x: hidden;
 }
 
 #root{
   width: 90%;
   display: flex;
   justify-content: center;
-  /* position: absolute; */
 }
 
 .app-container{
-  /* position: relative; */
   width: 100%;
   max-width: 1269px;
 }

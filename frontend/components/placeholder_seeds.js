@@ -80,7 +80,10 @@ export const IRIDSCNT = {
   url: `https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha+-+Love+Story+-+10+iridscnt..mp3`,
   profile: `https://chillabit-pro.s3-us-west-1.amazonaws.com/placeholder_data/users/ocha.jpg`,
   followers: '6,358',
-  tracks: 72
+  tracks: 72,
+  plays: '29.1K',
+  reposts: 47,
+  likes: 457
 }
 
 export const USERS = [
@@ -88,18 +91,24 @@ export const USERS = [
     profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/harold.jpg',
     username: 'harold',
     followers: 76,
-    numTracks: 2
+    numTracks: 2,
+    comment: `this bop is the one`,
+    commentDate: '2 weeks ago'
   },
   {
     profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/jen.jpg',
     username: 'jen',
     followers: '54',
-    numTracks: '5'
+    numTracks: '5',
+    comment: `feeling  w a v y`,
+    commentDate: '3 months ago'
   },
   {
     profileImg: 'https://chillabit-pro.s3-us-west-1.amazonaws.com/moss.jpg',
     username: 'moss',
     followers: '18,367',
-    numTracks: '3'
+    numTracks: '3',
+    comment: `banger`,
+    commentDate: '7 months ago'
   }
 ];

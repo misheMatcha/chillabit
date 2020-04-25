@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import NavBar from './nav_bar';
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { openModal } from '../../actions/modal_actions';
 
 const mSTP = ({ session, entities: { users } }) => ({
   currentUser: users[session.id]
@@ -24,8 +24,7 @@ const mDTP = dispatch => ({
     <button className="upload-button" onClick={() => dispatch(openModal("login"))}>
       Start uploading today
     </button>
-  ),
-  closeModal: () => dispatch(closeModal)
+  )
 });
 
 export default connect(mSTP, mDTP)(NavBar);

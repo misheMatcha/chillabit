@@ -1,5 +1,6 @@
 import React from 'react';
 import { IRIDSCNT, USERS } from '../../placeholder_seeds';
+import Sidebar from '../../sidebar/sidebar.jsx';
 
 class TrackShow extends React.Component{
   constructor(props){
@@ -7,15 +8,28 @@ class TrackShow extends React.Component{
     this.state = {
       likes: 205,
       followers: USERS,
-      isFollowing: false
+      isFollowing: false,
+      comment: '',
     }
+    this.submitComment = this.submitComment.bind(this);
   }
 
   componentDidMount(){
     // this.props.fetchTrack(this.props.match.params.id)
   }
 
+  handleComment(field){
+    return e => this.setState({[field]: e.target.value})
+  }
+
+  submitComment(e){
+    e.preventDefault();
+    console.log('Submit comment: `', this.state.comment, '`');
+    this.setState({comment: ''});
+  }
+
   render(){
+    console.log(this.state.comment)
     return(
       <div className="track-show">
         <div className="track-show-wrap">
@@ -49,7 +63,29 @@ class TrackShow extends React.Component{
         </div>
         <div className="track-show-social">
           <div className="track-show-social-main">
-            {/* <div className="track-show-social-combar-wrap">comment bar</div> */}
+            <div className="track-show-social-combar-wrap">
+              <div className="track-show-social-combar">
+                <img src={IRIDSCNT.profile} className="track-show-social-combar-profile"/>
+                <div className="track-show-social-combar-form">
+                  <form onSubmit={this.submitComment} className="track-show-social-combar-form-form">
+                    <input type="text" className="track-show-social-combar-form-input" placeholder="Write a comment" value={this.state.comment} onChange={this.handleComment('comment')}/>
+                  </form>
+                </div>
+              </div>
+              <div className="track-show-social-combar-stats">
+                <div className="track-show-social-combar-stats-links">
+                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-heart"/> Like</button>
+                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-retweet"/> Repost</button>
+                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-list-ul"/> Add to Next up</button>
+                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-ellipsis-h"/> More</button>
+                </div>
+                <div className="track-show-social-combar-stats-stats">
+                  <p className="track-show-social-combar-stats-details"><i class="fas fa-play"/> {IRIDSCNT.plays}</p>
+                  <p className="track-show-social-combar-stats-details"><i class="fas fa-heart"/> {IRIDSCNT.likes}</p>
+                  <p className="track-show-social-combar-stats-details"><i class="fas fa-retweet"/> {IRIDSCNT.reposts}</p>
+                </div>
+              </div>
+            </div>
             <div className="track-show-social-details">
               <div className="track-show-social-details-profile">
                 <img className="track-show-social-details-profile-img" src={IRIDSCNT.profile} />
@@ -71,7 +107,7 @@ class TrackShow extends React.Component{
                 </button>
               </div>
               <div className="track-show-social-details-com">
-                <div>
+                <div className="track-show-social-details-com-desc">
                   19 new songs {`<3`}<br/>
                   I have put every drop of my creativity and time into this project.<br/>
                   Thx for listening I really appreciate you.<br/>
@@ -81,100 +117,36 @@ class TrackShow extends React.Component{
                   <br/>
                   Merch: <a href="teespring.com/stores/ochashop" target="blank">teespring.com/stores/ochashop</a>
                 </div>
-              </div>
-            </div>
-          </div>
-          {/* <div className="track-show-social-sidebar">
-            side
-          </div> */}
-          <div className="sidebar-container">
-          <div className="discover-sidebar-advert">
-            <div className="sidebar-advert-details">
-              <div className="sidebar-advert-gradient">HEY<br/>HEY</div>
-              <div className="sidebar-advert-text">
-                <div className="sidebar-advert-text-bold">
-                  Swap tracks
-                  <br/>
-                  Keep the stats
-                </div>
-                <div className="sidebar-advert-text-normal">
-                  A pro account lets you replace tracks without losing stats
-                </div>
-              </div>
-            </div>
-            <button className="sidebar-advert-button">Get pro</button>
-          </div>
-
-          {/* dry up code later */}
-          <div className="sidebar-section">
-            <div className="sidebar-section-nav">
-              <div className="sidebar-section-nav-title">
-                <i className="fas fa-user-friends"/>
-                <p className="sidebar-section-nav-title-text">Who to follow</p>
-              </div>
-              <div className="sidebar-section-nav-title">
-                <i className="fas fa-redo"/>
-                <p className="sidebar-section-nav-title-text">Refresh</p>
-              </div>
-            </div>
-            <div className="sidebar-section-list">
-              <ul className="sidebar-section-list-ul">
-                {
-                  this.state.followers.map((follower, idx) => {
-                    return(
-                      <li key={idx} className="sidebar-section-list-li">
-                        <div className="sidebar-section-list-follower">
-                          <div className="sidebar-section-list-follower-wrap">
-                            <img src={follower.profileImg} className="sidebar-section-list-photo"/>
-                            <div className="sidebar-section-list-follower-details">
-                              <p className="sidebar-section-list-follower-details-username">{follower.username}</p>
-                              <div className="sidebar-section-list-follower-details-text">
-                                <div className="sidebar-section-list-follower-details-info">
-                                  <i className="fas fa-user-friends"/>
-                                  <p className="sidebar-section-list-follower-details-info-p">{follower.followers}</p>
-                                </div>
-                                <div className="sidebar-section-list-follower-details-info margin">
-                                  <i className="fas fa-tag"/>
-                                  <p className="sidebar-section-list-follower-details-info-p">{follower.numTracks}</p>
-                                </div>
+                <div className="track-show-social-details-com-section">
+                  <div className="track-show-social-details-com-section-title">
+                    <i class="fas fa-comment-alt" /><p className="track-show-social-details-com-section-title-p">{USERS.length} comments</p>
+                  </div>
+                  <div className="track-show-social-details-com-section-details">
+                    <ul className="track-show-social-details-com-section-ul">
+                      {
+                        USERS.map((user, idx) => (
+                          <li key={idx} className="track-show-social-details-com-section-li">
+                            <div className="track-show-social-details-com-section-user-dets">
+                              <img src={user.profileImg} className="track-show-social-details-com-section-profile"/>
+                              <div className="track-show-social-details-com-section-text">
+                                <p>{user.username}</p>
+                                <p className="track-show-social-details-com-section-text-p">{user.comment}</p>
                               </div>
                             </div>
-                          </div>
-                          <button className="sidebar-section-list-follower-button" onClick={this.toggleFollow}><i className="fas fa-user-plus"/> Follow
-                          </button>
-                        </div>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-          </div>
-
-          <div className="sidebar-section">
-            <div className="sidebar-section-nav">
-              <div className="sidebar-section-nav-title">
-                <i className="fas fa-heart"/>
-                <p className="sidebar-section-nav-title-text">{this.state.likes} likes</p>
-              </div>
-              <div className="sidebar-section-nav-title">
-                <p className="sidebar-section-nav-title-text">View all</p>
+                            <div className="track-show-social-details-com-section-date">
+                              <p>{user.commentDate}</p>
+                            </div>
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          <div className="sidebar-section">
-            <div className="sidebar-section-nav">
-              <div className="sidebar-section-nav-title">
-                <i className="far fa-calendar"/>
-                <p className="sidebar-section-nav-title-text">Listening history</p>
-              </div>
-              <div className="sidebar-section-nav-title">
-                <p className="sidebar-section-nav-title-text">View all</p>
-              </div>
-            </div>
-          </div>
-
+          <div className="sidebar-container">
+            <Sidebar />
         </div>
         </div>
       </div>

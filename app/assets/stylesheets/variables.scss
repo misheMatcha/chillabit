@@ -1,10 +1,26 @@
-// colors
-$text: #333333;
+// TEXT COLORS
+$black: #333333;
+$gray: #999999;
+$light-gray: #CCCCCC;
+$search-gray: #4f5b66;
+
+// UI COLORS
+$white: #FFFFFF;
 $snow: #F2F2F2;
 $input-gray: rgb(191, 187, 187);
-$white: white;
-$navy: rgb(26, 47, 72);
+$coral: #DF7B6C;
+$gold: rgb(230, 150, 64);
+$lavandula: #6578CB;
+$thistle: #A77A9B;
+$border: #e5e5e5;
+$nav-border: #111111;
+$track-border: #cecece;
 
-// font
+// MISC
+$top-margin: 2.86rem;
+
+// FONTS
+$normal: 14px;
+$mid-small: 12px;
+$small: 11px;
 $roboto: 'Roboto', sans-serif;
-$cursive: 'Shadows Into Light', cursive;

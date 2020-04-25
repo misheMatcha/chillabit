@@ -1,44 +1,45 @@
+@import 'variables';
 .splash-container{
   position: relative;
-  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: white;
-  color: #333333;
+  font-family: $roboto;
+  background-color: $white;
+  color: $black;
 }
 
 // Search Bar Section
 .splash-searchbar-container{
-  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
   align-content: center;
+  height: 100px;
 }
   .splash-searchbar-search{
-    background-color: #F2F2F2;
-    border-radius: 5px;
-    width: 500px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 500px;
+    background-color: $snow;
+    border-radius: 5px;
   }
     .splash-searchbar-input{
       width: 453px;
       height: 44px;
       text-align: left;
       border-radius: 3px;
-      background-color: #F2F2F2;
+      background-color: $snow;
       color: rgb(191, 187, 187);
       padding-left: 10px;
     }
 
   .fas.fa-search.splash {
-    font-size: 25px;
     margin-right: 10px;
     margin-top: 7px;
+    font-size: 25px;
   }
 
   .splash-searchbar-or{
@@ -48,12 +49,12 @@
 .splash-searchbar-upload{
   padding: 13px 15px 13px 15px;
   border-radius: 3px;
-  background-color: #DF7B6C;
+  background-color: $coral;
   color: white;
   transition: 1s;
 }
 .splash-searchbar-upload:hover{
-  background-color: rgb(230, 150, 64);
+  background-color: $gold;
 }
 
 // Trending Section
@@ -68,7 +69,7 @@
   }
 
   .splash-tracks-container{
-  border: 1px solid white;
+  border: 1px solid $white;
 }
 
 .album-track-display{
@@ -87,48 +88,19 @@
     max-height: 257.98px;
     font-size: 14px;
   }
-    .splash-tracks-cover{
-      border: 1px solid #cecece;
-      max-width: 179px;
-      max-height: 179px;
-    }
-
-    .splash-tracks-details{
-      // height: 4.77rem;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      margin-top: .3rem;
-    }
-      .splash-tracks-artist{
-        color: #999;
-        font-size: 12px;
-        margin-top: .1rem;
-      }
-
-.splash-tracks-hover{
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  width: 11.19rem;
-  height: 11rem;
-  margin-top: -11rem;
-  opacity: 0;
-  background-image: linear-gradient(rgba(255,0,0,0), rgba(61, 57, 80, 0.639));
-}
 
 .splash-trending-explore{
   padding: 10px 0px 10px 0px;
   width: 204px;
   align-self: center;
   margin: 0px 0px 56px 0px;
-  background-color: #DF7B6C;
-  color: white;
+  background-color: $coral;
+  color: $white;
   border-radius: 3px;
   transition: 1s;
 }
 .splash-trending-explore:hover{
-  background-color: rgb(230, 150, 64);
+  background-color: $gold;
 }
 
 // App Section
@@ -149,7 +121,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      background-color: #F2F2F2;
+      background-color: $snow;
     }
       .splash-app-title{
         font-size: 35px;
@@ -170,10 +142,10 @@
 // Creators Section
 .splash-creators-container{
   position: relative;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: $white;
 }
 .splash-creators-bg{
   width: 100%;
@@ -194,11 +166,11 @@
     .splash-creators-bg-trans-link{
       padding: 13px 15px 13px 15px;
       border-radius: 3px;
-      background-color: #DF7B6C;
+      background-color: $coral;
       transition: 1s;
     }
     .splash-creators-bg-trans-link:hover{
-      background-color: rgb(230, 150, 64);
+      background-color: $gold;
     }
 
   .splash-creators-bg-trans-title{
@@ -240,14 +212,14 @@
   .splash-footer-signup{
     padding: 13px 50px 13px 50px;
     border-radius: 3px;
-    background-color: #DF7B6C;
-    color: white;
+    background-color: $coral;
+    color: $white;
     height: auto;
     margin-top: 7px;
     transition: 1s;
   }
   .splash-footer-signup:hover{
-    background-color: rgb(230, 150, 64);
+    background-color: $gold;
   }
 
   .splash-footer-nav{
