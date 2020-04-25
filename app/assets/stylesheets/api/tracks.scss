@@ -226,11 +226,72 @@
     font-size: 12px;
     color: $light-gray;
   }
+
   .track-show-social-details-com{
     // border: 1px solid black;
     width: 81%;
     margin-left: 2rem;
   }
+    .track-show-social-details-com-desc{
+      // border: 1px solid black;
+    }
+    .track-show-social-details-com-section{
+      // border: 1px solid black;
+      padding-top: 1rem;
+    }
+      .track-show-social-details-com-section-title{
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $border;
+        height: 28px;
+        color: $gray;
+      }
+        .track-show-social-details-com-section-title-p{
+          padding-left: .3rem;
+        }
+      .track-show-social-details-com-section-details{
+        // border: 1px solid blue;
+      }
+        .track-show-social-details-com-section-ul{
+          //  border: 1px solid red;
+        }
+          .track-show-social-details-com-section-li{
+            //  border: 1px solid red;
+             display: flex;
+             justify-content: space-between;
+             padding-top: 1rem;
+             font-size: $mid-small;
+             font-family: $roboto;
+          }
+            .track-show-social-details-com-section-user-dets{
+              //  border: 1px solid red;
+               display: flex;
+            }
+              .track-show-social-details-com-section-profile{
+                width: 40px;
+                border-radius: 2rem;
+              }
+                .track-show-social-details-com-section-text{
+                  //  border: 1px solid red;
+                   display: flex;
+                   flex-direction: column;
+                   padding-left: .5rem;
+                   color: $gray;
+                }
+                  .track-show-social-details-com-section-text-p{
+                    padding-top: .35rem;
+                    color: $black;
+                  }
+
+
+              .track-show-social-details-com-section-date{
+                //  border: 1px solid red;
+                color: $gray;
+              }
+
+
+
+
   .sidebar-section-list-follower-button.profile{
     background-color: $coral;
     border: 1px solid rgb(225, 103, 85);

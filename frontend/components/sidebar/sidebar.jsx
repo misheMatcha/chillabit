@@ -47,30 +47,32 @@ class Sidebar extends React.Component {
               <ul className="sidebar-section-list-ul">
                 {
                   this.state.followers.map((follower, idx) => {
-                    return (
-                      <li key={idx} className="sidebar-section-list-li">
-                        <div className="sidebar-section-list-follower">
-                          <div className="sidebar-section-list-follower-wrap">
-                            <img src={follower.profileImg} className="sidebar-section-list-photo" />
-                            <div className="sidebar-section-list-follower-details">
-                              <p className="sidebar-section-list-follower-details-username">{follower.username}</p>
-                              <div className="sidebar-section-list-follower-details-text">
-                                <div className="sidebar-section-list-follower-details-info">
-                                  <i className="fas fa-user-friends" />
-                                  <p className="sidebar-section-list-follower-details-info-p">{follower.followers}</p>
-                                </div>
-                                <div className="sidebar-section-list-follower-details-info margin">
-                                  <i className="fas fa-tag" />
-                                  <p className="sidebar-section-list-follower-details-info-p">{follower.numTracks}</p>
+                    if(idx < 3){
+                      return (
+                        <li key={idx} className="sidebar-section-list-li">
+                          <div className="sidebar-section-list-follower">
+                            <div className="sidebar-section-list-follower-wrap">
+                              <img src={follower.profileImg} className="sidebar-section-list-photo" />
+                              <div className="sidebar-section-list-follower-details">
+                                <p className="sidebar-section-list-follower-details-username">{follower.username}</p>
+                                <div className="sidebar-section-list-follower-details-text">
+                                  <div className="sidebar-section-list-follower-details-info">
+                                    <i className="fas fa-user-friends" />
+                                    <p className="sidebar-section-list-follower-details-info-p">{follower.followers}</p>
+                                  </div>
+                                  <div className="sidebar-section-list-follower-details-info margin">
+                                    <i className="fas fa-tag" />
+                                    <p className="sidebar-section-list-follower-details-info-p">{follower.numTracks}</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
+                            <button className="sidebar-section-list-follower-button" onClick={this.toggleFollow}><i className="fas fa-user-plus" /> Follow
+                            </button>
                           </div>
-                          <button className="sidebar-section-list-follower-button" onClick={this.toggleFollow}><i className="fas fa-user-plus" /> Follow
-                          </button>
-                        </div>
-                      </li>
-                    )
+                        </li>
+                      )
+                    }
                   })
                 }
               </ul>

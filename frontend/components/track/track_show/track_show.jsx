@@ -107,7 +107,7 @@ class TrackShow extends React.Component{
                 </button>
               </div>
               <div className="track-show-social-details-com">
-                <div>
+                <div className="track-show-social-details-com-desc">
                   19 new songs {`<3`}<br/>
                   I have put every drop of my creativity and time into this project.<br/>
                   Thx for listening I really appreciate you.<br/>
@@ -116,6 +116,31 @@ class TrackShow extends React.Component{
                   <a href="ochamusic.bandcamp.com/releases" target="blank">ochamusic.bandcamp.com/releases</a><br/>
                   <br/>
                   Merch: <a href="teespring.com/stores/ochashop" target="blank">teespring.com/stores/ochashop</a>
+                </div>
+                <div className="track-show-social-details-com-section">
+                  <div className="track-show-social-details-com-section-title">
+                    <i class="fas fa-comment-alt" /><p className="track-show-social-details-com-section-title-p">{USERS.length} comments</p>
+                  </div>
+                  <div className="track-show-social-details-com-section-details">
+                    <ul className="track-show-social-details-com-section-ul">
+                      {
+                        USERS.map((user, idx) => (
+                          <li key={idx} className="track-show-social-details-com-section-li">
+                            <div className="track-show-social-details-com-section-user-dets">
+                              <img src={user.profileImg} className="track-show-social-details-com-section-profile"/>
+                              <div className="track-show-social-details-com-section-text">
+                                <p>{user.username}</p>
+                                <p className="track-show-social-details-com-section-text-p">{user.comment}</p>
+                              </div>
+                            </div>
+                            <div className="track-show-social-details-com-section-date">
+                              <p>{user.commentDate}</p>
+                            </div>
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
