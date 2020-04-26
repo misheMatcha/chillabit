@@ -552,18 +552,23 @@
               }
             .track-upload-form-details-label{
               border: 1px solid $border;
-              border-radius: .2rem;
+              border-radius: .3rem;
               display: flex;
               align-items: center;
               width: 410px;
               height: 26px;
               // padding: 1rem;
-              margin-top: 1rem;
+              margin-top: .5rem;
             }
               .track-upload-form-details-input{
                 // border: 1px solid red;
-                padding-left: 1rem;
+                padding-left: .5rem;
               }
+
+            .track-upload-form-details-url{
+              color: $gray;
+              margin-top: .5rem;
+            }
 
     .track-upload-form-sub{
       // border: 1px solid $border;

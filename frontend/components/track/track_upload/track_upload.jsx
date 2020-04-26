@@ -84,6 +84,9 @@ class TrackUpload extends React.Component{
                           value={this.state.name}
                           onChange={this.updateInput("name")} className="track-upload-form-details-input"/>
                       </label>
+                      <div className="track-upload-form-details-url">
+                        chillabit.herokuapp.com/{this.props.currentUser.username}/{this.state.name}
+                      </div>
                     </div>
 
                   </div>
