@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import UploadBar from '../../upload/upload_bar.jsx';
 
 class TrackUpload extends React.Component{
@@ -65,13 +65,37 @@ class TrackUpload extends React.Component{
                 </label>
               </div>
               <div className="track-upload-form-details">
-                <label>Title
-                  <input placeholder="title"
-                    type="text"
-                    value={this.state.name}
-                    onChange={this.updateInput("name")}/>
-                </label>
-                <button type="submit">Save</button>
+                <div className="track-upload-form-details-nav">
+                  <NavLink exact to="/" className="" activeClassName="">Basic info</NavLink>
+                  <NavLink exact to="/" className="" activeClassName="">Metadata</NavLink>
+                  <NavLink exact to="/" className="" activeClassName="">Permissions</NavLink>
+                </div>
+
+
+
+
+                <div className="track-upload-form-details-wrap">
+                  <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" className="track-upload-form-details-cover"/>
+                  <div className="track-upload-form-details-info-wrap">
+                    <div className="track-upload-form-details-title">
+                      Title <p className="required">*</p>
+                    </div>
+                    <label className="track-upload-form-details-label">
+                      <input placeholder="Name your track"
+                        type="text"
+                        value={this.state.name}
+                        onChange={this.updateInput("name")} className="track-upload-form-details-input"/>
+                    </label>
+                  </div>
+                </div>
+
+
+
+
+                <div className="">
+                  save options
+                  <button type="submit">Save</button>
+                </div>
               </div>
             </form>
           </div>
