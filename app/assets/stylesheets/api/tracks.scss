@@ -452,3 +452,47 @@
           height: 30px;
           padding: 0rem .5rem 0rem 0.5rem;
         }
+
+  .track-upload-form{
+    border: 1px solid $border;
+    border-radius: .2rem;
+    background-color: $white;
+    width: 57%;
+    height: 388px;
+    padding: 1rem;
+    margin-top: 1rem;
+    filter: drop-shadow(0 .1rem .15rem #CCCCCC);
+  }
+    .track-upload-form-wrap{
+      // border: 1px solid red;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+      .track-upload-form-instruct{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 22px;
+        padding: 1rem;
+        height: 100px;
+      }
+        .track-upload-form-label{
+          border: 1px solid red;
+          border-radius: .3rem;
+          background-color: $coral;
+          color: $white;
+          width: fit-content;
+          padding: .7rem 3rem .7rem 3rem;
+          font-size: $normal;
+        }
+        input[type="file"]{
+          display: none;
+        }
+
+      .track-upload-form-details{
+        border: 1px solid red;
+      }

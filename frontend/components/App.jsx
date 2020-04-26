@@ -11,8 +11,6 @@ import TrackUpload from './track/track_upload/track_upload_container';
 import TrackShow from './track/track_show/track_show_container';
 import TrackPlayer from './track/track_player/track_player_container';
 
-import Upload from './upload/upload_container';
-
 class App extends React.Component{
   constructor(props){
     super(props)

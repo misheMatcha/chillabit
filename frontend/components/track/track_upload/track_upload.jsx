@@ -54,18 +54,31 @@ class TrackUpload extends React.Component{
             <button className="track-upload-advert-percentages-button">Try Pro Unlimited</button>
           </div>
 
-          <form onSubmit={this.handleUpload}>
-            <label>Upload
-            <input type="file" onChange={this.handleFile}/>
-            </label>
-            <label>Title
-              <input placeholder="title"
-                type="text"
-                value={this.state.name}
-                onChange={this.updateInput("name")}/>
-            </label>
-            <button type="submit">Save</button>
-          </form>
+          <div className="track-upload-form">
+            {/* NOTE: review active strorage using a possible DirectUpload class */}
+            <form className="track-upload-form-wrap" onSubmit={this.handleUpload}>
+              <div className="track-upload-form-instruct">
+                Drag and drop your tracks & albums here
+                <label className="track-upload-form-label">
+                  or choose files to upload
+                  <input type="file" onChange={this.handleFile}/>
+                </label>
+              </div>
+              <div className="track-upload-form-details">
+                <label>Title
+                  <input placeholder="title"
+                    type="text"
+                    value={this.state.name}
+                    onChange={this.updateInput("name")}/>
+                </label>
+                <button type="submit">Save</button>
+              </div>
+            </form>
+          </div>
+          <div className="">
+            a bunch of text
+          </div>
+
 
         </div>
       </div>
