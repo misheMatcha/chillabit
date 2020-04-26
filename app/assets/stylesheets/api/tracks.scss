@@ -502,8 +502,25 @@
         flex-direction: column;
       }
         .track-upload-form-details-nav{
-          // border: 1px solid blue;
+          border-bottom: 1px solid $border;
+          // border: 1px solid black;
+          display: flex;
+          align-items: center;
+          height: 39px;
+          font-size: 24px;
         }
+          .track-upload-form-details-nav-link{
+            // border-bottom: 1px solid red;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-left: 1rem;
+            
+          }
+          .track-upload-form-details-nav-link-active{
+            border-bottom: 1px solid $coral;
+            color: $coral;
+          }
 
       .track-upload-form-details-wrap{
         // border: 1px solid blue;
@@ -583,3 +600,8 @@
           color: $white;
           padding: 0.2rem .7rem 0.2rem 0.7rem;
         }
+
+  .track-upload-footer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }

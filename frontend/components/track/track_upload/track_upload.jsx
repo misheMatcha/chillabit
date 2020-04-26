@@ -66,9 +66,9 @@ class TrackUpload extends React.Component{
               </div>
               <div className="track-upload-form-details">
                 <div className="track-upload-form-details-nav">
-                  <NavLink exact to="/" className="" activeClassName="">Basic info</NavLink>
-                  <NavLink exact to="/" className="" activeClassName="">Metadata</NavLink>
-                  <NavLink exact to="/" className="" activeClassName="">Permissions</NavLink>
+                  <NavLink exact to="/" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Basic info</NavLink>
+                  <NavLink exact to="/upload" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Metadata</NavLink>
+                  <NavLink exact to="/upload" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Permissions</NavLink>
                 </div>
                 <div className="track-upload-form-details-wrap">
                   <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" className="track-upload-form-details-cover"/>
@@ -100,8 +100,8 @@ class TrackUpload extends React.Component{
               </div>
             </form>
           </div>
-          <div className="">
-            a bunch of text
+          <div className="track-upload-footer">
+            By uploading, you confirm that your sounds comply with our Terms of Use and you don't infringe anyone else's rights.
           </div>
 
 
