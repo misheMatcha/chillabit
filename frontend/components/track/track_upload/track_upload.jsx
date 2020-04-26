@@ -70,31 +70,32 @@ class TrackUpload extends React.Component{
                   <NavLink exact to="/" className="" activeClassName="">Metadata</NavLink>
                   <NavLink exact to="/" className="" activeClassName="">Permissions</NavLink>
                 </div>
-
-
-
-
                 <div className="track-upload-form-details-wrap">
                   <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" className="track-upload-form-details-cover"/>
-                  <div className="track-upload-form-details-info-wrap">
-                    <div className="track-upload-form-details-title">
-                      Title <p className="required">*</p>
+                  <div className="track-upload-form-info-main">
+
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Title <p className="required">*</p>
+                      </div>
+                      <label className="track-upload-form-details-label">
+                        <input placeholder="Name your track"
+                          type="text"
+                          value={this.state.name}
+                          onChange={this.updateInput("name")} className="track-upload-form-details-input"/>
+                      </label>
                     </div>
-                    <label className="track-upload-form-details-label">
-                      <input placeholder="Name your track"
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.updateInput("name")} className="track-upload-form-details-input"/>
-                    </label>
+
                   </div>
                 </div>
-
-
-
-
-                <div className="">
-                  save options
-                  <button type="submit">Save</button>
+                <div className="track-upload-form-sub">
+                  <div className="track-upload-form-sub-required">
+                    <p className="required-left">*</p> Required fields
+                  </div>
+                  <div className="track-upload-form-sub-buttons">
+                    <div className="track-upload-form-sub-cancel">Cancel</div>
+                    <button type="submit" className="track-upload-form-sub-save">Save</button>
+                  </div>
                 </div>
               </div>
             </form>
