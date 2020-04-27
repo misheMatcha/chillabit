@@ -1,11 +1,15 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
+import UploadBar from '../../upload/upload_bar.jsx';
 
 class TrackUpload extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       name: "",
+      genre: "",
+      tags: "",
+      desc: "",
       artistId: this.props.currentUser.id,
       trackFile: null
     }
@@ -38,18 +42,113 @@ class TrackUpload extends React.Component{
   render(){
     return(
       <div className="track-upload-container">
-        <form onSubmit={this.handleUpload}>
-          <label>Upload
-          <input type="file" onChange={this.handleFile}/>
-          </label>
-          <label>Title
-            <input placeholder="title"
-              type="text"
-              value={this.state.name}
-              onChange={this.updateInput("name")}/>
-          </label>
-          <button type="submit">Save</button>
-        </form>
+        <UploadBar />
+        <div className="track-upload-main">
+
+          <div className="track-upload-advert-wrap">
+            <div className="track-upload-advert-details">
+              <div className="track-upload-advert-percentages">
+                <p className="track-upload-advert-percentages-p">0% of free uploads used</p>
+                <i class="fas fa-chevron-down"/>
+              </div>
+              <div className="track-upload-advert-percentages-bar"/>
+              <p className="track-upload-advert-percentages-ad"><a href="" target="blank">Try Pro Unlimited</a> for unlimited uploads.</p>
+            </div>
+            <button className="track-upload-advert-percentages-button">Try Pro Unlimited</button>
+          </div>
+
+          <div className="track-upload-form">
+            {/* NOTE: review active strorage using a possible DirectUpload class */}
+            <form className="track-upload-form-wrap" onSubmit={this.handleUpload}>
+              <div className="track-upload-form-instruct">
+                Drag and drop your tracks & albums here
+                <label className="track-upload-form-label">
+                  or choose files to upload
+                  <input type="file" onChange={this.handleFile}/>
+                </label>
+              </div>
+              <div className="track-upload-form-details">
+                <div className="track-upload-form-details-nav">
+                  <NavLink exact to="/upload" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Basic info</NavLink>
+                  <NavLink exact to="/upload-meta" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Metadata</NavLink>
+                  <NavLink exact to="/upload-permission" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Permissions</NavLink>
+                </div>
+                <div className="track-upload-form-details-wrap">
+                  <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" className="track-upload-form-details-cover"/>
+                  <div className="track-upload-form-info-main">
+
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Title <p className="required">*</p>
+                      </div>
+                      <label className="track-upload-form-details-label">
+                        <input placeholder="Name your track"
+                          type="text"
+                          value={this.state.name}
+                          onChange={this.updateInput("name")} className="track-upload-form-details-input"/>
+                      </label>
+                      <div className="track-upload-form-details-url">
+                        chillabit.herokuapp.com/{this.props.currentUser.username}/{this.state.name}
+                      </div>
+                    </div>
+
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Genre
+                      </div>
+                      <label className="track-upload-form-details-label">
+                        <input placeholder="Name your genre"
+                          type="text"
+                          value={this.state.genre}
+                          onChange={this.updateInput("genre")} className="track-upload-form-details-input"/>
+                      </label>
+                    </div>
+
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Additional tags
+                      </div>
+                      <label className="track-upload-form-details-label">
+                        <input placeholder="Add tags to describe the genre and mood of your track"
+                          type="text"
+                          value={this.state.tags}
+                          onChange={this.updateInput("tags")} className="track-upload-form-details-input"/>
+                      </label>
+                    </div>
+
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Description
+                      </div>
+                      <label className="track-upload-form-details-label-text">
+                        {/* <input placeholder="Name your track"
+                          type="text"
+                          value={this.state.name}
+                          onChange={this.updateInput("name")} className="track-upload-form-details-input"/> */}
+                        <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea">{this.state.desc}</textarea>
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+                <div className="track-upload-form-sub">
+                  <div className="track-upload-form-sub-required">
+                    <p className="required-left">*</p> Required fields
+                  </div>
+                  <div className="track-upload-form-sub-buttons">
+                    <div className="track-upload-form-sub-cancel">Cancel</div>
+                    <button type="submit" className="track-upload-form-sub-save">Save</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div className="track-upload-footer">
+            By uploading, you confirm that your sounds comply with our Terms of Use and you don't infringe anyone else's rights.
+          </div>
+
+
+        </div>
       </div>
     );
   }

@@ -1,0 +1,35 @@
+@import "variables";
+
+.upload-bar{
+  border-bottom: 1px solid $border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 49px;
+}
+  .upload-bar-links-wrap{
+    display: flex;
+    justify-content: space-evenly;
+    width: 31%;
+    height: 100%;
+  }
+    .upload-bar-links{
+      border-bottom: 1px solid $border;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .upload-bar-links-active{
+      border-bottom: 1px solid $coral;
+      color: $coral;
+    }
+
+  .upload-bar-creators{
+    display: flex;
+    justify-content: flex-end;
+    width: 68%;
+  }
+    .upload-bar-creators-link{
+      padding-left: .2rem;
+      padding-right: 1rem;
+    }
