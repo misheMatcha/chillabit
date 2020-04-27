@@ -15,10 +15,6 @@ class Discover extends React.Component {
     this.toggleFollow = this.toggleFollow.bind(this)
   }
 
-  componentDidMount(){
-    this.props.fetchTrack(1);
-  }
-
   toggleFollow(){
     if(this.state.isFollowing === false){
       this.setState({isFollowing: true});
@@ -30,7 +26,6 @@ class Discover extends React.Component {
   }
 
   render(){
-    console.log(this.props)
     return (
       <div className="discover">
         <div className="discover-main">

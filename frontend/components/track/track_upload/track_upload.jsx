@@ -49,7 +49,7 @@ class TrackUpload extends React.Component{
             <div className="track-upload-advert-details">
               <div className="track-upload-advert-percentages">
                 <p className="track-upload-advert-percentages-p">0% of free uploads used</p>
-                <i class="fas fa-chevron-down"/>
+                <i className="fas fa-chevron-down"/>
               </div>
               <div className="track-upload-advert-percentages-bar"/>
               <p className="track-upload-advert-percentages-ad"><a href="" target="blank">Try Pro Unlimited</a> for unlimited uploads.</p>
@@ -121,11 +121,7 @@ class TrackUpload extends React.Component{
                         Description
                       </div>
                       <label className="track-upload-form-details-label-text">
-                        {/* <input placeholder="Name your track"
-                          type="text"
-                          value={this.state.name}
-                          onChange={this.updateInput("name")} className="track-upload-form-details-input"/> */}
-                        <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea">{this.state.desc}</textarea>
+                        <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea" value={this.state.desc} onChange={this.updateInput('desc')}></textarea>
                       </label>
                     </div>
 
