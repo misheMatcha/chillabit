@@ -398,6 +398,7 @@
   background-color: $white;
   color: $black;
   font-size: $normal;
+  height: 100%;
 }
   .track-upload-main{
     // border: 1px solid red;
@@ -405,7 +406,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 10rem;
+    padding-top: 5rem;
+    // height: 100%;
   }
   .track-upload-advert-wrap{
     border: 1px solid $border;
@@ -458,7 +460,7 @@
     border-radius: .2rem;
     background-color: $white;
     width: 57%;
-    height: 388px;
+    // height: 388px;
     padding: 1rem;
     margin-top: 1rem;
     filter: drop-shadow(0 .1rem .15rem #CCCCCC);
@@ -474,7 +476,7 @@
       .track-upload-form-instruct{
         // none for transition
         // flex is normal
-        display: none;
+        display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
@@ -532,6 +534,7 @@
       }
         .track-upload-form-details-cover{
           width: 260px;
+          height: 260px;
           border: 1px solid $border;
         }
         .track-upload-form-info-main{
@@ -563,12 +566,24 @@
               .track-upload-form-details-input{
                 // border: 1px solid red;
                 padding-left: .5rem;
+                width: 410px;
               }
 
             .track-upload-form-details-url{
               color: $gray;
               margin-top: .5rem;
             }
+            .track-upload-form-details-label-textarea{
+              border: 1px solid $border;
+              border-radius: .3rem;
+              min-width: 392px;
+              height: 156px;
+              margin-top: .5rem;
+              padding: .5rem;
+            }
+              .track-upload-form-details-label-textarea::placeholder, .track-upload-form-details-input::placeholder{
+                color: $light-gray;
+              }
 
     .track-upload-form-sub{
       // border: 1px solid $border;

@@ -7,6 +7,9 @@ class TrackUpload extends React.Component{
     super(props)
     this.state = {
       name: "",
+      genre: "",
+      tags: "",
+      desc: "",
       artistId: this.props.currentUser.id,
       trackFile: null
     }
@@ -66,9 +69,9 @@ class TrackUpload extends React.Component{
               </div>
               <div className="track-upload-form-details">
                 <div className="track-upload-form-details-nav">
-                  <NavLink exact to="/" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Basic info</NavLink>
-                  <NavLink exact to="/upload" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Metadata</NavLink>
-                  <NavLink exact to="/upload" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Permissions</NavLink>
+                  <NavLink exact to="/upload" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Basic info</NavLink>
+                  <NavLink exact to="/upload-meta" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Metadata</NavLink>
+                  <NavLink exact to="/upload-permission" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Permissions</NavLink>
                 </div>
                 <div className="track-upload-form-details-wrap">
                   <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" className="track-upload-form-details-cover"/>
@@ -87,6 +90,43 @@ class TrackUpload extends React.Component{
                       <div className="track-upload-form-details-url">
                         chillabit.herokuapp.com/{this.props.currentUser.username}/{this.state.name}
                       </div>
+                    </div>
+
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Genre
+                      </div>
+                      <label className="track-upload-form-details-label">
+                        <input placeholder="Name your genre"
+                          type="text"
+                          value={this.state.genre}
+                          onChange={this.updateInput("genre")} className="track-upload-form-details-input"/>
+                      </label>
+                    </div>
+
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Additional tags
+                      </div>
+                      <label className="track-upload-form-details-label">
+                        <input placeholder="Add tags to describe the genre and mood of your track"
+                          type="text"
+                          value={this.state.tags}
+                          onChange={this.updateInput("tags")} className="track-upload-form-details-input"/>
+                      </label>
+                    </div>
+
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Description
+                      </div>
+                      <label className="track-upload-form-details-label-text">
+                        {/* <input placeholder="Name your track"
+                          type="text"
+                          value={this.state.name}
+                          onChange={this.updateInput("name")} className="track-upload-form-details-input"/> */}
+                        <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea">{this.state.desc}</textarea>
+                      </label>
                     </div>
 
                   </div>
