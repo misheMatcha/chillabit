@@ -311,7 +311,7 @@
   color: #333;
   width: 54rem;
   height: 20.375rem;
-  overflow: hidden;
+  // overflow: scroll;
 }
 .track-list-title{
   font-size: 23px;
@@ -327,7 +327,7 @@
   // height: 16.563rem;
   // width: 10rem;
   margin-top: 1rem;
-  // overflow: hidden;
+  overflow: scroll;
 }
 
 .track-list-ul li{

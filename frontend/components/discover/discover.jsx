@@ -2,6 +2,7 @@ import React from 'react';
 import TrackList from '../track/track_list/track_list_contianer';
 import { USERS } from '../placeholder_seeds';
 import Sidebar from '../sidebar/sidebar.jsx';
+import { fetchTrack } from '../../util/track_util';
 
 class Discover extends React.Component {
   constructor(props){
@@ -12,6 +13,10 @@ class Discover extends React.Component {
       isFollowing: false
     }
     this.toggleFollow = this.toggleFollow.bind(this)
+  }
+
+  componentDidMount(){
+    this.props.fetchTrack(1);
   }
 
   toggleFollow(){
@@ -25,6 +30,7 @@ class Discover extends React.Component {
   }
 
   render(){
+    console.log(this.props)
     return (
       <div className="discover">
         <div className="discover-main">
