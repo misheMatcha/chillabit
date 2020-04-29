@@ -7,9 +7,6 @@ class TrackUpload extends React.Component{
     super(props)
     this.state = {
       name: "",
-      genre: "",
-      tags: "",
-      desc: "",
       artistId: this.props.currentUser.id,
       trackFile: null
     }
@@ -25,6 +22,7 @@ class TrackUpload extends React.Component{
     this.formData.append("track[name]", this.state.name)
     this.formData.append("track[artist_id]", this.state.artistId)
     this.formData.append("track[song]", this.state.trackFile)
+    debugger
     this.props.upload(this.formData).then(newTrack => {
       trackForm.props.history.push(`/${this.props.currentUser.username}/${newTrack.name}/${newTrack.id}`)
     })
@@ -92,38 +90,7 @@ class TrackUpload extends React.Component{
                       </div>
                     </div>
 
-                    <div className="track-upload-form-info-wrap">
-                      <div className="track-upload-form-details-title">
-                        Genre
-                      </div>
-                      <label className="track-upload-form-details-label">
-                        <input placeholder="Name your genre"
-                          type="text"
-                          value={this.state.genre}
-                          onChange={this.updateInput("genre")} className="track-upload-form-details-input"/>
-                      </label>
-                    </div>
-
-                    <div className="track-upload-form-info-wrap">
-                      <div className="track-upload-form-details-title">
-                        Additional tags
-                      </div>
-                      <label className="track-upload-form-details-label">
-                        <input placeholder="Add tags to describe the genre and mood of your track"
-                          type="text"
-                          value={this.state.tags}
-                          onChange={this.updateInput("tags")} className="track-upload-form-details-input"/>
-                      </label>
-                    </div>
-
-                    <div className="track-upload-form-info-wrap">
-                      <div className="track-upload-form-details-title">
-                        Description
-                      </div>
-                      <label className="track-upload-form-details-label-text">
-                        <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea" value={this.state.desc} onChange={this.updateInput('desc')}></textarea>
-                      </label>
-                    </div>
+             
 
                   </div>
                 </div>
@@ -151,3 +118,38 @@ class TrackUpload extends React.Component{
 };
 
 export default withRouter(TrackUpload);
+
+
+
+{/* <div className="track-upload-form-info-wrap">
+  <div className="track-upload-form-details-title">
+    Genre
+                      </div>
+  <label className="track-upload-form-details-label">
+    <input placeholder="Name your genre"
+      type="text"
+      value={this.state.genre}
+      onChange={this.updateInput("genre")} className="track-upload-form-details-input" />
+  </label>
+</div>
+
+  <div className="track-upload-form-info-wrap">
+    <div className="track-upload-form-details-title">
+      Additional tags
+                      </div>
+    <label className="track-upload-form-details-label">
+      <input placeholder="Add tags to describe the genre and mood of your track"
+        type="text"
+        value={this.state.tags}
+        onChange={this.updateInput("tags")} className="track-upload-form-details-input" />
+    </label>
+  </div>
+
+  <div className="track-upload-form-info-wrap">
+    <div className="track-upload-form-details-title">
+      Description
+                      </div>
+    <label className="track-upload-form-details-label-text">
+      <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea" value={this.state.desc} onChange={this.updateInput('desc')}></textarea>
+    </label>
+  </div> */}
