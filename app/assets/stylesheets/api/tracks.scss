@@ -350,8 +350,6 @@
 }
 
   .track-list-item-hover-wrap{
-    // border: 1px solid blue;
-    // position: relative;
     display: flex;
     flex-flow: row nowrap;
     width: 10.8rem;
@@ -361,23 +359,21 @@
       width: 100%;
       flex: none;
     }
-    // .track-list-item-hover-wrap .track-list-item-cover{
-    //   // border: 1px solid green;
-    // }
     .track-list-item-hover-wrap .track-list-item-hover{
-      // border: 1px solid blue;
       margin-left: -100%;
     }
 
 .track-list-item-hover{
-  // border: 1px solid black;
   display: flex;
   justify-content: center;
   position: relative;
   width: 10.8rem;
   height: 10.8rem;
-  z-index: -1;
   background-image: linear-gradient(rgba(255,0,0,0), rgba(61, 57, 80, 0.639));
+  opacity: 0;
+}
+.track-list-item-hover:hover{
+  opacity: 1;
 }
 
 .track-list-item-cover{
@@ -387,7 +383,6 @@
   width: 172.97px;
   height: 172.97px;
   position: relative;
-  z-index: 1;
 }
 
 .track-list-item-details{

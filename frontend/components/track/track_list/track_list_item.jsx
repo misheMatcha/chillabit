@@ -9,13 +9,6 @@ class TrackListItem extends React.Component{
 
     this.togglePlay = this.togglePlay.bind(this)
   }
-  onHover(e){
-    e.target.style.zIndex = '1';
-  }
-  
-  offHover(e){
-    e.target.style.zIndex = '-1';
-  }
 
   togglePlay(){
     if(this.state.playing === false){
@@ -32,7 +25,7 @@ class TrackListItem extends React.Component{
       <div className="track-list-item">
         <div className="track-list-item-hover-wrap">
           <img src={this.props.track.cover} className="track-list-item-cover"/>
-          <div className="track-list-item-hover" onMouseEnter={this.onHover} onMouseLeave={this.offHover}>
+          <div className="track-list-item-hover">
             <button className="fas fa-play-circle" onClick={this.togglePlay}/>
           </div>
         </div>
