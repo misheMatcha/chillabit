@@ -8,12 +8,14 @@ class TrackUpload extends React.Component{
     this.state = {
       name: "",
       artistId: this.props.currentUser.id,
-      trackFile: null
+      trackFile: [],
+      otherFile: null
     }
     this.formData = new FormData();
 
     this.handleUpload = this.handleUpload.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.handleCover = this.handleCover.bind(this);
   }
 
   handleUpload(e){
@@ -21,8 +23,13 @@ class TrackUpload extends React.Component{
     const trackForm = this;
     this.formData.append("track[name]", this.state.name)
     this.formData.append("track[artist_id]", this.state.artistId)
-    this.formData.append("track[song]", this.state.trackFile)
-    debugger
+    this.formData.append("track[song]", this.state.otherFile)
+    for (let i = 0; i < this.state.trackFile.length; i++){
+      if(i === this.state.trackFile.length - 1){
+        this.formData.append("track[files][]", this.state.trackFile[i]);
+      }
+    }
+    // this.formData.append("track[files][]", this.state.trackFile)
     this.props.upload(this.formData).then(newTrack => {
       trackForm.props.history.push(`/${this.props.currentUser.username}/${newTrack.name}/${newTrack.id}`)
     })
@@ -33,11 +40,18 @@ class TrackUpload extends React.Component{
   }
 
   handleFile(e){
-    this.setState({trackFile: e.currentTarget.files[0]})
+    // this.setState({trackFile: e.currentTarget.files[0]})
+    this.state.trackFile.push(e.currentTarget.files[0])
+  }
+
+  handleCover(e){
+    this.setState({otherFile: e.currentTarget.files[0]})
   }
 
   // Add genre later so that albums can aggregate genres from tracks within
   render(){
+    window.state = this.state
+    console.log(this.state.trackFile)
     return(
       <div className="track-upload-container">
         <UploadBar />
@@ -62,7 +76,12 @@ class TrackUpload extends React.Component{
                 Drag and drop your tracks & albums here
                 <label className="track-upload-form-label">
                   or choose files to upload
-                  <input type="file" onChange={this.handleFile}/>
+                  <input type="file" onChange={this.handleFile} multiple/>
+                </label>
+
+                <label className="track-upload-form-label">
+                  or choose files to upload
+                  <input type="file" onChange={this.handleCover} />
                 </label>
               </div>
               <div className="track-upload-form-details">
