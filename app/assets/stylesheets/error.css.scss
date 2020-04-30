@@ -1,30 +1,31 @@
-#error-404 {
-  // border: 1px solid black;
-  height: 720px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  font-family: 'Roboto', sans-serif;
-  color: #333333;
-  background-color: white;
+@import "variables";
+
+.error-404-container{
+  margin-top: 2.86rem;
+  font-family: $roboto;
+  font-size: $normal;
+  color: $black;
+  background-color: $white;
+  border: 1px solid black;
 }
-  #error-404 h1 {
-    font-size: 20px;
-    letter-spacing: 2px;
-  }
-  #error-404 p {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 50%;
-    height: 11%;
+  .error-404-oops{
+    font-weight: 900;
+    font-size: 2.5rem;
+    background: -webkit-linear-gradient(#DF7B6C, #6578CB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
-.error-image {
-  // background-image: image_url('error_image.jpg');
-  background-size: cover;
-  height: 500px;
-  width: 724px;
-}
+  .error-404-details{
+    border: 1px solid blue;
+  }
+    .error-404-code{
+      border: 1px solid red;
+    }
+    .error-404-message{
+      border: 1px solid green;
+    }
+
+  .error-404-button{
+    border: 1px solid orange;
+  }
