@@ -11,7 +11,9 @@ class TrackUpload extends React.Component{
       tracklist: [],
       cover: null,
       coverUrl: '',
-      file: null
+      file: null,
+      stage1: 'track-upload-form-instruct display-flex',
+      stage2: 'track-upload-form-details display-none'
     }
     this.formData = new FormData();
     // this.reader = new FileReader();
@@ -40,7 +42,11 @@ class TrackUpload extends React.Component{
   }
 
   handleFile(e){
-    this.setState({tracklist: [e.currentTarget.files[0]]})
+    this.setState({
+      tracklist: [e.currentTarget.files[0]],
+      stage1: 'track-upload-form-instruct display-none',
+      stage2: 'track-upload-form-details display-flex'
+    })
     // this.state.tracklist.push(e.currentTarget.files[0])
   }
 
@@ -91,7 +97,7 @@ class TrackUpload extends React.Component{
           <div className="track-upload-form">
             {/* NOTE: review active strorage using a possible DirectUpload class */}
             <form className="track-upload-form-wrap" onSubmit={this.handleUpload}>
-              <div className="track-upload-form-instruct">
+              <div className={this.state.stage1}>
                 Drag and drop your tracks & albums here
                 <label className="track-upload-form-label">
                   or choose files to upload
@@ -99,7 +105,7 @@ class TrackUpload extends React.Component{
                 </label>
                 
               </div>
-              <div className="track-upload-form-details">
+              <div className={this.state.stage2}>
                 <div className="track-upload-form-details-nav">
                   <NavLink exact to="/upload" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Basic info</NavLink>
                   <NavLink exact to="/upload-meta" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Metadata</NavLink>
