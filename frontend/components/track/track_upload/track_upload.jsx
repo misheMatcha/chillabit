@@ -16,7 +16,6 @@ class TrackUpload extends React.Component{
       stage2: 'track-upload-form-details display-none'
     }
     this.formData = new FormData();
-    // this.reader = new FileReader();
 
     this.handleUpload = this.handleUpload.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -47,7 +46,6 @@ class TrackUpload extends React.Component{
       stage1: 'track-upload-form-instruct display-none',
       stage2: 'track-upload-form-details display-flex'
     })
-    // this.state.tracklist.push(e.currentTarget.files[0])
   }
 
   handleCover(e){
