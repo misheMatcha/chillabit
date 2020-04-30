@@ -71,8 +71,6 @@ class TrackUpload extends React.Component{
 
   // Add genre later so that albums can aggregate genres from tracks within
   render(){
-    window.state = this.state
-    console.log(this.state)
     return(
       <div className="track-upload-container">
         <UploadBar />
@@ -115,12 +113,12 @@ class TrackUpload extends React.Component{
                       this.state.cover !== null ? <img src={this.state.coverUrl} className="track-upload-form-details-cover" /> : <div className="track-upload-form-details-cover-default"/>
                     }
                     
-                    <label className="track-upload-form-label-cover">
-                      <div className="track-upload-form-label-cover-button">
-                        <i className="fas fa-camera"/> Upload image
+                      <div className="track-upload-form-label-cover">
+                        <label className="track-upload-form-label-cover-button">
+                          <i className="fas fa-camera" /> {this.state.cover === null ? 'Upload image' : 'Replace image'}
+                          <input type="file" onChange={this.handleCover} />
+                        </label>
                       </div>
-                    <input type="file" onChange={this.handleCover} />
-                    </label>
                   </div>
 
                   
