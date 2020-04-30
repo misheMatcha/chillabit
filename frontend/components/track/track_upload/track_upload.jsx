@@ -8,10 +8,13 @@ class TrackUpload extends React.Component{
     this.state = {
       name: "",
       artistId: this.props.currentUser.id,
-      trackFile: [],
-      otherFile: null
+      tracklist: [],
+      cover: null,
+      coverUrl: '',
+      file: null
     }
     this.formData = new FormData();
+    // this.reader = new FileReader();
 
     this.handleUpload = this.handleUpload.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -23,13 +26,10 @@ class TrackUpload extends React.Component{
     const trackForm = this;
     this.formData.append("track[name]", this.state.name)
     this.formData.append("track[artist_id]", this.state.artistId)
-    this.formData.append("track[song]", this.state.otherFile)
-    for (let i = 0; i < this.state.trackFile.length; i++){
-      if(i === this.state.trackFile.length - 1){
-        this.formData.append("track[files][]", this.state.trackFile[i]);
-      }
+    this.formData.append("track[cover]", this.state.cover)
+    for (let i = 0; i < this.state.tracklist.length; i++){
+      this.formData.append("track[trackFiles][]", this.state.tracklist[i]);
     }
-    // this.formData.append("track[files][]", this.state.trackFile)
     this.props.upload(this.formData).then(newTrack => {
       trackForm.props.history.push(`/${this.props.currentUser.username}/${newTrack.name}/${newTrack.id}`)
     })
@@ -40,23 +40,44 @@ class TrackUpload extends React.Component{
   }
 
   handleFile(e){
-    // this.setState({trackFile: e.currentTarget.files[0]})
-    this.state.trackFile.push(e.currentTarget.files[0])
+    this.setState({tracklist: [e.currentTarget.files[0]]})
+    // this.state.tracklist.push(e.currentTarget.files[0])
   }
 
   handleCover(e){
-    this.setState({otherFile: e.currentTarget.files[0]})
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+
+    reader.onloadend = () => this.setState({
+      coverUrl: reader.result,
+      cover: file
+    });
+
+    if(file){
+      reader.readAsDataURL(file)
+    }else{
+      this.setState({
+        coverUrl: '',
+        cover: null
+      })
+    }
+
+    this.reader.onloadend = () => 
+      this.setState({
+        cover: e.currentTarget.files[0],
+        coverUrl: this.reader.result
+      })
   }
 
   // Add genre later so that albums can aggregate genres from tracks within
   render(){
     window.state = this.state
-    console.log(this.state.trackFile)
+    console.log(this.state)
     return(
       <div className="track-upload-container">
         <UploadBar />
         <div className="track-upload-main">
-
+          
           <div className="track-upload-advert-wrap">
             <div className="track-upload-advert-details">
               <div className="track-upload-advert-percentages">
@@ -78,11 +99,7 @@ class TrackUpload extends React.Component{
                   or choose files to upload
                   <input type="file" onChange={this.handleFile} multiple/>
                 </label>
-
-                <label className="track-upload-form-label">
-                  or choose files to upload
-                  <input type="file" onChange={this.handleCover} />
-                </label>
+                
               </div>
               <div className="track-upload-form-details">
                 <div className="track-upload-form-details-nav">
@@ -91,7 +108,22 @@ class TrackUpload extends React.Component{
                   <NavLink exact to="/upload-permission" className="track-upload-form-details-nav-link" activeClassName="track-upload-form-details-nav-link-active">Permissions</NavLink>
                 </div>
                 <div className="track-upload-form-details-wrap">
-                  <img src="https://chillabit-pro.s3-us-west-1.amazonaws.com/ocha_love-story.jpg" className="track-upload-form-details-cover"/>
+
+                  
+                  <div className="track-upload-form-details-cover-wrap">
+                    {
+                      this.state.cover !== null ? <img src={this.state.coverUrl} className="track-upload-form-details-cover" /> : <div className="track-upload-form-details-cover-default"/>
+                    }
+                    
+                    <label className="track-upload-form-label-cover">
+                      <div className="track-upload-form-label-cover-button">
+                        <i className="fas fa-camera"/> Upload image
+                      </div>
+                    <input type="file" onChange={this.handleCover} />
+                    </label>
+                  </div>
+
+                  
                   <div className="track-upload-form-info-main">
 
                     <div className="track-upload-form-info-wrap">
@@ -109,6 +141,38 @@ class TrackUpload extends React.Component{
                       </div>
                     </div>
 
+                    <div className="track-upload-form-info-wrap">
+                      <div className="track-upload-form-details-title">
+                        Genre
+                                          </div>
+                      <label className="track-upload-form-details-label">
+                        <input placeholder="Name your genre"
+                          type="text"
+                          value={this.state.genre}
+                          onChange={this.updateInput("genre")} className="track-upload-form-details-input" />
+                      </label>
+                    </div>
+                    
+                      <div className="track-upload-form-info-wrap">
+                        <div className="track-upload-form-details-title">
+                          Additional tags
+                                          </div>
+                        <label className="track-upload-form-details-label">
+                          <input placeholder="Add tags to describe the genre and mood of your track"
+                            type="text"
+                            value={this.state.tags}
+                            onChange={this.updateInput("tags")} className="track-upload-form-details-input" />
+                        </label>
+                      </div>
+                    
+                      <div className="track-upload-form-info-wrap">
+                        <div className="track-upload-form-details-title">
+                          Description
+                                          </div>
+                        <label className="track-upload-form-details-label-text">
+                          <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea" value={this.state.desc} onChange={this.updateInput('desc')}></textarea>
+                        </label>
+                      </div>
              
 
                   </div>
@@ -139,36 +203,3 @@ class TrackUpload extends React.Component{
 export default withRouter(TrackUpload);
 
 
-
-{/* <div className="track-upload-form-info-wrap">
-  <div className="track-upload-form-details-title">
-    Genre
-                      </div>
-  <label className="track-upload-form-details-label">
-    <input placeholder="Name your genre"
-      type="text"
-      value={this.state.genre}
-      onChange={this.updateInput("genre")} className="track-upload-form-details-input" />
-  </label>
-</div>
-
-  <div className="track-upload-form-info-wrap">
-    <div className="track-upload-form-details-title">
-      Additional tags
-                      </div>
-    <label className="track-upload-form-details-label">
-      <input placeholder="Add tags to describe the genre and mood of your track"
-        type="text"
-        value={this.state.tags}
-        onChange={this.updateInput("tags")} className="track-upload-form-details-input" />
-    </label>
-  </div>
-
-  <div className="track-upload-form-info-wrap">
-    <div className="track-upload-form-details-title">
-      Description
-                      </div>
-    <label className="track-upload-form-details-label-text">
-      <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea" value={this.state.desc} onChange={this.updateInput('desc')}></textarea>
-    </label>
-  </div> */}

@@ -550,11 +550,67 @@
         justify-content: space-evenly;
         margin-top: 1rem;
       }
-        .track-upload-form-details-cover{
+        .track-upload-form-details-cover-wrap{
+          // border: 1px solid blue;
+          display: flex;
+          flex-flow: row nowrap;
           width: 260px;
           height: 260px;
-          border: 1px solid $border;
         }
+
+
+
+  //         .track-list-item-hover-wrap{
+  //   display: flex;
+  //   flex-flow: row nowrap;
+  //   width: 10.8rem;
+  // }
+  //   .track-list-item-hover-wrap .track-list-item-hover, .track-list-item-hover-wrap .track-list-item-cover{
+  //     box-sizing: border-box;
+  //     width: 100%;
+  //     flex: none;
+  //   }
+  //   .track-list-item-hover-wrap .track-list-item-hover{
+  //     margin-left: -100%;
+  //   }
+
+          .track-upload-form-details-cover-wrap .track-upload-form-details-cover, .track-upload-form-details-cover-wrap .track-upload-form-details-cover-default, .track-upload-form-details-cover-wrap .track-upload-form-label-cover{
+            // border: 1px solid purple;
+            box-sizing: border-box;
+            width: 100%;
+            flex: none;
+          }
+
+
+
+        .track-upload-form-details-cover{
+          // width: 100%;
+          // height: 260px;
+          border: 1px solid $border;
+          position: relative;
+        }
+        .track-upload-form-details-cover-default{
+          // width: 100%;
+          // height: 260px;
+          // border: 1px solid $border;
+          // background-color: blue;
+          position: relative;
+          background: linear-gradient(45deg, #e66465, #9198e5);
+        }
+          .track-upload-form-label-cover{
+            // background-color: yellow;
+            position: relative;
+            margin-left: -100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+          }
+            .track-upload-form-label-cover-button{
+              // border: 1px solid blue;
+              margin-bottom: 1rem;
+              padding: .3rem;
+              background-color: $light-gray;
+            }
         .track-upload-form-info-main{
           // border: 1px solid red;
         }

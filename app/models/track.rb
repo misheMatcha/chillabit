@@ -10,6 +10,6 @@ class Track < ApplicationRecord
     source: :albums
 
   # active storage for AWS
-  has_one_attached :song
-  has_many_attached :files
+  has_one_attached :cover
+  has_many_attached :trackFiles
 end
