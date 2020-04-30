@@ -2,6 +2,7 @@ import React from 'react';
 import TrackList from '../track/track_list/track_list_contianer';
 import { USERS } from '../placeholder_seeds';
 import Sidebar from '../sidebar/sidebar.jsx';
+import { fetchTrack } from '../../util/track_util';
 
 class Discover extends React.Component {
   constructor(props){

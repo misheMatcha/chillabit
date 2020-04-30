@@ -29,7 +29,6 @@ class TrackShow extends React.Component{
   }
 
   render(){
-    console.log(this.state.comment)
     return(
       <div className="track-show">
         <div className="track-show-wrap">
@@ -74,15 +73,15 @@ class TrackShow extends React.Component{
               </div>
               <div className="track-show-social-combar-stats">
                 <div className="track-show-social-combar-stats-links">
-                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-heart"/> Like</button>
-                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-retweet"/> Repost</button>
-                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-list-ul"/> Add to Next up</button>
-                  <button className="track-show-social-combar-stats-links-button"><i class="fas fa-ellipsis-h"/> More</button>
+                  <button className="track-show-social-combar-stats-links-button"><i className="fas fa-heart"/> Like</button>
+                  <button className="track-show-social-combar-stats-links-button"><i className="fas fa-retweet"/> Repost</button>
+                  <button className="track-show-social-combar-stats-links-button"><i className="fas fa-list-ul"/> Add to Next up</button>
+                  <button className="track-show-social-combar-stats-links-button"><i className="fas fa-ellipsis-h"/> More</button>
                 </div>
                 <div className="track-show-social-combar-stats-stats">
-                  <p className="track-show-social-combar-stats-details"><i class="fas fa-play"/> {IRIDSCNT.plays}</p>
-                  <p className="track-show-social-combar-stats-details"><i class="fas fa-heart"/> {IRIDSCNT.likes}</p>
-                  <p className="track-show-social-combar-stats-details"><i class="fas fa-retweet"/> {IRIDSCNT.reposts}</p>
+                  <p className="track-show-social-combar-stats-details"><i className="fas fa-play"/> {IRIDSCNT.plays}</p>
+                  <p className="track-show-social-combar-stats-details"><i className="fas fa-heart"/> {IRIDSCNT.likes}</p>
+                  <p className="track-show-social-combar-stats-details"><i className="fas fa-retweet"/> {IRIDSCNT.reposts}</p>
                 </div>
               </div>
             </div>
@@ -119,7 +118,7 @@ class TrackShow extends React.Component{
                 </div>
                 <div className="track-show-social-details-com-section">
                   <div className="track-show-social-details-com-section-title">
-                    <i class="fas fa-comment-alt" /><p className="track-show-social-details-com-section-title-p">{USERS.length} comments</p>
+                    <i className="fas fa-comment-alt" /><p className="track-show-social-details-com-section-title-p">{USERS.length} comments</p>
                   </div>
                   <div className="track-show-social-details-com-section-details">
                     <ul className="track-show-social-details-com-section-ul">

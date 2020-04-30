@@ -478,18 +478,22 @@
     border-radius: .2rem;
     background-color: $white;
     width: 57%;
+    min-height: 388px;
     // height: 388px;
     padding: 1rem;
     margin-top: 1rem;
     filter: drop-shadow(0 .1rem .15rem #CCCCCC);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
     .track-upload-form-wrap{
-      // border: 1px solid red;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100%;
+      width: 100%;
     }
       .track-upload-form-instruct{
         // none for transition
@@ -503,7 +507,6 @@
         height: 100px;
       }
         .track-upload-form-label{
-          // border: 1px solid red;
           border-radius: .3rem;
           background-color: $coral;
           color: $white;
@@ -516,21 +519,20 @@
         }
 
       .track-upload-form-details{
-        // border: 1px solid red;
         width: 100%;
+        // none for transition
+        // flex is normal
         display: flex;
         flex-direction: column;
       }
         .track-upload-form-details-nav{
           border-bottom: 1px solid $border;
-          // border: 1px solid black;
           display: flex;
           align-items: center;
           height: 39px;
           font-size: 24px;
         }
           .track-upload-form-details-nav-link{
-            // border-bottom: 1px solid red;
             display: flex;
             align-items: center;
             height: 100%;
@@ -542,19 +544,55 @@
             color: $coral;
           }
 
-      .track-upload-form-details-wrap{
-        // border: 1px solid blue;
-        // padding: 1rem;
+      .display-flex{
         display: flex;
-        // flex-direction: column;
+      }
+      .display-none{
+        display: none;
+      }
+
+      .track-upload-form-details-wrap{
+        display: flex;
         justify-content: space-evenly;
         margin-top: 1rem;
+        // width: fit-content;
       }
-        .track-upload-form-details-cover{
-          width: 260px;
-          height: 260px;
-          border: 1px solid $border;
+        .track-upload-form-details-cover-wrap{
+          display: flex;
+          flex-flow: row nowrap;
+          width: 200px;
+          height: 200px;
         }
+          .track-upload-form-details-cover-wrap .track-upload-form-details-cover, .track-upload-form-details-cover-wrap .track-upload-form-details-cover-default, .track-upload-form-details-cover-wrap .track-upload-form-label-cover{
+            box-sizing: border-box;
+            width: 100%;
+            flex: none;
+            border-radius: .3rem;
+          }
+
+            .track-upload-form-details-cover{
+              border: 1px solid $border;
+              position: relative;
+            }
+            .track-upload-form-details-cover-default{
+              position: relative;
+              background: linear-gradient(45deg, #e66465, #9198e5);
+            }
+              .track-upload-form-label-cover{
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                position: relative;
+                margin-left: -100%;
+              }
+                .track-upload-form-label-cover-button{
+                  margin-bottom: 1rem;
+                  padding: .3rem;
+                  border-radius: .3rem;
+                  background-color: $snow;
+                  cursor: pointer;
+                }
+
         .track-upload-form-info-main{
           // border: 1px solid red;
         }
