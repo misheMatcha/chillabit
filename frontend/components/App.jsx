@@ -28,7 +28,9 @@ class App extends React.Component{
           <ProtectdRoute exact path="/discover" component={Discover}/>
           <ProtectdRoute exact path="/stream" component={TrackShow}/>
           <ProtectdRoute exact path="/library" component={Error404}/>
+          <ProtectdRoute exact path="/upgrade" component={Error404}/>
           <ProtectdRoute exact path="/upload" component={TrackUpload}/>
+          <ProtectdRoute exact path="/:username" component={Error404}/>
           <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow} audioRef={this.audioRef}/>
         </Switch>
         <TrackPlayer audioRef={this.audioRef}/>

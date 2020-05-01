@@ -14,7 +14,7 @@ const Error404Page = () => (
           <p>had its name changed or is temporarily unavailable.</p>
         </div>
       </div>
-      <button className="error-404-button">Go to homepage</button>
+      <Link to="/discover" className="error-404-button">Go to homepage</Link>
     </div>
   </div>
 );
