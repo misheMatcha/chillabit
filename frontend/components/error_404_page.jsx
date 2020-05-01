@@ -7,11 +7,11 @@ const Error404Page = () => (
       Oops!
     </div>
     <div className="error-404-details">
-      <p className="error-404-code">404 - Page not found</p>
-      <p className="error-404-message">
-        The page you are looking for might have been removed<br/>
-        had its name changed or is temporarily unavailable.
-      </p>
+      <p className="error-404-code">404 - PAGE NOT FOUND</p>
+      <div className="error-404-message">
+        <p>The page you are looking for might have been removed</p>
+        <p>had its name changed or is temporarily unavailable.</p>
+      </div>
     </div>
     <button className="error-404-button">Go to homepage</button>
   </div>
