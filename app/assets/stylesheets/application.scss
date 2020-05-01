@@ -17,11 +17,15 @@
  *= require_tree .
  */
 
+ html, body{
+   margin: 0;
+   height: 100%;
+ }
+
 body {
-  background-color:#F2F2F2;
+  background-color: #F2F2F2;
   display: flex;
   justify-content: center;
-  // overflow-x: hidden;
 }
 
 #root{
@@ -33,6 +37,7 @@ body {
 .app-container{
   width: 100%;
   max-width: 1269px;
+  background-color: white;
 }
 
 @media all and (max-width: 1240px){
