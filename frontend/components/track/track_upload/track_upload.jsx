@@ -11,6 +11,8 @@ class TrackUpload extends React.Component{
       tracklist: [],
       genre: '',
       desc: '',
+      tagInput: '',
+      tags: [],
       cover: null,
       coverUrl: '',
       file: null,
@@ -22,6 +24,7 @@ class TrackUpload extends React.Component{
     this.handleUpload = this.handleUpload.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleCover = this.handleCover.bind(this);
+    this.handleTag = this.handleTag.bind(this);
   }
 
   handleUpload(e){
@@ -32,6 +35,11 @@ class TrackUpload extends React.Component{
     this.formData.append("track[cover]", this.state.cover)
     this.formData.append("track[genre]", this.state.genre)
     this.formData.append("track[desc]", this.state.desc)
+    
+    for(let j = 0; j < this.state.tags.length; j++){
+      this.formData.append("track[tags][]", this.state.tags[j]);
+    }
+
     for (let i = 0; i < this.state.tracklist.length; i++){
       this.formData.append("track[trackFiles][]", this.state.tracklist[i]);
     }
@@ -77,8 +85,15 @@ class TrackUpload extends React.Component{
       })
   }
 
+  handleTag(e){
+    e.preventDefault();
+    this.state.tags.push(this.state.tagInput);
+    this.setState({tagInput: ''});
+  }
+
   // Add genre later so that albums can aggregate genres from tracks within
   render(){
+    console.log(this.state)
     return(
       <div className="track-upload-container">
         <UploadBar />
@@ -150,7 +165,7 @@ class TrackUpload extends React.Component{
                     <div className="track-upload-form-info-wrap">
                       <div className="track-upload-form-details-title">
                         Genre
-                                          </div>
+                      </div>
                       <label className="track-upload-form-details-label">
                         <input placeholder="Name your genre"
                           type="text"
@@ -162,19 +177,29 @@ class TrackUpload extends React.Component{
                       <div className="track-upload-form-info-wrap">
                         <div className="track-upload-form-details-title">
                           Additional tags
-                                          </div>
+                        </div>
                         <label className="track-upload-form-details-label">
                           <input placeholder="Add tags to describe the genre and mood of your track"
                             type="text"
-                            value={this.state.tags}
-                            onChange={this.updateInput("tags")} className="track-upload-form-details-input" />
+                            value={this.state.tagInput}
+                            onChange={this.updateInput("tagInput")} className="track-upload-form-details-input" />
+                            <button onClick={this.handleTag}>add tag</button>
+                            {
+                              this.state.tags.map((tag, idx) => {
+                                return(
+                                  <li key={idx}>
+                                    {tag}
+                                  </li>
+                                )
+                              })
+                            }
                         </label>
                       </div>
                     
                       <div className="track-upload-form-info-wrap">
                         <div className="track-upload-form-details-title">
                           Description
-                                          </div>
+                        </div>
                         <label className="track-upload-form-details-label-text">
                           <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea" value={this.state.desc} onChange={this.updateInput('desc')}></textarea>
                         </label>
