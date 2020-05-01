@@ -6,9 +6,11 @@ class TrackUpload extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      name: "",
+      name: '',
       artistId: this.props.currentUser.id,
       tracklist: [],
+      genre: '',
+      desc: '',
       cover: null,
       coverUrl: '',
       file: null,
@@ -28,6 +30,8 @@ class TrackUpload extends React.Component{
     this.formData.append("track[name]", this.state.name)
     this.formData.append("track[artist_id]", this.state.artistId)
     this.formData.append("track[cover]", this.state.cover)
+    this.formData.append("track[genre]", this.state.genre)
+    this.formData.append("track[desc]", this.state.desc)
     for (let i = 0; i < this.state.tracklist.length; i++){
       this.formData.append("track[trackFiles][]", this.state.tracklist[i]);
     }
