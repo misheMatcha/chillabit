@@ -311,7 +311,7 @@
   color: #333;
   width: 95%;
   height: 20.375rem;
-  overflow: hidden;
+  // overflow: hidden;
 }
 .track-list-title{
   font-size: 23px;
@@ -322,12 +322,14 @@
 }
 .track-list-carousel{
   // border: 1px solid orange;
-  max-width: 867px;
+  // max-width: 867px;
+  max-width: 781px;
   // width: 100%;
   margin: auto;
   position: relative;
   display: flex;
   justify-content: center;
+  // overflow: hidden;
 }
 
   .prev, .next{
@@ -336,7 +338,7 @@
     top: 50%;
     // width: 100px;
     padding: .2rem .3rem;
-    background-color: $snow;
+    background-color: $white;
   }
   .prev{
     left: 0;
@@ -353,12 +355,21 @@
     // height: 16.563rem;
     width: 98%;
     margin-top: 1rem;
-    // overflow: scroll;
+    overflow: hidden;
   }
     .track-list-li{
       // border: 1px solid green;
     }
-
+    .track-list-li-1{
+      // border: 1px solid green;
+    }
+    .track-list-li-2{
+      // border: 1px solid blue;
+    }
+    .track-list-li-3{
+      // border: 1px solid orange;
+    }
+    
   .track-list-ul li{
     // border: 1px solid red;
     padding-right: 1.5rem;
