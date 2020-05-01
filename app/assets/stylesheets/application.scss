@@ -20,7 +20,6 @@
  html, body{
    margin: 0;
    height: 100%;
-
  }
 
 body {
@@ -33,15 +32,12 @@ body {
   width: 90%;
   display: flex;
   justify-content: center;
-  // background-color: white;
-  height: 100%;
 }
 
 .app-container{
   width: 100%;
   max-width: 1269px;
   background-color: white;
-  // height: 75.6rem;
 }
 
 @media all and (max-width: 1240px){
