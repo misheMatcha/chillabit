@@ -16,8 +16,8 @@ class TrackUpload extends React.Component{
       cover: null,
       coverUrl: '',
       file: null,
-      stage1: 'track-upload-form-instruct display-flex',
-      stage2: 'track-upload-form-details display-none'
+      stage1: 'track-upload-form-instruct ',
+      stage2: 'track-upload-form-details '
     }
     this.formData = new FormData();
 
@@ -55,8 +55,8 @@ class TrackUpload extends React.Component{
   handleFile(e){
     this.setState({
       tracklist: [e.currentTarget.files[0]],
-      stage1: 'track-upload-form-instruct display-none',
-      stage2: 'track-upload-form-details display-flex'
+      // stage1: 'track-upload-form-instruct display-none',
+      // stage2: 'track-upload-form-details display-flex'
     })
   }
 
@@ -93,7 +93,6 @@ class TrackUpload extends React.Component{
 
   // Add genre later so that albums can aggregate genres from tracks within
   render(){
-    console.log(this.state)
     return(
       <div className="track-upload-container">
         <UploadBar />
@@ -178,22 +177,27 @@ class TrackUpload extends React.Component{
                         <div className="track-upload-form-details-title">
                           Additional tags
                         </div>
+                        <div>
+
+                        </div>
                         <label className="track-upload-form-details-label">
                           <input placeholder="Add tags to describe the genre and mood of your track"
                             type="text"
                             value={this.state.tagInput}
                             onChange={this.updateInput("tagInput")} className="track-upload-form-details-input" />
-                            <button onClick={this.handleTag}>add tag</button>
-                            {
-                              this.state.tags.map((tag, idx) => {
-                                return(
-                                  <li key={idx}>
-                                    {tag}
-                                  </li>
-                                )
-                              })
-                            }
                         </label>
+                        <ul className="tag-list">
+                          {
+                            this.state.tags.map((tag, idx) => {
+                              return(
+                                <li key={idx} className="tag-item">
+                                  <p className="cancel">x</p> {tag}
+                                </li>
+                              )
+                            })
+                          }
+                        </ul>
+                      <button className="tag-button" onClick={this.handleTag}>add tag</button>
                       </div>
                     
                       <div className="track-upload-form-info-wrap">
