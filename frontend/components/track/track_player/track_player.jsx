@@ -17,7 +17,7 @@ class TrackPlayer extends React.Component{
   componentDidMount() {
     // may not need this if i pass the src as a ui props
     // this.props.fetchTrack(this.props.match.params.id)
-    // this.props.fetchTrack(1);
+    this.props.fetchTrack(8);
   }
 
   componentDidUpdate(){

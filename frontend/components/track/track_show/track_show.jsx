@@ -30,7 +30,6 @@ class TrackShow extends React.Component{
   }
 
   render(){
-    // console.log(this.props.track)
     return(
       <div className="track-show">
         {

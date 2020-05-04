@@ -7,6 +7,7 @@ const mSTP = (state, ownProps) => ({
   playing: state.ui.trackPlayer.playing,
   audioPlayer: ownProps.audioRef,
   currentTrack: state.entities.currentTrack,
+  track: Object.values(state.entities.tracks)
 });
 
 const mDTP = dispatch => ({
