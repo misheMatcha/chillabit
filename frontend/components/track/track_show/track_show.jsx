@@ -30,7 +30,7 @@ class TrackShow extends React.Component{
   }
 
   render(){
-    console.log(this.props)
+    // console.log(this.props.track)
     return(
       <div className="track-show">
         <div className="track-show-wrap">
@@ -46,10 +46,16 @@ class TrackShow extends React.Component{
                     this.props.pauseTrack()
                   }} />
                 }
-                <div className="audio-wrap track-details">
-                  {/* <p className="track-details artist">{this.props.track.name}</p> */}
-                  <p className="track-details title">{IRIDSCNT.title}</p>
-                </div>
+                  {
+                    this.props.track.map(trackDets => {
+                      return(
+                        <div key={trackDets.id} className="audio-wrap track-details">
+                          <p className="track-details artist">{trackDets.artist}</p>
+                          <p className="track-details title">{trackDets.name}</p>
+                        </div>
+                      )
+                    })
+                  }
               </div>
               <div className="misc-wrap">
                 <p className="misc-wrap date">3 months ago</p>
