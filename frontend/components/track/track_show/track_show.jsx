@@ -16,6 +16,7 @@ class TrackShow extends React.Component{
 
   componentDidMount(){
     // this.props.fetchTrack(this.props.match.params.id)
+    this.props.fetchTrack(6)
   }
 
   handleComment(field){
@@ -29,37 +30,46 @@ class TrackShow extends React.Component{
   }
 
   render(){
+    // console.log(this.props.track)
     return(
       <div className="track-show">
-        <div className="track-show-wrap">
-          <div className="track-show-details-wrap">
-            <div className="track-show-details">
-              <div className="track-show-details audio-wrap">
-                {
-                  this.props.playing === false ? <button className="fas fa-play-circle" onClick={() => {
-                    this.props.playTrack()
-                    this.props.updateTrack(this.props.aud)
-                    this.props.testadd(this.props.track)
-                  }} /> : <button className="fas fa-pause-circle" onClick={() => {
-                    this.props.pauseTrack()
-                  }} />
-                }
-                <div className="audio-wrap track-details">
-                  <p className="track-details artist">{IRIDSCNT.artist}</p>
-                  <p className="track-details title">{IRIDSCNT.title}</p>
-                </div>
+        {
+          this.props.track.map((trackDetails, idx) => {
+            if(idx === this.props.track.length - 1){
+              return(
+                <div key={trackDetails.id} className="track-show-wrap">
+                  <div className="track-show-details-wrap">
+                    <div className="track-show-details">
+                      <div className="track-show-details audio-wrap">
+                        {
+                          this.props.playing === false ? <button className="fas fa-play-circle" onClick={() => {
+                            this.props.playTrack()
+                            this.props.updateTrack(this.props.aud)
+                            this.props.testadd(this.props.track)
+                          }} /> : <button className="fas fa-pause-circle" onClick={() => {
+                            this.props.pauseTrack()
+                          }} />
+                        }
+                                <div key={trackDetails.id} className="audio-wrap track-details">
+                                  <p className="track-details artist">{trackDetails.artist}</p>
+                                  <p className="track-details title">{trackDetails.name}</p>
+                                </div>
+                      </div>
+                      <div className="misc-wrap">
+                        <p className="misc-wrap date">3 months ago</p>
+                        <p className="misc-wrap genre"># lofi</p>
+                      </div>
+                    </div>
+                    <div className="track-show-visuals">
+                      {/* for waveforms in the future */}
+                    </div>
+                  </div>
+                <img className="track-show-cover" src={trackDetails.cover}/>
               </div>
-              <div className="misc-wrap">
-                <p className="misc-wrap date">3 months ago</p>
-                <p className="misc-wrap genre"># lofi</p>
-              </div>
-            </div>
-            <div className="track-show-visuals">
-              {/* for waveforms in the future */}
-            </div>
-          </div>
-          <img className="track-show-cover" src={IRIDSCNT.cover}/>
-        </div>
+              )
+            }
+          })
+        }
         <div className="track-show-social">
           <div className="track-show-social-main">
             <div className="track-show-social-combar-wrap">

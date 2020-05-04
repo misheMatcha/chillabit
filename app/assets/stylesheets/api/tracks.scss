@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  width: 74%;
   height: 20rem;
 }
 
@@ -37,7 +37,8 @@
 
 .track-show-details.audio-wrap{
   display: flex;
-  width: 17%;
+  width: 60%;
+  justify-content: start;
 }
 
 .fas.fa-play-circle{
@@ -67,6 +68,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-content: space-between;
+  margin-left: .5rem;
 }
 
 .track-details.artist{
@@ -80,11 +82,12 @@
 
 .track-details.title{
   background-color: $lavandula;
-  text-align: center;
+  // text-align: center;
   font-size: 1.35rem;
   width: fit-content;
   padding: .1rem .25rem .1rem 0.25rem;
   filter: drop-shadow(0 0 0.35rem rgba(55, 49, 49, 0.714));
+  margin-top: .3rem;
 }
 
 .misc-wrap{
@@ -107,6 +110,7 @@
 
 .track-show-cover{
   width: 20rem;
+  height: 20rem;
 }
 
 .track-show-visuals{
@@ -631,14 +635,11 @@
                 }
 
         .track-upload-form-info-main{
-          // border: 1px solid red;
         }
           .track-upload-form-info-wrap{
-            // border: 1px solid blue;
             padding-top: 1rem;
           }
             .track-upload-form-details-title{
-              // border: 1px solid blue;
               display: flex;
               font-size: $mid-small;
             }
@@ -653,13 +654,45 @@
               align-items: center;
               width: 410px;
               height: 26px;
-              // padding: 1rem;
               margin-top: .5rem;
             }
+            
               .track-upload-form-details-input{
-                // border: 1px solid red;
-                padding-left: .5rem;
                 width: 410px;
+                padding-left: .5rem;
+              }
+
+              .tag-list{
+                display: flex;
+                flex-wrap: wrap;
+                width: 410px;
+                margin-top: .5rem;
+              }
+                .tag-item{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border: 1px solid $light-gray;
+                  border-radius: .3rem;
+                  background-color: $snow;
+                  margin-left: .5rem;
+                  margin-top: .3rem;
+                  padding: .2rem;
+                }
+              .tag-button{
+                border: 1px solid $dark-coral;
+                background-color: $coral;
+                color: $white;
+                border-radius: .3rem;
+                margin-top: .6rem;
+                margin-left: 85%;
+                padding: .2rem;
+              }
+
+              .cancel{
+                font-size: $small;
+                font-weight: bold;
+                margin-right: .2rem;
               }
 
             .track-upload-form-details-url{
@@ -679,7 +712,6 @@
               }
 
     .track-upload-form-sub{
-      // border: 1px solid $border;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -687,7 +719,6 @@
       height: 67px;
     }
       .track-upload-form-sub-required{
-        // border: 1px solid $coral;
         display: flex;
         font-size: $mid-small;
       }
@@ -696,7 +727,6 @@
           padding-right: .2rem;
         }
       .track-upload-form-sub-buttons{
-        // border: 1px solid blue;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -704,10 +734,9 @@
 
       }
         .track-upload-form-sub-cancel{
-          // border: 1px solid red;
         }
         .track-upload-form-sub-save{
-          border: 1px solid orange;
+          border: 1px solid $dark-coral;
           border-radius: .3rem;
           background-color: $coral;
           color: $white;

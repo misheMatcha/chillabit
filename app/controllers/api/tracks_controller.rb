@@ -14,7 +14,7 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    @track = Track.with_attached_files.find(params[:id])
+    @track = Track.with_attached_cover.find(params[:id])
     render '/api/tracks/show'
   end
 
@@ -26,6 +26,6 @@ class Api::TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:name, :artist_id, :cover, trackFiles: [])
+    params.require(:track).permit(:name, :artist_id, :cover, :genre, :desc, tags: [], trackFiles: [])
   end
 end

@@ -6,20 +6,26 @@ class TrackUpload extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      name: "",
+      name: '',
       artistId: this.props.currentUser.id,
       tracklist: [],
+      genre: '',
+      desc: '',
+      tagInput: '',
+      tags: [],
       cover: null,
       coverUrl: '',
       file: null,
-      stage1: 'track-upload-form-instruct display-flex',
-      stage2: 'track-upload-form-details display-none'
+      stage1: 'track-upload-form-instruct ',
+      stage2: 'track-upload-form-details '
     }
     this.formData = new FormData();
 
     this.handleUpload = this.handleUpload.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleCover = this.handleCover.bind(this);
+    this.addTag = this.addTag.bind(this);
+    this.removeTag = this.removeTag.bind(this);
   }
 
   handleUpload(e){
@@ -28,6 +34,13 @@ class TrackUpload extends React.Component{
     this.formData.append("track[name]", this.state.name)
     this.formData.append("track[artist_id]", this.state.artistId)
     this.formData.append("track[cover]", this.state.cover)
+    this.formData.append("track[genre]", this.state.genre)
+    this.formData.append("track[desc]", this.state.desc)
+    
+    for(let j = 0; j < this.state.tags.length; j++){
+      this.formData.append("track[tags][]", this.state.tags[j]);
+    }
+
     for (let i = 0; i < this.state.tracklist.length; i++){
       this.formData.append("track[trackFiles][]", this.state.tracklist[i]);
     }
@@ -71,6 +84,18 @@ class TrackUpload extends React.Component{
         cover: e.currentTarget.files[0],
         coverUrl: this.reader.result
       })
+  }
+
+  addTag(e){
+    e.preventDefault();
+    this.state.tags.push(this.state.tagInput);
+    this.setState({tagInput: ''});
+  }
+
+  removeTag(e){
+    let array = [...this.state.tags];
+    console.log(array)
+    let index = array.indexOf(e.currentTarget.value)
   }
 
   // Add genre later so that albums can aggregate genres from tracks within
@@ -146,7 +171,7 @@ class TrackUpload extends React.Component{
                     <div className="track-upload-form-info-wrap">
                       <div className="track-upload-form-details-title">
                         Genre
-                                          </div>
+                      </div>
                       <label className="track-upload-form-details-label">
                         <input placeholder="Name your genre"
                           type="text"
@@ -158,19 +183,34 @@ class TrackUpload extends React.Component{
                       <div className="track-upload-form-info-wrap">
                         <div className="track-upload-form-details-title">
                           Additional tags
-                                          </div>
+                        </div>
+                        <div>
+
+                        </div>
                         <label className="track-upload-form-details-label">
                           <input placeholder="Add tags to describe the genre and mood of your track"
                             type="text"
-                            value={this.state.tags}
-                            onChange={this.updateInput("tags")} className="track-upload-form-details-input" />
+                            value={this.state.tagInput}
+                            onChange={this.updateInput("tagInput")} className="track-upload-form-details-input" />
                         </label>
+                        <ul className="tag-list">
+                          {
+                            this.state.tags.map((tag, idx) => {
+                              return(
+                                <li key={idx} className="tag-item" onClick={this.removeTag}>
+                                  <p className="cancel">x</p> {tag}
+                                </li>
+                              )
+                            })
+                          }
+                        </ul>
+                      <button className="tag-button" onClick={this.addTag}>add tag</button>
                       </div>
                     
                       <div className="track-upload-form-info-wrap">
                         <div className="track-upload-form-details-title">
                           Description
-                                          </div>
+                        </div>
                         <label className="track-upload-form-details-label-text">
                           <textarea placeholder="Describe your track" className="track-upload-form-details-label-textarea" value={this.state.desc} onChange={this.updateInput('desc')}></textarea>
                         </label>

@@ -5,7 +5,7 @@ import { addCurrentTrack } from '../../../actions/current_track_actions';
 import TrackShow from './track_show.jsx';
 
 const mSTP = (state, ownProps) => ({
-  track: state.entities.tracks,
+  track: Object.values(state.entities.tracks),
   playing: state.ui.trackPlayer.playing,
   audioPlayerz: ownProps.audioRef
 

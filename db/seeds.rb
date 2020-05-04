@@ -16,6 +16,6 @@ users = User.create([
 #   {name: 'test', artist_id: 3}
 # ])
 
-albums = Album.create([
-  {name: 'Love Story', single: false, genre: 'lofi', artist_id: 3},
-])
+# albums = Album.create([
+#   {name: 'Love Story', single: false, genre: 'lofi', artist_id: 3},
+# ])
