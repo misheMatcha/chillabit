@@ -16,6 +16,7 @@ class TrackShow extends React.Component{
 
   componentDidMount(){
     // this.props.fetchTrack(this.props.match.params.id)
+    this.props.fetchTrack(1)
   }
 
   handleComment(field){
@@ -29,6 +30,7 @@ class TrackShow extends React.Component{
   }
 
   render(){
+    console.log(this.props)
     return(
       <div className="track-show">
         <div className="track-show-wrap">
@@ -45,7 +47,7 @@ class TrackShow extends React.Component{
                   }} />
                 }
                 <div className="audio-wrap track-details">
-                  <p className="track-details artist">{IRIDSCNT.artist}</p>
+                  {/* <p className="track-details artist">{this.props.track.name}</p> */}
                   <p className="track-details title">{IRIDSCNT.title}</p>
                 </div>
               </div>

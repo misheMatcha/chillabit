@@ -24,7 +24,8 @@ class TrackUpload extends React.Component{
     this.handleUpload = this.handleUpload.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleCover = this.handleCover.bind(this);
-    this.handleTag = this.handleTag.bind(this);
+    this.addTag = this.addTag.bind(this);
+    this.removeTag = this.removeTag.bind(this);
   }
 
   handleUpload(e){
@@ -55,8 +56,8 @@ class TrackUpload extends React.Component{
   handleFile(e){
     this.setState({
       tracklist: [e.currentTarget.files[0]],
-      // stage1: 'track-upload-form-instruct display-none',
-      // stage2: 'track-upload-form-details display-flex'
+      stage1: 'track-upload-form-instruct display-none',
+      stage2: 'track-upload-form-details display-flex'
     })
   }
 
@@ -85,10 +86,16 @@ class TrackUpload extends React.Component{
       })
   }
 
-  handleTag(e){
+  addTag(e){
     e.preventDefault();
     this.state.tags.push(this.state.tagInput);
     this.setState({tagInput: ''});
+  }
+
+  removeTag(e){
+    let array = [...this.state.tags];
+    console.log(array)
+    let index = array.indexOf(e.currentTarget.value)
   }
 
   // Add genre later so that albums can aggregate genres from tracks within
@@ -190,14 +197,14 @@ class TrackUpload extends React.Component{
                           {
                             this.state.tags.map((tag, idx) => {
                               return(
-                                <li key={idx} className="tag-item">
+                                <li key={idx} className="tag-item" onClick={this.removeTag}>
                                   <p className="cancel">x</p> {tag}
                                 </li>
                               )
                             })
                           }
                         </ul>
-                      <button className="tag-button" onClick={this.handleTag}>add tag</button>
+                      <button className="tag-button" onClick={this.addTag}>add tag</button>
                       </div>
                     
                       <div className="track-upload-form-info-wrap">

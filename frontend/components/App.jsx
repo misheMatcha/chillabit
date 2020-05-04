@@ -24,7 +24,7 @@ class App extends React.Component{
         <Modal />
         <Route path="/" component={NavBar}/>
         <Switch>
-          <ProtectdRoute exact path="/" component={TrackUpload}/>
+          <ProtectdRoute exact path="/" component={TrackShow}/>
           <ProtectdRoute exact path="/discover" component={Discover}/>
           <ProtectdRoute exact path="/stream" component={TrackShow}/>
           <ProtectdRoute exact path="/library" component={Error404}/>

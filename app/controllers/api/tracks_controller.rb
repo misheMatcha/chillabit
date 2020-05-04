@@ -14,7 +14,7 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    @track = Track.with_attached_files.find(params[:id])
+    @track = Track.with_attached_cover.find(params[:id])
     render '/api/tracks/show'
   end
 
