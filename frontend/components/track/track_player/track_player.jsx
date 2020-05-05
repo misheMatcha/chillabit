@@ -23,10 +23,10 @@ class TrackPlayer extends React.Component{
   componentDidUpdate(){
     if(this.props.playing === true){
       this.props.audioPlayer.current.play();
-      console.log('Playing audio');
+      // console.log('Playing audio');
     }else{
       this.props.audioPlayer.current.pause();
-      console.log('Pause audio');
+      // console.log('Pause audio');
     }
   }
 

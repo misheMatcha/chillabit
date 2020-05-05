@@ -94,7 +94,7 @@ class TrackUpload extends React.Component{
 
   removeTag(e){
     let array = [...this.state.tags];
-    console.log(array)
+    // console.log(array)
     let index = array.indexOf(e.currentTarget.value)
   }
 

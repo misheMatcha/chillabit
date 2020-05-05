@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import SplashPage from './splash_page.jsx'
 import { openModal } from '../../actions/modal_actions';
 import { requestAllTracks } from '../../actions/track_actions';
+import { addCurrentTrack } from '../../actions/current_track_actions';
 
 const mSTP = state => ({
   tracks: Object.values(state.entities.tracks)
@@ -24,7 +25,8 @@ const mDTP = dispatch => ({
       Create account
     </button>
   ),
-  fetchAllTracks: () => dispatch(requestAllTracks())
+  fetchAllTracks: () => dispatch(requestAllTracks()),
+  addTrack: track => dispatch(addCurrentTrack(track))
 });
 
 export default connect(mSTP ,mDTP)(SplashPage);

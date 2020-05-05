@@ -3,7 +3,7 @@ import TrackListItem from './track_list_item.jsx';
 import { requestTrack } from '../../../actions/track_actions'
 
 const mSTP = (state, ownProps) => ({
-  track: ownProps.track
+  // track: ownProps.track
 });
 
 const mDTP = dispatch => ({
