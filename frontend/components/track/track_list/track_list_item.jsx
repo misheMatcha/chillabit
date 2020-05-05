@@ -30,7 +30,7 @@ class TrackListItem extends React.Component{
           </div>
         </div>
         <div className="track-list-item-details">
-          <p className="track-list-item-title">{this.props.track.title}</p>
+          <p className="track-list-item-title">{this.props.track.name}</p>
           <p className="track-list-item-artist">{this.props.track.artist}</p>
         </div>
       </div>
