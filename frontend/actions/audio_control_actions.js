@@ -1,11 +1,11 @@
+import { updateCurrentTrack } from './current_track_actions';
+
 export const PLAY_TRACK = "PLAY_TRACK";
 export const PAUSE_TRACK = "PAUSE_TRACK";
 export const PREV_TRACK = "PREV_TRACK";
 export const NEXT_TRACK = "NEXT_TRACK";
 export const ADD_TRACK = "ADD_TRACK";
 export const REMOVE_TRACK = "REMOVE_TRACK";
-
-import { updateCurrentTrack } from './current_track_actions';
 
 export const playTrack = () => ({
   type: PLAY_TRACK
