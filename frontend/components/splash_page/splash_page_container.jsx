@@ -8,7 +8,7 @@ import { playTrack, pauseTrack } from '../../actions/track_player_actions';
 
 const mSTP = state => ({
   tracks: Object.values(state.entities.tracks),
-  playStatus: state.ui.trackPlayer.playing,
+  playStatus: state.ui.audioControls.playing,
   currentTrack: state.ui.currentTrack
 });
 

@@ -10,6 +10,7 @@ import Discover from './discover/discover_container';
 import TrackUpload from './track/track_upload/track_upload_container';
 import TrackShow from './track/track_show/track_show_container';
 // import TrackPlayer from './track/track_player/track_player_container';
+import AudioControls from './audio_controls/audio_controls_container';
 import Error404 from './error_404_page.jsx';
 
 class App extends React.Component{
@@ -33,6 +34,7 @@ class App extends React.Component{
           <ProtectdRoute exact path="/:username" component={Error404}/>
           <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow} audioRef={this.audioRef}/>
         </Switch>
+        <AudioControls />
         {/* <TrackPlayer audioRef={this.audioRef}/> */}
         <AuthRoute path="/" component={SplashPage} audioRef={this.audioRef}/>
       </div>

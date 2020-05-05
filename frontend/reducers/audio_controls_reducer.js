@@ -1,4 +1,4 @@
-import { PLAY_TRACK, PAUSE_TRACK, PREV_TRACK, NEXT_TRACK, ADD_TRACK, REMOVE_TRACK } from '../actions/audio_control_actions';
+import { PLAY_TRACK, PAUSE_TRACK, PREV_TRACK, NEXT_TRACK, ADD_TRACK, REMOVE_TRACK } from '../actions/audio_controls_actions';
 
 const initialControls = {
   playing: false,
@@ -7,7 +7,7 @@ const initialControls = {
   volume: 1
 };
 
-export default audioControlReducer = (state=initialControls, action) => {
+const audioControlsReducer = (state=initialControls, action) => {
   Object.freeze(state);
   let newControls = Object.assign({}, state);
   switch(action){
@@ -22,3 +22,5 @@ export default audioControlReducer = (state=initialControls, action) => {
       return newControls;
   }
 }
+
+export default audioControlsReducer;
