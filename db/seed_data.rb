@@ -3,141 +3,141 @@ USERS = [
     username: "denholm",
     email: "denholm@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "denholm.jpg"
+    # avatar: "url",
+    # avatar_name: "denholm.jpg"
   },
   {
     username: "douglas",
     email: "douglas@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "douglas.jpg"
+    # avatar: "url",
+    # avatar_name: "douglas.jpg"
   },
   {
     username: "harold",
     email: "harold@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "harold.jpg"
+    # avatar: "url",
+    # avatar_name: "harold.jpg"
   },
   {
     username: "jenn",
     email: "jenn@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "jenn.jpg"
+    # avatar: "url",
+    # avatar_name: "jenn.jpg"
   },
   {
     username: "moss",
     email: "moss@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "moss.jpg"
+    # avatar: "url",
+    # avatar_name: "moss.jpg"
   },
   {
     username: "roy",
     email: "roy@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "roy.jpg"
+    # avatar: "url",
+    # avatar_name: "roy.jpg"
   },
   {
     username: "ocha",
     email: "ocha@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "ocha.jpg"
+    # avatar: "url",
+    # avatar_name: "ocha.jpg"
   },
   {
     username: "Refeeld",
     email: "Refeeld@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "Refeeld.jpg"
+    # avatar: "url",
+    # avatar_name: "Refeeld.jpg"
   },
   {
     username: "C4C",
     email: "C4C@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "C4C.jpg"
+    # avatar: "url",
+    # avatar_name: "C4C.jpg"
   },
   {
     username: "ChilledCow",
     email: "ChilledCow@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "ChilledCow.jpg"
+    # avatar: "url",
+    # avatar_name: "ChilledCow.jpg"
   },
   {
     username: "Chill Music",
     email: "Chill Music@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "Chill Music.jpg"
+    # avatar: "url",
+    # avatar_name: "Chill Music.jpg"
   },
   {
     username: "Sweet Medicine 甘い薬",
     email: "Sweet Medicine 甘い薬@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "Sweet Medicine 甘い薬.jpg"
+    # avatar: "url",
+    # avatar_name: "Sweet Medicine 甘い薬.jpg"
   },
   {
     username: "Psalm//Trees",
     email: "Psalm//Trees@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "Psalm//Trees.jpg"
+    # avatar: "url",
+    # avatar_name: "Psalm//Trees.jpg"
   },
   {
     username: "Chillhop Music",
     email: "Chillhop Music@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "Chillhop Music.jpg"
+    # avatar: "url",
+    # avatar_name: "Chillhop Music.jpg"
   },
   {
     username: "ghoulishmusic",
     email: "ghoulishmusic@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "ghoulishmusic.jpg"
+    # avatar: "url",
+    # avatar_name: "ghoulishmusic.jpg"
   },
   {
     username: "cyberchase",
     email: "cyberchase@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "cyberchase.jpg"
+    # avatar: "url",
+    # avatar_name: "cyberchase.jpg"
   },
   {
     username: "dybredly",
     email: "dybredly@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "dybredly.jpg"
+    # avatar: "url",
+    # avatar_name: "dybredly.jpg"
   },
   {
     username: "livo",
     email: "livo@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "livo.jpg"
+    # avatar: "url",
+    # avatar_name: "livo.jpg"
   },
   {
     username: "Powfu",
     email: "Powfu@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "Powfu.jpg"
+    # avatar: "url",
+    # avatar_name: "Powfu.jpg"
   },
   {
     username: "guest",
     email: "guest@chillabit.com",
     password: "password",
-    avatar: "url",
-    avatar_name: "guest.jpg"
+    # avatar: "url",
+    # avatar_name: "guest.jpg"
   }
 ]
 
@@ -156,11 +156,13 @@ TRACK_FILENAME = [
   "death bed | Feat. beabadoobee"
 ]
 
+START_ID = 8
+
 TRACKS = [
   {
     name: "Cozy Days (feat. mell-ø)",
     artist: "Refeeld",
-    artist_id: 7,
+    artist_id: START_ID,
     genre: "Chillhop",
     tags: [],
     desc: "Special Thanks!!!
@@ -180,13 +182,14 @@ TRACKS = [
           Release date:
           17 November 2019",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_Refeeld-Cozy_Days.jpg",
+    covername: TRACK_FILENAME[0] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[0] + '.jpg'
+    filename: TRACK_FILENAME[0] + '.mp3'
   },
   {
     name: "Melted w/ Hazy Year (Chillhop Winter Essentials 2019)",
     artist: "C4C",
-    artist_id: 8,
+    artist_id: START_ID + 1,
     genre: "chillhop",
     tags: ["hazy year", "c4c", "melted", "chillhop", "guitar", "flute", "kalimba", "onlylove"],
     desc: "☃️ Vinyl / Stream » chillhop.ffm.to/winter2019.pbt
@@ -198,13 +201,14 @@ TRACKS = [
 
           onelove",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_C4C-Melted_w_Hazy_Year.jpg",
+    covername: TRACK_FILENAME[1] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[1] + '.jpg'
+    filename: TRACK_FILENAME[1] + '.mp3'
   },
   {
     name: "WYS - North Pole",
     artist: "ChilledCow",
-    artist_id: 9,
+    artist_id: START_ID + 2,
     genre: "chill beats",
     tags: ["lofi", "Hip Hop"],
     desc: "💿 Stream/Support
@@ -233,35 +237,38 @@ TRACKS = [
           → bit.ly/chilledcow-applemusic
           → bit.ly/chilledcow-soundcloud",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_WYS-North_Pole.jpg",
+    covername: TRACK_FILENAME[2] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[2] + '.jpg'
+    filename: TRACK_FILENAME[2] + '.mp3'
   },
   {
     name: "Ｈｏｍｅ － Ｒｅｓｏｎａｎｃｅ （Heal's Vaporwave Edit）",
     artist: "Chill Music",
-    artist_id: 10,
+    artist_id: START_ID + 3,
     genre: "Vaporwave",
     tags: ["Vaporwave", "Chill", "Vibe"],
     desc: "Vibes.",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_Chill_Music-Home.jpg",
+    covername: TRACK_FILENAME[3] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[3] + '.jpg'
+    filename: TRACK_FILENAME[3] + '.mp3'
   },
   {
     name: "sweet medicine - happy. - lofi hip hop beats",
     artist: "Sweet Medicine 甘い薬",
-    artist_id: 11,
+    artist_id: START_ID + 4,
     genre: "Triphop",
     tags: ["Lofi Hip Hop Beats", "Lofi Hip Hop", "Lofi Beats"],
     desc: "Lofi Hip Hop",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_sweet_medicine-happy.jpg",
+    covername: TRACK_FILENAME[4] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[4] + '.jpg'
+    filename: TRACK_FILENAME[4] + '.mp3'
   },
   {
     name: "God Would Be Missing Me (Vinyl available via Link)",
     artist: "Psalm//Trees",
-    artist_id: 12,
+    artist_id: START_ID + 5,
     genre: "ydkwli",
     tags: [],
     desc: "Less than 100 Vinyl left.
@@ -270,13 +277,14 @@ TRACKS = [
 
           <3",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_Psalm_Trees-God_Would_Be_Missing_Me.jpg",
+    covername: TRACK_FILENAME[5] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[5] + '.jpg'
+    filename: TRACK_FILENAME[5] + '.mp3'
   },
   {
     name: "No Spirit - Snacks [full EP]",
     artist: "Chillhop Music",
-    artist_id: 13,
+    artist_id: START_ID + 6,
     genre: "Chillhop",
     tags: ["Hip Hop", "beats", "Instrumental", "Chill", "smooth", "relaxing"],
     desc: "🦜Download / Stream » chillhop.ffm.to/snacks.pbt
@@ -324,13 +332,14 @@ TRACKS = [
           ・ instagram.com/jim_spendlove/
           ・ jimspendlove.myportfolio.com",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_Chillhop_Music-No_Spirit.jpg",
+    covername: TRACK_FILENAME[6] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[6] + '.jpg'
+    filename: TRACK_FILENAME[6] + '.mp3'
   },
   {
     name: "Kudasai - The Girl I Haven't Met",
     artist: "ghoulishmusic",
-    artist_id: 14,
+    artist_id: START_ID + 7,
     genre: "Falling EP",
     tags: ["lofi", "Hip Hop", "chill", "vibes", "study", "SCFIRST"],
     desc: 'twitter.com/kudasaibeats
@@ -338,47 +347,51 @@ TRACKS = [
           I love you all
           kudasaibeats.bandcamp.com/track/the-gi…i-havent-met',
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_Kudasai-The_Girl_I_Haven't_Met.jpg",
+    covername: TRACK_FILENAME[7] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[7] + '.jpg'
+    filename: TRACK_FILENAME[7] + '.mp3'
   },
   {
     name: "patience",
     artist: "cyberchase",
-    artist_id: 15,
+    artist_id: START_ID + 8,
     genre: "",
     tags: ["chill", "relax", "study", "homework", "laid back", "xxxtentacion", "Tag:", "lil", "uzi", "vert", "post", "malone", "peep", "skies", "cardi", "b", "rich", "the", "kid", "ski", "mask", "slump", "god", "lofi", "sad", "future", "edm", "Dance"],
     desc: "sampled an x song",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_cyberchase-patience.jpg",
+    covername: TRACK_FILENAME[8] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[8] + '.jpg'
+    filename: TRACK_FILENAME[8] + '.mp3'
   },
   {
     name: "nobody belongs anywhere, nobody exists on purpose, everybody's gonna die",
     artist: "dybredly",
-    artist_id: 16,
+    artist_id: START_ID + 9,
     genre: "M O R T I F I E D",
     tags: ["Lo-Fi", "lofi.hiphop", "Rick and Morty", "Guitar", "Hip Hop", "Bootleg boy"],
     desc: "Shoutout to @dabootlegboy for featuring this on his vol 4 <3
           www.youtube.com/watch?v=2OLeKlQ3QGE",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_dybredly-nobdy.jpg",
+    covername: TRACK_FILENAME[9] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[9] + '.jpg'
+    filename: TRACK_FILENAME[9] + '.mp3'
   },
   {
     name: "ｆｅｅｌｉｎｇ ｋｉｎｄａ ｇｒａｙ",
     artist: "livo",
-    artist_id: 17,
+    artist_id: START_ID + 10,
     genre: "lofi.hiphop",
     tags: ["lofi", "Hip Hop", "bumps", "Beats", "Lo-Fi", "lofihiphop", "kicks", "snare", "dilla", "Relax", "study", "Chill", "sleep", "sad", "anime", "jazz", "rhodes", "Loop"],
     desc: "livo.bandcamp.com/track/-",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_livo-feeling_gray.jpg",
+    covername: TRACK_FILENAME[10] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[10] + '.jpg'
+    filename: TRACK_FILENAME[10] + '.mp3'
   },
   {
     name: "death bed | Feat. beabadoobee",
     artist: "Powfu",
-    artist_id: 18,
+    artist_id: START_ID + 11,
     genre: "Lofihiphop",
     tags: ["lovesongs", "sad", "rap", "scfirst", "romantic"],
     desc: "Now on SPOTIFY & APPLE etc.
@@ -446,7 +459,10 @@ TRACKS = [
           soon you’ll be alone
           Sorry that u have to loose me",
     cover: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_Powfu-death_bed.jpg",
+    covername: TRACK_FILENAME[11] + '.jpg',
     file: "https://chillabit-seeds.s3-us-west-1.amazonaws.com/track_file_ocha-iridscnt.mp3",
-    filename: TRACK_FILENAME[11] + '.jpg'
+    filename: TRACK_FILENAME[11] + '.mp3'
   },
 ]
+
+p TRACKS[0][:desc]
