@@ -4,21 +4,16 @@ class TrackListItem extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      playing: false
+      audioSource: ""
     }
-
-    this.togglePlay = this.togglePlay.bind(this)
+    this.handleTrack = this.handleTrack.bind(this)
   }
 
-  togglePlay(){
-    // if(this.state.playing === false){
-    //   this.setState({playing: true});
-    //   console.log('Now playing');
-    // }else{
-    //   this.setState({playing: false});
-    //   console.log('Now paused');
-    // }
+  handleTrack(){
     let audioDom = document.getElementById("track-list-audio");
+    this.checkSource()
+    this.togglePlay()
+
     let trackDetails = {
       autoplay: audioDom.autoplay,
       buffered: audioDom.buffered,
@@ -34,17 +29,36 @@ class TrackListItem extends React.Component{
       src: audioDom.src,
       volume: audioDom.volume
     }
-    this.props.addTrack(trackDetails);
+    
+  }
+
+  checkSource(ctx){
+    if(this.props.currentTrack.src === null || this.props.currentTrack.src !== this.props.track.trackUrls[0]){
+      this.setState({ audioSource: this.props.track.trackUrls[0] });
+    }else{
+      this.setState({ audioSource: this.props.currentTrack.currentSrc });
+      console.log(ctx)
+      ctx.currentTime = this.props.currentTrack.currentTime;
+    }
+  }
+
+  togglePlay(){
+    if(this.props.playing === false){
+      this.props.playTrack();
+    }else{
+      this.props.pauseTrack();
+    }
   }
 
   render(){
+    // console.log(this.props)
     return(
       <div className="track-list-item">
-        <audio id="track-list-audio" src={this.props.track.trackUrls[0]}/>
+        <audio id="track-list-audio" ref={this.props.audio} src={this.state.audioSource}/>
         <div className="track-list-item-hover-wrap">
           <img src={this.props.track.cover} className="track-list-item-cover"/>
           <div className="track-list-item-hover">
-            <button className="fas fa-play-circle" onClick={this.togglePlay}/>
+            <button className="fas fa-play-circle" onClick={this.handleTrack}/>
           </div>
         </div>
         <div className="track-list-item-details">

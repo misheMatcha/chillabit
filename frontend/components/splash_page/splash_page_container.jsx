@@ -3,10 +3,13 @@ import { connect } from 'react-redux'
 import SplashPage from './splash_page.jsx'
 import { openModal } from '../../actions/modal_actions';
 import { requestAllTracks } from '../../actions/track_actions';
-import { addCurrentTrack } from '../../actions/current_track_actions';
+import { updateCurrentTrack } from '../../actions/current_track_actions';
+import { playTrack, pauseTrack } from '../../actions/track_player_actions';
 
 const mSTP = state => ({
-  tracks: Object.values(state.entities.tracks)
+  tracks: Object.values(state.entities.tracks),
+  playStatus: state.ui.trackPlayer.playing,
+  currentTrack: state.ui.currentTrack
 });
 
 const mDTP = dispatch => ({
@@ -26,7 +29,9 @@ const mDTP = dispatch => ({
     </button>
   ),
   fetchAllTracks: () => dispatch(requestAllTracks()),
-  addTrack: track => dispatch(addCurrentTrack(track))
+  addTrack: track => dispatch(updateCurrentTrack(track)),
+  playTrack: () => dispatch(playTrack()),
+  pauseTrack: () => dispatch(pauseTrack())
 });
 
 export default connect(mSTP ,mDTP)(SplashPage);

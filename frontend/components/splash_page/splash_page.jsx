@@ -57,7 +57,14 @@ class SplashPage extends React.Component {
                     return(
                       <div key={track.id} className="splash-tracks-container">
                         <li className="splash-tracks">
-                          <TrackListItem track={track} addTrack={this.props.addTrack} />
+                          <TrackListItem
+                            track={track}
+                            addTrack={this.props.addTrack}
+                            playTrack={this.props.playTrack}
+                            pauseTrack={this.props.pauseTrack}
+                            playing={this.props.playStatus}
+                            audio={this.props.audioRef}
+                            currentTrack={this.props.currentTrack} />
                         </li>
                     </div>
                     )
