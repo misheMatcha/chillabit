@@ -15,6 +15,10 @@ class Discover extends React.Component {
     this.toggleFollow = this.toggleFollow.bind(this)
   }
 
+  componentDidMount(){
+    this.props.fetchTracks();
+  }
+
   toggleFollow(){
     if(this.state.isFollowing === false){
       this.setState({isFollowing: true});
@@ -29,10 +33,10 @@ class Discover extends React.Component {
     return (
       <div className="discover">
         <div className="discover-main">
-          <TrackList title={`New Music Now`} desc={`The latest hits, updated all the time`} />
-          <TrackList title={`More of what you like`} desc={`Suggestions based on what you've liked or played`} />
-          <TrackList title={`Stay Home`} desc={`Tunes of isolation and self-care`} />
-          <TrackList title={`Chillabit Charts`} desc={`The most played tracks on Chillabit this week`} />
+          <TrackList title={`New Music Now`} tracklist={this.props.tracks} desc={`The latest hits, updated all the time`} />
+          <TrackList title={`More of what you like`} tracklist={this.props.tracks} desc={`Suggestions based on what you've liked or played`} />
+          <TrackList title={`Stay Home`} tracklist={this.props.tracks} desc={`Tunes of isolation and self-care`} />
+          <TrackList title={`Chillabit Charts`} tracklist={this.props.tracks} desc={`The most played tracks on Chillabit this week`} />
           <div className="discover-main-buffer"/>
         </div>
         <div className="sidebar-container">

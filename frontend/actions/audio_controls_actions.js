@@ -31,8 +31,8 @@ export const removeTrack = () => ({
   type: REMOVE_TRACK
 });
 
-export const playingTrack = track => dispatch => updateCurrentTrack(track)
-  .then(() => dispatch(playTrack()))
+// export const playingTrack = track => dispatch => updateCurrentTrack(track)
+//   .then(() => dispatch(playTrack()))
 
-export const pausingTrack = track => dispatch => updateCurrentTrack(track)
-  .then(() => dispatch(pauseTrack()))
+// export const pausingTrack = track => dispatch => updateCurrentTrack(track)
+//   .then(() => dispatch(pauseTrack()))
