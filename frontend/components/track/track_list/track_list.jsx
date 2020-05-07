@@ -66,12 +66,14 @@ class TrackList extends React.Component{
                 } else{
                   stageIdx = 3;
                 }
-                
+                if(idx < 1){
+                  
                   return(
                     <li className={'track-list-li-' + stageIdx} key={idx}>
                       <TrackListItem track={track} />
                     </li>
                   )
+                }
               })
             }
           </ul>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PlayPauseButton from '../play_pause_button';
 
 class AudioControls extends React.Component{
   constructor(props){
@@ -14,7 +15,7 @@ class AudioControls extends React.Component{
   render(){
     return(
       <div onClick={this.handlePlay}>
-        hi
+        <PlayPauseButton style="fas fa-play" />
       </div>
     )
   }

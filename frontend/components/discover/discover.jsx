@@ -34,9 +34,9 @@ class Discover extends React.Component {
       <div className="discover">
         <div className="discover-main">
           <TrackList title={`New Music Now`} tracklist={this.props.tracks} desc={`The latest hits, updated all the time`} />
-          <TrackList title={`More of what you like`} tracklist={this.props.tracks} desc={`Suggestions based on what you've liked or played`} />
+          {/* <TrackList title={`More of what you like`} tracklist={this.props.tracks} desc={`Suggestions based on what you've liked or played`} />
           <TrackList title={`Stay Home`} tracklist={this.props.tracks} desc={`Tunes of isolation and self-care`} />
-          <TrackList title={`Chillabit Charts`} tracklist={this.props.tracks} desc={`The most played tracks on Chillabit this week`} />
+          <TrackList title={`Chillabit Charts`} tracklist={this.props.tracks} desc={`The most played tracks on Chillabit this week`} /> */}
           <div className="discover-main-buffer"/>
         </div>
         <div className="sidebar-container">

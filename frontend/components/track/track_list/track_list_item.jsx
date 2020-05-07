@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PlayPauseButton from '../../play_pause_button';
 
 class TrackListItem extends React.Component{
   constructor(props){
@@ -63,7 +64,8 @@ class TrackListItem extends React.Component{
         {/* <audio id="track-list-audio" src={trackDetail.trackUrls[0]} /> */}
         <div className="track-list-item-hover-wrap" >
           <img src={track.cover} className="track-list-item-cover" />
-          <div className="track-list-item-hover" onClick={() => setPizza(1)}>
+          <div className="track-list-item-hover">
+            <PlayPauseButton src={track.trackUrls[0]} style="fas fa-play-circle"/>
             {/* <button className={playButton} onClick={() => {
               if (playButton === "fas fa-play-circle") {
                 setPlayButton("fas fa-pause-circle")
