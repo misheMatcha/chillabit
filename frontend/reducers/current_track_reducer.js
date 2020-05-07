@@ -1,6 +1,10 @@
 import { UPDATE_CURRENT_TRACK } from '../actions/current_track_actions';
 
 const initialState = {
+  id: null,
+  title: null,
+  artist: null,
+  cover: null,
   currentTime: null,
   duration: null,
   ended: null,
@@ -17,16 +21,7 @@ const currentTrackReducer = (oldState = initialState, action) => {
   let newState = Object.assign({}, oldState);
   switch (action.type) {
     case UPDATE_CURRENT_TRACK:
-      newState.currentTime = action.track.currentTime;
-      newState.duration = action.track.duration;
-      newState.ended = action.track.ended;
-      newState.loop = action.track.loop;
-      newState.muted = action.track.muted;
-      newState.paused = action.track.paused;
-      newState.seeking = action.track.seeking;
-      newState.src = action.track.src;
-      newState.volume = action.track.volume;
-      return newState;
+      return Object.assign(newState, action.track);
     default:
       return oldState;
   }

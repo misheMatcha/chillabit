@@ -1,41 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { playTrack } from '../actions/audio_controls_actions';
 
-function PlayPauseButton(props){
-  const [buttonStyle, setButtonStyle] = useState(props.style);
-  const [audioSrc, setAudioSrc] = useState(props.src);
-  const [status, setStatus] = useState("paused");
-  
+const PlayPauseButton = (props) => {
+  const [buttonStyle, setButtonStyle] = useState("fas fa-play-circle");
+  const audioRef = useRef();
+
   useEffect(() => {
-  })
+    return(() => {
+      // clean up actions
+    })
+  }, []);
+
+  const toggleStyle = () => {
+    if(buttonStyle === "fas fa-play-circle"){
+      setButtonStyle("fas fa-pause-circle")
+    }else{
+      setButtonStyle("fas fa-play-circle")
+    }
+  };
+
+  const togglePlayPause = () => {
+  };
 
   return(
     <>
+      <audio ref={audioRef} src={props.track.src} />
       <button className={buttonStyle} onClick={() => {
-        let audioDom = event.target.firstElementChild;
-        if(status === "paused"){
-          setStatus("playing");
-          audioDom.play()
-          console.log(audioDom.currentTime)
-        }else{
-          setStatus("playing");
-          audioDom.pause()
-          console.log(audioDom.currentTime)
-        }
-        }}>
-        <audio id="audio" src={audioSrc} className={buttonStyle}/>
-      </button>
+        toggleStyle()
+        props.updateCurrTrack(props.track)
+      }} />
     </>
   )
-}
+};
 
-const mSTP = state => ({
-  playing: state.ui.audioControls.playing
-});
-
-const mDTP = dispatch => ({
-  play: () => dispatch(playTrack())
-});
-
-export default connect(mSTP, mDTP)(PlayPauseButton);
+export default PlayPauseButton;

@@ -16,8 +16,7 @@ const mDTP = dispatch => ({
   playTrack: () => dispatch(playTrack()),
   pauseTrack: () => dispatch(pauseTrack()),
   addTrack: track => dispatch(addTrack(track)),
-  // updateTrack: track => dispatch(updateCurrentTrack(track)),
-  testadd: track => dispatch(updateCurrentTrack(track))
+  updateTrack: track => dispatch(updateCurrentTrack(track))
 });
 
 export default connect(mSTP, mDTP)(TrackShow);
