@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { playTrack } from '../actions/audio_controls_actions';
 
 const PlayPauseButton = (props) => {
+  const buttonStyle = props.currentTrack.id !== props.track.id || !props.currentTrack.playing ? "fas fa-play-circle" : "fas fa-pause-circle";
+  const audioSrc = props.currentTrack.src === null ? "" : props.currentTrack.src;
   const [ctxState, setCtxState] = useState({
     currentTime: null,
     duration: null,
@@ -13,7 +15,7 @@ const PlayPauseButton = (props) => {
     seeking: null,
     volume: null
   });
-  const [buttonStyle, setButtonStyle] = useState("fas fa-play-circle");
+  // const [buttonStyle, setButtonStyle] = useState("fas fa-play-circle");
   const [isMatch, setIsMatch] = useState(false);
   const audioRef = useRef();
 
@@ -23,29 +25,19 @@ const PlayPauseButton = (props) => {
     return(() => {
       // clean up actions
     })
-  }, [props.currentTrack.playing, ctxState.currentTime]);
+  }, [props.currentTrack.playing, ctxState.currentTime, buttonStyle]);
 
   const checkMatch = () => {
     if(props.currentTrack.id === props.track.id) setIsMatch(true);
   };
 
-  const toggleStyle = () => {
-    if(buttonStyle === "fas fa-play-circle"){
-      setButtonStyle("fas fa-pause-circle")
-    }else{
-      setButtonStyle("fas fa-play-circle")
-    }
-  };
-
   const updateTrackState = () => {
-    debugger
     updateCtx()
     if(!isMatch) props.updateCurrTrack(props.track);
     props.updateCurrTrack(ctxState);
   };
 
   const togglePlayPause = () => {
-    toggleStyle();
 
     if(props.currentTrack.playing){
       audioRef.current.pause();
@@ -71,11 +63,18 @@ const PlayPauseButton = (props) => {
     })
   };
 
+  const startTime = () => {
+    audioRef.current.addEventListener('timeupdate', event => {
+      // console.log(event.target.currentTime)
+    })
+  };
+
   return(
     <>
-      <audio ref={audioRef} src={props.track.src} />
+      <audio id="playpause" ref={audioRef} src={props.track.src} />
       <button className={buttonStyle} onClick={() => {
         togglePlayPause()
+        startTime()
       }} />
     </>
   )
