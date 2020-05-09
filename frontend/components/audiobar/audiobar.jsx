@@ -5,12 +5,12 @@ const Audiobar = (props) => {
   const audioSrc = props.currentTrack.src === null ? "" : props.currentTrack.src;
   const coverSrc = props.currentTrack.cover === null ? "" : props.currentTrack.cover;
   const [currentTime, setCurrentTime] = useState(props.currentTrack.currentTime === 0 ? "--:--" : props.currentTrack.currentTime);
-  const [duration, setDuration] = useState(!props.currentTrack.duration ? "--:--" : props.currentTrack.duration);
+  const [duration, setDuration] = useState("--:--");
   const audio = useRef();
   const ppAudio = document.getElementById("playpause");
 
   useEffect(() => {
-    testEventListener()
+    updateTime()
     return(() => {
       // clean up
     });
@@ -24,13 +24,19 @@ const Audiobar = (props) => {
     }
   };
 
-  const testEventListener = () => {
+  const formatTime = seconds => {
+    let date = new Date(null);
+    date.setSeconds(seconds);
+    let time = date.toISOString().substr(14, 5);
+    return time;
+  };
+
+  const updateTime = () => {
     if(ppAudio){
+      if(duration !== props.currentTrack.duration) setDuration(formatTime(ppAudio.duration));
+      
       ppAudio.addEventListener("timeupdate", () => {
-        let date = new Date(null);
-        date.setSeconds(event.target.currentTime);
-        let time = date.toISOString().substr(14, 5);
-        setCurrentTime(time)
+        setCurrentTime(formatTime(event.target.currentTime));
       })
     }
   };
@@ -44,7 +50,6 @@ const Audiobar = (props) => {
           <button className="fas fa-step-backward"  />
           <button className={buttonStyle} onClick={() => {
             togglePlayPause()
-            // testEventListener()
           }} />
           <button className="fas fa-step-forward"  />
           <button className="fas fa-random"  />

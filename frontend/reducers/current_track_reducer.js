@@ -7,7 +7,7 @@ const initialState = {
   cover: null,
   src: null,
   currentTime: 0,
-  duration: null,
+  duration: NaN,
   ended: null,
   loop: null,
   muted: null,
