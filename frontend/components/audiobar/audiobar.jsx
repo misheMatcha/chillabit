@@ -6,11 +6,13 @@ const Audiobar = (props) => {
   const coverSrc = props.currentTrack.cover === null ? "" : props.currentTrack.cover;
   const [currentTime, setCurrentTime] = useState(props.currentTrack.currentTime === 0 ? "--:--" : props.currentTrack.currentTime);
   const [duration, setDuration] = useState("--:--");
+  const [opacity, setOpacity] = useState(0);
   const audio = useRef();
   const ppAudio = document.getElementById("playpause");
 
   useEffect(() => {
     updateTime()
+    if(props.currentTrack.cover) setOpacity(1);
     return(() => {
       // clean up
     });
@@ -63,10 +65,10 @@ const Audiobar = (props) => {
         <button className="fas fa-volume-up" />
         <div className="track-player-current-details">
           <div className="track-player-track-info">
-            <img className="track-album-cover" src={coverSrc} />
+            <img className="track-album-cover" src={coverSrc} style={{opacity: opacity}} />
             <div className="track-album-details">
               <p className="track-album-details-artist">{props.currentTrack.artist}</p>
-              <p className="track-album-details-title">{props.currentTrack.title}</p>
+              <p className="track-album-details-title">{props.currentTrack.name}</p>
             </div>
           </div>
           <div className="track-player-misc">

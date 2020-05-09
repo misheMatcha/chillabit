@@ -2,7 +2,7 @@ import { UPDATE_CURRENT_TRACK, PLAY_TRACK, PAUSE_TRACK } from '../actions/curren
 
 const initialState = {
   id: null,
-  title: null,
+  name: null,
   artist: null,
   cover: null,
   src: null,

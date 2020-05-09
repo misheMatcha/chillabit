@@ -15,12 +15,11 @@ const PlayPauseButton = (props) => {
     seeking: null,
     volume: null
   });
-  // const [buttonStyle, setButtonStyle] = useState("fas fa-play-circle");
   const [isMatch, setIsMatch] = useState(false);
   const audioRef = useRef();
 
   useEffect(() => {
-    checkMatch()
+    // checkMatch()
     updateCtx()
     return(() => {
       // clean up actions
@@ -43,7 +42,6 @@ const PlayPauseButton = (props) => {
       audioRef.current.pause();
       props.pause();
     }else{
-      audioRef.current.muted = true;
       audioRef.current.play();
       props.play();
     }
