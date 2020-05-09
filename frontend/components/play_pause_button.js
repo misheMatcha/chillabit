@@ -24,7 +24,7 @@ const PlayPauseButton = (props) => {
     return(() => {
       // clean up actions
     })
-  }, [props.currentTrack.playing, ctxState.currentTime, buttonStyle]);
+  }, [props.currentTrack.playing, ctxState.currentTime, buttonStyle], isMatch);
 
   const checkMatch = () => {
     if(props.currentTrack.id === props.track.id) setIsMatch(true);
@@ -32,8 +32,11 @@ const PlayPauseButton = (props) => {
 
   const updateTrackState = () => {
     updateCtx()
-    if(!isMatch) props.updateCurrTrack(props.track);
-    props.updateCurrTrack(ctxState);
+    if(!isMatch && !props.currentTrack.playing){
+      props.updateCurrTrack(props.track);
+    }else if(isMatch){
+      props.updateCurrTrack(ctxState);
+    }
   };
 
   const togglePlayPause = () => {

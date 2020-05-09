@@ -7,6 +7,7 @@ const Audiobar = (props) => {
   const [currentTime, setCurrentTime] = useState(props.currentTrack.currentTime === 0 ? "--:--" : props.currentTrack.currentTime);
   const [duration, setDuration] = useState("--:--");
   const [opacity, setOpacity] = useState(0);
+  const [filler, setFiller] = useState(0);
   const audio = useRef();
   const ppAudio = document.getElementById("playpause");
 
@@ -39,6 +40,7 @@ const Audiobar = (props) => {
       
       ppAudio.addEventListener("timeupdate", () => {
         setCurrentTime(formatTime(event.target.currentTime));
+        setFiller((event.target.currentTime / event.target.duration) * 100)
       })
     }
   };
@@ -59,7 +61,9 @@ const Audiobar = (props) => {
         </div>
         <div className="track-player-progress-wrap">
           <p>{currentTime}</p>
-          <div className="track-player-progress" />
+          <div className="track-player-progress">
+            <div className="filler" style={{width: filler}} />
+          </div>
           <p>{duration}</p>
         </div>
         <button className="fas fa-volume-up" />

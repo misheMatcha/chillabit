@@ -42,19 +42,11 @@ class TrackShow extends React.Component{
                   <div className="track-show-details-wrap">
                     <div className="track-show-details">
                       <div className="track-show-details audio-wrap">
-                        {
-                          // this.props.playing === false ? <button className="fas fa-play-circle" onClick={() => {
-                          //   this.props.updateTrack(this.props.track[0])
-                          //   console.log("playing")
-                          // }} /> : <button className="fas fa-pause-circle" onClick={() => {
-                          //   console.log("paused")
-                          // }} />
-                        }
                         <PlayPauseButton track={trackDetails} />
-                                <div key={trackDetails.id} className="audio-wrap track-details">
-                                  <p className="track-details artist">{trackDetails.artist}</p>
-                                  <p className="track-details title">{trackDetails.name}</p>
-                                </div>
+                        <div key={trackDetails.id} className="audio-wrap track-details">
+                          <p className="track-details artist">{trackDetails.artist}</p>
+                          <p className="track-details title">{trackDetails.name}</p>
+                        </div>
                       </div>
                       <div className="misc-wrap">
                         <p className="misc-wrap date">3 months ago</p>
