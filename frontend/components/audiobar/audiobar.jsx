@@ -1,32 +1,39 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
 
 const Audiobar = (props) => {
   const buttonStyle = !props.currentTrack.playing ? "fas fa-play" : "fas fa-pause";
   const audioSrc = props.currentTrack.src === null ? "" : props.currentTrack.src;
   const coverSrc = props.currentTrack.cover === null ? "" : props.currentTrack.cover;
+  const [currentTime, setCurrentTime] = useState(props.currentTrack.currentTime === 0 ? "--:--" : props.currentTrack.currentTime);
+  const [duration, setDuration] = useState(!props.currentTrack.duration ? "--:--" : props.currentTrack.duration);
   const audio = useRef();
-  
+  const ppAudio = document.getElementById("playpause");
+
   useEffect(() => {
-    // checkSource()
-    console.log(audio)
+    testEventListener()
     return(() => {
       // clean up
     });
-  }, [audioSrc, coverSrc])
-  
-  const checkSource = () => {
-    if(props.currentTrack.src){
-      setAudioSrc(props.currentTrack.src)
-      setCoverSrc(props.currentTrack.cover)
-      console.log(audio.current.src)
+  }, [props.currentTrack.playing, audioSrc, coverSrc, ppAudio, props.currentTrack.duration])
+
+  const togglePlayPause = () => {
+    if(!props.currentTrack.playing){
+      props.play();
+    }else{
+      props.pause();
     }
-  }
-
-  const test = () => {
-
   };
 
+  const testEventListener = () => {
+    if(ppAudio){
+      ppAudio.addEventListener("timeupdate", () => {
+        let date = new Date(null);
+        date.setSeconds(event.target.currentTime);
+        let time = date.toISOString().substr(14, 5);
+        setCurrentTime(time)
+      })
+    }
+  };
 
   return(
     <>
@@ -35,15 +42,18 @@ const Audiobar = (props) => {
       <div className="track-player-container">
         <div className="track-player-controls">
           <button className="fas fa-step-backward"  />
-          <button className={buttonStyle}  />
+          <button className={buttonStyle} onClick={() => {
+            togglePlayPause()
+            // testEventListener()
+          }} />
           <button className="fas fa-step-forward"  />
           <button className="fas fa-random"  />
           <button className="fas fa-undo"  />
         </div>
         <div className="track-player-progress-wrap">
-          {/* <p>{}</p> */}
+          <p>{currentTime}</p>
           <div className="track-player-progress" />
-          {/* <p>{}</p> */}
+          <p>{duration}</p>
         </div>
         <button className="fas fa-volume-up" />
         <div className="track-player-current-details">
@@ -55,10 +65,8 @@ const Audiobar = (props) => {
             </div>
           </div>
           <div className="track-player-misc">
-            <button className="fas fa-heart" onClick={() => {
-              console.log(audio.current)
-            }}></button>
-            <button className="fas fa-list-ul"></button>
+            <button className="fas fa-heart"/>
+            <button className="fas fa-list-ul"/>
           </div>
         </div>
       </div>
@@ -66,10 +74,4 @@ const Audiobar = (props) => {
   )
 }
 
-const mSTP = state => ({
-  currentTrack: state.ui.currentTrack
-});
-
-const mDTP = dispatch => ({});
-
-export default connect(mSTP, mDTP)(Audiobar);
+export default Audiobar;

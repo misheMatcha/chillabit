@@ -12,14 +12,14 @@ import TrackShow from './track/track_show/track_show_container';
 // import TrackPlayer from './track/track_player/track_player_container';
 import AudioControls from './audio_controls/audio_controls_container';
 import Error404 from './error_404_page.jsx';
-import Audiobar from './audiobar/audiobar.jsx';
+import Audiobar from './audiobar/audiobar_container';
 
 class App extends React.Component{
   constructor(props){
     super(props)
     this.audioRef = React.createRef();
   }
-  
+
   render(){
     return(
       <div className="app-container">

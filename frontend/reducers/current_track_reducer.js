@@ -6,7 +6,7 @@ const initialState = {
   artist: null,
   cover: null,
   src: null,
-  currentTime: null,
+  currentTime: 0,
   duration: null,
   ended: null,
   loop: null,

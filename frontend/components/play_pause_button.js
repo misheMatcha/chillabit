@@ -43,10 +43,11 @@ const PlayPauseButton = (props) => {
       audioRef.current.pause();
       props.pause();
     }else{
+      audioRef.current.muted = true;
       audioRef.current.play();
       props.play();
     }
-    
+
     updateTrackState();
   };
 
@@ -64,7 +65,7 @@ const PlayPauseButton = (props) => {
   };
 
   const startTime = () => {
-    audioRef.current.addEventListener('timeupdate', event => {
+    audioRef.current.addEventListener('timeupdate', () => {
       // console.log(event.target.currentTime)
     })
   };
