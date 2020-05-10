@@ -2,21 +2,32 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectdRoute } from '../util/route_util';
 
-// Components
+// UI
 import NavBar from './nav_bar/nav_bar_container.jsx';
 import Modal from '../components/modal/modal';
+import Audiobar from './audiobar/audiobar_container';
+
+// Components
 import SplashPage from './splash_page/splash_page_container';
 import Discover from './discover/discover_container';
 import TrackUpload from './track/track_upload/track_upload_container';
 import TrackShow from './track/track_show/track_show_container';
-import AudioControls from './audio_controls/audio_controls_container';
 import Error404 from './error_404_page.jsx';
-import Audiobar from './audiobar/audiobar_container';
 
 class App extends React.Component{
   constructor(props){
     super(props)
-    this.audioRef = React.createRef();
+    this.state = {
+      audioRef: null
+    }
+    this.getRefs = this.getRefs.bind(this);
+  }
+
+  getRefs(childRefs){
+    this.setState({
+      audioRef: childRefs
+    });
+    console.log(this.state.audioRef)
   }
 
   render(){
@@ -34,7 +45,7 @@ class App extends React.Component{
           <ProtectdRoute exact path="/:username" component={Error404}/>
           <ProtectdRoute exact path="/:username/:trackName/:id" component={TrackShow} audioRef={this.audioRef}/>
         </Switch>
-        <Audiobar />
+        <Audiobar passRef={this.getRefs} />
         <AuthRoute path="/" component={SplashPage} audioRef={this.audioRef}/>
       </div>
     );
