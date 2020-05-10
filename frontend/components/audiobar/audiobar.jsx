@@ -12,6 +12,7 @@ const Audiobar = (props) => {
   const ppAudio = document.getElementById("playpause");
 
   useEffect(() => {
+    console.log(props)
     updateTime()
     if(props.currentTrack.cover) setOpacity(1);
     return(() => {
