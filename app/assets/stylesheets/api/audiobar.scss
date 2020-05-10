@@ -51,9 +51,14 @@
 }
 
 .track-player-progress{
-  width: 81%;
-  height: 1rem;
+  width: 512px;
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.521);
 }
+  .filler{
+    border: .5px solid purple;
+    width: 0%;
+  }
 
 .fas.fa-volume-up{
   padding: .5rem;
@@ -99,3 +104,4 @@
   .fas.fa-list-ul{
     padding-left: .5rem;
   }
+

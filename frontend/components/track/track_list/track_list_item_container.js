@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import TrackListItem from './track_list_item.jsx';
-import { requestTrack } from '../../../actions/track_actions'
+import { updateCurrentTrack } from '../../../actions/current_track_actions';
 
 const mSTP = (state, ownProps) => ({
-  track: ownProps.track
 });
 
 const mDTP = dispatch => ({
+  updateCurrTrack: track => dispatch(updateCurrentTrack(track))
 });
 
 export default connect(mSTP, mDTP)(TrackListItem);

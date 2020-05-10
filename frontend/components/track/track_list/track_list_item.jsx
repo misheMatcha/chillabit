@@ -1,41 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import PlayPauseButton from '../../play_pause_container';
 
-class TrackListItem extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      playing: false
-    }
 
-    this.togglePlay = this.togglePlay.bind(this)
-  }
+function TrackListItem(track){
+  const [duration, setDuration] = useState(null);
+  const [playButton, setPlayButton] = useState("fas fa-play-circle");
+  const trackDetail = track.track;
 
-  togglePlay(){
-    if(this.state.playing === false){
-      this.setState({playing: true});
-      console.log('Now playing');
-    }else{
-      this.setState({playing: false});
-      console.log('Now paused');
-    }
-  }
+  useEffect(() => {
+  },[duration])
 
-  render(){
-    return(
-      <div className="track-list-item">
-        <div className="track-list-item-hover-wrap">
-          <img src={this.props.track.cover} className="track-list-item-cover"/>
-          <div className="track-list-item-hover">
-            <button className="fas fa-play-circle" onClick={this.togglePlay}/>
-          </div>
-        </div>
-        <div className="track-list-item-details">
-          <p className="track-list-item-title">{this.props.track.title}</p>
-          <p className="track-list-item-artist">{this.props.track.artist}</p>
+  // console.log(trackDetail)
+
+  return(
+    <div className="track-list-item">
+      <div className="track-list-item-hover-wrap">
+        <img src={trackDetail.cover} className="track-list-item-cover" />
+        <div className="track-list-item-hover">
+          {/* <button className={playButton} onClick={() => {
+            if(playButton === "fas fa-play-circle"){
+              setPlayButton("fas fa-pause-circle")
+            }else{
+              setPlayButton("fas fa-play-circle")
+            }
+          }} /> */}
+          <PlayPauseButton track={trackDetail} />
         </div>
       </div>
-    );
-  }
-};
+      <div className="track-list-item-details">
+        <p className="track-list-item-title">{trackDetail.name}</p>
+        <p className="track-list-item-artist">{trackDetail.artist}</p>
+      </div>
+    </div>
+  )
+}
 
 export default TrackListItem;

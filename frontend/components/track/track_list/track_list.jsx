@@ -12,9 +12,6 @@ class TrackList extends React.Component{
     this.toggleLeft = this.toggleLeft.bind(this);
     this.toggleRight = this.toggleRight.bind(this);
   }
-  componentDidMount(){
-    // this.props.fetchAllTracks();
-  }
   
   toggleLeft(){
     if(this.state.stage > 1){
@@ -54,13 +51,13 @@ class TrackList extends React.Component{
   render(){
     return(
       <div className="track-list">
-        <p className="track-list-title">{this.props.discTitle}</p>
-        <p className="track-list-desc">{this.props.discDesc}</p>
+        <p className="track-list-title">{this.props.title}</p>
+        <p className="track-list-desc">{this.props.desc}</p>
 
         <div className="track-list-carousel">
           <ul className="track-list-ul">
             {
-              TRACKS.map((track, idx) => {
+              this.props.tracklist.map((track, idx) => {
                 let stageIdx;
                 if(idx >= 0 && idx <= 3){
                   stageIdx = 1;

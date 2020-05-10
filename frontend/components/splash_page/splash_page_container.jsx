@@ -3,9 +3,12 @@ import { connect } from 'react-redux'
 import SplashPage from './splash_page.jsx'
 import { openModal } from '../../actions/modal_actions';
 import { requestAllTracks } from '../../actions/track_actions';
+import { updateCurrentTrack } from '../../actions/current_track_actions';
 
 const mSTP = state => ({
-  tracks: Object.values(state.entities.tracks)
+  tracks: Object.values(state.entities.tracks),
+  playStatus: state.ui.currentTrack.playing,
+  currentTrack: state.ui.currentTrack
 });
 
 const mDTP = dispatch => ({

@@ -1,24 +1,33 @@
-import { ADD_CURRENT_TRACK } from '../actions/current_track_actions';
+import { UPDATE_CURRENT_TRACK, PLAY_TRACK, PAUSE_TRACK } from '../actions/current_track_actions';
 
 const initialState = {
+  id: null,
+  name: null,
   artist: null,
-  title: null,
   cover: null,
   src: null,
-  currentTime: null,
-  duration: null,
+  currentTime: 0,
+  duration: NaN,
+  ended: null,
+  loop: null,
+  muted: null,
   paused: null,
-  ended: null
+  seeking: null,
+  volume: null,
+  playing: false
 };
 
 const currentTrackReducer = (oldState = initialState, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
   switch (action.type) {
-    case ADD_CURRENT_TRACK:
-      newState.artist = action.track.artist;
-      newState.title = action.track.name;
-      newState.src = action.track.trackURL;
+    case UPDATE_CURRENT_TRACK:
+      return Object.assign(newState, action.track);
+    case PLAY_TRACK:
+      newState.playing = true;
+      return newState;
+    case PAUSE_TRACK:
+      newState.playing = false;
       return newState;
     default:
       return oldState;

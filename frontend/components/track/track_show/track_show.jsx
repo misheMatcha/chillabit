@@ -1,6 +1,7 @@
 import React from 'react';
 import { IRIDSCNT, USERS } from '../../placeholder_seeds';
 import Sidebar from '../../sidebar/sidebar.jsx';
+import PlayPauseButton from '../../play_pause_container';
 
 class TrackShow extends React.Component{
   constructor(props){
@@ -30,7 +31,7 @@ class TrackShow extends React.Component{
   }
 
   render(){
-    // console.log(this.props.track)
+    // console.log(this.props.track[0])
     return(
       <div className="track-show">
         {
@@ -41,19 +42,11 @@ class TrackShow extends React.Component{
                   <div className="track-show-details-wrap">
                     <div className="track-show-details">
                       <div className="track-show-details audio-wrap">
-                        {
-                          this.props.playing === false ? <button className="fas fa-play-circle" onClick={() => {
-                            this.props.playTrack()
-                            this.props.updateTrack(this.props.aud)
-                            this.props.testadd(this.props.track)
-                          }} /> : <button className="fas fa-pause-circle" onClick={() => {
-                            this.props.pauseTrack()
-                          }} />
-                        }
-                                <div key={trackDetails.id} className="audio-wrap track-details">
-                                  <p className="track-details artist">{trackDetails.artist}</p>
-                                  <p className="track-details title">{trackDetails.name}</p>
-                                </div>
+                        <PlayPauseButton track={trackDetails} />
+                        <div key={trackDetails.id} className="audio-wrap track-details">
+                          <p className="track-details artist">{trackDetails.artist}</p>
+                          <p className="track-details title">{trackDetails.name}</p>
+                        </div>
                       </div>
                       <div className="misc-wrap">
                         <p className="misc-wrap date">3 months ago</p>

@@ -14,7 +14,7 @@ class SplashPage extends React.Component {
   }
 
   componentDidMount(){
-    // this.props.fetchAllTracks();
+    this.props.fetchAllTracks();
   }
   
   onHover(e){
@@ -52,12 +52,19 @@ class SplashPage extends React.Component {
           <div className="album-track-display">
             <ul className="splash-tracks-ul">
               {
-                TRACKS.map((track, idx) => {
+                this.props.tracks.map((track, idx) => {
                   if(idx <= 12){
                     return(
-                      <div key={idx} className="splash-tracks-container">
+                      <div key={track.id} className="splash-tracks-container">
                         <li className="splash-tracks">
-                          <TrackListItem track={track} />
+                          <TrackListItem
+                            track={track}
+                            addTrack={this.props.addTrack}
+                            playTrack={this.props.playTrack}
+                            pauseTrack={this.props.pauseTrack}
+                            playing={this.props.playStatus}
+                            audio={this.props.audioRef}
+                            currentTrack={this.props.currentTrack} />
                         </li>
                     </div>
                     )
