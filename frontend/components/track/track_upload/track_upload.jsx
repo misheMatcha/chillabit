@@ -16,8 +16,8 @@ class TrackUpload extends React.Component{
       cover: null,
       coverUrl: '',
       file: null,
-      stage1: 'track-upload-form-instruct ',
-      stage2: 'track-upload-form-details '
+      stage1: 'track-upload-form-instruct display-flex',
+      stage2: 'track-upload-form-details display-none'
     }
     this.formData = new FormData();
 

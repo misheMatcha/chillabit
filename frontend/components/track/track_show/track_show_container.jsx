@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import { requestTrack } from '../../../actions/track_actions';
-import { playTrack, pauseTrack, addTrack } from '../../../actions/track_player_actions';
 import { updateCurrentTrack } from '../../../actions/current_track_actions';
 import TrackShow from './track_show.jsx';
 
 const mSTP = (state, ownProps) => ({
   track: Object.values(state.entities.tracks),
-  playing: state.ui.audioControls.playing,
+  playing: state.ui.currentTrack.playing,
   audioPlayerz: ownProps.audioRef
 
 });

@@ -14,7 +14,7 @@ class SplashPage extends React.Component {
   }
 
   componentDidMount(){
-    // this.props.fetchAllTracks();
+    this.props.fetchAllTracks();
   }
   
   onHover(e){
@@ -52,24 +52,24 @@ class SplashPage extends React.Component {
           <div className="album-track-display">
             <ul className="splash-tracks-ul">
               {
-                // this.props.tracks.map((track, idx) => {
-                //   if(idx <= 12){
-                //     return(
-                //       <div key={track.id} className="splash-tracks-container">
-                //         <li className="splash-tracks">
-                //           <TrackListItem
-                //             track={track}
-                //             addTrack={this.props.addTrack}
-                //             playTrack={this.props.playTrack}
-                //             pauseTrack={this.props.pauseTrack}
-                //             playing={this.props.playStatus}
-                //             audio={this.props.audioRef}
-                //             currentTrack={this.props.currentTrack} />
-                //         </li>
-                //     </div>
-                //     )
-                //   }
-                // })
+                this.props.tracks.map((track, idx) => {
+                  if(idx <= 12){
+                    return(
+                      <div key={track.id} className="splash-tracks-container">
+                        <li className="splash-tracks">
+                          <TrackListItem
+                            track={track}
+                            addTrack={this.props.addTrack}
+                            playTrack={this.props.playTrack}
+                            pauseTrack={this.props.pauseTrack}
+                            playing={this.props.playStatus}
+                            audio={this.props.audioRef}
+                            currentTrack={this.props.currentTrack} />
+                        </li>
+                    </div>
+                    )
+                  }
+                })
               }
             </ul>
           </div>
