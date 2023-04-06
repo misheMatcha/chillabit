@@ -1,21 +1,21 @@
 import React, { useContext } from 'react';
 import { Button } from 'antd';
 import { createUseStyles } from 'react-jss';
-import AuthFormContext from '../context/AuthFormContext';
-import { CHILLABIT } from '../utils/constants';
+import AuthFormContext from '../../context/AuthFormContext';
+import { CHILLABIT } from '../../utils/constants';
 
 const useStyles = createUseStyles({
 	container: {},
 });
 
-const AuthHeader = ({ isReturningUser = false }) => {
+const LoginSignUp = ({ isReturningUser = false }) => {
 	const classes = useStyles();
 
-	const { stage } = useContext(AuthFormContext);
+	const { step } = useContext(AuthFormContext);
 
 	return (
 		<div className={classes.container}>
-			{stage === 1 && (
+			{step === 1 && (
 				<>
 					<Button>Continue with Facebook</Button>
 					<Button>Continue with Google</Button>
@@ -24,7 +24,7 @@ const AuthHeader = ({ isReturningUser = false }) => {
 				</>
 			)}
 
-			{stage === 2 && (
+			{step === 2 && (
 				<>
 					<div>Welcome back!</div>
 					{isReturningUser && (
@@ -36,7 +36,7 @@ const AuthHeader = ({ isReturningUser = false }) => {
 				</>
 			)}
 
-			{stage === 3 && (
+			{step === 3 && (
 				<>
 					<div>Create your {CHILLABIT} account</div>
 				</>
@@ -45,4 +45,4 @@ const AuthHeader = ({ isReturningUser = false }) => {
 	);
 };
 
-export default AuthHeader;
+export default LoginSignUp;

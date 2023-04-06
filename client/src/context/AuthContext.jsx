@@ -3,9 +3,15 @@ import { createContext, useState } from 'react';
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-	const [auth, setAuth] = useState({ displayModal: false, token: null, user: {} });
+	const [displayModal, setDisplayModal] = useState(false);
+	const [token, setToken] = useState(null);
+	const [user, setUser] = useState({});
 
-	return <AuthContext.Provider value={{ auth, setAuth }}>{children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider value={{ displayModal, setDisplayModal, setToken, setUser, token, user }}>
+			{children}
+		</AuthContext.Provider>
+	);
 };
 
 export default AuthContext;

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
-import AuthFormContext from '../context/AuthFormContext';
+import AuthFormContext from '../../context/AuthFormContext';
 
 const useStyles = createUseStyles({
 	container: {},
@@ -9,11 +9,11 @@ const useStyles = createUseStyles({
 const AuthFooter = () => {
 	const classes = useStyles();
 
-	const { isVerified, stage } = useContext(AuthFormContext);
+	const { isVerified, step } = useContext(AuthFormContext);
 
 	return (
 		<div className={classes.container}>
-			{stage === 1 && (
+			{step === 1 && (
 				<div>
 					<div>Need help?</div>
 					<div>
@@ -25,9 +25,9 @@ const AuthFooter = () => {
 				</div>
 			)}
 
-			{stage === 2 && <div>Don't know your password?</div>}
+			{step === 2 && <div>Don't know your password?</div>}
 
-			{stage === 2 && !isVerified && (
+			{step === 2 && !isVerified && (
 				<div>
 					<div>Need help?</div>
 					<div>

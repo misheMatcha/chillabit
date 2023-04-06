@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form, Input, InputNumber } from 'antd';
 import { createUseStyles } from 'react-jss';
-import AuthFormContext from '../context/AuthFormContext';
+import AuthFormContext from '../../../context/AuthFormContext';
 
 const useStyles = createUseStyles({
 	container: {},
 });
 
-const TheForm = () => {
+const AuthForm = () => {
 	const classes = useStyles();
 
 	const [email, setEmail] = useState('');
@@ -16,7 +16,7 @@ const TheForm = () => {
 	const [age, setAge] = useState('');
 	const [gender, setGender] = useState('');
 
-	const { stage } = useContext(AuthFormContext);
+	const { step } = useContext(AuthFormContext);
 
 	return (
 		<div className={classes.container}>
@@ -69,4 +69,4 @@ const TheForm = () => {
 	);
 };
 
-export default TheForm;
+export default AuthForm;

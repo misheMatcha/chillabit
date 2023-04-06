@@ -10,17 +10,13 @@ const useStyles = createUseStyles({
 const Landing = () => {
 	const classes = useStyles();
 
-	const { auth, setAuth } = useContext(AuthContext);
-
-	const openModal = () => {
-		setAuth({ ...auth, displayModal: true });
-	};
+	const { setDisplayModal } = useContext(AuthContext);
 
 	return (
 		<div className={classes.container}>
 			<div>
-				<Button onClick={openModal}>Sign in</Button>
-				<Button onClick={openModal}>Create account</Button>
+				<Button onClick={() => setDisplayModal(true)}>Sign in</Button>
+				<Button onClick={() => setDisplayModal(true)}>Create account</Button>
 			</div>
 		</div>
 	);
