@@ -1,7 +1,11 @@
-import React, { useContext } from 'react';
-import { Button } from 'antd';
+import React, { useContext, useState } from 'react';
+import { Button, Form, Input } from 'antd';
 import { createUseStyles } from 'react-jss';
+import AuthFooter from './AuthFooter';
+import AuthHeader from './AuthHeader';
+import TheForm from './theForm';
 import AuthContext from '../context/AuthContext';
+import { AuthFormProvider } from '../context/AuthFormContext';
 
 const useStyles = createUseStyles({
 	container: {},
@@ -10,6 +14,10 @@ const useStyles = createUseStyles({
 const AuthForm = () => {
 	const classes = useStyles();
 
+	const [emailOrUrl, setEmailOrUrl] = useState('');
+	const [password, setPassword] = useState('');
+	const [step, setStep] = useState(1);
+
 	const { auth, setAuth } = useContext(AuthContext);
 
 	const closeModal = () => {
@@ -17,11 +25,18 @@ const AuthForm = () => {
 	};
 
 	return (
-		<div className={classes.container}>
-			<div>
-				<Button onClick={closeModal}>x</Button>
+		<AuthFormProvider>
+			<div className={classes.container}>
+				<div>
+					<Button onClick={closeModal}>x</Button>
+					<div>
+						<AuthHeader />
+						<TheForm />
+						<AuthFooter />
+					</div>
+				</div>
 			</div>
-		</div>
+		</AuthFormProvider>
 	);
 };
 
