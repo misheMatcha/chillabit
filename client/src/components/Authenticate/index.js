@@ -5,7 +5,6 @@ import AuthFooter from './AuthFooter';
 import AuthForm from './AuthForm';
 import AuthHeader from './AuthHeader';
 import AuthContext from '../../context/AuthContext';
-import { AuthFormProvider } from '../../context/AuthFormContext';
 
 const useStyles = createUseStyles({
 	container: {},
@@ -16,18 +15,16 @@ const LoginSignUp = () => {
 	const { setDisplayModal } = useContext(AuthContext);
 
 	return (
-		<AuthFormProvider>
-			<div className={classes.container}>
+		<div className={classes.container}>
+			<div>
+				<Button onClick={() => setDisplayModal(false)}>x</Button>
 				<div>
-					<Button onClick={() => setDisplayModal(false)}>x</Button>
-					<div>
-						<AuthHeader />
-						<AuthForm />
-						<AuthFooter />
-					</div>
+					<AuthHeader />
+					<AuthForm />
+					<AuthFooter />
 				</div>
 			</div>
-		</AuthFormProvider>
+		</div>
 	);
 };
 
