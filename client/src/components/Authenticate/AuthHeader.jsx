@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
 const LoginSignUp = ({ isReturningUser = false }) => {
 	const classes = useStyles();
 
-	const { step } = useContext(AuthFormContext);
+	const { clickedSignUp, step } = useContext(AuthFormContext);
 
 	return (
 		<div className={classes.container}>
@@ -27,7 +27,7 @@ const LoginSignUp = ({ isReturningUser = false }) => {
 			{step === 2 && (
 				<>
 					<div>Welcome back!</div>
-					{isReturningUser && (
+					{clickedSignUp && (
 						<div>
 							<div>We noticed that an account already exists for this email.</div>
 							<div>Please sign in below</div>
