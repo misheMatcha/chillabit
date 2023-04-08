@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 import LoginSignUp from './components/Authenticate';
-import AuthContext from './context/AuthContext';
+import useAuth from './hooks/useAuth';
 import Landing from './pages/Landing';
 
 const useStyles = createUseStyles({
@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
 const App = () => {
 	const classes = useStyles();
 
-	const { displayModal } = useContext(AuthContext);
+	const { displayModal } = useAuth();
 
 	return (
 		<div className={classes.container}>

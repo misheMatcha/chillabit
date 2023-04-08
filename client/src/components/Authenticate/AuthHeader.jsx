@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
-import { Button } from 'antd';
+import React from 'react';
+import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
-import AuthFormContext from '../../context/AuthFormContext';
+import useAuthForm from '../../hooks/useAuthForm';
 import { CHILLABIT } from '../../utils/constants';
 
 const useStyles = createUseStyles({
 	container: {},
 });
 
-const LoginSignUp = ({ isReturningUser = false }) => {
+const LoginSignUp = () => {
 	const classes = useStyles();
 
-	const { clickedSignUp, step } = useContext(AuthFormContext);
+	const { clickedSignUp, step } = useAuthForm();
 
 	return (
 		<div className={classes.container}>

@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { Button, Form, Input, InputNumber } from 'antd';
+import React from 'react';
+import Form from 'antd/lib/form';
 import { createUseStyles } from 'react-jss';
 import FormStep1 from './FormStep1';
 import FormStep2 from './FormStep2';
 import FormStep3 from './FormStep3';
-import AuthFormContext from '../../../context/AuthFormContext';
+import useAuthForm from '../../../hooks/useAuthForm';
 
 const useStyles = createUseStyles({
 	container: {},
@@ -13,7 +13,7 @@ const useStyles = createUseStyles({
 const AuthForm = () => {
 	const classes = useStyles();
 
-	const { step } = useContext(AuthFormContext);
+	const { step } = useAuthForm();
 
 	return (
 		<div className={classes.container}>

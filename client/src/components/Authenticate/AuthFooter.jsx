@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
-import AuthFormContext from '../../context/AuthFormContext';
+import useAuthForm from '../../hooks/useAuthForm';
 
 const useStyles = createUseStyles({
 	container: {},
@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
 const AuthFooter = () => {
 	const classes = useStyles();
 
-	const { isVerified, step } = useContext(AuthFormContext);
+	const { step, isVerified } = useAuthForm();
 
 	return (
 		<div className={classes.container}>

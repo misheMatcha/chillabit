@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { Button } from 'antd';
+import React from 'react';
+import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
 import AuthFooter from './AuthFooter';
 import AuthForm from './AuthForm';
 import AuthHeader from './AuthHeader';
-import AuthContext from '../../context/AuthContext';
+import useAuth from '../../hooks/useAuth';
 
 const useStyles = createUseStyles({
 	container: {},
@@ -12,7 +12,7 @@ const useStyles = createUseStyles({
 
 const LoginSignUp = () => {
 	const classes = useStyles();
-	const { setDisplayModal } = useContext(AuthContext);
+	const { setDisplayModal } = useAuth();
 
 	return (
 		<div className={classes.container}>
