@@ -24,22 +24,24 @@ const LoginSignUp = () => {
 				</>
 			)}
 
-			{isVerified && (
-				<>
-					<div>Welcome back!</div>
-					{clickedSignUp && (
-						<div>
-							<div>We noticed that an account already exists for this email.</div>
-							<div>Please sign in below</div>
-						</div>
+			{step > 1 && (
+				<div>
+					{isVerified ? (
+						<>
+							<div>Welcome back!</div>
+							{clickedSignUp && (
+								<div>
+									<div>We noticed that an account already exists for this email.</div>
+									<div>Please sign in below</div>
+								</div>
+							)}
+						</>
+					) : (
+						<>
+							<div>Create your {CHILLABIT} account</div>
+						</>
 					)}
-				</>
-			)}
-
-			{!isVerified && (
-				<>
-					<div>Create your {CHILLABIT} account</div>
-				</>
+				</div>
 			)}
 		</div>
 	);
