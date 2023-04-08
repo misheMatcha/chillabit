@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
-  validates :email, :username, :password_digest, :age, :gender, :url, presence: true
-  validates :email, :username, :url, uniqueness: true
+  validates  :username, :password_digest, :age, :gender, :url, presence: true
+  validates  :username, :url, uniqueness: true
+  validates_format_of :email, presence: true, uniqueness: true, with: URI::MailTo::EMAIL_REGEXP,
+                              message: 'Enter a valid email address or profile url.'
   validates :age, numericality: { only_integer: true }
   validates :password, length: { minimum: 8 }
 
