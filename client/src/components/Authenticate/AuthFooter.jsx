@@ -25,9 +25,9 @@ const AuthFooter = () => {
 				</div>
 			)}
 
-			{step === 2 && <div>Don't know your password?</div>}
+			{isVerified && <div>Don't know your password?</div>}
 
-			{step === 2 && !isVerified && (
+			{!isVerified && step === 2 && (
 				<div>
 					<div>Need help?</div>
 					<div>
@@ -39,6 +39,15 @@ const AuthFooter = () => {
 					<div>Are you trying to sign in?</div>
 					<div>The email address that you entered was not found.</div>
 					<div>Double-check your email address.</div>
+				</div>
+			)}
+
+			{step === 3 && (
+				<div>
+					<div>
+						By signing up I accept the Terms of Use. I have read and understood the Privacy Policy
+						and Cookies Policy.
+					</div>
 				</div>
 			)}
 		</div>

@@ -30,10 +30,7 @@ const FormStep3 = () => {
 			<label>
 				Enter your age
 				<Form.Item name='age'>
-					<InputNumber
-						onChange={(e) => setAge(e.target.value)}
-						value={age}
-					/>
+					<InputNumber value={age} />
 				</Form.Item>
 			</label>
 			<label>
@@ -45,6 +42,13 @@ const FormStep3 = () => {
 					/>
 				</Form.Item>
 			</label>
+			<Button
+				onClick={() => {
+					console.log('submitted');
+				}}
+			>
+				Continue
+			</Button>
 		</div>
 	);
 };

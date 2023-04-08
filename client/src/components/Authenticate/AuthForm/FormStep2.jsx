@@ -12,10 +12,14 @@ const useStyles = createUseStyles({
 const FormStep2 = () => {
 	const classes = useStyles();
 
-	const { password, step, setPassword, setStep } = useAuthForm();
+	const { email, isVerified, password, setPassword, setStep } = useAuthForm();
 
 	return (
 		<div className={classes.container}>
+			<Input
+				onClick={() => setStep(1)}
+				value={email}
+			/>
 			<Form.Item name='password'>
 				<Input
 					onChange={(e) => setPassword(e.target.value)}
@@ -24,7 +28,11 @@ const FormStep2 = () => {
 					type='password'
 				/>
 			</Form.Item>
-			<Button>Sign in</Button>
+			{isVerified ? (
+				<Button onClick={() => console.log('submitted')}>Sign in</Button>
+			) : (
+				<Button onClick={() => setStep(3)}>Accept & continue</Button>
+			)}
 		</div>
 	);
 };

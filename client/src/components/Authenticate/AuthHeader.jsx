@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
 const LoginSignUp = () => {
 	const classes = useStyles();
 
-	const { clickedSignUp, step } = useAuthForm();
+	const { clickedSignUp, isVerified, step } = useAuthForm();
 
 	return (
 		<div className={classes.container}>
@@ -24,7 +24,7 @@ const LoginSignUp = () => {
 				</>
 			)}
 
-			{step === 2 && (
+			{isVerified && (
 				<>
 					<div>Welcome back!</div>
 					{clickedSignUp && (
@@ -36,7 +36,7 @@ const LoginSignUp = () => {
 				</>
 			)}
 
-			{step === 3 && (
+			{!isVerified && (
 				<>
 					<div>Create your {CHILLABIT} account</div>
 				</>
