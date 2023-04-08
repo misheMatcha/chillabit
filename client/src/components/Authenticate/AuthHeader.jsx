@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
-import useAuthForm from '../../hooks/useAuthForm';
+import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
 
 const useStyles = createUseStyles({
@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
 const LoginSignUp = () => {
 	const classes = useStyles();
 
-	const { clickedSignUp, isVerified, step } = useAuthForm();
+	const { clickedSignUp, isVerified, step } = useAuth;
 
 	return (
 		<div className={classes.container}>

@@ -2,7 +2,6 @@ import React from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
 import useAuth from '../hooks/useAuth';
-import useAuthForm from '../hooks/useAuthForm';
 
 const useStyles = createUseStyles({
 	container: {},
@@ -11,8 +10,7 @@ const useStyles = createUseStyles({
 const Landing = () => {
 	const classes = useStyles();
 
-	const { setDisplayModal } = useAuth();
-	const { setClickedSignUp } = useAuthForm();
+	const { setClickedSignUp, setDisplayModal } = useAuth();
 
 	return (
 		<div className={classes.container}>

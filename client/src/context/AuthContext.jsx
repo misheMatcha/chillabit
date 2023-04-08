@@ -7,8 +7,25 @@ export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(null);
 	const [user, setUser] = useState({});
 
+	// auth form
+	const [isVerified, setIsVerified] = useState(false);
+	const [clickedSignUp, setClickedSignUp] = useState(false);
+
 	return (
-		<AuthContext.Provider value={{ displayModal, setDisplayModal, setToken, setUser, token, user }}>
+		<AuthContext.Provider
+			value={{
+				clickedSignUp,
+				displayModal,
+				isVerified,
+				setClickedSignUp,
+				setDisplayModal,
+				setIsVerified,
+				setToken,
+				setUser,
+				token,
+				user,
+			}}
+		>
 			{children}
 		</AuthContext.Provider>
 	);

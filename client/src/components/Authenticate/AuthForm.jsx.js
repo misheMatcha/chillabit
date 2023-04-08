@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import InputNumber from 'antd/lib/input-number';
 import { createUseStyles } from 'react-jss';
-import useAuthForm from '../../hooks/useAuthForm';
+import useAuth from '../../hooks/useAuth';
 import axios from '../../utils/axios';
 
 const useStyles = createUseStyles({
@@ -21,7 +21,8 @@ const useStyles = createUseStyles({
 });
 
 const AuthForm = () => {
-	const { isVerified, step, setStep } = useAuthForm();
+	const [step, setStep] = useState(1);
+	const { isVerified } = useAuth();
 	const classes = useStyles(step);
 
 	const signUpUser = (values) => {
