@@ -1,5 +1,5 @@
 class Api::V1::AuthenticatesController < ApplicationController
-  skip_before_action :authorized, only: %i[create verify_handle]
+  skip_before_action :authorized, only: %i[create handle]
 
   def create
     @user = User.find_by(email: authenticate_params[:email])
@@ -12,8 +12,8 @@ class Api::V1::AuthenticatesController < ApplicationController
     end
   end
 
-  def verify_handle
-    if authenticate_params[:email] == '' && authenticate_params[:url] == ''
+  def handle
+    if (authenticate_params[:email] == '' && authenticate_params[:url] == '') || (authenticate_params[:email] != '' && !URI::MailTo::EMAIL_REGEXP.match?(authenticate_params[:email]))
       return render json: { message: 'Enter a valid email address or profile url.' }, status: :unprocessable_entity
     end
 
