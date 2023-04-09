@@ -24,28 +24,30 @@ const useStyles = createUseStyles({
 const AuthForm = () => {
 	const [step, setStep] = useState(1);
 	const [errors, setErrors] = useState({});
-	const { isVerified } = useAuth();
+	const { isVerified, setIsVerified, setToken, setUser } = useAuth();
 	const classes = useStyles(step);
 
 	const [form] = Form.useForm();
 
 	const signUpUser = (values) => {
-		let newUser = { user: { ...values } };
 		axios
-			.post('/users', newUser)
+			.post('/users', { user: { ...values } })
 			.then((res) => {
 				console.log(res.data);
+				setUser(res.data.user);
+				setToken(res.data.token);
 			})
-			.catch((err) => console.log(err.response.data));
+			.catch((err) => setErrors(...err.response.data));
 	};
 
 	const loginUser = (values) => {
 		axios
-			.post('/login', { user: { ...values } })
+			.post('/login', { user: { email: values.email, password: values.password } })
 			.then((res) => {
-				console.log(res.data);
+				setUser(res.data.user);
+				setToken(res.data.token);
 			})
-			.catch((err) => console.log(err.response.data));
+			.catch((err) => setErrors(err.response.data));
 	};
 
 	const verifyHandle = () => {
@@ -62,12 +64,35 @@ const AuthForm = () => {
 		axios
 			.post('/authenticates/handle', handles)
 			.then((res) => {
+				setIsVerified(res.data.isVerified);
+				form.setFieldValue('email', res.data.email);
 				setStep(2);
-				console.log(res.data);
 			})
 			.catch((err) => {
 				setErrors({ ...err.response.data });
 			});
+	};
+
+	const formButton = () => {
+		switch (step) {
+			case 1:
+				return <Button onClick={verifyHandle}>Continue</Button>;
+			case 2:
+				return isVerified ? (
+					<Button htmlType='submit'>Sign in</Button>
+				) : (
+					<Button
+						onClick={(e) => {
+							e.preventDefault();
+							setStep(3);
+						}}
+					>
+						Accept & continue
+					</Button>
+				);
+			default:
+				return <Button htmlType='submit'>Continue</Button>;
+		}
 	};
 
 	return (
@@ -93,6 +118,7 @@ const AuthForm = () => {
 				</div>
 
 				<div className={classes.step2}>
+					<Input value={form.getFieldValue('email')} />
 					<Form.Item name='password'>
 						<Input
 							placeholder='Your password'
@@ -123,10 +149,7 @@ const AuthForm = () => {
 					</label>
 				</div>
 
-				<Form.Item>
-					{step === 1 && <Button onClick={verifyHandle}>next step</Button>}
-					<Button htmlType='submit'>Continue</Button>
-				</Form.Item>
+				<Form.Item>{formButton()}</Form.Item>
 			</Form>
 		</div>
 	);

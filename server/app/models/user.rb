@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :age, numericality: { only_integer: true }
   validates :password, length: { minimum: 8 }
 
-  before_validation :generate_profile_url, :generate_username
+  before_validation :generate_username, :generate_profile_url
 
   private
 
@@ -17,6 +17,6 @@ class User < ApplicationRecord
   end
 
   def generate_profile_url
-    self.url = username + '-' + rand(999_999_999).to_s
+    self.url = username.downcase.gsub(' ', '-')
   end
 end
