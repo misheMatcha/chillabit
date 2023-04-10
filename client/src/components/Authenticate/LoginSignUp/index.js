@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 import AuthFooter from './AuthFooter';
 import AuthForm from './AuthForm.jsx';
 import AuthHeader from './AuthHeader';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const useStyles = createUseStyles({
 	container: {},

@@ -1,23 +1,26 @@
 import React from 'react';
-import { createUseStyles } from 'react-jss';
-import LoginSignUp from './components/Authenticate';
-import useAuth from './hooks/useAuth';
+import { Route, Routes } from 'react-router-dom';
+import Helmet from './pages/Helmet';
+import Home from './pages/Home';
 import Landing from './pages/Landing';
 
-const useStyles = createUseStyles({
-	container: {},
-});
-
 const App = () => {
-	const classes = useStyles();
-
-	const { displayModal } = useAuth();
-
 	return (
-		<div className={classes.container}>
-			{displayModal && <LoginSignUp />}
-			<Landing />
-		</div>
+		<Routes>
+			<Route
+				path='/'
+				element={<Helmet />}
+			>
+				<Route
+					path='/'
+					element={<Landing />}
+				/>
+				<Route
+					path='/home'
+					element={<Home />}
+				/>
+			</Route>
+		</Routes>
 	);
 };
 

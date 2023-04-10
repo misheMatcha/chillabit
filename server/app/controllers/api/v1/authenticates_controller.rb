@@ -8,7 +8,7 @@ class Api::V1::AuthenticatesController < ApplicationController
 
       render :show, status: :accepted
     else
-      render json: { message: 'Invalid username and/or password' }, status: :unauthorized
+      render json: { message: 'This password is incorrect.' }, status: :unauthorized
     end
   end
 

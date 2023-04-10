@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
-import useAuth from '../../hooks/useAuth';
-import { CHILLABIT } from '../../utils/constants';
+import useAuth from '../../../hooks/useAuth';
+import { CHILLABIT } from '../../../utils/constants';
 
 const useStyles = createUseStyles({
 	container: {},

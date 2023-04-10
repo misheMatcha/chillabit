@@ -7,8 +7,9 @@ import Select from 'antd/lib/select';
 import includes from 'lodash/includes';
 import size from 'lodash/size';
 import { createUseStyles } from 'react-jss';
-import useAuth from '../../hooks/useAuth';
-import axios from '../../utils/axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+import axios from '../../../utils/axios';
 
 const useStyles = createUseStyles({
 	container: {},
@@ -27,10 +28,13 @@ const AuthForm = () => {
 	const [errors, setErrors] = useState({});
 	const [gender, setGender] = useState('');
 	const [isCustomGender, setIsCustomGender] = useState(false);
-	const { setDisplayModal, setStep, step, isVerified, setIsVerified, setToken, setUser } =
+	const { setDisplayModal, setStep, step, isVerified, setIsVerified, setToken, setUser, user } =
 		useAuth();
 	const classes = useStyles(step);
 
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location?.state?.from?.pathname || '/home';
 	const [form] = Form.useForm();
 
 	const signUpUser = (values) => {
@@ -41,6 +45,7 @@ const AuthForm = () => {
 				setUser(res.data.user);
 				setToken(res.data.token);
 				setDisplayModal(false);
+				navigate(from, { replace: true });
 			})
 			.catch((err) => {
 				setErrors(err.response.data);
@@ -51,11 +56,16 @@ const AuthForm = () => {
 		axios
 			.post('/login', { user: { email: values.email, password: values.password } })
 			.then((res) => {
+				console.log(res.data);
 				setUser(res.data.user);
 				setToken(res.data.token);
 				setDisplayModal(false);
+				navigate(from, { replace: true });
 			})
-			.catch((err) => setErrors(err.response.data));
+			.catch((err) => {
+				console.log(err.response.data);
+				setErrors(err.response.data);
+			});
 	};
 
 	const verifyHandle = () => {
@@ -142,6 +152,7 @@ const AuthForm = () => {
 							type='password'
 						/>
 					</Form.Item>
+					{errors.message && <div>{errors.message}</div>}
 				</div>
 
 				<div className={classes.step3}>
