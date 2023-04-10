@@ -41,7 +41,6 @@ const AuthForm = () => {
 		axios
 			.post('/users', { user: { ...values, gender: isCustomGender ? gender : values.gender } })
 			.then((res) => {
-				console.log(res.data);
 				setUser(res.data.user);
 				setToken(res.data.token);
 				setDisplayModal(false);
@@ -56,14 +55,12 @@ const AuthForm = () => {
 		axios
 			.post('/login', { user: { email: values.email, password: values.password } })
 			.then((res) => {
-				console.log(res.data);
 				setUser(res.data.user);
 				setToken(res.data.token);
 				setDisplayModal(false);
 				navigate(from, { replace: true });
 			})
 			.catch((err) => {
-				console.log(err.response.data);
 				setErrors(err.response.data);
 			});
 	};
