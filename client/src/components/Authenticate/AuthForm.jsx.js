@@ -3,7 +3,9 @@ import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import InputNumber from 'antd/lib/input-number';
+import Select from 'antd/lib/select';
 import includes from 'lodash/includes';
+import size from 'lodash/size';
 import { createUseStyles } from 'react-jss';
 import useAuth from '../../hooks/useAuth';
 import axios from '../../utils/axios';
@@ -22,22 +24,27 @@ const useStyles = createUseStyles({
 });
 
 const AuthForm = () => {
-	const [step, setStep] = useState(1);
 	const [errors, setErrors] = useState({});
-	const { isVerified, setIsVerified, setToken, setUser } = useAuth();
+	const [gender, setGender] = useState('');
+	const [isCustomGender, setIsCustomGender] = useState(false);
+	const { setDisplayModal, setStep, step, isVerified, setIsVerified, setToken, setUser } =
+		useAuth();
 	const classes = useStyles(step);
 
 	const [form] = Form.useForm();
 
 	const signUpUser = (values) => {
 		axios
-			.post('/users', { user: { ...values } })
+			.post('/users', { user: { ...values, gender: isCustomGender ? gender : values.gender } })
 			.then((res) => {
 				console.log(res.data);
 				setUser(res.data.user);
 				setToken(res.data.token);
+				setDisplayModal(false);
 			})
-			.catch((err) => setErrors(...err.response.data));
+			.catch((err) => {
+				setErrors(err.response.data);
+			});
 	};
 
 	const loginUser = (values) => {
@@ -46,6 +53,7 @@ const AuthForm = () => {
 			.then((res) => {
 				setUser(res.data.user);
 				setToken(res.data.token);
+				setDisplayModal(false);
 			})
 			.catch((err) => setErrors(err.response.data));
 	};
@@ -69,7 +77,7 @@ const AuthForm = () => {
 				setStep(2);
 			})
 			.catch((err) => {
-				setErrors({ ...err.response.data });
+				setErrors(err.response.data);
 			});
 	};
 
@@ -84,7 +92,10 @@ const AuthForm = () => {
 					<Button
 						onClick={(e) => {
 							e.preventDefault();
-							setStep(3);
+							const passwordLength = size(form.getFieldValue('password'));
+							if (passwordLength >= 8 && passwordLength <= 72) {
+								setStep(3);
+							}
 						}}
 					>
 						Accept & continue
@@ -119,7 +130,13 @@ const AuthForm = () => {
 
 				<div className={classes.step2}>
 					<Input value={form.getFieldValue('email')} />
-					<Form.Item name='password'>
+					<Form.Item
+						name='password'
+						rules={[
+							{ message: 'Password must be at least 8 characters.', min: 8 },
+							{ max: 72, message: 'Password must be less than 72 characters.' },
+						]}
+					>
 						<Input
 							placeholder='Your password'
 							type='password'
@@ -140,12 +157,36 @@ const AuthForm = () => {
 						<Form.Item name='age'>
 							<InputNumber />
 						</Form.Item>
+						{errors.age && <div>{errors.age}</div>}
 					</label>
 					<label>
 						Enter your gender
 						<Form.Item name='gender'>
-							<Input />
+							<Select
+								onChange={(value) => {
+									if (value === 'custom') {
+										setIsCustomGender(true);
+									} else {
+										setIsCustomGender(false);
+										setGender('');
+									}
+								}}
+							>
+								<Select.Option value='female'>Female</Select.Option>
+								<Select.Option value='male'>Male</Select.Option>
+								<Select.Option value='custom'>Custom</Select.Option>
+								<Select.Option value='na'>Prefer not to say</Select.Option>
+							</Select>
 						</Form.Item>
+						{isCustomGender && (
+							<div>
+								<Input
+									maxLength={16}
+									onChange={(e) => setGender(e.target.value)}
+								/>
+							</div>
+						)}
+						{errors.gender && <div>{errors.gender}</div>}
 					</label>
 				</div>
 

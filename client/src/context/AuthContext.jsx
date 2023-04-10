@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
 	// auth form
 	const [isVerified, setIsVerified] = useState(false);
 	const [clickedSignUp, setClickedSignUp] = useState(false);
+	const [step, setStep] = useState(1);
 
 	return (
 		<AuthContext.Provider
@@ -20,8 +21,10 @@ export const AuthProvider = ({ children }) => {
 				setClickedSignUp,
 				setDisplayModal,
 				setIsVerified,
+				setStep,
 				setToken,
 				setUser,
+				step,
 				token,
 				user,
 			}}
