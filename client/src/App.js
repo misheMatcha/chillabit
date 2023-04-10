@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import RequireAuth from './components/Authenticate/RequireAuth';
 import Helmet from './pages/Helmet';
 import Home from './pages/Home';
 import Landing from './pages/Landing';
@@ -15,10 +16,14 @@ const App = () => {
 					path='/'
 					element={<Landing />}
 				/>
-				<Route
-					path='/home'
-					element={<Home />}
-				/>
+
+				{/* private */}
+				<Route element={<RequireAuth />}>
+					<Route
+						path='/home'
+						element={<Home />}
+					/>
+				</Route>
 			</Route>
 		</Routes>
 	);

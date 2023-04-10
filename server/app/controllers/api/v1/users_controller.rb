@@ -4,7 +4,8 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
-      render 'api/v1/users/show'
+      @token = encode_token(user_id: @user.id)
+      render 'api/v1/authenticates/show'
     else
       render json: @user.errors, status: :unprocessable_entity
     end
