@@ -8,57 +8,68 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import DiscoverBanner from '../assets/discover_banner.jpg';
+import UpcomingBanner from '../assets/upcoming_banner.jpeg';
+
+// todo
+// - fix font family
+// - add reusable styles to styles constant in utils
 
 const useStyles = createUseStyles({
 	container: {
 		borderTop: '4px solid #f50',
-		height: 454,
-		width: 1240,
-		// fontFamily: 'Overpass',
-
+		color: '#fff',
 		display: 'flex',
+		fontFamily: 'Overpass',
+		height: 450,
+		width: 1240,
 	},
 	layer1: {
-		display: 'flex',
 		width: '100%',
-		justifyContent: 'space-between',
-		padding: '13px 30px 0 30px',
 	},
 	layer2: {
-		paddingTop: 145,
+		display: 'flex',
 		marginLeft: '-100%',
 		width: '100%',
 	},
-	pageWrapper: {
-		// backgroundColor: 'pink',
-		height: 305,
-		backgroundImage: `url(${DiscoverBanner})`,
+	nav: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		padding: '13px 30px 0 30px',
+		width: '100%',
+		zIndex: 1,
 	},
 	page: {
-		// height: 305,
-		// backgroundColor: 'blue',
+		alignItems: 'center',
+		color: '#fff',
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center',
 		height: '100%',
-	},
-	title: {
-		fontFamily: 'Overpass',
-		fontWeight: 500,
-		fontSize: 36,
-		textAlign: 'center',
-		// backgroundColor: 'yellow',
-	},
-	tagline: {
-		fontFamily: 'Overpass',
-		fontWeight: 500,
-		fontSize: 18,
-		width: 530,
-		textAlign: 'center',
-		// backgroundColor: 'purple',
 	},
 	page1Buttons: {
 		// backgroundColor: 'green',
+	},
+	pageWrapper1: {
+		backgroundImage: `url(${DiscoverBanner})`,
+		height: 450,
+		paddingTop: 145,
+	},
+	pageWrapper2: {
+		backgroundImage: `url(${UpcomingBanner})`,
+		height: 450,
+		paddingTop: 145,
+	},
+	tagline: {
+		fontFamily: 'Overpass',
+		fontSize: 18,
+		fontWeight: 500,
+		textAlign: 'center',
+		width: 530,
+	},
+	title: {
+		fontFamily: 'Overpass',
+		fontSize: 36,
+		fontWeight: 500,
+		textAlign: 'center',
 	},
 });
 
@@ -70,19 +81,8 @@ const LandingCarousel = () => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.layer1}>
-				<div>
-					<FontAwesomeIcon icon={faSoundcloud} />
-					{CHILLABIT}
-				</div>
-				<div>
-					<Button onClick={() => toggleModal()}>Sign in</Button>
-					<Button onClick={() => toggleModal(true)}>Create account</Button>
-					<Link>For Artists</Link>
-				</div>
-			</div>
-			<div className={classes.layer2}>
 				<Carousel>
-					<div className={classes.pageWrapper}>
+					<div className={classes.pageWrapper1}>
 						<div className={classes.page}>
 							<div className={classes.title}>Discover more with {CHILLABIT} Go+</div>
 							<div className={classes.tagline}>
@@ -95,7 +95,7 @@ const LandingCarousel = () => {
 							</div>
 						</div>
 					</div>
-					<div className={classes.pageWrapper}>
+					<div className={classes.pageWrapper2}>
 						<div className={classes.page}>
 							<div className={classes.title}>What's next in music is first on {CHILLABIT}</div>
 							<div className={classes.tagline}>
@@ -108,6 +108,19 @@ const LandingCarousel = () => {
 						</div>
 					</div>
 				</Carousel>
+			</div>
+			<div className={classes.layer2}>
+				<div className={classes.nav}>
+					<div>
+						<FontAwesomeIcon icon={faSoundcloud} />
+						{CHILLABIT}
+					</div>
+					<div>
+						<Button onClick={() => toggleModal()}>Sign in</Button>
+						<Button onClick={() => toggleModal(true)}>Create account</Button>
+						<Link>For Artists</Link>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
