@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
+import LandingCarousel from './Carousel';
 import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
 
@@ -15,13 +16,7 @@ const Landing = () => {
 
 	return (
 		<div className={classes.container}>
-			<div>
-				<Button onClick={() => toggleModal()}>Sign in</Button>
-				<Button onClick={() => toggleModal(true)}>Create account</Button>
-			</div>
-			<div>
-				<div>carousel</div>
-			</div>
+			<LandingCarousel />
 			<div>
 				<div>
 					<div>search bar</div>
