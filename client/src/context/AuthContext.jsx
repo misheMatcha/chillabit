@@ -12,6 +12,11 @@ export const AuthProvider = ({ children }) => {
 	const [clickedSignUp, setClickedSignUp] = useState(false);
 	const [step, setStep] = useState(1);
 
+	const toggleModal = (isNewUser = false) => {
+		if (isNewUser) setClickedSignUp(true);
+		setDisplayModal(!displayModal);
+	};
+
 	return (
 		<AuthContext.Provider
 			value={{
@@ -25,6 +30,7 @@ export const AuthProvider = ({ children }) => {
 				setToken,
 				setUser,
 				step,
+				toggleModal,
 				token,
 				user,
 			}}

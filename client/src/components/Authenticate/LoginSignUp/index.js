@@ -12,12 +12,12 @@ const useStyles = createUseStyles({
 
 const LoginSignUp = () => {
 	const classes = useStyles();
-	const { setDisplayModal } = useAuth();
+	const { toggleModal } = useAuth();
 
 	return (
 		<div className={classes.container}>
 			<div>
-				<Button onClick={() => setDisplayModal(false)}>x</Button>
+				<Button onClick={() => toggleModal()}>x</Button>
 				<div>
 					<AuthHeader />
 					<AuthForm />
