@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
-import LandingCarousel from './Carousel';
+import LandingCarousel from './LandingCarousel';
 import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
 
@@ -11,7 +11,6 @@ const useStyles = createUseStyles({
 		width: 1240,
 	},
 	containerWrapper: {
-		backgroundColor: '#f2f2f2',
 		display: 'flex',
 		height: '100vh',
 		justifyContent: 'center',

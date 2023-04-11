@@ -5,16 +5,19 @@ import Button from 'antd/lib/button';
 import Carousel from 'antd/lib/carousel';
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
-import { CHILLABIT } from '../../../utils/constants';
-import DiscoverBanner from '../assets/discover_banner.jpg';
-import UpcomingBanner from '../assets/upcoming_banner.jpeg';
+import DiscoverBanner from './assets/discover_banner.jpg';
+import UpcomingBanner from './assets/upcoming_banner.jpeg';
+import useAuth from '../../hooks/useAuth';
+import { CHILLABIT } from '../../utils/constants';
 
 // todo
 // - fix font family
 // - add reusable styles to styles constant in utils
 
 const useStyles = createUseStyles({
+	carouselWrapper: {
+		width: '100%',
+	},
 	container: {
 		borderTop: '4px solid #f50',
 		color: '#fff',
@@ -23,19 +26,12 @@ const useStyles = createUseStyles({
 		height: 450,
 		width: 1240,
 	},
-	layer1: {
-		width: '100%',
-	},
-	layer2: {
-		display: 'flex',
-		marginLeft: '-100%',
-		width: '100%',
-	},
 	nav: {
 		display: 'flex',
 		justifyContent: 'space-between',
 		padding: '13px 30px 0 30px',
-		width: '100%',
+		position: 'absolute',
+		width: 1240,
 		zIndex: 1,
 	},
 	page: {
@@ -80,7 +76,18 @@ const LandingCarousel = () => {
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.layer1}>
+			<div className={classes.nav}>
+				<div>
+					<FontAwesomeIcon icon={faSoundcloud} />
+					{CHILLABIT}
+				</div>
+				<div>
+					<Button onClick={() => toggleModal()}>Sign in</Button>
+					<Button onClick={() => toggleModal(true)}>Create account</Button>
+					<Link>For Artists</Link>
+				</div>
+			</div>
+			<div className={classes.carouselWrapper}>
 				<Carousel>
 					<div className={classes.pageWrapper1}>
 						<div className={classes.page}>
@@ -108,19 +115,6 @@ const LandingCarousel = () => {
 						</div>
 					</div>
 				</Carousel>
-			</div>
-			<div className={classes.layer2}>
-				<div className={classes.nav}>
-					<div>
-						<FontAwesomeIcon icon={faSoundcloud} />
-						{CHILLABIT}
-					</div>
-					<div>
-						<Button onClick={() => toggleModal()}>Sign in</Button>
-						<Button onClick={() => toggleModal(true)}>Create account</Button>
-						<Link>For Artists</Link>
-					</div>
-				</div>
 			</div>
 		</div>
 	);
