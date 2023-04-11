@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
-import LandingCarousel from './LandingCarousel';
+import LandingCarousel from './Carousel/index';
 import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
 

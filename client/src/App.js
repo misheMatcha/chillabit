@@ -1,31 +1,35 @@
 import React from 'react';
+import { ThemeProvider } from 'react-jss';
 import { Route, Routes } from 'react-router-dom';
 import RequireAuth from './components/Authenticate/RequireAuth';
 import Helmet from './pages/Helmet';
 import Home from './pages/Home';
 import Landing from './pages/Landing/index';
+import { light } from './utils/styles';
 
 const App = () => {
 	return (
-		<Routes>
-			<Route
-				path='/'
-				element={<Helmet />}
-			>
+		<ThemeProvider theme={light}>
+			<Routes>
 				<Route
 					path='/'
-					element={<Landing />}
-				/>
-
-				{/* private */}
-				<Route element={<RequireAuth />}>
+					element={<Helmet />}
+				>
 					<Route
-						path='/home'
-						element={<Home />}
+						path='/'
+						element={<Landing />}
 					/>
+
+					{/* private */}
+					<Route element={<RequireAuth />}>
+						<Route
+							path='/home'
+							element={<Home />}
+						/>
+					</Route>
 				</Route>
-			</Route>
-		</Routes>
+			</Routes>
+		</ThemeProvider>
 	);
 };
 
