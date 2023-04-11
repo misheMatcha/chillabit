@@ -9,18 +9,18 @@ import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, justifyContent, maxWith } = styles;
+const { alignItemsCenter, borderRadius, displayFlex, justifyContent, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	btn: {
 		'&:hover': {
 			border: `1px solid ${theme.btn.bg} !important`,
-			color: `${theme.btn.fontColor} !important`,
+			color: `${theme.color.white} !important`,
 		},
+		...borderRadius,
 		backgroundColor: theme.btn.bg,
 		border: `1px solid ${theme.btn.bg}`,
-		borderRadius: theme.btn.borderRadius,
-		color: theme.btn.fontColor,
+		color: theme.color.white,
 	},
 	btnWrapper: {
 		'& > a': {
@@ -38,17 +38,17 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	clear: {
 		'&:hover': {
-			border: `1px solid ${theme.btn.fontColor} !important`,
-			color: `${theme.btn.fontColor} !important`,
+			border: `1px solid ${theme.color.white} !important`,
+			color: `${theme.color.white} !important`,
 		},
 		backgroundColor: 'transparent',
-		border: `1px solid ${theme.btn.fontColor}`,
-		color: theme.btn.fontColor,
+		border: `1px solid ${theme.color.white}`,
+		color: theme.color.white,
 	},
 	container: {
 		...displayFlex,
 		...justifyContent.spaceBetween,
-		...maxWith,
+		...width.max,
 		padding: '13px 30px 0 30px',
 		position: 'absolute',
 		zIndex: 1,

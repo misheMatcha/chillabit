@@ -13,11 +13,10 @@ const {
 	alignItemsCenter,
 	displayFlex,
 	flexDirection,
-	fullHeight,
-	fullWidth,
+	height,
 	justifyContent,
-	maxWith,
 	textAlignCenter,
+	width,
 } = styles;
 
 const defaultPageStlyes = {
@@ -27,20 +26,20 @@ const defaultPageStlyes = {
 
 const useStyles = createUseStyles((theme) => ({
 	carouselWrapper: {
-		...fullWidth.percentage,
+		...width[100].percentage,
 	},
 	clear: {
 		'&:hover': {
-			border: `1px solid ${theme.btn.fontColor} !important`,
-			color: `${theme.btn.fontColor} !important`,
+			border: `1px solid ${theme.color.white} !important`,
+			color: `${theme.color.white} !important`,
 		},
 		backgroundColor: 'transparent',
-		border: `1px solid ${theme.btn.fontColor}`,
-		color: theme.btn.fontColor,
+		border: `1px solid ${theme.color.white}`,
+		color: theme.color.white,
 	},
 	container: {
 		...displayFlex,
-		...maxWith,
+		...width.max,
 		borderTop: '4px solid #f50',
 		color: theme.color.white,
 		height: 450,
@@ -62,7 +61,7 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItemsCenter,
 		...displayFlex,
 		...flexDirection.column,
-		...fullHeight.percentage,
+		...height[100].percentage,
 		color: theme.color.white,
 	},
 	pageWrapper1: {

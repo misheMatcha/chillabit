@@ -1,24 +1,29 @@
 import React from 'react';
 import Button from 'antd/lib/button';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import LandingCarousel from './Carousel/index';
+import Trending from './Trending';
 import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
+import { styles } from '../../utils/styles';
 
-const useStyles = createUseStyles({
+const { displayFlex, height, justifyContent, width } = styles;
+
+const useStyles = createUseStyles((theme) => ({
 	container: {
-		backgroundColor: '#fff',
-		width: 1240,
+		...width.max,
+		backgroundColor: theme.color.white,
 	},
 	containerWrapper: {
-		display: 'flex',
-		height: '100vh',
-		justifyContent: 'center',
+		...displayFlex,
+		...height[100].view,
+		...justifyContent.center,
 	},
-});
+}));
 
 const Landing = () => {
-	const classes = useStyles();
+	const theme = useTheme();
+	const classes = useStyles({ theme });
 
 	const { toggleModal } = useAuth();
 
@@ -26,20 +31,7 @@ const Landing = () => {
 		<div className={classes.containerWrapper}>
 			<div className={classes.container}>
 				<LandingCarousel />
-				<div>
-					<div>
-						<div>search bar</div>
-						or
-						<div>
-							<Button>Upload your own</Button>
-						</div>
-					</div>
-					<div>Hear what’s trending for free in the {CHILLABIT} community</div>
-					<div>trending and tracks component</div>
-					<div>
-						<Button>Explore trending playlists</Button>
-					</div>
-				</div>
+				<Trending />
 				<div>
 					<div>Never stop listening</div>
 					<div>{CHILLABIT} is available on Web, iOS, Android, Sonos, Chromecast, and Xbox One.</div>

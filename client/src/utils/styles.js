@@ -1,5 +1,6 @@
 export const styles = {
 	alignItemsCenter: { alignItems: 'center' },
+	borderRadius: { borderRadius: 3 },
 	displayFlex: { display: 'flex' },
 	flexDirection: {
 		column: {
@@ -9,41 +10,44 @@ export const styles = {
 			flexDirection: 'row',
 		},
 	},
-	fullHeight: {
-		percentage: {
-			width: '100%',
-		},
-		view: {
-			width: '100vh',
-		},
-	},
-	fullWidth: {
-		percentage: {
-			width: '100%',
-		},
-		view: {
-			width: '100vw',
+	height: {
+		100: {
+			percentage: {
+				height: '100%',
+			},
+			view: {
+				height: '100vh',
+			},
 		},
 	},
 	justifyContent: {
 		center: { justifyContent: 'center' },
 		spaceBetween: { justifyContent: 'space-between' },
 	},
-	maxWith: {
-		width: 1240,
-	},
 	textAlignCenter: {
 		textAlign: 'center',
+	},
+	width: {
+		100: {
+			percentage: {
+				width: '100%',
+			},
+			view: {
+				width: '100vw',
+			},
+		},
+		max: {
+			width: 1240,
+		},
 	},
 };
 
 export const light = {
 	btn: {
 		bg: '#f50',
-		borderRadius: 3,
-		fontColor: '#fff',
 	},
 	color: {
+		gray: '#f2f2f2',
 		white: '#fff',
 	},
 };
