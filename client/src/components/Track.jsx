@@ -73,7 +73,7 @@ const useStyles = createUseStyles((theme, cover) => ({
 		},
 		...displayFlex,
 		...flexDirection.column,
-		justifyContent: 'flex-end',
+		...justifyContent.flexEnd,
 		opacity: 1,
 		zIndex: 1,
 	},
@@ -95,15 +95,15 @@ const useStyles = createUseStyles((theme, cover) => ({
 	},
 	playableActions: {
 		...displayFlex,
-		justifyContent: 'flex-end',
+		...justifyContent.flexEnd,
 		margin: 5,
 	},
 	playableActionsWrapper: {
 		...displayFlex,
+		...justifyContent.flexEnd,
 		alignItems: 'flex-end',
 		background: 'linear-gradient(0deg,rgba(0,0,0,.4),transparent)',
 		height: 50,
-		justifyContent: 'flex-end',
 	},
 	title: {
 		'&:hover': {

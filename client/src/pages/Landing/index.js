@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
 import LandingCarousel from './Carousel/index';
+import MobileTeaser from './MobileTeaser';
 import Trending from './Trending';
 import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
@@ -16,7 +17,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	containerWrapper: {
 		...displayFlex,
-		...height[100].view,
+		...height[100].percentage,
 		...justifyContent.center,
 	},
 }));
@@ -32,10 +33,7 @@ const Landing = () => {
 			<div className={classes.container}>
 				<LandingCarousel />
 				<Trending />
-				<div>
-					<div>Never stop listening</div>
-					<div>{CHILLABIT} is available on Web, iOS, Android, Sonos, Chromecast, and Xbox One.</div>
-				</div>
+				<MobileTeaser />
 				<div>
 					<div>Calling all creators</div>
 					<div>

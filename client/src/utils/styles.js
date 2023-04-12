@@ -22,6 +22,7 @@ export const styles = {
 	},
 	justifyContent: {
 		center: { justifyContent: 'center' },
+		flexEnd: { justifyContent: 'flex-end' },
 		spaceBetween: { justifyContent: 'space-between' },
 		spaceEvently: { justifyContent: 'space-evenly' },
 	},
