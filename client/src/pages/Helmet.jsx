@@ -15,20 +15,19 @@ const useStyles = createUseStyles({
 		width: 450,
 	},
 	modal: {
-		// backgroundColor: 'hsla(0,0%,94.9%,.9)',
-		backgroundColor: 'blue',
+		backgroundColor: 'hsla(0,0%,94.9%,.9)',
 		height: '100vh',
 		left: 0,
-		position: 'absolute',
+		position: 'fixed',
 		top: 0,
 		width: '100vw',
-		zIndex: 2,
+		zIndex: 200,
 	},
 });
 
 const Helmet = () => {
-	const classes = useStyles();
 	const { displayModal } = useAuth();
+	const classes = useStyles({ displayModal });
 
 	return (
 		<div className={classes.container}>
