@@ -23,6 +23,7 @@ export const styles = {
 	justifyContent: {
 		center: { justifyContent: 'center' },
 		spaceBetween: { justifyContent: 'space-between' },
+		spaceEvently: { justifyContent: 'space-evenly' },
 	},
 	textAlignCenter: {
 		textAlign: 'center',
@@ -41,6 +42,8 @@ export const styles = {
 		},
 	},
 };
+
+// need to figure out color theme later and add colors to styles
 
 export const light = {
 	btn: {

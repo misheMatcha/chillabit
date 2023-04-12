@@ -3,6 +3,8 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledLink from './StyledLink';
 import SearchBar from '../../components/SearchBar';
+import Track from '../../components/Track';
+import { PLACEHOLDER_TRACK_LIST } from '../../data/placeholderTrackList';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
@@ -16,7 +18,10 @@ const useStyles = createUseStyles((theme) => ({
 		...flexDirection.column,
 	},
 	explore: {
-		backgroundColor: 'yellow',
+		...alignItemsCenter,
+		...displayFlex,
+		...justifyContent.center,
+		height: 46,
 		marginTop: 5,
 	},
 	or: {
@@ -39,9 +44,17 @@ const useStyles = createUseStyles((theme) => ({
 		paddingTop: 20,
 	},
 	tracks: {
-		height: 500,
+		'& li': {},
+		...displayFlex,
+		...justifyContent.spaceBetween,
+		flexWrap: 'wrap',
+		listStyle: 'none',
+		margin: 0,
+		padding: 0,
 	},
 	trending: {
+		...width[100].percentage,
+		padding: '0 30px',
 		paddingBottom: 10,
 	},
 	upload: {
@@ -64,7 +77,19 @@ const Trending = () => {
 				<div className={classes.title}>
 					Hear what’s trending for free in the {CHILLABIT} community
 				</div>
-				<div className={classes.tracks}>trending</div>
+				<ul className={classes.tracks}>
+					{PLACEHOLDER_TRACK_LIST.map((track, i) => {
+						return (
+							<li key={i}>
+								<Track
+									artist={track.artist}
+									cover={track.cover}
+									title={track.title}
+								/>
+							</li>
+						);
+					})}
+				</ul>
 				<div className={classes.explore}>
 					<StyledLink>Explore trending playlists</StyledLink>
 				</div>
