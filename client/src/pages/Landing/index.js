@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
+import CallingCreators from './CallingCreators';
 import LandingCarousel from './Carousel/index';
 import MobileTeaser from './MobileTeaser';
 import Trending from './Trending';
@@ -34,16 +35,7 @@ const Landing = () => {
 				<LandingCarousel />
 				<Trending />
 				<MobileTeaser />
-				<div>
-					<div>Calling all creators</div>
-					<div>
-						Get on {CHILLABIT} to connect with fans, share your sounds, and grow your audience. What
-						are you waiting for?
-					</div>
-					<div>
-						<Button>Find out more</Button>
-					</div>
-				</div>
+				<CallingCreators />
 				<div>
 					<div>Thanks for listening. Now join in.</div>
 					<div>Save tracks, follow artists and build playlists. All for free.</div>

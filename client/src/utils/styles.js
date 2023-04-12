@@ -51,6 +51,7 @@ export const light = {
 		bg: '#f50',
 	},
 	color: {
+		black: '#000',
 		gray: '#f2f2f2',
 		orange: '#f50',
 		white: '#fff',
