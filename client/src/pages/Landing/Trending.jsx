@@ -1,38 +1,40 @@
 import React from 'react';
+import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledLink from './StyledLink';
 import SearchBar from '../../components/SearchBar';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent, textAlignCenter } = styles;
+const { alignItemsCenter, displayFlex, flexDirection, justifyContent, textAlignCenter, width } =
+	styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		...alignItemsCenter,
 		...displayFlex,
 		...flexDirection.column,
-		// ...justifyContent.center,
-		// backgroundColor: theme.color.gray,
-		backgroundColor: 'blueviolet',
 	},
 	explore: {
 		backgroundColor: 'yellow',
 		marginTop: 5,
 	},
 	or: {
+		...alignItemsCenter,
+		...displayFlex,
 		margin: '0 14px',
 	},
 	search: {
 		...displayFlex,
-		backgroundColor: 'blue',
+		...justifyContent.center,
+		...width[100].percentage,
 		height: 46,
 		marginBottom: 12,
 		marginTop: 49,
 	},
 	title: {
 		...textAlignCenter,
-		fontSize: 24,
+		fontSize: 26,
 		marginBottom: 30,
 		paddingTop: 20,
 	},
@@ -41,6 +43,9 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	trending: {
 		paddingBottom: 10,
+	},
+	upload: {
+		fontSize: 16,
 	},
 }));
 
@@ -53,7 +58,7 @@ const Trending = () => {
 			<div className={classes.search}>
 				<SearchBar />
 				<span className={classes.or}>or</span>
-				<StyledLink>Upload your own</StyledLink>
+				<StyledLink styles={classes.upload}>Upload your own</StyledLink>
 			</div>
 			<div className={classes.trending}>
 				<div className={classes.title}>
