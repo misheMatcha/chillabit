@@ -14,11 +14,12 @@ export const AuthProvider = ({ children }) => {
 
 	const toggleModal = (isNewUser = false) => {
 		// prevents scroll on modal
-		let body = document.getElementsByTagName('body')[0];
+		const body = document.getElementsByTagName('body')[0];
 		body.style.overflow = displayModal ? null : 'hidden';
 
 		if (isNewUser) setClickedSignUp(true);
 		setDisplayModal(!displayModal);
+		if (!displayModal) setStep(1);
 	};
 
 	return (
