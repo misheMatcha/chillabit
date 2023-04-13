@@ -8,7 +8,7 @@ import useAuth from '../hooks/useAuth';
 const useStyles = createUseStyles({
 	container: {},
 	form: {
-		backgroundColor: 'yellow',
+		backgroundColor: 'white',
 		margin: 'auto',
 		padding: 25,
 		position: 'relative',
