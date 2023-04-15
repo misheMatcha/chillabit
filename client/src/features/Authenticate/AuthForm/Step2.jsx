@@ -3,6 +3,7 @@ import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
+import size from 'lodash/size';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
 import StyledInput from './StyledInput';
@@ -46,7 +47,7 @@ const useStyles = createUseStyles({
 
 const Step2 = ({ form }) => {
 	const classes = useStyles();
-	const { errors, setIsVerified, setStep } = useAuth();
+	const { errors, isVerified, setIsVerified, setStep } = useAuth();
 
 	return (
 		<div className={classes.container}>
@@ -76,7 +77,19 @@ const Step2 = ({ form }) => {
 				</Form.Item>
 				{errors.message && <div>{errors.message}</div>}
 			</div>
-			<FormButton onClick={() => setStep(3)} />
+			{isVerified ? (
+				<FormButton htmlType='submit'>Sign in</FormButton>
+			) : (
+				<FormButton
+					onClick={(e) => {
+						e.preventDefault();
+						const passwordLength = size(form.getFieldValue('password'));
+						if (passwordLength >= 8 && passwordLength <= 72) setStep(3);
+					}}
+				>
+					Accept & continue
+				</FormButton>
+			)}
 		</div>
 	);
 };

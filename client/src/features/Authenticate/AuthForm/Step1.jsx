@@ -66,7 +66,7 @@ const Step1 = ({ form }) => {
 				</Form.Item>
 				{errors.message && <div className={classes.error}>{errors.message}</div>}
 			</div>
-			<FormButton onClick={verifyHandle} />
+			<FormButton onClick={verifyHandle}>Continue</FormButton>
 		</div>
 	);
 };

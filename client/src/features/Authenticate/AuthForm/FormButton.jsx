@@ -2,7 +2,6 @@ import React from 'react';
 import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
 import { createUseStyles } from 'react-jss';
-import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
 const { width } = styles;
@@ -27,69 +26,18 @@ const useStyles = createUseStyles({
 	},
 });
 
-const FormButton = ({ form, onClick }) => {
+const FormButton = ({ children, onClick, htmlType }) => {
 	const classes = useStyles();
-	const { isVerified, step } = useAuth();
-
-	// const formButton = () => {
-	// 	switch (step) {
-	// 		case 1:
-	// 			return <Button onClick={verifyHandle}>Continue</Button>;
-	// 		case 2:
-	// 			return isVerified ? (
-	// 				<Button htmlType='submit'>Sign in</Button>
-	// 			) : (
-	// 				<Button
-	// 					onClick={(e) => {
-	// 						e.preventDefault();
-	// 						const passwordLength = size(form.getFieldValue('password'));
-	// 						if (passwordLength >= 8 && passwordLength <= 72) {
-	// 							setStep(3);
-	// 						}
-	// 					}}
-	// 				>
-	// 					Accept & continue
-	// 				</Button>
-	// 			);
-	// 		default:
-	// 			return <Button htmlType='submit'>Continue</Button>;
-	// 	}
-	// };
 
 	return (
 		<Form.Item className={classes.btnWrapper}>
-			{step === 1 && (
-				<Button
-					className={classes.btn}
-					onClick={onClick}
-				>
-					Continue
-				</Button>
-			)}
-			{step === 2 && isVerified && (
-				<Button
-					className={classes.btn}
-					onClick={onClick}
-				>
-					Sign in
-				</Button>
-			)}
-			{step === 2 && !isVerified && (
-				<Button
-					className={classes.btn}
-					onClick={onClick}
-				>
-					Accept & continue
-				</Button>
-			)}
-			{step === 3 && (
-				<Button
-					className={classes.btn}
-					onClick={onClick}
-				>
-					Continue Step 3
-				</Button>
-			)}
+			<Button
+				className={classes.btn}
+				htmlType={htmlType}
+				onClick={onClick}
+			>
+				{children}
+			</Button>
 		</Form.Item>
 	);
 };

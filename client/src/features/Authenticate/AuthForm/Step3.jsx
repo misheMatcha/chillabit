@@ -86,7 +86,7 @@ const Step3 = ({ form }) => {
 					{errors.gender && <div className={classes.error}>{errors.gender}</div>}
 				</label>
 			</div>
-			<FormButton />
+			<FormButton htmlType='submit'>Accept & continue</FormButton>
 		</div>
 	);
 };
