@@ -66,9 +66,9 @@ const AuthForm = () => {
 					isVerified ? loginUser(values) : signUpUser(values);
 				}}
 			>
-				{step === 1 && <Step1 form={{ form }} />}
-				{step === 2 && <Step2 form={{ form }} />}
-				{step === 3 && <Step3 form={{ form }} />}
+				{step === 1 && <Step1 form={form} />}
+				{step === 2 && <Step2 form={form} />}
+				{step === 3 && <Step3 form={form} />}
 			</Form>
 		</div>
 	);

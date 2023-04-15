@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import includes from 'lodash/includes';
@@ -46,9 +46,9 @@ const useStyles = createUseStyles({
 const Step1 = ({ form }) => {
 	const classes = useStyles();
 	const { errors, setErrors, setIsVerified, setStep } = useAuth();
+	// const [loading, setLoading] = useState(true);
 
-	const verifyHandle = () => {
-		setErrors({});
+	const verifyHandle = async () => {
 		const handle = form.getFieldValue('email');
 		let handles = { user: { email: '', url: '' } };
 
@@ -58,20 +58,20 @@ const Step1 = ({ form }) => {
 			handles.user.url = handle;
 		}
 
-		axios
-			.post('/authenticates/handle', handles)
-			.then((res) => {
-				setIsVerified(res.data.isVerified);
-				form.setFieldValue('email', res.data.email);
-				setStep(2);
-			})
-			.catch((err) => {
-				setErrors(err.response.data);
-			});
+		try {
+			const response = await axios.post('/authenticates/handle', handles);
+			setIsVerified(response.data.isVerified);
+			form.setFieldValue('email', response.data.email);
+			setStep(2);
+			setErrors({});
+		} catch (err) {
+			console.log(err.response.data);
+		}
 	};
 
 	return (
 		<div className={classes.container}>
+			{/* {`${loading}`} */}
 			<div className={classes.step1}>
 				<Form.Item
 					className={classes.inputWrapper}
@@ -84,7 +84,7 @@ const Step1 = ({ form }) => {
 				</Form.Item>
 				{errors.message && <div className={classes.error}>{errors.message}</div>}
 			</div>
-			<FormButton />
+			<FormButton onClick={verifyHandle} />
 		</div>
 	);
 };
