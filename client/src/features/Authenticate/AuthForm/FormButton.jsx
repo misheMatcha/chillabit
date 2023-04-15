@@ -71,7 +71,7 @@ const FormButton = ({ form, onClick }) => {
 					className={classes.btn}
 					onClick={onClick}
 				>
-					Continue Step 2
+					Sign in
 				</Button>
 			)}
 			{step === 3 && (

@@ -37,6 +37,9 @@ const useStyles = createUseStyles({
 		color: '#000',
 		textAlign: 'center',
 	},
+	passwordReset: {
+		textAlign: 'center',
+	},
 });
 
 const Footer = () => {
@@ -70,7 +73,7 @@ const Footer = () => {
 			)}
 
 			{isVerified && (
-				<div>
+				<div className={classes.passwordReset}>
 					<Link className={cn(classes.link)}>Don't know your password?</Link>
 				</div>
 			)}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Form from 'antd/lib/form';
-import Input from 'antd/lib/input';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
+import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import axios from '../../../utils/axios';
 import { styles } from '../../../utils/styles';
@@ -22,21 +22,6 @@ const useStyles = createUseStyles({
 		fontSize: 12,
 		fontWeight: 500,
 		margin: '6px 0 12px',
-	},
-	input: {
-		'&:focus': {
-			borderColor: '#ccc',
-			boxShadow: 'none',
-		},
-		'&:hover': {
-			borderColor: '#ccc',
-		},
-		backgroundColor: '#fff',
-		borderColor: '#ccc',
-		borderRadius: 5,
-		color: '#333',
-		fontSize: 18,
-		height: 40,
 	},
 	inputWrapper: {
 		margin: 0,
@@ -65,7 +50,7 @@ const Step1 = ({ form }) => {
 			setStep(2);
 			setErrors({});
 		} catch (err) {
-			console.log(err.response.data);
+			setErrors(err.response.data);
 		}
 	};
 
@@ -77,10 +62,7 @@ const Step1 = ({ form }) => {
 					className={classes.inputWrapper}
 					name='email'
 				>
-					<Input
-						className={classes.input}
-						placeholder='Your email address or profile URL'
-					/>
+					<StyledInput placeholder='Your email address or profile URL' />
 				</Form.Item>
 				{errors.message && <div className={classes.error}>{errors.message}</div>}
 			</div>
