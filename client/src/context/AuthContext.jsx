@@ -8,8 +8,9 @@ export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState({});
 
 	// auth form
-	const [isVerified, setIsVerified] = useState(false);
 	const [clickedSignUp, setClickedSignUp] = useState(false);
+	const [errors, setErrors] = useState({});
+	const [isVerified, setIsVerified] = useState(false);
 	const [step, setStep] = useState(1);
 
 	const toggleModal = (isNewUser = false) => {
@@ -27,9 +28,11 @@ export const AuthProvider = ({ children }) => {
 			value={{
 				clickedSignUp,
 				displayModal,
+				errors,
 				isVerified,
 				setClickedSignUp,
 				setDisplayModal,
+				setErrors,
 				setIsVerified,
 				setStep,
 				setToken,

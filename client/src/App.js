@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'react-jss';
 import { Route, Routes } from 'react-router-dom';
-import RequireAuth from './components/Authenticate/RequireAuth';
+import RequireAuth from './features/Authenticate/RequireAuth';
 import Helmet from './pages/Helmet';
 import Home from './pages/Home';
 import Landing from './pages/Landing/index';

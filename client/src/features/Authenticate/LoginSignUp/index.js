@@ -1,13 +1,13 @@
 import React from 'react';
-import { faX, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import { createUseStyles } from 'react-jss';
-import AuthFooter from './AuthFooter';
-import AuthForm from './AuthForm.jsx';
-import AuthHeader from './AuthHeader';
+import Footer from './Footer';
+import Header from './Header';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
+import AuthForm from '../AuthForm/index';
 
 const { alignItemsCenter, displayFlex, flexDirection, justifyContent, width } = styles;
 
@@ -57,9 +57,9 @@ const LoginSignUp = () => {
 			>
 				<FontAwesomeIcon icon={faXmark} />
 			</Button>
-			<AuthHeader />
+			<Header />
 			<AuthForm />
-			<AuthFooter />
+			<Footer />
 		</div>
 	);
 };

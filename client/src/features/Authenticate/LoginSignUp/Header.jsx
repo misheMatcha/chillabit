@@ -73,7 +73,7 @@ const useStyles = createUseStyles({
 	},
 });
 
-const LoginSignUp = () => {
+const Header = () => {
 	const classes = useStyles();
 
 	const { clickedSignUp, isVerified, step } = useAuth();
@@ -129,4 +129,4 @@ const LoginSignUp = () => {
 	);
 };
 
-export default LoginSignUp;
+export default Header;

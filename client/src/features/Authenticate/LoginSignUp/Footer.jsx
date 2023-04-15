@@ -39,7 +39,7 @@ const useStyles = createUseStyles({
 	},
 });
 
-const AuthFooter = () => {
+const Footer = () => {
 	const classes = useStyles();
 
 	const { step, isVerified } = useAuth();
@@ -90,4 +90,4 @@ const AuthFooter = () => {
 	);
 };
 
-export default AuthFooter;
+export default Footer;
