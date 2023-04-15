@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Form from 'antd/lib/form';
-import Input from 'antd/lib/input';
 import InputNumber from 'antd/lib/input-number';
 import Select from 'antd/lib/select';
 import * as cn from 'classnames';
@@ -10,11 +9,56 @@ import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent, height, width } = styles;
+const { alignItemsCenter, displayFlex, flexDirection, width } = styles;
 
 const useStyles = createUseStyles({
 	container: {},
-	error: {},
+	error: {
+		color: '#d61348',
+		fontSize: 12,
+		fontWeight: 500,
+		margin: '6px 0 12px',
+	},
+	formButton: {
+		paddingTop: 16,
+	},
+	genderInputWrapper: {
+		paddingTop: 8,
+	},
+	inputNumber: {
+		'& input': {
+			height: '40px !important',
+		},
+		'&:focus': {
+			borderColor: '#ccc',
+			boxShadow: 'none',
+		},
+		'&:hover': {
+			borderColor: '#ccc',
+		},
+		...width[100].percentage,
+		backgroundColor: '#fff',
+		borderColor: '#ccc',
+		borderRadius: 5,
+		color: '#333',
+		fontSize: 18,
+		height: 40,
+	},
+	inputWrapper: {
+		margin: 0,
+	},
+	label: {
+		marginBottom: 6,
+	},
+	sectionWrapper: {
+		'& > p': {
+			fontSize: 12,
+			fontWeight: 400,
+		},
+		...displayFlex,
+		...flexDirection.column,
+		fontWeight: 500,
+	},
 	select: {
 		'& div': {
 			'& span': {
@@ -30,6 +74,7 @@ const useStyles = createUseStyles({
 });
 
 const genderOption = [
+	{ label: '', value: '' },
 	{ label: 'Female', value: 'female' },
 	{ label: 'Male', value: 'male' },
 	{ label: 'Custom', value: 'custom' },
@@ -45,23 +90,36 @@ const Step3 = ({ form }) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.step3}>
-				<label>
-					Choose your display name
-					<Form.Item name='username'>
-						<StyledInput />
-					</Form.Item>
-					Your display name can be anything you like. Your name or artist name are good choices.
-				</label>
+				<div className={classes.sectionWrapper}>
+					<label className={classes.label}>
+						Choose your display name
+						<Form.Item
+							className={classes.inputWrapper}
+							name='username'
+						>
+							<StyledInput />
+						</Form.Item>
+					</label>
+					<p>
+						Your display name can be anything you like. Your name or artist name are good choices.
+					</p>
+				</div>
 				<label>
 					Enter your age
-					<Form.Item name='age'>
-						<InputNumber />
+					<Form.Item
+						className={classes.inputWrapper}
+						name='age'
+					>
+						<InputNumber className={classes.inputNumber} />
 					</Form.Item>
-					{errors.age && <div>{errors.age}</div>}
+					{errors.age && <div className={classes.error}>{errors.age}</div>}
 				</label>
 				<label>
 					Enter your gender
-					<Form.Item name='gender'>
+					<Form.Item
+						className={classes.inputWrapper}
+						name='gender'
+					>
 						<Select
 							className={classes.select}
 							onChange={(value) => {
@@ -76,17 +134,18 @@ const Step3 = ({ form }) => {
 						/>
 					</Form.Item>
 					{isCustomGender && (
-						<div>
+						<div className={classes.genderInputWrapper}>
 							<StyledInput
 								maxLength={16}
 								onChange={(e) => setGender(e.target.value)}
+								placeholder='Custom gender'
 							/>
 						</div>
 					)}
 					{errors.gender && <div className={classes.error}>{errors.gender}</div>}
 				</label>
 			</div>
-			<FormButton htmlType='submit'>Accept & continue</FormButton>
+			<FormButton htmlType='submit'>Continue</FormButton>
 		</div>
 	);
 };
