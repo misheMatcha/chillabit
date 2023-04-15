@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
-import Input from 'antd/lib/input';
-import InputNumber from 'antd/lib/input-number';
-import Select from 'antd/lib/select';
-import includes from 'lodash/includes';
-import size from 'lodash/size';
 import { createUseStyles } from 'react-jss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Step1 from './Step1';
@@ -16,23 +10,12 @@ import axios from '../../../utils/axios';
 
 const useStyles = createUseStyles({
 	container: {},
-	step1: {
-		display: (step) => (step === 1 ? 'block' : 'none'),
-	},
-	step2: {
-		display: (step) => (step === 2 ? 'block' : 'none'),
-	},
-	step3: {
-		display: (step) => (step === 3 ? 'block' : 'none'),
-	},
 });
 
 const AuthForm = () => {
-	const [errors, setErrors] = useState({});
 	const [gender, setGender] = useState('');
 	const [isCustomGender, setIsCustomGender] = useState(false);
-	const { setDisplayModal, setStep, step, isVerified, setIsVerified, setToken, setUser, user } =
-		useAuth();
+	const { setDisplayModal, setErrors, step, isVerified, setToken, setUser } = useAuth();
 	const classes = useStyles(step);
 
 	const navigate = useNavigate();

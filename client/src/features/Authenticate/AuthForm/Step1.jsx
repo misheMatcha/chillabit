@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
-import * as cn from 'classnames';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
@@ -9,10 +8,39 @@ import useAuth from '../../../hooks/useAuth';
 import axios from '../../../utils/axios';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent, height, width } = styles;
+const { displayFlex, flexDirection, justifyContent } = styles;
 
 const useStyles = createUseStyles({
-	container: {},
+	container: {
+		...displayFlex,
+		...flexDirection.column,
+		...justifyContent.spaceBetween,
+		minHeight: 96,
+	},
+	error: {
+		color: '#d61348',
+		fontSize: 12,
+		fontWeight: 500,
+		margin: '6px 0 12px',
+	},
+	input: {
+		'&:focus': {
+			borderColor: '#ccc',
+			boxShadow: 'none',
+		},
+		'&:hover': {
+			borderColor: '#ccc',
+		},
+		backgroundColor: '#fff',
+		borderColor: '#ccc',
+		borderRadius: 5,
+		color: '#333',
+		fontSize: 18,
+		height: 40,
+	},
+	inputWrapper: {
+		margin: 0,
+	},
 });
 
 const Step1 = ({ form }) => {
@@ -45,10 +73,16 @@ const Step1 = ({ form }) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.step1}>
-				<Form.Item name='email'>
-					<Input placeholder='Your email address or profile URL' />
+				<Form.Item
+					className={classes.inputWrapper}
+					name='email'
+				>
+					<Input
+						className={classes.input}
+						placeholder='Your email address or profile URL'
+					/>
 				</Form.Item>
-				{errors.message && <div>{errors.message}</div>}
+				{errors.message && <div className={classes.error}>{errors.message}</div>}
 			</div>
 			<FormButton />
 		</div>

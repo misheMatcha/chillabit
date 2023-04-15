@@ -1,16 +1,30 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
-import * as cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent, height, width } = styles;
+const { width } = styles;
 
 const useStyles = createUseStyles({
-	btn: {},
-	btnWrapper: {},
+	btn: {
+		'&:hover': {
+			borderColor: '#f50 !important',
+			color: '#fff !important',
+		},
+		...width[100].percentage,
+		backgroundColor: '#f50',
+		borderColor: '#f50',
+		borderRadius: 3,
+		color: '#fff',
+		fontSize: 16,
+		fontWeight: 500,
+		height: 40,
+	},
+	btnWrapper: {
+		margin: 0,
+	},
 });
 
 const FormButton = ({ form, onClick }) => {
@@ -49,7 +63,7 @@ const FormButton = ({ form, onClick }) => {
 					className={classes.btn}
 					onClick={onClick}
 				>
-					Continue Step 1
+					Continue
 				</Button>
 			)}
 			{step === 2 && (
