@@ -76,7 +76,7 @@ const Step2 = ({ form }) => {
 				</Form.Item>
 				{errors.message && <div>{errors.message}</div>}
 			</div>
-			<FormButton />
+			<FormButton onClick={() => setStep(3)} />
 		</div>
 	);
 };

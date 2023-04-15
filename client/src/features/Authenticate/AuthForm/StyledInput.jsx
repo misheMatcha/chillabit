@@ -24,12 +24,13 @@ const useStyles = createUseStyles({
 	},
 });
 
-const StyledInput = ({ onChange, onClick, placeholder, styles, type, value }) => {
+const StyledInput = ({ maxLength, onChange, onClick, placeholder, styles, type, value }) => {
 	const classes = useStyles();
 
 	return (
 		<Input
 			className={cn(classes.container, styles)}
+			maxLength={maxLength}
 			onChange={onChange}
 			onClick={onClick}
 			placeholder={placeholder}

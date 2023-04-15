@@ -29,7 +29,7 @@ const useStyles = createUseStyles({
 
 const FormButton = ({ form, onClick }) => {
 	const classes = useStyles();
-	const { step } = useAuth();
+	const { isVerified, step } = useAuth();
 
 	// const formButton = () => {
 	// 	switch (step) {
@@ -66,12 +66,20 @@ const FormButton = ({ form, onClick }) => {
 					Continue
 				</Button>
 			)}
-			{step === 2 && (
+			{step === 2 && isVerified && (
 				<Button
 					className={classes.btn}
 					onClick={onClick}
 				>
 					Sign in
+				</Button>
+			)}
+			{step === 2 && !isVerified && (
+				<Button
+					className={classes.btn}
+					onClick={onClick}
+				>
+					Accept & continue
 				</Button>
 			)}
 			{step === 3 && (

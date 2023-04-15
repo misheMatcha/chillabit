@@ -6,6 +6,7 @@ import Select from 'antd/lib/select';
 import * as cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
+import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
@@ -13,13 +14,33 @@ const { alignItemsCenter, displayFlex, flexDirection, justifyContent, height, wi
 
 const useStyles = createUseStyles({
 	container: {},
+	error: {},
+	select: {
+		'& div': {
+			'& span': {
+				...displayFlex,
+				...alignItemsCenter,
+				fontSize: 18,
+				height: '40px !important',
+			},
+			height: '40px !important',
+		},
+		height: 40,
+	},
 });
+
+const genderOption = [
+	{ label: 'Female', value: 'female' },
+	{ label: 'Male', value: 'male' },
+	{ label: 'Custom', value: 'custom' },
+	{ label: 'Prefer not to say', value: 'na' },
+];
 
 const Step3 = ({ form }) => {
 	const [gender, setGender] = useState('');
 	const [isCustomGender, setIsCustomGender] = useState(false);
 	const classes = useStyles();
-	const { errors, setDisplayModal, setErrors, setToken, setUser } = useAuth();
+	const { errors } = useAuth();
 
 	return (
 		<div className={classes.container}>
@@ -27,7 +48,7 @@ const Step3 = ({ form }) => {
 				<label>
 					Choose your display name
 					<Form.Item name='username'>
-						<Input />
+						<StyledInput />
 					</Form.Item>
 					Your display name can be anything you like. Your name or artist name are good choices.
 				</label>
@@ -42,6 +63,7 @@ const Step3 = ({ form }) => {
 					Enter your gender
 					<Form.Item name='gender'>
 						<Select
+							className={classes.select}
 							onChange={(value) => {
 								if (value === 'custom') {
 									setIsCustomGender(true);
@@ -50,22 +72,18 @@ const Step3 = ({ form }) => {
 									setGender('');
 								}
 							}}
-						>
-							<Select.Option value='female'>Female</Select.Option>
-							<Select.Option value='male'>Male</Select.Option>
-							<Select.Option value='custom'>Custom</Select.Option>
-							<Select.Option value='na'>Prefer not to say</Select.Option>
-						</Select>
+							options={genderOption}
+						/>
 					</Form.Item>
 					{isCustomGender && (
 						<div>
-							<Input
+							<StyledInput
 								maxLength={16}
 								onChange={(e) => setGender(e.target.value)}
 							/>
 						</div>
 					)}
-					{errors.gender && <div>{errors.gender}</div>}
+					{errors.gender && <div className={classes.error}>{errors.gender}</div>}
 				</label>
 			</div>
 			<FormButton />
