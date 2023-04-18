@@ -1,6 +1,25 @@
 export const styles = {
 	alignItemsCenter: { alignItems: 'center' },
 	borderRadius: { borderRadius: 3 },
+	colors: {
+		black: '#000',
+		blue: '#044dd2',
+		gray: {
+			0: '#f2f2f2',
+			100: '#222',
+			20: '#ccc',
+			40: '#999',
+			60: '#666',
+			80: '#333',
+		},
+		orange: {
+			dark: '#f30',
+			light: '#f50',
+		},
+		red: '#d61348',
+		transparent: 'transparent',
+		white: '#fff',
+	},
 	displayFlex: { display: 'flex' },
 	flexDirection: {
 		column: {
@@ -8,6 +27,15 @@ export const styles = {
 		},
 		row: {
 			flexDirection: 'row',
+		},
+	},
+	font: {
+		size: {
+			medium: 14,
+			small: 12,
+		},
+		weight: {
+			500: 500,
 		},
 	},
 	height: {
@@ -49,6 +77,10 @@ export const styles = {
 export const light = {
 	btn: {
 		bg: '#f50',
+		large: {
+			height: 40,
+		},
+		radius: 3,
 	},
 	color: {
 		black: '#000',
