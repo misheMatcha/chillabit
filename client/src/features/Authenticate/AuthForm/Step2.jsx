@@ -10,7 +10,7 @@ import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent, width } = styles;
+const { alignItemsCenter, displayFlex, flexDirection, width } = styles;
 
 const useStyles = createUseStyles({
 	backBtn: {
@@ -34,20 +34,30 @@ const useStyles = createUseStyles({
 		textAlign: 'left',
 	},
 	container: {
+		'& > button': {
+			marginBottom: 16,
+		},
+		'& > div:nth-child(2)': {
+			marginBottom: ({ errors }) => (errors.message ? 0 : 16),
+		},
 		...displayFlex,
 		...flexDirection.column,
-		...justifyContent.spaceBetween,
-		marginBottom: 16,
-		minHeight: 152,
+		marginBottom: ({ isVerified }) => (isVerified ? 16 : 0),
 	},
-	inputWrapper: {
+	error: {
+		color: '#d61348',
+		fontSize: 12,
+		fontWeight: 500,
+		margin: '6px 0 12px',
+	},
+	formItem: {
 		margin: 0,
 	},
 });
 
 const Step2 = ({ form }) => {
-	const classes = useStyles();
-	const { errors, isVerified, setIsVerified, setStep } = useAuth();
+	const { errors, setErrors, isVerified, setIsVerified, setStep } = useAuth();
+	const classes = useStyles({ errors, isVerified });
 
 	return (
 		<div className={classes.container}>
@@ -61,35 +71,41 @@ const Step2 = ({ form }) => {
 				<FontAwesomeIcon icon={faCaretLeft} />
 				<span>{form.getFieldValue('email')}</span>
 			</Button>
-			<div className={classes.step2}>
+			<div>
 				<Form.Item
-					className={classes.inputWrapper}
+					className={classes.formItem}
 					name='password'
-					rules={[
-						{ message: 'Password must be at least 8 characters.', min: 8 },
-						{ max: 72, message: 'Password must be less than 72 characters.' },
-					]}
 				>
 					<StyledInput
+						error={errors.message}
 						placeholder='Your password'
 						type='password'
 					/>
 				</Form.Item>
-				{errors.message && <div>{errors.message}</div>}
+				{errors.message && <div className={classes.error}>{errors.message}</div>}
 			</div>
-			{isVerified ? (
-				<FormButton htmlType='submit'>Sign in</FormButton>
-			) : (
-				<FormButton
-					onClick={(e) => {
-						e.preventDefault();
-						const passwordLength = size(form.getFieldValue('password'));
-						if (passwordLength >= 8 && passwordLength <= 72) setStep(3);
-					}}
-				>
-					Accept & continue
-				</FormButton>
-			)}
+			<Form.Item className={classes.formItem}>
+				{isVerified ? (
+					<FormButton htmlType='submit'>Sign in</FormButton>
+				) : (
+					<FormButton
+						onClick={(e) => {
+							e.preventDefault();
+							const passwordLength = size(form.getFieldValue('password'));
+
+							if (passwordLength < 8) {
+								setErrors({ message: 'Password must be at least 8 characters' });
+							} else if (passwordLength > 72) {
+								setErrors({ message: 'Password must be less than 72 characters.' });
+							} else {
+								setStep(3);
+							}
+						}}
+					>
+						Accept & continue
+					</FormButton>
+				)}
+			</Form.Item>
 		</div>
 	);
 };

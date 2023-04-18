@@ -2,9 +2,6 @@ import React from 'react';
 import Input from 'antd/lib/input';
 import * as cn from 'classnames';
 import { createUseStyles } from 'react-jss';
-import { styles } from '../../../utils/styles';
-
-const { alignItemsCenter, displayFlex, flexDirection, height, justifyContent, width } = styles;
 
 const useStyles = createUseStyles({
 	container: {
@@ -22,14 +19,23 @@ const useStyles = createUseStyles({
 		fontSize: 18,
 		height: 40,
 	},
+	error: {
+		'&:focus': {
+			borderColor: '#d61348',
+		},
+		'&:hover': {
+			borderColor: '#d61348',
+		},
+		borderColor: '#d61348',
+	},
 });
 
-const StyledInput = ({ maxLength, onChange, onClick, placeholder, styles, type, value }) => {
+const StyledInput = ({ error, maxLength, onChange, onClick, placeholder, styles, type, value }) => {
 	const classes = useStyles();
 
 	return (
 		<Input
-			className={cn(classes.container, styles)}
+			className={cn(classes.container, { [`${classes.error}`]: error }, styles)}
 			maxLength={maxLength}
 			onChange={onChange}
 			onClick={onClick}

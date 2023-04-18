@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'antd/lib/button';
-import Form from 'antd/lib/form';
 import { createUseStyles } from 'react-jss';
 import { styles } from '../../../utils/styles';
 
@@ -21,24 +20,19 @@ const useStyles = createUseStyles({
 		fontWeight: 500,
 		height: 40,
 	},
-	btnWrapper: {
-		margin: 0,
-	},
 });
 
 const FormButton = ({ children, onClick, htmlType }) => {
 	const classes = useStyles();
 
 	return (
-		<Form.Item className={classes.btnWrapper}>
-			<Button
-				className={classes.btn}
-				htmlType={htmlType}
-				onClick={onClick}
-			>
-				{children}
-			</Button>
-		</Form.Item>
+		<Button
+			className={classes.btn}
+			htmlType={htmlType}
+			onClick={onClick}
+		>
+			{children}
+		</Button>
 	);
 };
 

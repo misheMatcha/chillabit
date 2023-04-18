@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Form from 'antd/lib/form';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
@@ -23,7 +23,7 @@ const useStyles = createUseStyles({
 		fontWeight: 500,
 		margin: '6px 0 12px',
 	},
-	inputWrapper: {
+	formItem: {
 		margin: 0,
 	},
 });
@@ -31,7 +31,6 @@ const useStyles = createUseStyles({
 const Step1 = ({ form }) => {
 	const classes = useStyles();
 	const { errors, setErrors, setIsVerified, setStep } = useAuth();
-	// const [loading, setLoading] = useState(true);
 
 	const verifyHandle = async () => {
 		const handle = form.getFieldValue('email');
@@ -56,13 +55,15 @@ const Step1 = ({ form }) => {
 
 	return (
 		<div className={classes.container}>
-			{/* {`${loading}`} */}
-			<div className={classes.step1}>
+			<div>
 				<Form.Item
-					className={classes.inputWrapper}
+					className={classes.formItem}
 					name='email'
 				>
-					<StyledInput placeholder='Your email address or profile URL' />
+					<StyledInput
+						error={errors.message}
+						placeholder='Your email address or profile URL'
+					/>
 				</Form.Item>
 				{errors.message && <div className={classes.error}>{errors.message}</div>}
 			</div>
