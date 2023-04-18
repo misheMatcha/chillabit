@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Form from 'antd/lib/form';
 import InputNumber from 'antd/lib/input-number';
 import Select from 'antd/lib/select';
@@ -9,18 +9,20 @@ import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, width } = styles;
+const { alignItemsCenter, displayFlex, width } = styles;
 
 const useStyles = createUseStyles({
-	container: {},
+	container: {
+		marginBottom: 16,
+	},
 	error: {
 		color: '#d61348',
 		fontSize: 12,
 		fontWeight: 500,
 		margin: '6px 0 12px',
 	},
-	formButton: {
-		paddingTop: 16,
+	formItem: {
+		margin: 0,
 	},
 	genderInputWrapper: {
 		paddingTop: 8,
@@ -44,20 +46,17 @@ const useStyles = createUseStyles({
 		fontSize: 18,
 		height: 40,
 	},
-	inputWrapper: {
-		margin: 0,
-	},
-	label: {
-		marginBottom: 6,
+	inputNumberError: {
+		'&:focus': {
+			borderColor: '#d61348',
+		},
+		'&:hover': {
+			borderColor: '#d61348',
+		},
+		borderColor: '#d61348',
 	},
 	sectionWrapper: {
-		'& > p': {
-			fontSize: 12,
-			fontWeight: 400,
-		},
-		...displayFlex,
-		...flexDirection.column,
-		fontWeight: 500,
+		marginBottom: 16,
 	},
 	select: {
 		'& div': {
@@ -71,9 +70,16 @@ const useStyles = createUseStyles({
 		},
 		height: 40,
 	},
+	usernameSection: {
+		'& > p': {
+			fontSize: 12,
+			fontWeight: 400,
+		},
+		fontWeight: 500,
+	},
 });
 
-const genderOption = [
+const genderOptions = [
 	{ label: '', value: '' },
 	{ label: 'Female', value: 'female' },
 	{ label: 'Male', value: 'male' },
@@ -81,20 +87,18 @@ const genderOption = [
 	{ label: 'Prefer not to say', value: 'na' },
 ];
 
-const Step3 = ({ form }) => {
-	const [gender, setGender] = useState('');
-	const [isCustomGender, setIsCustomGender] = useState(false);
-	const classes = useStyles();
+const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 	const { errors } = useAuth();
+	const classes = useStyles();
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.step3}>
-				<div className={classes.sectionWrapper}>
-					<label className={classes.label}>
+			<div>
+				<div className={classes.usernameSection}>
+					<label>
 						Choose your display name
 						<Form.Item
-							className={classes.inputWrapper}
+							className={classes.formItem}
 							name='username'
 						>
 							<StyledInput />
@@ -104,46 +108,53 @@ const Step3 = ({ form }) => {
 						Your display name can be anything you like. Your name or artist name are good choices.
 					</p>
 				</div>
-				<label>
-					Enter your age
-					<Form.Item
-						className={classes.inputWrapper}
-						name='age'
-					>
-						<InputNumber className={classes.inputNumber} />
-					</Form.Item>
-					{errors.age && <div className={classes.error}>{errors.age}</div>}
-				</label>
-				<label>
-					Enter your gender
-					<Form.Item
-						className={classes.inputWrapper}
-						name='gender'
-					>
-						<Select
-							className={classes.select}
-							onChange={(value) => {
-								if (value === 'custom') {
-									setIsCustomGender(true);
-								} else {
-									setIsCustomGender(false);
-									setGender('');
-								}
-							}}
-							options={genderOption}
-						/>
-					</Form.Item>
-					{isCustomGender && (
-						<div className={classes.genderInputWrapper}>
-							<StyledInput
-								maxLength={16}
-								onChange={(e) => setGender(e.target.value)}
-								placeholder='Custom gender'
+				<div className={cn({ [`${classes.sectionWrapper}`]: !errors.age })}>
+					<label>
+						Enter your age
+						<Form.Item
+							className={classes.formItem}
+							name='age'
+						>
+							<InputNumber
+								className={cn(classes.inputNumber, { [`${classes.inputNumberError}`]: errors.age })}
 							/>
-						</div>
-					)}
+						</Form.Item>
+					</label>
+					{errors.age && <div className={classes.error}>{errors.age}</div>}
+				</div>
+				<div className={cn({ [`${classes.sectionWrapper}`]: !errors.gender })}>
+					<label>
+						Enter your gender
+						<Form.Item
+							className={classes.formItem}
+							name='gender'
+						>
+							<Select
+								className={classes.select}
+								onChange={(value) => {
+									if (value === 'custom') {
+										setIsCustomGender(true);
+									} else {
+										setIsCustomGender(false);
+										setGender('');
+									}
+								}}
+								options={genderOptions}
+							/>
+						</Form.Item>
+						{isCustomGender && (
+							<div className={classes.genderInputWrapper}>
+								<StyledInput
+									error={errors.gender}
+									maxLength={16}
+									onChange={(e) => setGender(e.target.value)}
+									placeholder='Custom gender'
+								/>
+							</div>
+						)}
+					</label>
 					{errors.gender && <div className={classes.error}>{errors.gender}</div>}
-				</label>
+				</div>
 			</div>
 			<FormButton htmlType='submit'>Continue</FormButton>
 		</div>

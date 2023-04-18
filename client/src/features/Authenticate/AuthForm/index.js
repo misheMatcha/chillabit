@@ -68,7 +68,13 @@ const AuthForm = () => {
 			>
 				{step === 1 && <Step1 form={form} />}
 				{step === 2 && <Step2 form={form} />}
-				{step === 3 && <Step3 form={form} />}
+				{step === 3 && (
+					<Step3
+						isCustomGender={isCustomGender}
+						setGender={setGender}
+						setIsCustomGender={setIsCustomGender}
+					/>
+				)}
 			</Form>
 		</div>
 	);
