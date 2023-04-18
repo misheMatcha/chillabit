@@ -10,6 +10,15 @@ import axios from '../../../utils/axios';
 
 const useStyles = createUseStyles({
 	container: {},
+	step1: {
+		display: (step) => (step === 1 ? 'block' : 'none'),
+	},
+	step2: {
+		display: (step) => (step === 2 ? 'block' : 'none'),
+	},
+	step3: {
+		display: (step) => (step === 3 ? 'block' : 'none'),
+	},
 });
 
 const AuthForm = () => {
@@ -23,32 +32,34 @@ const AuthForm = () => {
 	const from = location?.state?.from?.pathname || '/home';
 	const [form] = Form.useForm();
 
-	const signUpUser = (values) => {
-		axios
-			.post('/users', { user: { ...values, gender: isCustomGender ? gender : values.gender } })
-			.then((res) => {
-				setUser(res.data.user);
-				setToken(res.data.token);
-				setDisplayModal(false);
-				navigate(from, { replace: true });
-			})
-			.catch((err) => {
-				setErrors(err.response.data);
+	const signUpUser = async (values) => {
+		try {
+			const response = await axios.post('/users', {
+				user: { ...values, gender: isCustomGender ? gender : values.gender },
 			});
+
+			setUser(response.data.user);
+			setToken(response.data.token);
+			setDisplayModal(false);
+			navigate(from, { replace: true });
+		} catch (err) {
+			setErrors(err.response.data);
+		}
 	};
 
-	const loginUser = (values) => {
-		axios
-			.post('/login', { user: { email: values.email, password: values.password } })
-			.then((res) => {
-				setUser(res.data.user);
-				setToken(res.data.token);
-				setDisplayModal(false);
-				navigate(from, { replace: true });
-			})
-			.catch((err) => {
-				setErrors(err.response.data);
+	const loginUser = async (values) => {
+		try {
+			const response = await axios.post('/login', {
+				user: { email: values.email, password: values.password },
 			});
+
+			setUser(response.data.user);
+			setToken(response.data.token);
+			setDisplayModal(false);
+			navigate(from, { replace: true });
+		} catch (err) {
+			setErrors(err.response.data);
+		}
 	};
 
 	return (
@@ -66,15 +77,19 @@ const AuthForm = () => {
 					isVerified ? loginUser(values) : signUpUser(values);
 				}}
 			>
-				{step === 1 && <Step1 form={form} />}
-				{step === 2 && <Step2 form={form} />}
-				{step === 3 && (
+				<div className={classes.step1}>
+					<Step1 form={form} />
+				</div>
+				<div className={classes.step2}>
+					<Step2 form={form} />
+				</div>
+				<div className={classes.step3}>
 					<Step3
 						isCustomGender={isCustomGender}
 						setGender={setGender}
 						setIsCustomGender={setIsCustomGender}
 					/>
-				)}
+				</div>
 			</Form>
 		</div>
 	);
