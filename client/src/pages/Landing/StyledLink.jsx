@@ -9,12 +9,12 @@ const { borderRadius } = styles;
 const useStyles = createUseStyles((theme) => ({
 	base: {
 		'&:hover': {
-			color: theme.color.white,
+			color: '#fff',
 		},
 		...borderRadius,
-		backgroundColor: theme.btn.bg,
-		border: `1px solid ${theme.btn.bg}`,
-		color: theme.color.white,
+		backgroundColor: '#f50',
+		border: `1px solid #f50`,
+		color: '#fff',
 		fontSize: 18,
 		height: 46,
 		padding: '12px 15px',

@@ -74,18 +74,4 @@ export const styles = {
 
 // need to figure out color theme later and add colors to styles
 
-export const light = {
-	btn: {
-		bg: '#f50',
-		large: {
-			height: 40,
-		},
-		radius: 3,
-	},
-	color: {
-		black: '#000',
-		gray: '#f2f2f2',
-		orange: '#f50',
-		white: '#fff',
-	},
-};
+export const light = {};

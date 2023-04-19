@@ -9,7 +9,7 @@ const { alignItemsCenter, displayFlex, flexDirection, justifyContent } = styles;
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		...displayFlex,
-		backgroundColor: theme.color.gray,
+		backgroundColor: '#f2f2f2',
 		color: '#333',
 		marginTop: 60,
 		paddingRight: 70,

@@ -14,17 +14,17 @@ const { alignItemsCenter, borderRadius, displayFlex, justifyContent, width } = s
 const useStyles = createUseStyles((theme) => ({
 	btn: {
 		'&:hover': {
-			border: `1px solid ${theme.btn.bg} !important`,
-			color: `${theme.color.white} !important`,
+			border: `1px solid #f50 !important`,
+			color: `#fff !important`,
 		},
 		...borderRadius,
-		backgroundColor: theme.btn.bg,
-		border: `1px solid ${theme.btn.bg}`,
-		color: theme.color.white,
+		backgroundColor: '#f50',
+		border: `1px solid #f50`,
+		color: '#fff',
 	},
 	btnWrapper: {
 		'& > a': {
-			color: theme.color.white,
+			color: '#fff',
 			fontWeight: 600,
 			textDecoration: 'none',
 		},
@@ -38,12 +38,12 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	clear: {
 		'&:hover': {
-			border: `1px solid ${theme.color.white} !important`,
-			color: `${theme.color.white} !important`,
+			border: `1px solid #fff !important`,
+			color: `#fff !important`,
 		},
 		backgroundColor: 'transparent',
-		border: `1px solid ${theme.color.white}`,
-		color: theme.color.white,
+		border: `1px solid #fff`,
+		color: '#fff',
 	},
 	container: {
 		...displayFlex,

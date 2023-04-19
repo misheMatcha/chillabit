@@ -30,18 +30,18 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	clear: {
 		'&:hover': {
-			border: `1px solid ${theme.color.white} !important`,
-			color: `${theme.color.white} !important`,
+			border: `1px solid #fff !important`,
+			color: `#fff !important`,
 		},
 		backgroundColor: 'transparent',
-		border: `1px solid ${theme.color.white}`,
-		color: theme.color.white,
+		border: `1px solid #fff`,
+		color: '#fff',
 	},
 	container: {
 		...displayFlex,
 		...width.max,
 		borderTop: '4px solid #f50',
-		color: theme.color.white,
+		color: '#fff',
 		height: 450,
 	},
 	learnMore: {
@@ -62,7 +62,7 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...flexDirection.column,
 		...height[100].percentage,
-		color: theme.color.white,
+		color: '#fff',
 	},
 	pageWrapper1: {
 		...defaultPageStlyes,

@@ -21,10 +21,10 @@ const useStyles = createUseStyles((theme) => ({
 		'& > span': {
 			'& > input': {
 				'&:hover': {
-					borderColor: `${theme.color.gray} !important`,
+					borderColor: `#f2f2f2 !important`,
 				},
-				backgroundColor: `${theme.color.gray} !important`,
-				borderColor: theme.color.gray,
+				backgroundColor: `#f2f2f2 !important`,
+				borderColor: '#f2f2f2',
 				color: '#666',
 				fontSize: 16,
 				padding: '0 16px',
@@ -32,11 +32,11 @@ const useStyles = createUseStyles((theme) => ({
 			'& > span': {
 				'& > button': {
 					'&:hover': {
-						borderColor: `${theme.color.gray} !important`,
+						borderColor: `#f2f2f2 !important`,
 					},
 					...btnSize,
-					backgroundColor: `${theme.color.gray} !important`,
-					borderColor: theme.color.gray,
+					backgroundColor: `#f2f2f2 !important`,
+					borderColor: '#f2f2f2',
 					color: '#666 !important',
 					fontSize: 20,
 				},
@@ -46,7 +46,7 @@ const useStyles = createUseStyles((theme) => ({
 			...displayFlex,
 			height: 46,
 		},
-		backgroundColor: theme.color.gray,
+		backgroundColor: '#f2f2f2',
 		borderRadius: 4,
 		width: 518,
 	},

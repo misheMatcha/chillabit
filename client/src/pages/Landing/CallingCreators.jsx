@@ -16,10 +16,10 @@ const useStyles = createUseStyles((theme) => ({
 	container: {
 		...alignItemsCenter,
 		...displayFlex,
-		backgroundColor: theme.color.black,
+		backgroundColor: '#000',
 		backgroundImage: `url(${CreatorImage})`,
 		backgroundSize: 'cover',
-		color: theme.color.white,
+		color: '#fff',
 		height: 350,
 		paddingLeft: 70,
 	},

@@ -58,7 +58,7 @@ const useStyles = createUseStyles((theme, cover) => ({
 		width: 180,
 	},
 	icon: {
-		color: theme.color.white,
+		color: '#fff',
 		fontSize: 12,
 	},
 	info: {
@@ -86,7 +86,7 @@ const useStyles = createUseStyles((theme, cover) => ({
 		'&:hover': {
 			color: '#f30',
 		},
-		color: theme.color.orange,
+		color: '#f50',
 	},
 	playWrapper: {
 		...displayFlex,
