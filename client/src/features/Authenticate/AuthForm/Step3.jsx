@@ -66,9 +66,29 @@ const useStyles = createUseStyles({
 				fontSize: 18,
 				height: '40px !important',
 			},
+			'&.ant-select-selector': {
+				borderColor: '#d9d9d9 !important',
+				boxShadow: 'none !important',
+			},
+			'&:hover': {
+				borderColor: '#d9d9d9 !important',
+				boxShadow: 'none !important',
+			},
 			height: '40px !important',
 		},
 		height: 40,
+	},
+	selectError: {
+		'& div': {
+			'&.ant-select-selector': {
+				borderColor: '#d61348 !important',
+				boxShadow: 'none !important',
+			},
+			'&:hover': {
+				borderColor: '#d61348 !important',
+				boxShadow: 'none !important',
+			},
+		},
 	},
 	usernameSection: {
 		'& > p': {
@@ -130,7 +150,9 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							name='gender'
 						>
 							<Select
-								className={classes.select}
+								className={cn(classes.select, {
+									[`${classes.selectError}`]: !isCustomGender && errors.gender,
+								})}
 								onChange={(value) => {
 									if (value === 'custom') {
 										setIsCustomGender(true);

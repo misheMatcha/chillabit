@@ -12,7 +12,6 @@ const btnSize = {
 };
 
 // TODO
-// - fix hover/focus colors
 // - add onSearch fnc
 // - style to be reused in navbar
 
@@ -20,7 +19,14 @@ const useStyles = createUseStyles((theme) => ({
 	container: {
 		'& > span': {
 			'& > input': {
+				'&:focus': {
+					borderColor: `#f2f2f2 !important`,
+					boxShadow: 'none',
+				},
 				'&:hover': {
+					borderColor: `#f2f2f2 !important`,
+				},
+				'&:hover + span > button': {
 					borderColor: `#f2f2f2 !important`,
 				},
 				backgroundColor: `#f2f2f2 !important`,
@@ -41,7 +47,6 @@ const useStyles = createUseStyles((theme) => ({
 					fontSize: 20,
 				},
 				...btnSize,
-				backgroundColor: 'yellow !important',
 			},
 			...displayFlex,
 			height: 46,

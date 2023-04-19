@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
 
 		if (isNewUser) setClickedSignUp(true);
 		setDisplayModal(!displayModal);
-		if (!displayModal) setStep(1);
 	};
 
 	return (

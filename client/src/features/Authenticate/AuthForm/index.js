@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from 'antd/lib/form';
 import { createUseStyles } from 'react-jss';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -24,8 +24,30 @@ const useStyles = createUseStyles({
 const AuthForm = () => {
 	const [gender, setGender] = useState('');
 	const [isCustomGender, setIsCustomGender] = useState(false);
-	const { setDisplayModal, setErrors, step, isVerified, setToken, setUser } = useAuth();
+	const {
+		displayModal,
+		setClickedSignUp,
+		setDisplayModal,
+		setErrors,
+		setIsVerified,
+		step,
+		isVerified,
+		setStep,
+		setToken,
+		setUser,
+	} = useAuth();
 	const classes = useStyles(step);
+
+	useEffect(() => {
+		return () => {
+			if (!displayModal) {
+				setErrors({});
+				setIsVerified(false);
+				setStep(1);
+				setClickedSignUp(false);
+			}
+		};
+	});
 
 	const navigate = useNavigate();
 	const location = useLocation();
