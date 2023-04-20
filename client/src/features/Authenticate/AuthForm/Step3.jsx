@@ -44,7 +44,8 @@ const useStyles = createUseStyles((theme) => ({
 				height: `${spacing[5]}px !important`,
 			},
 			'&.ant-select-selector': {
-				borderColor: ({ errors }) => `${errors.gender ? theme.color.error : '#d9d9d9'} !important`,
+				borderColor: ({ errors, isCustomGender }) =>
+					`${errors.gender && !isCustomGender ? theme.color.error : '#d9d9d9'} !important`,
 				boxShadow: 'none !important',
 			},
 			height: `${spacing[5]}px !important`,
@@ -78,7 +79,7 @@ const genderOptions = [
 const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 	const theme = useTheme();
 	const { errors } = useAuth();
-	const classes = useStyles({ errors, theme });
+	const classes = useStyles({ errors, isCustomGender, theme });
 
 	return (
 		<div className={classes.container}>
