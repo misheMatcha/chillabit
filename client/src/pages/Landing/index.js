@@ -12,8 +12,8 @@ const { displayFlex, height, justifyContent, width } = styles;
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		...width.max,
-		backgroundColor: '#fff',
-		paddingBottom: 75,
+		backgroundColor: theme.background.surface,
+		paddingBottom: 72,
 	},
 	containerWrapper: {
 		...displayFlex,

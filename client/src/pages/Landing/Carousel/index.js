@@ -21,15 +21,6 @@ const useStyles = createUseStyles((theme) => ({
 	carouselWrapper: {
 		...width[100].percentage,
 	},
-	clear: {
-		'&:hover': {
-			border: `1px solid #fff !important`,
-			color: `#fff !important`,
-		},
-		backgroundColor: 'transparent',
-		border: `1px solid #fff`,
-		color: '#fff',
-	},
 	container: {
 		...displayFlex,
 		...width.max,
@@ -89,7 +80,7 @@ const LandingCarousel = () => {
 			<CarouselNav />
 			<div className={classes.carouselWrapper}>
 				<Carousel
-					autoplay
+					// autoplay
 					autoplaySpeed={4000}
 					speed={720}
 				>
@@ -101,7 +92,12 @@ const LandingCarousel = () => {
 								growing.
 							</div>
 							<div className={classes.linkWrapper}>
-								<StyledLink styles={cn(classes.clear, classes.learnMore)}>Learn more</StyledLink>
+								<StyledLink
+									clear
+									styles={cn(classes.learnMore)}
+								>
+									Learn more
+								</StyledLink>
 								<StyledLink>Try it for free for 30 days</StyledLink>
 							</div>
 						</div>

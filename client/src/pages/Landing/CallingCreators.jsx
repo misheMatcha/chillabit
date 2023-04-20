@@ -8,11 +8,6 @@ import { styles } from '../../utils/styles';
 const { alignItems, displayFlex } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	clear: {
-		backgroundColor: 'transparent',
-		borderColor: '#e5e5e5',
-		padding: '13px 24px',
-	},
 	container: {
 		...alignItems.center,
 		...displayFlex,
@@ -25,6 +20,9 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	content: {
 		width: 520,
+	},
+	link: {
+		padding: '13px 24px',
 	},
 	linkWrapper: {
 		...displayFlex,
@@ -53,7 +51,12 @@ const CallingCreators = () => {
 					are you waiting for?
 				</div>
 				<div className={classes.linkWrapper}>
-					<StyledLink styles={classes.clear}>Find out more</StyledLink>
+					<StyledLink
+						clear
+						styles={classes.link}
+					>
+						Find out more
+					</StyledLink>
 				</div>
 			</div>
 		</div>

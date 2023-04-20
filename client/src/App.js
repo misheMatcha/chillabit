@@ -5,7 +5,7 @@ import RequireAuth from './features/Authenticate/RequireAuth';
 import Helmet from './pages/Helmet';
 import Home from './pages/Home';
 import Landing from './pages/Landing/index';
-import { light } from './utils/styles';
+import { light } from './utils/themes';
 
 const App = () => {
 	return (
