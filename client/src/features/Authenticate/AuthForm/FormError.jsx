@@ -3,7 +3,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
-		color: theme.error,
+		color: theme.font.error,
 		fontSize: 12,
 		fontWeight: 500,
 		margin: '6px 0 12px',
