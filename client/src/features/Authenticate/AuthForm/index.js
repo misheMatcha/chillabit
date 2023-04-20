@@ -9,7 +9,6 @@ import useAuth from '../../../hooks/useAuth';
 import axios from '../../../utils/axios';
 
 const useStyles = createUseStyles({
-	container: {},
 	step1: {
 		display: (step) => (step === 1 ? 'block' : 'none'),
 	},
@@ -85,7 +84,7 @@ const AuthForm = () => {
 	};
 
 	return (
-		<div className={classes.container}>
+		<div>
 			<Form
 				form={form}
 				initialValues={{

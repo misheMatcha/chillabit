@@ -1,33 +1,33 @@
 import React from 'react';
 import Button from 'antd/lib/button';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../../../utils/styles';
 
-const { width } = styles;
+const { spacing, typography, width } = styles;
 
-const useStyles = createUseStyles({
-	btn: {
+const useStyles = createUseStyles((theme) => ({
+	base: {
 		'&:hover': {
-			borderColor: '#f50 !important',
-			color: '#fff !important',
+			borderColor: `${theme.button.special.background} !important`,
+			color: `${theme.button.special.font} !important`,
 		},
+		...typography.body,
 		...width[100].percentage,
-		backgroundColor: '#f50',
-		borderColor: '#f50',
+		backgroundColor: theme.button.special.background,
+		borderColor: theme.button.special.background,
 		borderRadius: 3,
-		color: '#fff',
-		fontSize: 16,
-		fontWeight: 500,
-		height: 40,
+		color: theme.button.special.font,
+		height: spacing[5],
 	},
-});
+}));
 
 const FormButton = ({ children, onClick, htmlType }) => {
-	const classes = useStyles();
+	const theme = useTheme();
+	const classes = useStyles({ theme });
 
 	return (
 		<Button
-			className={classes.btn}
+			className={classes.base}
 			htmlType={htmlType}
 			onClick={onClick}
 		>

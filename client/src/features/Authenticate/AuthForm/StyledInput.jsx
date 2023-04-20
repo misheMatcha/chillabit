@@ -2,6 +2,9 @@ import React from 'react';
 import Input from 'antd/lib/input';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
+import { styles } from '../../../utils/styles';
+
+const { spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -9,14 +12,14 @@ const useStyles = createUseStyles((theme) => ({
 			borderColor: '#ccc',
 			boxShadow: 'none',
 		},
-		backgroundColor: '#fff',
+		backgroundColor: theme.color.white,
 		borderColor: '#ccc',
-		borderRadius: 5,
+		borderRadius: spacing['0_5'],
 		color: '#333',
-		fontSize: 18,
-		height: 40,
+		fontSize: typography.h4.size,
+		height: spacing[5],
 	},
-	error: {
+	invalid: {
 		'&:focus, &:hover': {
 			borderColor: theme.input.invalid.border,
 		},
@@ -25,7 +28,7 @@ const useStyles = createUseStyles((theme) => ({
 }));
 
 const StyledInput = ({
-	isError,
+	isInvalid,
 	maxLength,
 	onChange,
 	onClick,
@@ -39,7 +42,7 @@ const StyledInput = ({
 
 	return (
 		<Input
-			className={cn(classes.container, { [`${classes.error}`]: isError }, styles)}
+			className={cn(classes.container, { [`${classes.invalid}`]: isInvalid }, styles)}
 			maxLength={maxLength}
 			onChange={onChange}
 			onClick={onClick}

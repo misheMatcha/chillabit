@@ -3,151 +3,121 @@ import Form from 'antd/lib/form';
 import InputNumber from 'antd/lib/input-number';
 import Select from 'antd/lib/select';
 import * as cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
 import FormError from './FormError';
 import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, width } = styles;
+const { alignItemsCenter, displayFlex, spacing, typography, width } = styles;
 
-const useStyles = createUseStyles({
-	container: {
-		marginBottom: 16,
-	},
-	formItem: {
-		margin: 0,
-	},
-	genderInputWrapper: {
-		paddingTop: 8,
-	},
-	inputNumber: {
+const useStyles = createUseStyles((theme) => ({
+	ageInput: {
 		'& input': {
-			height: '40px !important',
+			height: `${spacing[5]}px !important`,
 		},
-		'&:focus': {
-			borderColor: '#ccc',
+		'&.ant-input-number-focused, &:focus, &:hover': {
+			borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
 			boxShadow: 'none',
 		},
-		'&:hover': {
-			borderColor: '#ccc',
-		},
 		...width[100].percentage,
-		backgroundColor: '#fff',
-		borderColor: '#ccc',
-		borderRadius: 5,
+		backgroundColor: theme.color.white,
+		borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
+		borderRadius: spacing['0_5'],
 		color: '#333',
-		fontSize: 18,
-		height: 40,
+		fontSize: typography.h3.size,
+		height: spacing[5],
 	},
-	inputNumberError: {
-		'&:focus': {
-			borderColor: '#d61348',
-		},
-		'&:hover': {
-			borderColor: '#d61348',
-		},
-		borderColor: '#d61348',
+	container: {
+		marginBottom: spacing[2],
 	},
-	sectionWrapper: {
-		marginBottom: 16,
+	customInput: {
+		paddingTop: spacing[1],
 	},
 	select: {
 		'& div': {
 			'& span': {
 				...displayFlex,
 				...alignItemsCenter,
-				fontSize: 18,
-				height: '40px !important',
+				fontSize: typography.h3.size,
+				height: `${spacing[5]}px !important`,
 			},
 			'&.ant-select-selector': {
-				borderColor: '#d9d9d9 !important',
+				borderColor: ({ errors }) => `${errors.gender ? theme.color.error : '#d9d9d9'} !important`,
 				boxShadow: 'none !important',
 			},
-			'&:hover': {
-				borderColor: '#d9d9d9 !important',
-				boxShadow: 'none !important',
-			},
-			height: '40px !important',
+			height: `${spacing[5]}px !important`,
 		},
-		height: 40,
+		height: spacing[5],
 	},
-	selectError: {
-		'& div': {
-			'&.ant-select-selector': {
-				borderColor: '#d61348 !important',
-				boxShadow: 'none !important',
-			},
-			'&:hover': {
-				borderColor: '#d61348 !important',
-				boxShadow: 'none !important',
-			},
-		},
+	spacing: {
+		margin: 0,
 	},
-	usernameSection: {
-		'& > p': {
-			fontSize: 12,
-			fontWeight: 400,
-		},
-		fontWeight: 500,
+	spacingSection: {
+		marginBottom: spacing[2],
 	},
-});
+	title: {
+		fontWeight: typography.h3.weight,
+	},
+	usernameMsg: {
+		fontSize: typography.captions.size,
+		fontWeight: typography.captions.weight,
+		marginTop: spacing['0_7'],
+	},
+}));
 
 const genderOptions = [
 	{ label: '', value: '' },
 	{ label: 'Female', value: 'female' },
 	{ label: 'Male', value: 'male' },
 	{ label: 'Custom', value: 'custom' },
-	{ label: 'Prefer not to say', value: 'na' },
+	{ label: 'Prefer not to say', value: 'n/a' },
 ];
 
 const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
+	const theme = useTheme();
 	const { errors } = useAuth();
-	const classes = useStyles();
+	const classes = useStyles({ errors, theme });
 
 	return (
 		<div className={classes.container}>
 			<div>
-				<div className={classes.usernameSection}>
+				<div>
 					<label>
-						Choose your display name
+						<span className={classes.title}>Choose your display name</span>
 						<Form.Item
-							className={classes.formItem}
+							className={classes.spacing}
 							name='username'
 						>
 							<StyledInput />
 						</Form.Item>
 					</label>
-					<p>
+					<p className={classes.usernameMsg}>
 						Your display name can be anything you like. Your name or artist name are good choices.
 					</p>
 				</div>
-				<div className={cn({ [`${classes.sectionWrapper}`]: !errors.age })}>
+				<div className={cn({ [`${classes.spacingSection}`]: !errors.age })}>
 					<label>
-						Enter your age
+						<span className={classes.title}>Enter your age</span>
 						<Form.Item
-							className={classes.formItem}
+							className={classes.spacing}
 							name='age'
 						>
-							<InputNumber
-								className={cn(classes.inputNumber, { [`${classes.inputNumberError}`]: errors.age })}
-							/>
+							<InputNumber className={classes.ageInput} />
 						</Form.Item>
 					</label>
-					{errors.age && <FormError error={errors.age} />}
+					{errors.age && <FormError>{errors.age}</FormError>}
 				</div>
-				<div className={cn({ [`${classes.sectionWrapper}`]: !errors.gender })}>
+				<div className={cn({ [`${classes.spacingSection}`]: !errors.gender })}>
 					<label>
-						Enter your gender
+						<span className={classes.title}>Enter your gender</span>
 						<Form.Item
-							className={classes.formItem}
+							className={classes.spacing}
 							name='gender'
 						>
 							<Select
-								className={cn(classes.select, {
-									[`${classes.selectError}`]: !isCustomGender && errors.gender,
-								})}
+								className={classes.select}
 								onChange={(value) => {
 									if (value === 'custom') {
 										setIsCustomGender(true);
@@ -160,9 +130,9 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							/>
 						</Form.Item>
 						{isCustomGender && (
-							<div className={classes.genderInputWrapper}>
+							<div className={classes.customInput}>
 								<StyledInput
-									isError={errors.gender}
+									isInvalid={errors.gender}
 									maxLength={16}
 									onChange={(e) => setGender(e.target.value)}
 									placeholder='Custom gender'
@@ -170,7 +140,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							</div>
 						)}
 					</label>
-					{errors.gender && <FormError error={errors.gender} />}
+					{errors.gender && <FormError>{errors.gender}</FormError>}
 				</div>
 			</div>
 			<FormButton htmlType='submit'>Continue</FormButton>

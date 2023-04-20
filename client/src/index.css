@@ -1,11 +1,13 @@
 @import-normalize;
 
 body {
-	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
 		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	font-size: 1rem;
+	line-height: 1.4285714285714286rem;
+	margin: 0;
 }
 
 code {
@@ -22,5 +24,4 @@ body,
 
 * {
 	font-family: 'Overpass', sans-serif;
-	line-height: 1.4;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from 'antd/lib/form';
+import * as cn from 'classnames';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
@@ -16,9 +17,8 @@ const useStyles = createUseStyles({
 		...displayFlex,
 		...flexDirection.column,
 		...justifyContent.spaceBetween,
-		minHeight: 96,
 	},
-	formItem: {
+	spacing: {
 		margin: 0,
 	},
 });
@@ -52,15 +52,15 @@ const Step1 = ({ form }) => {
 		<div className={classes.container}>
 			<div>
 				<Form.Item
-					className={classes.formItem}
+					className={cn({ [`${classes.spacing}`]: errors.message })}
 					name='email'
 				>
 					<StyledInput
-						isError={errors.message}
+						isInvalid={errors.message}
 						placeholder='Your email address or profile URL'
 					/>
 				</Form.Item>
-				{errors.message && <FormError error={errors.message} />}
+				{errors.message && <FormError>{errors.message}</FormError>}
 			</div>
 			<FormButton onClick={verifyHandle}>Continue</FormButton>
 		</div>

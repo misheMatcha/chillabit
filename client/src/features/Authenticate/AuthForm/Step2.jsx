@@ -4,20 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
 import size from 'lodash/size';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
 import FormError from './FormError';
 import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, width } = styles;
+const { alignItemsCenter, displayFlex, flexDirection, spacing, typography, width } = styles;
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles((theme) => ({
 	backBtn: {
 		'& > svg': {
-			height: 25,
-			paddingRight: 8,
+			height: spacing[3],
+			paddingRight: spacing[1],
 		},
 		'&:hover': {
 			borderColor: '#ccc !important',
@@ -26,33 +26,34 @@ const useStyles = createUseStyles({
 		...alignItemsCenter,
 		...displayFlex,
 		...width[100].percentage,
-		backgroundColor: '#fff',
+		backgroundColor: theme.color.white,
 		borderColor: '#ccc',
-		borderRadius: 5,
+		borderRadius: spacing['0_5'],
 		color: '#333',
-		fontSize: 18,
-		height: 40,
+		fontSize: typography.h3.size,
+		height: spacing[5],
 		textAlign: 'left',
 	},
 	container: {
 		'& > button': {
-			marginBottom: 16,
+			marginBottom: spacing[2],
 		},
 		'& > div:nth-child(2)': {
-			marginBottom: ({ errors }) => (errors.message ? 0 : 16),
+			marginBottom: ({ errors }) => (errors.message ? 0 : spacing[2]),
 		},
 		...displayFlex,
 		...flexDirection.column,
-		marginBottom: ({ isVerified }) => (isVerified ? 16 : 0),
+		marginBottom: ({ isVerified }) => (isVerified ? spacing[2] : 0),
 	},
-	formItem: {
+	spacing: {
 		margin: 0,
 	},
-});
+}));
 
 const Step2 = ({ form }) => {
+	const theme = useTheme();
 	const { errors, setErrors, isVerified, setIsVerified, setStep } = useAuth();
-	const classes = useStyles({ errors, isVerified });
+	const classes = useStyles({ errors, isVerified, theme });
 
 	return (
 		<div className={classes.container}>
@@ -61,6 +62,7 @@ const Step2 = ({ form }) => {
 				onClick={() => {
 					setIsVerified(false);
 					setStep(1);
+					setErrors({});
 				}}
 			>
 				<FontAwesomeIcon icon={faCaretLeft} />
@@ -68,18 +70,18 @@ const Step2 = ({ form }) => {
 			</Button>
 			<div>
 				<Form.Item
-					className={classes.formItem}
+					className={classes.spacing}
 					name='password'
 				>
 					<StyledInput
-						isError={errors.message}
+						isInvalid={errors.message}
 						placeholder='Your password'
 						type='password'
 					/>
 				</Form.Item>
-				{errors.message && <FormError isError={errors.message} />}
+				{errors.message && <FormError>{errors.message}</FormError>}
 			</div>
-			<Form.Item className={classes.formItem}>
+			<Form.Item className={classes.spacing}>
 				{isVerified ? (
 					<FormButton htmlType='submit'>Sign in</FormButton>
 				) : (
