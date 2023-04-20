@@ -1,80 +1,85 @@
 import React, { useEffect } from 'react';
-import Button from 'antd/lib/button';
-import * as cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+// import Button from 'antd/lib/button';
+// import * as cn from 'classnames';
+import { createUseStyles, useTheme } from 'react-jss';
 import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
-const { displayFlex, flexDirection, justifyContent } = styles;
+const { displayFlex, flexDirection, justifyContent, spacing, textAlign, typography } = styles;
 
-const useStyles = createUseStyles({
-	apple: {
-		backgroundColor: '#000',
-		borderColor: '#000',
-		color: '#fff',
-	},
-	btn: {
-		borderRadius: 4,
-		fontSize: 16,
-		fontWeight: 500,
-		height: 40,
-	},
+const useStyles = createUseStyles((theme) => ({
+	// apple: {
+	// 	'&:hover': {
+	// 		borderColor: `${theme.color.black} !important`,
+	// 		color: `${theme.color.white} !important`,
+	// 	},
+	// 	backgroundColor: theme.color.black,
+	// 	borderColor: theme.color.black,
+	// 	color: theme.color.white,
+	// },
+	// btn: {
+	// 	...typography.body,
+	// 	borderRadius: spacing['0_5'],
+	// 	height: spacing[5],
+	// },
 	container: {
 		'& p': {
-			marginBottom: 6,
+			marginBottom: spacing['0_7'],
 		},
-		fontSize: 14,
-		fontWeight: 500,
+		...typography.captions,
 	},
-	facebook: {
-		backgroundColor: '#3578e5',
-		borderColor: '#3578e5',
-		color: '#fff',
-	},
-	google: {
-		backgroundColor: '#fff',
-		borderColor: '#ccc',
-		color: '#222',
-	},
-	providerBtns: {
-		...displayFlex,
-		...flexDirection.column,
-		...justifyContent.spaceBetween,
-		height: 150,
-	},
-	seperator: {
-		'& span': {
-			padding: '0 16px',
-		},
-		'&:after': {
-			borderTop: '1px solid #333',
-			content: "''",
-			display: 'inline-block',
-			height: 4,
-			width: '43%',
-		},
-		'&:before': {
-			borderTop: '1px solid #333',
-			content: "''",
-			display: 'inline-block',
-			height: 4,
-			width: '43%',
-		},
-		fontSize: 16,
-		margin: '16px 0',
-		textAlign: 'center',
-	},
+	// facebook: {
+	// 	'&:hover': {
+	// 		borderColor: '#3578e5 !important',
+	// 		color: `${theme.color.white} !important`,
+	// 	},
+	// 	backgroundColor: '#3578e5',
+	// 	borderColor: '#3578e5',
+	// 	color: theme.color.white,
+	// },
+	// google: {
+	// 	'&:hover': {
+	// 		borderColor: '#ccc !important',
+	// 		color: '#222 !important',
+	// 	},
+	// 	backgroundColor: theme.color.white,
+	// 	borderColor: '#ccc',
+	// 	color: '#222',
+	// },
+	// providerBtns: {
+	// 	...displayFlex,
+	// 	...flexDirection.column,
+	// 	...justifyContent.spaceBetween,
+	// 	height: 148,
+	// },
+	// seperator: {
+	// 	'& span': {
+	// 		padding: `0 ${spacing[2]}px`,
+	// 	},
+	// 	'&:after, &:before': {
+	// 		borderTop: '1px solid #333',
+	// 		content: "''",
+	// 		display: 'inline-block',
+	// 		height: spacing['0_5'],
+	// 		width: '44%',
+	// 	},
+	// 	...textAlign.center,
+	// 	...typography.body,
+	// 	margin: `${spacing[2]}px 0`,
+	// },
 	title: {
-		fontSize: 32,
-		fontWeight: 600,
+		...textAlign.center,
+		...typography.h1,
 		marginBottom: '1em',
-		textAlign: 'center',
 	},
-});
+}));
+
+// Commenting out provider buttons code, TBD if will be implemented later
 
 const Header = () => {
-	const classes = useStyles();
+	const theme = useTheme();
+	const classes = useStyles({ theme });
 
 	const { clickedSignUp, isVerified, step } = useAuth();
 
@@ -84,30 +89,33 @@ const Header = () => {
 		<div className={classes.container}>
 			{step === 1 && (
 				<div>
-					<div className={classes.providerBtns}>
-						<Button
-							onClick={() => console.log('facbook api')}
-							className={cn(classes.btn, classes.facebook)}
-						>
-							Continue with Facebook
-						</Button>
-						<Button
-							onClick={() => console.log('google api')}
-							className={cn(classes.btn, classes.google)}
-						>
-							Continue with Google
-						</Button>
-						<Button
-							onClick={() => console.log('apple api')}
-							className={cn(classes.btn, classes.apple)}
-						>
-							Continue with Apple
-						</Button>
-					</div>
-					<div className={classes.seperator}>
-						<span>or</span>
-					</div>
+					<div className={classes.title}>Sign into {CHILLABIT}</div>
 				</div>
+				// <div>
+				// 	<div className={classes.providerBtns}>
+				// 		<Button
+				// 			onClick={() => console.log('facbook api')}
+				// 			className={cn(classes.btn, classes.facebook)}
+				// 		>
+				// 			Continue with Facebook
+				// 		</Button>
+				// 		<Button
+				// 			onClick={() => console.log('google api')}
+				// 			className={cn(classes.btn, classes.google)}
+				// 		>
+				// 			Continue with Google
+				// 		</Button>
+				// 		<Button
+				// 			onClick={() => console.log('apple api')}
+				// 			className={cn(classes.btn, classes.apple)}
+				// 		>
+				// 			Continue with Apple
+				// 		</Button>
+				// 	</div>
+				// 	<div className={classes.seperator}>
+				// 		<span>or</span>
+				// 	</div>
+				// </div>
 			)}
 
 			{step === 2 && isVerified && (

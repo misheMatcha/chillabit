@@ -21,12 +21,12 @@ const useStyles = createUseStyles((theme) => ({
 			borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
 			boxShadow: 'none',
 		},
+		...typography.body,
 		...width[100].percentage,
 		backgroundColor: theme.color.white,
 		borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
 		borderRadius: spacing['0_5'],
 		color: '#333',
-		fontSize: typography.h3.size,
 		height: spacing[5],
 	},
 	container: {
@@ -38,9 +38,9 @@ const useStyles = createUseStyles((theme) => ({
 	select: {
 		'& div': {
 			'& span': {
-				...displayFlex,
 				...alignItemsCenter,
-				fontSize: typography.h3.size,
+				...displayFlex,
+				...typography.body,
 				height: `${spacing[5]}px !important`,
 			},
 			'&.ant-select-selector': {
@@ -59,11 +59,10 @@ const useStyles = createUseStyles((theme) => ({
 		marginBottom: spacing[2],
 	},
 	title: {
-		fontWeight: typography.h3.weight,
+		...typography.h4,
 	},
 	usernameMsg: {
-		fontSize: typography.captions.size,
-		fontWeight: typography.captions.weight,
+		...typography.captions,
 		marginTop: spacing['0_7'],
 	},
 }));

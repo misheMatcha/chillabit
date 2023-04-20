@@ -1,49 +1,48 @@
 import React from 'react';
-import * as cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { width } = styles;
+const { spacing, textAlign, typography, width } = styles;
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles((theme) => ({
 	container: {
+		...typography.captions,
 		color: '#999',
-		fontSize: 12.5,
-		fontWeight: 600,
 	},
 	content: {
 		'& a': {
 			'&:nth-child(2)': {
-				paddingRight: 4,
+				paddingRight: spacing['0_5'],
 			},
-			paddingLeft: 4,
+			paddingLeft: spacing['0_5'],
 		},
 	},
 	helpLinkWrapper: {
+		...textAlign.right,
 		...width[100].percentage,
-		margin: '10px 0',
-		textAlign: 'right',
+		margin: `${spacing[1]}px 0`,
 	},
 	link: {
 		'&:hover': {
-			color: '#000',
+			color: theme.color.black,
 		},
-		color: '#044dd2',
-		textDecoration: 'none',
+		color: theme.link.standard.color,
+		textDecoration: theme.link.standard.textDecoration,
 	},
 	moreInfo: {
-		color: '#000',
-		textAlign: 'center',
+		...textAlign.center,
+		color: theme.color.black,
 	},
 	passwordReset: {
-		textAlign: 'center',
+		...textAlign.center,
 	},
-});
+}));
 
 const Footer = () => {
-	const classes = useStyles();
+	const theme = useTheme();
+	const classes = useStyles({ theme });
 
 	const { step, isVerified } = useAuth();
 
@@ -59,7 +58,7 @@ const Footer = () => {
 							When registering, you agree that we may use your provided data for the registration
 							and to send you notifications on our products and services. You can unsubscribe from
 							notifications at any time in your settings. For additional info please refer to our
-							<Link className={cn(classes.link)}>Privacy Policy</Link>.
+							<Link className={classes.link}>Privacy Policy</Link>.
 						</span>
 					</p>
 					{step === 2 && (
@@ -74,7 +73,7 @@ const Footer = () => {
 
 			{isVerified && (
 				<div className={classes.passwordReset}>
-					<Link className={cn(classes.link)}>Don't know your password?</Link>
+					<Link className={classes.link}>Don't know your password?</Link>
 				</div>
 			)}
 
@@ -82,10 +81,10 @@ const Footer = () => {
 				<p className={classes.content}>
 					<span>
 						By signing up I accept the
-						<Link className={cn(classes.link)}>Terms of Use</Link>. I have read and understood the
-						<Link className={cn(classes.link)}>Privacy Policy</Link>
+						<Link className={classes.link}>Terms of Use</Link>. I have read and understood the
+						<Link className={classes.link}>Privacy Policy</Link>
 						and
-						<Link className={cn(classes.link)}>Cookies Policy</Link>.
+						<Link className={classes.link}>Cookies Policy</Link>.
 					</span>
 				</p>
 			)}

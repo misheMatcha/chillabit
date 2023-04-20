@@ -12,11 +12,11 @@ const useStyles = createUseStyles((theme) => ({
 			borderColor: '#ccc',
 			boxShadow: 'none',
 		},
+		...typography.body,
 		backgroundColor: theme.color.white,
 		borderColor: '#ccc',
 		borderRadius: spacing['0_5'],
 		color: '#333',
-		fontSize: typography.h4.size,
 		height: spacing[5],
 	},
 	invalid: {
