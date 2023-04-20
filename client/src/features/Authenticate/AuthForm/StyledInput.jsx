@@ -1,16 +1,13 @@
 import React from 'react';
 import Input from 'antd/lib/input';
 import * as cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles((theme) => ({
 	container: {
-		'&:focus': {
+		'&:focus, &:hover': {
 			borderColor: '#ccc',
 			boxShadow: 'none',
-		},
-		'&:hover': {
-			borderColor: '#ccc',
 		},
 		backgroundColor: '#fff',
 		borderColor: '#ccc',
@@ -20,22 +17,29 @@ const useStyles = createUseStyles({
 		height: 40,
 	},
 	error: {
-		'&:focus': {
-			borderColor: '#d61348',
+		'&:focus, &:hover': {
+			borderColor: theme.error,
 		},
-		'&:hover': {
-			borderColor: '#d61348',
-		},
-		borderColor: '#d61348',
+		borderColor: theme.error,
 	},
-});
+}));
 
-const StyledInput = ({ error, maxLength, onChange, onClick, placeholder, styles, type, value }) => {
-	const classes = useStyles();
+const StyledInput = ({
+	isError,
+	maxLength,
+	onChange,
+	onClick,
+	placeholder,
+	styles,
+	type,
+	value,
+}) => {
+	const theme = useTheme();
+	const classes = useStyles({ theme });
 
 	return (
 		<Input
-			className={cn(classes.container, { [`${classes.error}`]: error }, styles)}
+			className={cn(classes.container, { [`${classes.error}`]: isError }, styles)}
 			maxLength={maxLength}
 			onChange={onChange}
 			onClick={onClick}

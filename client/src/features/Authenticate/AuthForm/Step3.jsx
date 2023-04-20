@@ -5,6 +5,7 @@ import Select from 'antd/lib/select';
 import * as cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
+import FormError from './FormError';
 import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
@@ -14,12 +15,6 @@ const { alignItemsCenter, displayFlex, width } = styles;
 const useStyles = createUseStyles({
 	container: {
 		marginBottom: 16,
-	},
-	error: {
-		color: '#d61348',
-		fontSize: 12,
-		fontWeight: 500,
-		margin: '6px 0 12px',
 	},
 	formItem: {
 		margin: 0,
@@ -140,7 +135,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							/>
 						</Form.Item>
 					</label>
-					{errors.age && <div className={classes.error}>{errors.age}</div>}
+					{errors.age && <FormError error={errors.age} />}
 				</div>
 				<div className={cn({ [`${classes.sectionWrapper}`]: !errors.gender })}>
 					<label>
@@ -167,7 +162,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 						{isCustomGender && (
 							<div className={classes.genderInputWrapper}>
 								<StyledInput
-									error={errors.gender}
+									isError={errors.gender}
 									maxLength={16}
 									onChange={(e) => setGender(e.target.value)}
 									placeholder='Custom gender'
@@ -175,7 +170,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							</div>
 						)}
 					</label>
-					{errors.gender && <div className={classes.error}>{errors.gender}</div>}
+					{errors.gender && <FormError error={errors.gender} />}
 				</div>
 			</div>
 			<FormButton htmlType='submit'>Continue</FormButton>

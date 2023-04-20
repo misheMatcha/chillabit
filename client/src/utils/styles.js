@@ -74,4 +74,33 @@ export const styles = {
 
 // need to figure out color theme later and add colors to styles
 
-export const light = {};
+export const light = {
+	background: {
+		color: '',
+		highlight: '',
+	},
+	button: {
+		primary: {
+			background: '',
+			font: '',
+		},
+		secondary: {
+			background: '',
+			font: '',
+		},
+		teritary: {
+			background: '',
+			font: '',
+		},
+	},
+	color: {
+		black: '',
+		white: '',
+	},
+	error: '#d61348',
+	link: {
+		primary: {},
+		secondary: {},
+		teritary: {},
+	},
+};

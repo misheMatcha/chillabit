@@ -3,6 +3,7 @@ import Form from 'antd/lib/form';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
+import FormError from './FormError';
 import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import axios from '../../../utils/axios';
@@ -16,12 +17,6 @@ const useStyles = createUseStyles({
 		...flexDirection.column,
 		...justifyContent.spaceBetween,
 		minHeight: 96,
-	},
-	error: {
-		color: '#d61348',
-		fontSize: 12,
-		fontWeight: 500,
-		margin: '6px 0 12px',
 	},
 	formItem: {
 		margin: 0,
@@ -61,11 +56,11 @@ const Step1 = ({ form }) => {
 					name='email'
 				>
 					<StyledInput
-						error={errors.message}
+						isError={errors.message}
 						placeholder='Your email address or profile URL'
 					/>
 				</Form.Item>
-				{errors.message && <div className={classes.error}>{errors.message}</div>}
+				{errors.message && <FormError error={errors.message} />}
 			</div>
 			<FormButton onClick={verifyHandle}>Continue</FormButton>
 		</div>
