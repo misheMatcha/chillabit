@@ -4,7 +4,7 @@ import NeverStopListening from './assets/never_stop_listening.jpeg';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent } = styles;
+const { alignItems, displayFlex, flexDirection, justifyContent } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -20,7 +20,7 @@ const useStyles = createUseStyles((theme) => ({
 		width: 325,
 	},
 	contentWrapper: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		...justifyContent.flexEnd,
 		flexGrow: 1,

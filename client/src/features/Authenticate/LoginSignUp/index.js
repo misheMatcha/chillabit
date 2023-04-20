@@ -2,51 +2,53 @@ import React from 'react';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import Footer from './Footer';
 import Header from './Header';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 import AuthForm from '../AuthForm/index';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent, width } = styles;
+const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography, width } =
+	styles;
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles((theme) => ({
 	close: {
 		'&:hover': {
-			backgroundColor: 'transparent !important',
-			borderColor: 'transparent !important',
+			backgroundColor: `${theme.color.transparent} !important`,
+			borderColor: `${theme.color.transparent} !important`,
 			color: '#333 !important',
 		},
+		...alignItems.flexEnd,
 		...displayFlex,
-		alignItems: 'flex-end',
-		backgroundColor: 'transparent',
-		borderColor: 'transparent',
+		...justifyContent.flexStart,
+		...typography.body,
+		backgroundColor: theme.color.transparent,
+		borderColor: theme.color.transparent,
 		color: '#333',
-		fontSize: 16,
-		height: 25,
-		justifyContent: 'flex-start',
+		height: spacing['3_5'],
 		padding: 0,
 		position: 'absolute',
 		right: 0,
 		top: 0,
-		width: 25,
+		width: spacing['3_5'],
 	},
 	container: {
 		'& > div': {
 			...width[100].percentage,
 		},
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		...flexDirection.column,
 		...justifyContent.center,
 		...width[100].percentage,
-		minHeight: 500,
+		minHeight: 400,
 	},
-});
+}));
 
 const LoginSignUp = () => {
-	const classes = useStyles();
+	const theme = useTheme();
+	const classes = useStyles({ theme });
 	const { toggleModal } = useAuth();
 
 	return (

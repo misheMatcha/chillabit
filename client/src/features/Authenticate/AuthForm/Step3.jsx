@@ -10,7 +10,7 @@ import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, spacing, typography, width } = styles;
+const { alignItems, displayFlex, spacing, typography, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	ageInput: {
@@ -38,7 +38,7 @@ const useStyles = createUseStyles((theme) => ({
 	select: {
 		'& div': {
 			'& span': {
-				...alignItemsCenter,
+				...alignItems.center,
 				...displayFlex,
 				...typography.body,
 				height: `${spacing[5]}px !important`,
@@ -59,7 +59,8 @@ const useStyles = createUseStyles((theme) => ({
 		marginBottom: spacing[2],
 	},
 	title: {
-		...typography.h4,
+		fontSize: typography.body.fontSize,
+		fontWeight: 600,
 	},
 	usernameMsg: {
 		...typography.captions,

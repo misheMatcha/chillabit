@@ -8,24 +8,23 @@ import { PLACEHOLDER_TRACK_LIST } from '../../data/placeholderTrackList';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent, textAlignCenter, width } =
-	styles;
+const { alignItems, displayFlex, flexDirection, justifyContent, textAlignCenter, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		...flexDirection.column,
 	},
 	explore: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		...justifyContent.center,
 		height: 46,
 		marginTop: 5,
 	},
 	or: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		margin: '0 14px',
 	},

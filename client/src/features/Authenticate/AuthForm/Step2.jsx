@@ -11,7 +11,7 @@ import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, spacing, typography, width } = styles;
+const { alignItems, displayFlex, flexDirection, spacing, textAlign, typography, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	backBtn: {
@@ -23,7 +23,7 @@ const useStyles = createUseStyles((theme) => ({
 			borderColor: '#ccc !important',
 			color: '#333 !important',
 		},
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		...typography.body,
 		...width[100].percentage,
@@ -32,7 +32,7 @@ const useStyles = createUseStyles((theme) => ({
 		borderRadius: spacing['0_5'],
 		color: '#333',
 		height: spacing[5],
-		textAlign: 'left',
+		textAlign: textAlign.left,
 	},
 	container: {
 		'& > button': {

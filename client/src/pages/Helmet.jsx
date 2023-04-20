@@ -1,18 +1,21 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { Outlet } from 'react-router-dom';
 import LoginSignUp from '../features/Authenticate/LoginSignUp/index';
 import useAuth from '../hooks/useAuth';
+import { styles } from '../utils/styles';
 
-const useStyles = createUseStyles({
+const { spacing } = styles;
+
+const useStyles = createUseStyles((theme) => ({
 	container: {},
 	form: {
-		backgroundColor: 'white',
+		backgroundColor: theme.color.white,
 		margin: 'auto',
-		padding: 25,
+		padding: spacing['3_5'],
 		position: 'relative',
-		width: 450,
+		width: 460,
 	},
 	modal: {
 		backgroundColor: 'hsla(0,0%,94.9%,.9)',
@@ -23,11 +26,12 @@ const useStyles = createUseStyles({
 		width: '100vw',
 		zIndex: 200,
 	},
-});
+}));
 
 const Helmet = () => {
+	const theme = useTheme();
 	const { displayModal } = useAuth();
-	const classes = useStyles({ displayModal });
+	const classes = useStyles({ displayModal, theme });
 
 	return (
 		<div className={classes.container}>

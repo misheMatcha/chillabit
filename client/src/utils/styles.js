@@ -1,37 +1,31 @@
 export const styles = {
-	alignItemsCenter: { alignItems: 'center' },
+	alignItems: {
+		center: { alignItems: 'center' },
+		flexEnd: { alignItems: 'flex-end' },
+	},
 	borderRadius: { borderRadius: 3 },
 	displayFlex: { display: 'flex' },
 	flexDirection: {
-		column: {
-			flexDirection: 'column',
-		},
-		row: {
-			flexDirection: 'row',
-		},
+		column: { flexDirection: 'column' },
+		row: { flexDirection: 'row' },
 	},
 	font: {
 		size: {
 			medium: 14,
 			small: 12,
 		},
-		weight: {
-			500: 500,
-		},
+		weight: { 500: 500 },
 	},
 	height: {
 		100: {
-			percentage: {
-				height: '100%',
-			},
-			view: {
-				height: '100vh',
-			},
+			percentage: { height: '100%' },
+			view: { height: '100vh' },
 		},
 	},
 	justifyContent: {
 		center: { justifyContent: 'center' },
 		flexEnd: { justifyContent: 'flex-end' },
+		flexStart: { justifyContent: 'flex-start' },
 		spaceBetween: { justifyContent: 'space-between' },
 		spaceEvently: { justifyContent: 'space-evenly' },
 	},
@@ -52,15 +46,9 @@ export const styles = {
 		8: 64,
 	},
 	textAlign: {
-		center: {
-			textAlign: 'center',
-		},
-		left: {
-			textAlign: 'left',
-		},
-		right: {
-			textAlign: 'right',
-		},
+		center: { textAlign: 'center' },
+		left: { textAlign: 'left' },
+		right: { textAlign: 'right' },
 	},
 	typography: {
 		body: {
@@ -116,16 +104,10 @@ export const styles = {
 	},
 	width: {
 		100: {
-			percentage: {
-				width: '100%',
-			},
-			view: {
-				width: '100vw',
-			},
+			percentage: { width: '100%' },
+			view: { width: '100vw' },
 		},
-		max: {
-			width: 1240,
-		},
+		max: { width: 1240 },
 	},
 };
 

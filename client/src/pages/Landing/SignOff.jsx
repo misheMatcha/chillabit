@@ -4,7 +4,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import useAuth from '../../hooks/useAuth';
 import { styles } from '../../utils/styles';
 
-const { alignItemsCenter, displayFlex, flexDirection, justifyContent } = styles;
+const { alignItems, displayFlex, flexDirection, justifyContent } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -42,7 +42,7 @@ const useStyles = createUseStyles((theme) => ({
 		marginBottom: 5,
 	},
 	signOff: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		...flexDirection.column,
 		...justifyContent.center,
@@ -63,7 +63,7 @@ const useStyles = createUseStyles((theme) => ({
 		padding: '10px 15px',
 	},
 	signinWrapper: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		fontSize: 14,
 		height: 40,

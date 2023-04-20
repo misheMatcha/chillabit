@@ -9,15 +9,8 @@ import DiscoverBanner from '../assets/discover_banner.jpg';
 import UpcomingBanner from '../assets/upcoming_banner.jpeg';
 import StyledLink from '../StyledLink';
 
-const {
-	alignItemsCenter,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	textAlignCenter,
-	width,
-} = styles;
+const { alignItems, displayFlex, flexDirection, height, justifyContent, textAlignCenter, width } =
+	styles;
 
 const defaultPageStlyes = {
 	height: 450,
@@ -58,7 +51,7 @@ const useStyles = createUseStyles((theme) => ({
 		width: 432,
 	},
 	page: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		...flexDirection.column,
 		...height[100].percentage,

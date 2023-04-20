@@ -5,7 +5,7 @@ import StyledLink from './StyledLink';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
-const { alignItemsCenter, displayFlex } = styles;
+const { alignItems, displayFlex } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	clear: {
@@ -14,7 +14,7 @@ const useStyles = createUseStyles((theme) => ({
 		padding: '13px 24px',
 	},
 	container: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		backgroundColor: '#000',
 		backgroundImage: `url(${CreatorImage})`,

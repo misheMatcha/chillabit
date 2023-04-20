@@ -9,7 +9,7 @@ import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
-const { alignItemsCenter, borderRadius, displayFlex, justifyContent, width } = styles;
+const { alignItems, borderRadius, displayFlex, justifyContent, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	btn: {
@@ -33,7 +33,7 @@ const useStyles = createUseStyles((theme) => ({
 			padding: '2px 16px',
 		},
 		...displayFlex,
-		...alignItemsCenter,
+		...alignItems.center,
 		fontSize: 14,
 	},
 	clear: {
@@ -58,7 +58,7 @@ const useStyles = createUseStyles((theme) => ({
 		marginRight: 4,
 	},
 	logoWrapper: {
-		...alignItemsCenter,
+		...alignItems.center,
 		...displayFlex,
 		fontSize: 14,
 		fontWeight: 900,
