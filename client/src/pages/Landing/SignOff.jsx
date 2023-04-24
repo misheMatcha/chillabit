@@ -32,7 +32,7 @@ const useStyles = createUseStyles((theme) => ({
 		padding: '13px 23px',
 	},
 	footer: {
-		borderTop: `1px solid #f2f2f2`,
+		borderTop: `1px solid ${theme.background.highlight}`,
 		color: '#999',
 		fontSize: 14,
 		lineHeight: 20,

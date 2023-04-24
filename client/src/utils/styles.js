@@ -9,13 +9,6 @@ export const styles = {
 		column: { flexDirection: 'column' },
 		row: { flexDirection: 'row' },
 	},
-	font: {
-		size: {
-			medium: 14,
-			small: 12,
-		},
-		weight: { 500: 500 },
-	},
 	height: {
 		100: {
 			percentage: { height: '100%' },
@@ -40,7 +33,9 @@ export const styles = {
 		3: 24,
 		'3_5': 28,
 		4: 32,
+		'4_5': 36,
 		5: 40,
+		'5_7': 46,
 		6: 48,
 		7: 56,
 		8: 64,
@@ -101,6 +96,13 @@ export const styles = {
 			lineHeight: '1.1428571428571428rem',
 			textTransform: 'uppercase',
 		},
+	},
+	weight: {
+		300: 300,
+		400: 400,
+		500: 500,
+		600: 600,
+		700: 700,
 	},
 	width: {
 		100: {

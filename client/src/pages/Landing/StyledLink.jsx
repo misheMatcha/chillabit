@@ -17,7 +17,7 @@ const useStyles = createUseStyles((theme) => ({
 		border: `1px solid ${theme.button.backgroundColor.special}`,
 		color: theme.button.color.special,
 		fontSize: spacing['0_7'] * 3,
-		height: spacing[6],
+		height: spacing['5_7'],
 		padding: `${spacing['1_5']}px ${spacing[2]}px`,
 		textDecoration: theme.link.textDecoration.standard,
 	},

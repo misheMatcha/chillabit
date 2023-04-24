@@ -28,7 +28,7 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItems.center,
 		...displayFlex,
 		...justifyContent.center,
-		height: spacing[6],
+		height: spacing['5_7'],
 		marginTop: spacing['0_5'],
 	},
 	or: {
@@ -40,7 +40,7 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...justifyContent.center,
 		...width[100].percentage,
-		height: spacing[6],
+		height: spacing['5_7'],
 		marginBottom: spacing['1_5'],
 		marginTop: spacing[6],
 	},

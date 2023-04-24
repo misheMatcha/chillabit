@@ -4,12 +4,13 @@ import NeverStopListening from './assets/never_stop_listening.jpeg';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, flexDirection, justifyContent } = styles;
+const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography, weight } =
+	styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		...displayFlex,
-		backgroundColor: '#f2f2f2',
+		backgroundColor: theme.background.highlight,
 		color: '#333',
 		marginTop: 60,
 		paddingRight: 70,
@@ -26,7 +27,8 @@ const useStyles = createUseStyles((theme) => ({
 		flexGrow: 1,
 	},
 	tagline: {
-		fontSize: 24,
+		...typography.h2,
+		fontWeight: weight[400],
 	},
 	title: {
 		'&:after': {
@@ -37,7 +39,9 @@ const useStyles = createUseStyles((theme) => ({
 			marginTop: 10,
 			width: 70,
 		},
-		fontSize: 36,
+		...typography.h1,
+		fontSize: spacing['4_5'],
+		fontWeight: weight[400],
 		marginBottom: 17,
 	},
 }));
