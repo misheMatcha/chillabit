@@ -9,7 +9,6 @@ import { styles } from '../utils/styles';
 const { height, spacing, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	container: {},
 	form: {
 		backgroundColor: theme.color.white,
 		margin: 'auto',
@@ -34,7 +33,7 @@ const Helmet = () => {
 	const classes = useStyles({ displayModal, theme });
 
 	return (
-		<div className={classes.container}>
+		<div>
 			<AnimatePresence>
 				{displayModal && (
 					<motion.div

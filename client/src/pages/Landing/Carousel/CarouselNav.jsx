@@ -9,61 +9,65 @@ import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
-const { alignItems, borderRadius, displayFlex, justifyContent, width } = styles;
+const { alignItems, borderRadius, displayFlex, justifyContent, spacing, typography, width } =
+	styles;
 
 const useStyles = createUseStyles((theme) => ({
-	btn: {
-		'&:hover': {
-			border: `1px solid #f50 !important`,
-			color: `#fff !important`,
-		},
-		...borderRadius,
-		backgroundColor: '#f50',
-		border: `1px solid #f50`,
-		color: '#fff',
-	},
-	btnWrapper: {
+	actionsWrapper: {
 		'& > a': {
-			color: '#fff',
+			color: theme.color.white,
 			fontWeight: 600,
-			textDecoration: 'none',
+			textDecoration: theme.link.standard.textDecoration,
 		},
 		'& button': {
-			marginRight: 10,
-			padding: '2px 16px',
+			marginRight: spacing['1_5'],
+			padding: `${spacing['0_25']}px ${spacing[2]}px`,
 		},
 		...displayFlex,
 		...alignItems.center,
-		fontSize: 14,
+		...typography.h4,
+	},
+	btn: {
+		'&:hover': {
+			border: `1px solid ${theme.button.special.background} !important`,
+			color: `${theme.button.special.font} !important`,
+		},
+		...borderRadius,
+		backgroundColor: theme.button.special.background,
+		border: `1px solid ${theme.button.special.background}`,
+		color: theme.color.white,
 	},
 	clear: {
 		'&:hover': {
-			border: `1px solid #fff !important`,
-			color: `#fff !important`,
+			border: `1px solid ${theme.color.white} !important`,
+			color: `${theme.color.white} !important`,
 		},
-		backgroundColor: 'transparent',
-		border: `1px solid #fff`,
-		color: '#fff',
+		backgroundColor: theme.color.transparent,
+		border: `1px solid ${theme.color.white}`,
+		color: theme.color.white,
 	},
 	container: {
 		...displayFlex,
 		...justifyContent.spaceBetween,
 		...width.max,
-		padding: '13px 30px 0 30px',
+		padding: {
+			left: spacing[4],
+			right: spacing[4],
+			top: spacing['1_5'],
+		},
 		position: 'absolute',
 		zIndex: 1,
 	},
 	logo: {
-		fontSize: 40,
-		marginRight: 4,
+		fontSize: spacing[5],
+		marginRight: spacing['0_5'],
 	},
 	logoWrapper: {
 		...alignItems.center,
 		...displayFlex,
+		...typography.micro,
 		fontSize: 14,
-		fontWeight: 900,
 		letterSpacing: 1,
-		textTransform: 'uppercase',
 	},
 }));
 
@@ -81,7 +85,7 @@ const CarouselNav = () => {
 				/>
 				{CHILLABIT}
 			</div>
-			<div className={classes.btnWrapper}>
+			<div className={classes.actionsWrapper}>
 				<Button
 					className={cn(classes.btn, classes.clear)}
 					onClick={() => toggleModal()}

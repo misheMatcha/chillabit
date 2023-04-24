@@ -1,3 +1,4 @@
+// remove unused styles after themeing is complete and refac is done
 export const light = {
 	background: {
 		color: '#fff',
