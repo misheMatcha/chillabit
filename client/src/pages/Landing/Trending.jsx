@@ -1,5 +1,4 @@
 import React from 'react';
-import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledLink from './StyledLink';
 import SearchBar from '../../components/SearchBar';
@@ -8,7 +7,16 @@ import { PLACEHOLDER_TRACK_LIST } from '../../data/placeholderTrackList';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, flexDirection, justifyContent, textAlignCenter, width } = styles;
+const {
+	alignItems,
+	displayFlex,
+	flexDirection,
+	justifyContent,
+	spacing,
+	textAlign,
+	typography,
+	width,
+} = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -20,30 +28,29 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItems.center,
 		...displayFlex,
 		...justifyContent.center,
-		height: 46,
-		marginTop: 5,
+		height: spacing[6],
+		marginTop: spacing['0_5'],
 	},
 	or: {
 		...alignItems.center,
 		...displayFlex,
-		margin: '0 14px',
+		margin: `0 ${spacing[2]}px`,
 	},
 	search: {
 		...displayFlex,
 		...justifyContent.center,
 		...width[100].percentage,
-		height: 46,
-		marginBottom: 12,
-		marginTop: 49,
+		height: spacing[6],
+		marginBottom: spacing['1_5'],
+		marginTop: spacing[6],
 	},
 	title: {
-		...textAlignCenter,
-		fontSize: 26,
-		marginBottom: 30,
-		paddingTop: 20,
+		...textAlign.center,
+		fontSize: typography.h2.fontSize,
+		marginBottom: spacing[4],
+		paddingTop: spacing['2_5'],
 	},
 	tracks: {
-		'& li': {},
 		...displayFlex,
 		...justifyContent.spaceBetween,
 		flexWrap: 'wrap',
@@ -53,11 +60,11 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	trending: {
 		...width[100].percentage,
-		padding: '0 30px',
-		paddingBottom: 10,
+		padding: `0 ${spacing[4]}px`,
+		paddingBottom: spacing['1_5'],
 	},
 	upload: {
-		fontSize: 16,
+		fontSize: typography.h4.fontSize,
 	},
 }));
 
