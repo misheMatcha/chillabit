@@ -8,15 +8,15 @@ const { spacing, typography, width } = styles;
 const useStyles = createUseStyles((theme) => ({
 	base: {
 		'&:hover': {
-			borderColor: `${theme.button.special.background} !important`,
-			color: `${theme.button.special.font} !important`,
+			borderColor: `${theme.button.backgroundColor.special} !important`,
+			color: `${theme.button.color.special} !important`,
 		},
 		...typography.body,
 		...width[100].percentage,
-		backgroundColor: theme.button.special.background,
-		borderColor: theme.button.special.background,
+		backgroundColor: theme.button.backgroundColor.special,
+		borderColor: theme.button.backgroundColor.special,
 		borderRadius: 3,
-		color: theme.button.special.font,
+		color: theme.button.color.special,
 		height: spacing[5],
 	},
 }));

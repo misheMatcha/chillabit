@@ -9,21 +9,21 @@ const { borderRadius, spacing, typography } = styles;
 const useStyles = createUseStyles((theme) => ({
 	base: {
 		'&:hover': {
-			color: theme.button.special.font,
+			color: theme.button.color.special,
 		},
 		...borderRadius,
 		...typography.body,
-		backgroundColor: theme.button.special.background,
-		border: `1px solid ${theme.button.special.background}`,
-		color: theme.button.special.font,
+		backgroundColor: theme.button.backgroundColor.special,
+		border: `1px solid ${theme.button.backgroundColor.special}`,
+		color: theme.button.color.special,
 		fontSize: spacing['0_7'] * 3,
 		height: spacing[6],
 		padding: `${spacing['1_5']}px ${spacing[2]}px`,
-		textDecoration: theme.link.standard.textDecoration,
+		textDecoration: theme.link.textDecoration.standard,
 	},
 	clear: {
 		backgroundColor: theme.color.transparent,
-		borderColor: theme.button.special.font,
+		borderColor: theme.button.color.special,
 	},
 }));
 

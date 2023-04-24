@@ -17,7 +17,7 @@ const useStyles = createUseStyles((theme) => ({
 		'& > a': {
 			color: theme.color.white,
 			fontWeight: 600,
-			textDecoration: theme.link.standard.textDecoration,
+			textDecoration: theme.link.textDecoration.standard,
 		},
 		'& button': {
 			marginRight: spacing['1_5'],
@@ -29,12 +29,12 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	btn: {
 		'&:hover': {
-			border: `1px solid ${theme.button.special.background} !important`,
-			color: `${theme.button.special.font} !important`,
+			border: `1px solid ${theme.button.backgroundColor.special} !important`,
+			color: `${theme.button.color.special} !important`,
 		},
 		...borderRadius,
-		backgroundColor: theme.button.special.background,
-		border: `1px solid ${theme.button.special.background}`,
+		backgroundColor: theme.button.backgroundColor.special,
+		border: `1px solid ${theme.button.backgroundColor.special}`,
 		color: theme.color.white,
 	},
 	clear: {

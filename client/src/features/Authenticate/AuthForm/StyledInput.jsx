@@ -21,9 +21,9 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	invalid: {
 		'&:focus, &:hover': {
-			borderColor: theme.input.invalid.border,
+			borderColor: theme.input.borderColor.invalid,
 		},
-		borderColor: theme.input.invalid.border,
+		borderColor: theme.input.borderColor.invalid,
 	},
 }));
 

@@ -7,7 +7,7 @@ const { spacing, typography } = styles;
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		...typography.captions,
-		color: theme.font.error,
+		color: theme.color.error,
 		marginBottom: spacing['1_5'],
 		marginTop: spacing['0_7'],
 	},

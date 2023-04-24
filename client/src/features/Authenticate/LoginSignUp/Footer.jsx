@@ -26,10 +26,11 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	link: {
 		'&:hover': {
-			color: theme.color.black,
+			color: theme.link.hoverColor.primary,
+			// color: theme.color.black,
 		},
-		color: theme.link.standard.color,
-		textDecoration: theme.link.standard.textDecoration,
+		color: theme.link.color.standard,
+		textDecoration: theme.link.textDecoration.standard,
 	},
 	moreInfo: {
 		...textAlign.center,
