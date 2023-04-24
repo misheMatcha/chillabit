@@ -4,17 +4,17 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import { styles } from '../../utils/styles';
 
-const { borderRadius, spacing, typography } = styles;
+const { radius, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	base: {
 		'&:hover': {
 			color: theme.button.color.special,
 		},
-		...borderRadius,
 		...typography.body,
 		backgroundColor: theme.button.backgroundColor.special,
 		border: `1px solid ${theme.button.backgroundColor.special}`,
+		borderRadius: radius[3],
 		color: theme.button.color.special,
 		fontSize: spacing['0_7'] * 3,
 		height: spacing['5_7'],

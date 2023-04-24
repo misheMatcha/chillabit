@@ -3,7 +3,6 @@ export const styles = {
 		center: { alignItems: 'center' },
 		flexEnd: { alignItems: 'flex-end' },
 	},
-	borderRadius: { borderRadius: 4 },
 	displayFlex: { display: 'flex' },
 	flexDirection: {
 		column: { flexDirection: 'column' },
@@ -21,6 +20,10 @@ export const styles = {
 		flexStart: { justifyContent: 'flex-start' },
 		spaceBetween: { justifyContent: 'space-between' },
 		spaceEvently: { justifyContent: 'space-evenly' },
+	},
+	radius: {
+		3: 3,
+		4: 4,
 	},
 	spacing: {
 		'0_25': 2,

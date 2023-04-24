@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { styles } from '../utils/styles';
 
-const { displayFlex, flexDirection, height, justifyContent, width } = styles;
+const { displayFlex, flexDirection, height, justifyContent, weight, width } = styles;
 
 const useStyles = createUseStyles((theme, cover) => ({
 	action: {
@@ -37,7 +37,7 @@ const useStyles = createUseStyles((theme, cover) => ({
 		},
 		color: '#999',
 		fontSize: 12,
-		fontWeight: 500,
+		fontWeight: weight[500],
 		overflow: 'hidden',
 		textDecoration: 'none',
 		textOverflow: 'ellipsis',

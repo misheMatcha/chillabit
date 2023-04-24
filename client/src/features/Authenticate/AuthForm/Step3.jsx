@@ -10,7 +10,7 @@ import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItems, displayFlex, spacing, typography, width } = styles;
+const { alignItems, displayFlex, spacing, typography, weight, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	ageInput: {
@@ -60,7 +60,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	title: {
 		fontSize: typography.body.fontSize,
-		fontWeight: 600,
+		fontWeight: weight[600],
 	},
 	usernameMsg: {
 		...typography.captions,

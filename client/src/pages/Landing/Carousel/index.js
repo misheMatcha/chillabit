@@ -9,8 +9,18 @@ import DiscoverBanner from '../assets/discover_banner.jpg';
 import UpcomingBanner from '../assets/upcoming_banner.jpeg';
 import StyledLink from '../StyledLink';
 
-const { alignItems, displayFlex, flexDirection, height, justifyContent, textAlignCenter, width } =
-	styles;
+const {
+	alignItems,
+	displayFlex,
+	flexDirection,
+	height,
+	justifyContent,
+	spacing,
+	textAlign,
+	typography,
+	weight,
+	width,
+} = styles;
 
 const defaultPageStlyes = {
 	height: 450,
@@ -24,21 +34,21 @@ const useStyles = createUseStyles((theme) => ({
 	container: {
 		...displayFlex,
 		...width.max,
-		borderTop: '4px solid #f50',
-		color: '#fff',
+		borderTop: `${spacing['0_5']}px solid ${theme.color.special}`,
+		color: theme.color.white,
 		height: 450,
 	},
 	learnMore: {
 		...displayFlex,
 		...justifyContent.center,
+		...typography.body,
 		flexGrow: 1,
-		fontSize: 16,
 		marginRight: 25,
 	},
 	linkWrapper: {
 		...displayFlex,
 		...justifyContent.center,
-		marginTop: 16,
+		marginTop: 17,
 		width: 432,
 	},
 	page: {
@@ -46,7 +56,7 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...flexDirection.column,
 		...height[100].percentage,
-		color: '#fff',
+		color: theme.color.white,
 	},
 	pageWrapper1: {
 		...defaultPageStlyes,
@@ -57,17 +67,18 @@ const useStyles = createUseStyles((theme) => ({
 		backgroundImage: `url(${UpcomingBanner})`,
 	},
 	tagline: {
-		...textAlignCenter,
+		...textAlign.center,
+		...typography.body,
 		fontSize: 18,
-		fontWeight: 500,
 		marginBottom: 10,
 		width: 530,
 	},
 	title: {
-		...textAlignCenter,
-		fontSize: 36,
-		fontWeight: 500,
-		marginBottom: 8,
+		...textAlign.center,
+		...typography.h1,
+		fontSize: spacing['4_5'],
+		fontWeight: weight[500],
+		marginBottom: spacing['1_5'],
 	},
 }));
 
@@ -80,7 +91,7 @@ const LandingCarousel = () => {
 			<CarouselNav />
 			<div className={classes.carouselWrapper}>
 				<Carousel
-					// autoplay
+					autoplay
 					autoplaySpeed={4000}
 					speed={720}
 				>

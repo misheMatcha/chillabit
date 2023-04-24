@@ -5,16 +5,16 @@ import StyledLink from './StyledLink';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex } = styles;
+const { alignItems, displayFlex, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		...alignItems.center,
 		...displayFlex,
-		backgroundColor: '#000',
+		backgroundColor: theme.color.black,
 		backgroundImage: `url(${CreatorImage})`,
 		backgroundSize: 'cover',
-		color: '#fff',
+		color: theme.color.white,
 		height: 350,
 		paddingLeft: 70,
 	},
@@ -22,19 +22,21 @@ const useStyles = createUseStyles((theme) => ({
 		width: 520,
 	},
 	link: {
-		padding: '13px 24px',
+		padding: `13px ${spacing[3]}px`,
 	},
 	linkWrapper: {
 		...displayFlex,
-		height: 46,
+		height: spacing['5_7'],
 	},
 	tagline: {
-		fontSize: 24,
-		lineHeight: 1.35,
+		...typography.h2,
+		fontWeight: weight[400],
 		margin: '11px 0 26px',
 	},
 	title: {
-		fontSize: 36,
+		...typography.h1,
+		fontSize: spacing['4_5'],
+		fontWeight: weight[500],
 	},
 }));
 

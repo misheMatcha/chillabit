@@ -9,14 +9,15 @@ import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
-const { alignItems, borderRadius, displayFlex, justifyContent, spacing, typography, width } =
+const { alignItems, displayFlex, justifyContent, radius, spacing, typography, weight, width } =
 	styles;
 
 const useStyles = createUseStyles((theme) => ({
 	actionsWrapper: {
 		'& > a': {
 			color: theme.color.white,
-			fontWeight: 600,
+			fontSize: 14,
+			fontWeight: weight[500],
 			textDecoration: theme.link.textDecoration.standard,
 		},
 		'& button': {
@@ -32,9 +33,9 @@ const useStyles = createUseStyles((theme) => ({
 			border: `1px solid ${theme.button.backgroundColor.special} !important`,
 			color: `${theme.button.color.special} !important`,
 		},
-		...borderRadius,
 		backgroundColor: theme.button.backgroundColor.special,
 		border: `1px solid ${theme.button.backgroundColor.special}`,
+		borderRadius: radius[3],
 		color: theme.color.white,
 	},
 	clear: {
