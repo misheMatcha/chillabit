@@ -36,7 +36,7 @@ const useStyles = createUseStyles((theme) => ({
 		...width.max,
 		borderTop: `${spacing['0_5']}px solid ${theme.color.special}`,
 		color: theme.color.white,
-		height: 450,
+		height: 454,
 	},
 	learnMore: {
 		...displayFlex,

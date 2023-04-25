@@ -4,7 +4,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../utils/styles';
 
 const { Search } = Input;
-const { displayFlex } = styles;
+const { displayFlex, radius, spacing, typography } = styles;
 
 const btnSize = {
 	height: '46px !important',
@@ -20,40 +20,40 @@ const useStyles = createUseStyles((theme) => ({
 		'& > span': {
 			'& > input': {
 				'&:focus': {
-					borderColor: `#f2f2f2 !important`,
+					borderColor: `${theme.background.highlight} !important`,
 					boxShadow: 'none',
 				},
 				'&:hover': {
-					borderColor: `#f2f2f2 !important`,
+					borderColor: `${theme.background.highlight} !important`,
 				},
 				'&:hover + span > button': {
-					borderColor: `#f2f2f2 !important`,
+					borderColor: `${theme.background.highlight} !important`,
 				},
-				backgroundColor: `#f2f2f2 !important`,
-				borderColor: '#f2f2f2',
+				backgroundColor: `${theme.background.highlight} !important`,
+				borderColor: theme.background.highlight,
 				color: '#666',
-				fontSize: 16,
-				padding: '0 16px',
+				...typography.body,
+				padding: `0 ${spacing[2]}px`,
 			},
 			'& > span': {
 				'& > button': {
 					'&:hover': {
-						borderColor: `#f2f2f2 !important`,
+						borderColor: `${theme.background.highlight} !important`,
 					},
 					...btnSize,
-					backgroundColor: `#f2f2f2 !important`,
-					borderColor: '#f2f2f2',
+					backgroundColor: `${theme.background.highlight} !important`,
+					borderColor: theme.background.highlight,
 					color: '#666 !important',
-					fontSize: 20,
+					fontSize: spacing['2_5'],
 				},
 				...btnSize,
 			},
 			...displayFlex,
-			height: 46,
+			height: spacing['5_7'],
 		},
-		backgroundColor: '#f2f2f2',
-		borderRadius: 4,
-		width: 518,
+		backgroundColor: theme.background.highlight,
+		borderRadius: radius[4],
+		width: 600,
 	},
 }));
 

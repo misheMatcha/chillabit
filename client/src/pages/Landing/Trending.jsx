@@ -15,6 +15,7 @@ const {
 	spacing,
 	textAlign,
 	typography,
+	weight,
 	width,
 } = styles;
 
@@ -41,13 +42,14 @@ const useStyles = createUseStyles((theme) => ({
 		...justifyContent.center,
 		...width[100].percentage,
 		height: spacing['5_7'],
-		marginBottom: spacing['1_5'],
-		marginTop: spacing[6],
+		marginBottom: spacing['1_5'] + 2,
+		marginTop: 49,
 	},
 	title: {
 		...textAlign.center,
-		fontSize: typography.h2.fontSize,
-		marginBottom: spacing[4],
+		...typography.h2,
+		fontWeight: weight[400],
+		marginBottom: 30,
 		paddingTop: spacing['2_5'],
 	},
 	tracks: {
@@ -64,7 +66,10 @@ const useStyles = createUseStyles((theme) => ({
 		paddingBottom: spacing['1_5'],
 	},
 	upload: {
-		fontSize: typography.h4.fontSize,
+		...typography.h4,
+		fontWeight: weight[500],
+		paddingLeft: 23,
+		paddingRight: 23,
 	},
 }));
 
