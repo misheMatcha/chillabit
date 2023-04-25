@@ -10,7 +10,7 @@ import StyledInput from './StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 
-const { alignItems, displayFlex, spacing, typography, weight, width } = styles;
+const { alignItems, displayFlex, radius, spacing, typography, weight, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	ageInput: {
@@ -21,11 +21,11 @@ const useStyles = createUseStyles((theme) => ({
 			borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
 			boxShadow: 'none',
 		},
-		...typography.body,
+		...typography.h3,
 		...width[100].percentage,
 		backgroundColor: theme.color.white,
 		borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
-		borderRadius: spacing['0_5'],
+		borderRadius: radius[4],
 		color: '#333',
 		height: spacing[5],
 	},
@@ -40,7 +40,7 @@ const useStyles = createUseStyles((theme) => ({
 			'& span': {
 				...alignItems.center,
 				...displayFlex,
-				...typography.body,
+				...typography.h3,
 				height: `${spacing[5]}px !important`,
 			},
 			'&.ant-select-selector': {
@@ -59,7 +59,8 @@ const useStyles = createUseStyles((theme) => ({
 		marginBottom: spacing[2],
 	},
 	title: {
-		fontSize: typography.body.fontSize,
+		...typography.h5,
+		fontSize: 14,
 		fontWeight: weight[600],
 	},
 	usernameMsg: {

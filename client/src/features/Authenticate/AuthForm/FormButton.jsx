@@ -3,7 +3,7 @@ import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../../../utils/styles';
 
-const { spacing, typography, width } = styles;
+const { radius, spacing, typography, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	base: {
@@ -15,7 +15,7 @@ const useStyles = createUseStyles((theme) => ({
 		...width[100].percentage,
 		backgroundColor: theme.button.backgroundColor.special,
 		borderColor: theme.button.backgroundColor.special,
-		borderRadius: 3,
+		borderRadius: radius[3],
 		color: theme.button.color.special,
 		height: spacing[5],
 	},

@@ -6,7 +6,8 @@ import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
-const { displayFlex, flexDirection, justifyContent, spacing, textAlign, typography } = styles;
+const { displayFlex, flexDirection, justifyContent, spacing, textAlign, typography, weight } =
+	styles;
 
 const useStyles = createUseStyles((theme) => ({
 	// apple: {
@@ -71,6 +72,7 @@ const useStyles = createUseStyles((theme) => ({
 	title: {
 		...textAlign.center,
 		...typography.h1,
+		fontWeight: weight[600],
 		marginBottom: '1em',
 	},
 }));

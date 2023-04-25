@@ -4,7 +4,7 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../../../utils/styles';
 
-const { spacing, typography } = styles;
+const { radius, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -12,11 +12,12 @@ const useStyles = createUseStyles((theme) => ({
 			borderColor: '#ccc',
 			boxShadow: 'none',
 		},
-		...typography.body,
+		...typography.h3,
 		backgroundColor: theme.color.white,
 		borderColor: '#ccc',
-		borderRadius: spacing['0_5'],
+		borderRadius: radius[4],
 		color: '#333',
+		fontWeight: weight[400],
 		height: spacing[5],
 	},
 	invalid: {

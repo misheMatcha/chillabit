@@ -22,12 +22,11 @@ const useStyles = createUseStyles((theme) => ({
 	helpLinkWrapper: {
 		...textAlign.right,
 		...width[100].percentage,
-		margin: `${spacing[1]}px 0`,
+		margin: `${spacing['1_5']}px 0`,
 	},
 	link: {
 		'&:hover': {
-			color: theme.link.hoverColor.primary,
-			// color: theme.color.black,
+			color: theme.color.black,
 		},
 		color: theme.link.color.standard,
 		textDecoration: theme.link.textDecoration.standard,
