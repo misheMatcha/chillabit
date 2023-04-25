@@ -19,103 +19,77 @@ import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { styles } from '../utils/styles';
 
-const { displayFlex, flexDirection, height, justifyContent, weight, width } = styles;
+const {
+	alignItems,
+	displayFlex,
+	flexDirection,
+	height,
+	justifyContent,
+	radius,
+	spacing,
+	typography,
+	weight,
+	width,
+} = styles;
+
+const COVER_SIZE = 180;
 
 const useStyles = createUseStyles((theme, cover) => ({
 	action: {
-		...displayFlex,
-		...justifyContent.center,
-		backgroundColor: 'transparent',
-		borderWidth: 0,
-		height: 16,
-		padding: '3px 9px 3px 8px',
-		width: 8,
-	},
-	artist: {
 		'&:hover': {
-			color: '#333',
+			borderColor: `${theme.color.transparent} !important`,
+			color: `${theme.color.white} !important`,
 		},
-		color: '#999',
-		fontSize: 12,
-		fontWeight: weight[500],
-		overflow: 'hidden',
-		textDecoration: 'none',
-		textOverflow: 'ellipsis',
-		whiteSpace: 'nowrap',
+		backgroundColor: theme.color.transparent,
+		borderColor: theme.color.transparent,
+		color: theme.color.white,
+		height: 22,
+		padding: 0,
+		width: 25,
 	},
+	artist: {},
 	container: {
 		height: 258,
+		width: COVER_SIZE,
 	},
 	cover: {
-		'& > div': {
-			...height[100].percentage,
-			...width[100].percentage,
-		},
-		...displayFlex,
-		boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
-		cursor: 'pointer',
-		height: 180,
-		width: 180,
-	},
-	icon: {
-		color: '#fff',
-		fontSize: 12,
-	},
-	info: {
 		...displayFlex,
 		...flexDirection.column,
-		marginTop: 6,
-		width: 180,
-	},
-	layer1: {
-		'&:hover': {
-			// opacity: 1,
-		},
-		...displayFlex,
-		...flexDirection.column,
-		...justifyContent.flexEnd,
-		opacity: 1,
-		zIndex: 1,
-	},
-	layer2: {
 		backgroundImage: ({ cover }) => `url(${cover})`,
 		backgroundSize: 'cover',
-		marginLeft: '-100%',
+		boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
+		height: COVER_SIZE,
+		width: COVER_SIZE,
+	},
+	icon: {
+		...width[100].percentage,
+	},
+	info: {},
+	layer1: {
+		...displayFlex,
+		...height[100].percentage,
 	},
 	play: {
 		'&:hover': {
 			color: '#f30',
 		},
-		color: '#f50',
-	},
-	playWrapper: {
-		...displayFlex,
-		...justifyContent.center,
+		color: theme.color.special,
 		fontSize: 58,
 	},
+	playWrapper: {
+		...alignItems.flexEnd,
+		...displayFlex,
+		...justifyContent.center,
+		...width[100].percentage,
+		paddingBottom: 50,
+	},
 	playableActions: {
-		...displayFlex,
-		...justifyContent.flexEnd,
-		margin: 5,
+		height: 22,
+		marginLeft: COVER_SIZE - 80,
+		marginTop: COVER_SIZE - 27,
+		position: 'absolute',
 	},
-	playableActionsWrapper: {
-		...displayFlex,
-		...justifyContent.flexEnd,
-		alignItems: 'flex-end',
-		background: 'linear-gradient(0deg,rgba(0,0,0,.4),transparent)',
-		height: 50,
-	},
-	title: {
-		'&:hover': {
-			color: '#000',
-		},
-		color: '#333',
-		fontSize: 14,
-		overflow: 'hidden',
-		textDecoration: 'none',
-		textOverflow: 'ellipsis',
-		whiteSpace: 'nowrap',
-	},
+	title: {},
 }));
 
 const items = [
@@ -159,50 +133,52 @@ const Track = ({ artist, cover, title }) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.cover}>
-				<div className={classes.layer1}>
+				<Link
+					to='/home'
+					className={classes.layer1}
+				>
 					<div className={classes.playWrapper}>
+						<Link>
+							<FontAwesomeIcon
+								onClick={() => console.log('plays song')}
+								className={classes.play}
+								icon={faCirclePlay}
+							/>
+						</Link>
+					</div>
+				</Link>
+				<div className={classes.playableActions}>
+					<Button
+						className={classes.action}
+						onClick={() => toggleModal()}
+					>
 						<FontAwesomeIcon
-							onClick={() => console.log('plays song')}
-							className={classes.play}
-							icon={faCirclePlay}
+							className={classes.icon}
+							icon={faHeart}
 						/>
-					</div>
-					<div className={classes.playableActionsWrapper}>
-						<div className={classes.playableActions}>
-							<Button
-								className={classes.action}
-								onClick={() => toggleModal()}
-							>
-								<FontAwesomeIcon
-									className={classes.icon}
-									icon={faHeart}
-								/>
-							</Button>
-							<Button
-								className={classes.action}
-								onClick={() => toggleModal()}
-							>
-								<FontAwesomeIcon
-									className={classes.icon}
-									icon={faUserPlus}
-								/>
-							</Button>
-							<Dropdown
-								menu={{ items }}
-								placement='topLeft'
-								trigger={['click']}
-							>
-								<Button className={classes.action}>
-									<FontAwesomeIcon
-										className={classes.icon}
-										icon={faEllipsis}
-									/>
-								</Button>
-							</Dropdown>
-						</div>
-					</div>
+					</Button>
+					<Button
+						className={classes.action}
+						onClick={() => toggleModal()}
+					>
+						<FontAwesomeIcon
+							className={classes.icon}
+							icon={faUserPlus}
+						/>
+					</Button>
+					<Dropdown
+						menu={{ items }}
+						placement='topLeft'
+						trigger={['click']}
+					>
+						<Button className={classes.action}>
+							<FontAwesomeIcon
+								className={classes.icon}
+								icon={faEllipsis}
+							/>
+						</Button>
+					</Dropdown>
 				</div>
-				<div className={classes.layer2} />
 			</div>
 			<div className={classes.info}>
 				<Link className={classes.title}>{title}</Link>
