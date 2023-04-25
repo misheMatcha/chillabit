@@ -25,10 +25,8 @@ const {
 	flexDirection,
 	height,
 	justifyContent,
-	radius,
-	spacing,
+	truncateText,
 	typography,
-	weight,
 	width,
 } = styles;
 
@@ -47,12 +45,26 @@ const useStyles = createUseStyles((theme, cover) => ({
 		padding: 0,
 		width: 25,
 	},
-	artist: {},
+	artist: {
+		'&:hover': {
+			color: '#333',
+		},
+		...truncateText,
+		...typography.captions,
+		color: '#999',
+		letterSpacing: -1,
+		textDecoration: theme.link.textDecoration.standard,
+	},
 	container: {
 		height: 258,
 		width: COVER_SIZE,
 	},
 	cover: {
+		'&:hover': {
+			'& $playHover, $playableActions': {
+				opacity: 1,
+			},
+		},
 		...displayFlex,
 		...flexDirection.column,
 		backgroundImage: ({ cover }) => `url(${cover})`,
@@ -64,10 +76,11 @@ const useStyles = createUseStyles((theme, cover) => ({
 	icon: {
 		...width[100].percentage,
 	},
-	info: {},
-	layer1: {
+	info: {
 		...displayFlex,
-		...height[100].percentage,
+		...flexDirection.column,
+		marginTop: 5,
+		width: COVER_SIZE,
 	},
 	play: {
 		'&:hover': {
@@ -76,20 +89,40 @@ const useStyles = createUseStyles((theme, cover) => ({
 		color: theme.color.special,
 		fontSize: 58,
 	},
+	playHover: {
+		...displayFlex,
+		...flexDirection.column,
+		...height[100].percentage,
+		...justifyContent.flexEnd,
+		opacity: 0,
+	},
 	playWrapper: {
 		...alignItems.flexEnd,
 		...displayFlex,
 		...justifyContent.center,
 		...width[100].percentage,
-		paddingBottom: 50,
 	},
 	playableActions: {
 		height: 22,
 		marginLeft: COVER_SIZE - 80,
 		marginTop: COVER_SIZE - 27,
+		opacity: 0,
 		position: 'absolute',
 	},
-	title: {},
+	playableActionsGradient: {
+		background: 'linear-gradient(0deg,rgba(0,0,0,.4),transparent)',
+		height: 50,
+	},
+	title: {
+		'&:hover': {
+			color: '#000',
+		},
+		...truncateText,
+		...typography.body,
+		color: '#333',
+		fontSize: 14,
+		textDecoration: theme.link.textDecoration.standard,
+	},
 }));
 
 const items = [
@@ -135,7 +168,7 @@ const Track = ({ artist, cover, title }) => {
 			<div className={classes.cover}>
 				<Link
 					to='/home'
-					className={classes.layer1}
+					className={classes.playHover}
 				>
 					<div className={classes.playWrapper}>
 						<Link>
@@ -146,6 +179,7 @@ const Track = ({ artist, cover, title }) => {
 							/>
 						</Link>
 					</div>
+					<div className={classes.playableActionsGradient} />
 				</Link>
 				<div className={classes.playableActions}>
 					<Button

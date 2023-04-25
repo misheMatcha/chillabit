@@ -20,9 +20,9 @@ export const PLACEHOLDER_TRACK_LIST = [
 		title: 'test',
 	},
 	{
-		artist: 'test',
+		artist: 'Toosii',
 		cover: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/175.png',
-		title: 'test',
+		title: 'Toossii - Favorite Song',
 	},
 	{
 		artist: 'test',

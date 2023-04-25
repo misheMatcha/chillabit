@@ -48,6 +48,11 @@ export const styles = {
 		left: { textAlign: 'left' },
 		right: { textAlign: 'right' },
 	},
+	truncateText: {
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
+		whiteSpace: 'nowrap',
+	},
 	typography: {
 		body: {
 			fontFamily: 'Overpass, sans-serif',
