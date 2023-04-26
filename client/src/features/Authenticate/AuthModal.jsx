@@ -8,6 +8,9 @@ import LoginSignUp from '../Authenticate/LoginSignUp/index';
 const { height, spacing, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
+	container: {
+		...height[100].percentage,
+	},
 	form: {
 		backgroundColor: theme.color.white,
 		margin: 'auto',
@@ -32,7 +35,7 @@ const AuthModal = ({ children }) => {
 	const classes = useStyles({ displayModal, theme });
 
 	return (
-		<div>
+		<div className={classes.container}>
 			<AnimatePresence>
 				{displayModal && (
 					<motion.div

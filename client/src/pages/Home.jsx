@@ -1,12 +1,15 @@
 import React from 'react';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 
-const useStyles = createUseStyles({
-	container: {},
-});
+const useStyles = createUseStyles((theme) => ({
+	container: {
+		backgroundColor: theme.background.surface,
+	},
+}));
 
 const Home = () => {
-	const classes = useStyles();
+	const theme = useTheme();
+	const classes = useStyles({ theme });
 
 	return (
 		<div className={classes.container}>
