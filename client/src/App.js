@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'react-jss';
 import { Route, Routes } from 'react-router-dom';
+import AuthModal from './features/Authenticate/AuthModal';
 import RequireAuth from './features/Authenticate/RequireAuth';
 import Helmet from './pages/Helmet';
 import Home from './pages/Home';
@@ -10,25 +11,28 @@ import { light } from './utils/themes';
 const App = () => {
 	return (
 		<ThemeProvider theme={light}>
-			<Routes>
-				<Route
-					path='/'
-					element={<Helmet />}
-				>
+			<AuthModal>
+				<Routes>
 					<Route
 						path='/'
 						element={<Landing />}
 					/>
-
-					{/* private */}
-					<Route element={<RequireAuth />}>
+					<Route
+						path='/'
+						element={<Helmet />}
+					>
 						<Route
 							path='/home'
 							element={<Home />}
 						/>
 					</Route>
-				</Route>
-			</Routes>
+
+					{/* private */}
+					<Route element={<RequireAuth />}>
+						{/* editing or updating, all other pages should be public */}
+					</Route>
+				</Routes>
+			</AuthModal>
 		</ThemeProvider>
 	);
 };
