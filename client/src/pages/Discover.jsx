@@ -7,7 +7,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const Home = () => {
+const Discover = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -18,4 +18,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Discover;
