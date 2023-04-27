@@ -9,7 +9,7 @@ import { styles } from '../../utils/styles';
 const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography, weight } =
 	styles;
 
-const leftNavLinkStyle = (theme) => ({
+const defaultLinkStyle = {
 	...alignItems.center,
 	...displayFlex,
 	...justifyContent.center,
@@ -17,9 +17,8 @@ const leftNavLinkStyle = (theme) => ({
 	borderRight: '1px solid #111',
 	color: '#ccc',
 	fontSize: 14,
-	textDecoration: theme.link.textDecoration.standard,
 	width: 104,
-});
+};
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -29,12 +28,14 @@ const useStyles = createUseStyles((theme) => ({
 		'&:hover': {
 			color: theme.color.white,
 		},
-		...leftNavLinkStyle(theme),
+		...defaultLinkStyle,
+		textDecoration: theme.link.textDecoration.standard,
 	},
 	linkActive: {
-		...leftNavLinkStyle(theme),
+		...defaultLinkStyle,
 		backgroundColor: '#111',
 		color: theme.color.white,
+		textDecoration: theme.link.textDecoration.standard,
 	},
 	linkWrapper: {
 		...flexDirection.row,
