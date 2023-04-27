@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link, NavLink } from 'react-router-dom';
+import SearchBar from '../components/SearchBar';
 import useAuth from '../hooks/useAuth';
 import { CHILLABIT } from '../utils/constants';
 import { styles } from '../utils/styles';
@@ -78,6 +79,9 @@ const useStyles = createUseStyles((theme) => ({
 		width: 184,
 	},
 	middleHeader: {
+		...alignItems.center,
+		...displayFlex,
+		padding: '9px 10px',
 		width: 412,
 	},
 	rightHeader: {
@@ -110,25 +114,38 @@ const NavBar = () => {
 									? classes.leftNavLinkActive
 									: classes.leftNavLink
 							}
-							acti
 						>
 							Home
 						</NavLink>
 						<NavLink
 							to='/feed'
-							className={classes.leftNavLink}
+							className={({ isActive, isPending }) =>
+								isPending
+									? classes.leftNavLink
+									: isActive
+									? classes.leftNavLinkActive
+									: classes.leftNavLink
+							}
 						>
 							Feed
 						</NavLink>
 						<NavLink
 							to='/you/library'
-							className={classes.leftNavLink}
+							className={({ isActive, isPending }) =>
+								isPending
+									? classes.leftNavLink
+									: isActive
+									? classes.leftNavLinkActive
+									: classes.leftNavLink
+							}
 						>
 							Library
 						</NavLink>
 					</div>
 				</div>
-				<div className={classes.middleHeader}>search bar</div>
+				<div className={classes.middleHeader}>
+					<SearchBar isNav />
+				</div>
 				<div className={classes.rightHeader}>
 					<Button onClick={() => toggleModal()}>Sign in</Button>
 					<Button onClick={() => toggleModal(true)}>Create account</Button>

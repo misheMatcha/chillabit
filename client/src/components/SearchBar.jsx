@@ -1,69 +1,77 @@
 import React from 'react';
 import Input from 'antd/lib/input';
+import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../utils/styles';
 
 const { Search } = Input;
-const { displayFlex, radius, spacing, typography } = styles;
-
-const btnSize = {
-	height: '46px !important',
-	width: '50px !important',
-};
+const { radius, spacing, typography, weight } = styles;
 
 // TODO
 // - add onSearch fnc
-// - style to be reused in navbar
+// - remove onClick animation
 
 const useStyles = createUseStyles((theme) => ({
-	container: {
-		'& > span': {
-			'& > input': {
-				'&:focus': {
-					borderColor: `${theme.background.highlight} !important`,
-					boxShadow: 'none',
-				},
-				'&:hover': {
-					borderColor: `${theme.background.highlight} !important`,
-				},
-				'&:hover + span > button': {
-					borderColor: `${theme.background.highlight} !important`,
-				},
-				backgroundColor: `${theme.background.highlight} !important`,
-				borderColor: theme.background.highlight,
-				color: '#666',
-				...typography.body,
-				padding: `0 ${spacing[2]}px`,
+	defaultStyle: {
+		'& .ant-input': {
+			'&::placeholder': {
+				color: '#999',
 			},
-			'& > span': {
-				'& > button': {
-					'&:hover': {
-						borderColor: `${theme.background.highlight} !important`,
-					},
-					...btnSize,
-					backgroundColor: `${theme.background.highlight} !important`,
-					borderColor: theme.background.highlight,
-					color: '#666 !important',
-					fontSize: spacing['2_5'],
-				},
-				...btnSize,
+			'&:focus, &:hover': {
+				border: 0,
+				boxShadow: 'none',
 			},
-			...displayFlex,
+			...typography.body,
+			backgroundColor: theme.background.highlight,
+			border: 0,
+			borderRadius: radius[4],
+			color: '#666',
+			fontWeight: weight[400],
 			height: spacing['5_7'],
 		},
-		backgroundColor: theme.background.highlight,
-		borderRadius: radius[4],
+		'& .ant-input-group-addon .ant-btn': {
+			'& span': {
+				color: '#666',
+				fontSize: spacing['2_5'],
+			},
+			'&:hover': {
+				color: '#666 !important',
+			},
+			backgroundColor: theme.background.highlight,
+			border: 0,
+			fontWeight: weight[700],
+			height: spacing['5_7'],
+			width: 50,
+		},
 		width: 600,
+	},
+	navStyle: {
+		'& .ant-input': {
+			backgroundColor: '#e5e5e5',
+			fontSize: 14,
+			height: spacing['3_5'],
+			letterSpacing: -0.5,
+			padding: '5px 7px',
+		},
+		'& .ant-input-group-addon .ant-btn': {
+			'& span': {
+				fontSize: spacing['1_7'],
+			},
+			backgroundColor: '#e5e5e5',
+			height: spacing['3_5'],
+			width: 30,
+		},
+		'& .anticon anticon-search': {},
 	},
 }));
 
-const SearchBar = () => {
+const SearchBar = ({ isNav = false }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
 		<Search
-			className={classes.container}
+			className={cn(classes.defaultStyle, { [`${classes.navStyle}`]: isNav })}
 			placeholder='Search for artists, bands, tracks, podcasts'
 		/>
 	);
