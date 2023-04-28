@@ -5,7 +5,7 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
 	const [displayModal, setDisplayModal] = useState(false);
 	const [token, setToken] = useState(null);
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState(null);
 
 	// auth form
 	const [clickedSignUp, setClickedSignUp] = useState(false);

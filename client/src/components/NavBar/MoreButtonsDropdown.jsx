@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dropdown from 'antd/lib/dropdown';
+import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, justifyContent, radius, spacing, typography, weight } = styles;
@@ -17,6 +20,9 @@ const useStyles = createUseStyles((theme) => ({
 		height: spacing['5_7'],
 		width: spacing['5_7'],
 	},
+	divider: {
+		borderBottom: `1px solid ${theme.background.highlight}`,
+	},
 	dropdown: {
 		'& .ant-dropdown-menu': {
 			borderBottomLeftRadius: radius[4],
@@ -29,27 +35,29 @@ const useStyles = createUseStyles((theme) => ({
 				backgroundColor: `${theme.background.highlight} !important`,
 			},
 			borderRadius: '0px !important',
-			height: 32,
-			padding: `${spacing[1]}px 10px !important`,
+			height: spacing[4],
+			padding: `0px !important`,
 		},
 		'& .ant-dropdown-menu-item:last-child': {
 			borderBottomLeftRadius: `${radius[4]}px !important`,
 			borderBottomRightRadius: `${radius[4]}px !important`,
 		},
-		'& .ant-dropdown-menu-item:nth-child(3), .ant-dropdown-menu-item:nth-child(8)': {
-			borderBottom: '1px solid #f2f2f2',
-		},
-		border: '1px solid #ccc',
+		borderBottom: '1px solid #ccc',
 		borderBottomLeftRadius: radius[4],
 		borderBottomRightRadius: radius[4],
+		borderLeft: '1px solid #ccc',
+		borderRight: '1px solid #ccc',
 		top: `${spacing['5_7']}px !important`,
 		width: 168,
 	},
 	dropdownItem: {
+		...displayFlex,
 		...typography.h5,
 		fontSize: 13,
 		fontWeight: weight[900],
+		height: spacing[4],
 		letterSpacing: -0.75,
+		padding: `${spacing[1]}px 10px !important`,
 	},
 	icon: {
 		color: theme.color.white,
@@ -61,55 +69,73 @@ const MoreButtonsDropdown = () => {
 	const theme = useTheme();
 	const [isOpen, setIsOpen] = useState(false);
 	const classes = useStyles({ isOpen, theme });
+	const { user } = useAuth();
 
 	const items = [
+		{ label: 'About us' },
+		{ label: 'Legal' },
 		{
-			key: '1',
-			label: <Link className={classes.dropdownItem}>About us</Link>,
+			hasDivider: true,
+			label: 'Copyright',
 		},
 		{
-			key: '2',
-			label: <Link className={classes.dropdownItem}>Legal</Link>,
+			isSignedIn: true,
+			label: `Get ${CHILLABIT} Go+`,
+		},
+		{ label: 'Mobile apps' },
+		{ label: 'For Creators' },
+		{ label: 'Blog' },
+		{ label: 'Jobs' },
+		{
+			hasDivider: true,
+			label: 'Developers',
+		},
+		{ label: 'Support' },
+		{
+			hasDivider: user ? true : false,
+			label: 'Keyboard shortcuts',
 		},
 		{
-			key: '3',
-			label: <Link className={classes.dropdownItem}>Copyright</Link>,
+			isSignedIn: true,
+			label: 'Subscription',
 		},
 		{
-			key: '4',
-			label: <Link className={classes.dropdownItem}>Mobile apps</Link>,
+			isSignedIn: true,
+			label: 'Settings',
 		},
 		{
-			key: '5',
-			label: <Link className={classes.dropdownItem}>For Creators</Link>,
-		},
-		{
-			key: '6',
-			label: <Link className={classes.dropdownItem}>Blog</Link>,
-		},
-		{
-			key: '7',
-			label: <Link className={classes.dropdownItem}>Jobs</Link>,
-		},
-		{
-			key: '8',
-			label: <Link className={classes.dropdownItem}>Developers</Link>,
-		},
-		{
-			key: '9',
-			label: <Link className={classes.dropdownItem}>Support</Link>,
-		},
-		{
-			key: '10',
-			label: <Link className={classes.dropdownItem}>Keyboard shortcuts</Link>,
+			isSignedIn: true,
+			label: 'Sign out',
 		},
 	];
+
+	const getDropdownItems = () => {
+		const dropdownItems = [];
+
+		for (let i = 0; i < items.length; i++) {
+			const item = items[i];
+
+			if (!user && item.isSignedIn) continue;
+
+			dropdownItems.push({
+				key: i,
+				label: (
+					<Link className={cn(classes.dropdownItem, { [`${classes.divider}`]: item.hasDivider })}>
+						{item.label}
+					</Link>
+				),
+			});
+		}
+
+		return dropdownItems;
+	};
 
 	return (
 		<Dropdown
 			overlayClassName={classes.dropdown}
 			className={classes.container}
-			menu={{ items }}
+			menu={{ items: getDropdownItems() }}
+			placement='bottomRight'
 			trigger={['click']}
 			onOpenChange={() => setIsOpen(!isOpen)}
 		>

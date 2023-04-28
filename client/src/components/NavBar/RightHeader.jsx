@@ -1,18 +1,11 @@
-import React, { useEffect } from 'react';
-import { faSoundcloud } from '@fortawesome/free-brands-svg-icons';
-import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import Button from 'antd/lib/button';
-import Dropdown from 'antd/lib/dropdown';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Link, NavLink } from 'react-router-dom';
-import LeftHeader from './LeftHeader';
+import { Link } from 'react-router-dom';
 import MoreButtonsDropdown from './MoreButtonsDropdown';
 import useAuth from '../../hooks/useAuth';
-import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
-import SearchBar from '../SearchBar';
 
 const {
 	alignItems,
@@ -94,16 +87,16 @@ const useStyles = createUseStyles((theme) => ({
 const RightHeader = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { toggleModal, token, user } = useAuth();
-
-	useEffect(() => {
-		console.log(user);
-		console.log(token);
-	}, [user, token]);
+	const { toggleModal, user } = useAuth();
 
 	return (
 		<div className={classes.container}>
-			{token ? (
+			{user ? (
+				<div className={classes.proWrapper}>
+					<Link className={classes.proLink}>Try Go+</Link>
+					<Link className={classes.proLink}>Try Next Pro</Link>
+				</div>
+			) : (
 				<div className={classes.loginMenu}>
 					<Button
 						className={cn(classes.btn, classes.clear)}
@@ -117,11 +110,6 @@ const RightHeader = () => {
 					>
 						Create account
 					</Button>
-				</div>
-			) : (
-				<div className={classes.proWrapper}>
-					<Link className={classes.proLink}>Try Go+</Link>
-					<Link className={classes.proLink}>Try Next Pro</Link>
 				</div>
 			)}
 			<div className={classes.uploadWrapper}>
