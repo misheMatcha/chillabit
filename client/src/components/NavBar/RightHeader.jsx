@@ -3,10 +3,12 @@ import { faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
+import Dropdown from 'antd/lib/dropdown';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link, NavLink } from 'react-router-dom';
 import LeftHeader from './LeftHeader';
+import MoreButtonsDropdown from './MoreButtonsDropdown';
 import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
@@ -110,7 +112,7 @@ const RightHeader = () => {
 				</Link>
 			</div>
 			<div className={classes.moreBtns}>
-				<FontAwesomeIcon icon={faEllipsis} />
+				<MoreButtonsDropdown />
 			</div>
 		</div>
 	);
