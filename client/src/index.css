@@ -24,4 +24,7 @@ body,
 
 * {
 	font-family: 'Overpass', sans-serif;
+	/* aggresive disable - only fixes dropdown animation */
+	/* https://github.com/ant-design/ant-design/issues/951 */
+	animation-duration: 0s !important;
 }

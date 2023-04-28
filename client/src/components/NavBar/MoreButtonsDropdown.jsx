@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dropdown from 'antd/lib/dropdown';
@@ -13,6 +13,7 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItems.center,
 		...displayFlex,
 		...justifyContent.center,
+		backgroundColor: ({ isOpen }) => (isOpen ? '#111' : 'transparent'),
 		height: spacing['5_7'],
 		width: spacing['5_7'],
 	},
@@ -58,7 +59,8 @@ const useStyles = createUseStyles((theme) => ({
 
 const MoreButtonsDropdown = () => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
+	const [isOpen, setIsOpen] = useState(false);
+	const classes = useStyles({ isOpen, theme });
 
 	const items = [
 		{
@@ -109,6 +111,7 @@ const MoreButtonsDropdown = () => {
 			className={classes.container}
 			menu={{ items }}
 			trigger={['click']}
+			onOpenChange={() => setIsOpen(!isOpen)}
 		>
 			<Link>
 				<FontAwesomeIcon
