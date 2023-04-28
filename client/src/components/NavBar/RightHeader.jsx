@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -73,6 +73,15 @@ const useStyles = createUseStyles((theme) => ({
 		...justifyContent.center,
 		width: spacing['5_7'],
 	},
+	proLink: {
+		color: theme.color.special,
+		padding: '0 10px',
+		textDecoration: theme.link.textDecoration.standard,
+	},
+	proWrapper: {
+		...alignItems.center,
+		...displayFlex,
+	},
 	uploadLink: {
 		color: '#ccc',
 		textDecoration: theme.link.textDecoration.standard,
@@ -85,24 +94,36 @@ const useStyles = createUseStyles((theme) => ({
 const RightHeader = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { toggleModal, user } = useAuth();
+	const { toggleModal, token, user } = useAuth();
+
+	useEffect(() => {
+		console.log(user);
+		console.log(token);
+	}, [user, token]);
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.loginMenu}>
-				<Button
-					className={cn(classes.btn, classes.clear)}
-					onClick={() => toggleModal()}
-				>
-					Sign in
-				</Button>
-				<Button
-					className={classes.btn}
-					onClick={() => toggleModal(true)}
-				>
-					Create account
-				</Button>
-			</div>
+			{token ? (
+				<div className={classes.loginMenu}>
+					<Button
+						className={cn(classes.btn, classes.clear)}
+						onClick={() => toggleModal()}
+					>
+						Sign in
+					</Button>
+					<Button
+						className={classes.btn}
+						onClick={() => toggleModal(true)}
+					>
+						Create account
+					</Button>
+				</div>
+			) : (
+				<div className={classes.proWrapper}>
+					<Link className={classes.proLink}>Try Go+</Link>
+					<Link className={classes.proLink}>Try Next Pro</Link>
+				</div>
+			)}
 			<div className={classes.uploadWrapper}>
 				<Link
 					className={classes.uploadLink}

@@ -50,7 +50,7 @@ const AuthForm = () => {
 
 	const navigate = useNavigate();
 	const location = useLocation();
-	const from = location?.state?.from?.pathname || '/home';
+	const from = location?.state?.from?.pathname || '/discover';
 	const [form] = Form.useForm();
 
 	const signUpUser = async (values) => {

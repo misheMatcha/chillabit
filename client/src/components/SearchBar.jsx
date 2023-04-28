@@ -2,6 +2,7 @@ import React from 'react';
 import Input from 'antd/lib/input';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
+import useAuth from '../hooks/useAuth';
 import { styles } from '../utils/styles';
 
 const { Search } = Input;
@@ -68,11 +69,12 @@ const useStyles = createUseStyles((theme) => ({
 const SearchBar = ({ isNav = false }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const { user } = useAuth();
 
 	return (
 		<Search
 			className={cn(classes.defaultStyle, { [`${classes.navStyle}`]: isNav })}
-			placeholder='Search for artists, bands, tracks, podcasts'
+			placeholder={user ? 'Search' : 'Search for artists, bands, tracks, podcasts'}
 		/>
 	);
 };

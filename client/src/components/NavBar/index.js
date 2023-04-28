@@ -2,6 +2,7 @@ import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import LeftHeader from './LeftHeader';
 import RightHeader from './RightHeader';
+import useAuth from '../../hooks/useAuth';
 import { styles } from '../../utils/styles';
 import SearchBar from '../SearchBar';
 
@@ -25,13 +26,14 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItems.center,
 		...displayFlex,
 		padding: '9px 10px',
-		width: 412,
+		width: ({ user }) => (user ? 232 : 412),
 	},
 }));
 
 const NavBar = () => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
+	const { user } = useAuth();
+	const classes = useStyles({ theme, user });
 
 	return (
 		<div className={classes.container}>
