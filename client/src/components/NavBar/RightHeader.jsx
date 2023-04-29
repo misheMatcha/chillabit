@@ -1,9 +1,13 @@
 import React from 'react';
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import MoreButtonsDropdown from './MoreButtonsDropdown';
+import StyledDropdown from './StyledDropdown';
+import UserDropdown from './UserDropdown';
 import useAuth from '../../hooks/useAuth';
 import { styles } from '../../utils/styles';
 
@@ -82,6 +86,7 @@ const useStyles = createUseStyles((theme) => ({
 	uploadWrapper: {
 		padding: `${spacing['1_5']}px 10px`,
 	},
+	userDropdownWrapper: {},
 }));
 
 const RightHeader = () => {
@@ -120,9 +125,16 @@ const RightHeader = () => {
 					Upload
 				</Link>
 			</div>
-			<div className={classes.moreBtns}>
-				<MoreButtonsDropdown />
+			<div className={classes.userDropdownWrapper}>
+				<UserDropdown />
 			</div>
+			<>
+				<div className={classes.moreBtns}>bell</div>
+				<div className={classes.moreBtns}>mail</div>
+				<div className={classes.moreBtns}>
+					<MoreButtonsDropdown />
+				</div>
+			</>
 		</div>
 	);
 };

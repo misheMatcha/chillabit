@@ -1,54 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Dropdown from 'antd/lib/dropdown';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
+import StyledDropdown from './StyledDropdown';
 import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, justifyContent, radius, spacing, typography, weight } = styles;
+const { displayFlex, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	container: {
-		...alignItems.center,
-		...displayFlex,
-		...justifyContent.center,
-		backgroundColor: ({ isOpen }) => (isOpen ? '#111' : 'transparent'),
-		height: spacing['5_7'],
-		width: spacing['5_7'],
-	},
 	divider: {
 		borderBottom: `1px solid ${theme.background.highlight}`,
-	},
-	dropdown: {
-		'& .ant-dropdown-menu': {
-			borderBottomLeftRadius: radius[4],
-			borderBottomRightRadius: radius[4],
-			boxShadow: 'none',
-			padding: 0,
-		},
-		'& .ant-dropdown-menu-item': {
-			'&:hover': {
-				backgroundColor: `${theme.background.highlight} !important`,
-			},
-			borderRadius: '0px !important',
-			height: spacing[4],
-			padding: `0px !important`,
-		},
-		'& .ant-dropdown-menu-item:last-child': {
-			borderBottomLeftRadius: `${radius[4]}px !important`,
-			borderBottomRightRadius: `${radius[4]}px !important`,
-		},
-		borderBottom: '1px solid #ccc',
-		borderBottomLeftRadius: radius[4],
-		borderBottomRightRadius: radius[4],
-		borderLeft: '1px solid #ccc',
-		borderRight: '1px solid #ccc',
-		top: `${spacing['5_7']}px !important`,
-		width: 168,
 	},
 	dropdownItem: {
 		...displayFlex,
@@ -67,8 +32,7 @@ const useStyles = createUseStyles((theme) => ({
 
 const MoreButtonsDropdown = () => {
 	const theme = useTheme();
-	const [isOpen, setIsOpen] = useState(false);
-	const classes = useStyles({ isOpen, theme });
+	const classes = useStyles({ theme });
 	const { user } = useAuth();
 
 	const items = [
@@ -131,13 +95,9 @@ const MoreButtonsDropdown = () => {
 	};
 
 	return (
-		<Dropdown
-			overlayClassName={classes.dropdown}
-			className={classes.container}
-			menu={{ items: getDropdownItems() }}
+		<StyledDropdown
+			items={getDropdownItems()}
 			placement='bottomRight'
-			trigger={['click']}
-			onOpenChange={() => setIsOpen(!isOpen)}
 		>
 			<Link>
 				<FontAwesomeIcon
@@ -145,7 +105,7 @@ const MoreButtonsDropdown = () => {
 					icon={faEllipsis}
 				/>
 			</Link>
-		</Dropdown>
+		</StyledDropdown>
 	);
 };
 
