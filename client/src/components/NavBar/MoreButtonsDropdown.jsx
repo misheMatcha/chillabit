@@ -18,6 +18,9 @@ const useStyles = createUseStyles((theme) => ({
 	divider: {
 		borderBottom: `1px solid ${theme.background.highlight}`,
 	},
+	dropdown: {
+		width: 168,
+	},
 	dropdownItem: {
 		...displayFlex,
 		...typography.h5,
@@ -99,6 +102,7 @@ const MoreButtonsDropdown = () => {
 	return (
 		<StyledDropdown
 			items={getDropdownItems()}
+			overlayStyle={classes.dropdown}
 			placement='bottomRight'
 			style={classes.container}
 		>

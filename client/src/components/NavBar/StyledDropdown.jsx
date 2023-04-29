@@ -44,7 +44,6 @@ const useStyles = createUseStyles((theme) => ({
 		borderLeft: '1px solid #ccc',
 		borderRight: '1px solid #ccc',
 		top: `${spacing['5_7']}px !important`,
-		width: 168,
 	},
 	dropdownItem: {
 		...displayFlex,
