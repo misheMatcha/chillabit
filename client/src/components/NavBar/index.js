@@ -1,4 +1,5 @@
 import React from 'react';
+import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import LeftHeader from './LeftHeader';
 import RightHeader from './RightHeader';
@@ -17,6 +18,10 @@ const useStyles = createUseStyles((theme) => ({
 		height: spacing['5_7'],
 		position: 'fixed',
 	},
+	dynamicWidth: {
+		maxWidth: 408,
+		minWidth: 261,
+	},
 	headerWrapper: {
 		...displayFlex,
 		...flexDirection.row,
@@ -26,7 +31,9 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItems.center,
 		...displayFlex,
 		padding: '9px 10px',
-		width: ({ user }) => (user ? 232 : 412),
+	},
+	setWidth: {
+		width: 412,
 	},
 }));
 
@@ -39,7 +46,12 @@ const NavBar = () => {
 		<div className={classes.container}>
 			<div className={classes.headerWrapper}>
 				<LeftHeader />
-				<div className={classes.middleHeader}>
+				<div
+					className={cn(classes.middleHeader, {
+						[`${classes.setWidth}`]: !user,
+						[`${classes.dynamicWidth}`]: user,
+					})}
+				>
 					<SearchBar isNav />
 				</div>
 				<RightHeader />

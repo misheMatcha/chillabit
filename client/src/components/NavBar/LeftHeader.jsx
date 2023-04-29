@@ -2,7 +2,7 @@ import React from 'react';
 import { faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
@@ -57,6 +57,8 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...justifyContent.center,
 		backgroundColor: theme.color.black,
+		color: theme.color.white,
+		textDecoration: theme.link.textDecoration.standard,
 		width: ({ user }) => (user ? 69 : 184),
 	},
 }));
@@ -86,12 +88,12 @@ const LeftHeader = () => {
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.logoWrapper}>
+			<Link className={classes.logoWrapper}>
 				<div className={classes.logo}>
 					<FontAwesomeIcon icon={faSoundcloud} />
 				</div>
 				{!user && <span className={classes.brand}>{CHILLABIT}</span>}
-			</div>
+			</Link>
 			<div className={classes.linkWrapper}>
 				{navLinkList.map(({ key, label, to }) => (
 					<NavLink

@@ -88,9 +88,7 @@ const UserDropdown = () => {
 		>
 			<Link>
 				<div className={classes.avatar} />
-				{/* <span className={classes.username}>{user.username}</span> */}
-				{/* <span className={classes.username}>a</span> */}
-				<span className={classes.username}>asadfsdfsafsadfdsafasfasdfasfsdfasfasdfasfsdafsd</span>
+				<span className={classes.username}>{user.username}</span>
 				<FontAwesomeIcon
 					className={classes.arrow}
 					icon={faAngleDown}
