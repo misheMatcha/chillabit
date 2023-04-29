@@ -13,8 +13,8 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...justifyContent.center,
 		backgroundColor: ({ isOpen }) => (isOpen ? '#111' : 'transparent'),
+		color: ({ isOpen }) => (isOpen ? theme.color.white : '#ccc'),
 		height: spacing['5_7'],
-		width: spacing['5_7'],
 	},
 	divider: {
 		borderBottom: `1px solid ${theme.background.highlight}`,

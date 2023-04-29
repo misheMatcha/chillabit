@@ -12,6 +12,9 @@ import { styles } from '../../utils/styles';
 const { displayFlex, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
+	container: {
+		width: spacing['5_7'],
+	},
 	divider: {
 		borderBottom: `1px solid ${theme.background.highlight}`,
 	},
@@ -25,7 +28,6 @@ const useStyles = createUseStyles((theme) => ({
 		padding: `${spacing[1]}px 10px !important`,
 	},
 	icon: {
-		color: theme.color.white,
 		fontSize: spacing['3_5'],
 	},
 }));
@@ -98,6 +100,7 @@ const MoreButtonsDropdown = () => {
 		<StyledDropdown
 			items={getDropdownItems()}
 			placement='bottomRight'
+			style={classes.container}
 		>
 			<Link>
 				<FontAwesomeIcon
