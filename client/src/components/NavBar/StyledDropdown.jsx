@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Dropdown from 'antd/lib/dropdown';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import useAuth from '../../hooks/useAuth';
 import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, justifyContent, radius, spacing, typography, weight } = styles;
@@ -64,7 +63,6 @@ const StyledDropdown = ({ children, items, overlayStyle, placement, style }) => 
 	const theme = useTheme();
 	const [isOpen, setIsOpen] = useState(false);
 	const classes = useStyles({ isOpen, theme });
-	const { user } = useAuth();
 
 	return (
 		<Dropdown

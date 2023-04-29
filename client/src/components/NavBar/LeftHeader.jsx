@@ -3,6 +3,7 @@ import { faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
@@ -21,6 +22,13 @@ const defaultLinkStyle = {
 };
 
 const useStyles = createUseStyles((theme) => ({
+	brand: {
+		...typography.body,
+		fontWeight: weight[900],
+		letterSpacing: 1.5,
+		marginLeft: spacing['0_7'],
+		textTransform: 'uppercase',
+	},
 	container: {
 		...displayFlex,
 	},
@@ -45,14 +53,11 @@ const useStyles = createUseStyles((theme) => ({
 		...typography.h1,
 	},
 	logoWrapper: {
-		'& span': {
-			marginLeft: spacing['0_5'],
-		},
 		...alignItems.center,
 		...displayFlex,
 		...justifyContent.center,
 		backgroundColor: theme.color.black,
-		width: 184,
+		width: ({ user }) => (user ? 69 : 184),
 	},
 }));
 
@@ -76,7 +81,8 @@ const navLinkList = [
 
 const LeftHeader = () => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
+	const { user } = useAuth();
+	const classes = useStyles({ theme, user });
 
 	return (
 		<div className={classes.container}>
@@ -84,7 +90,7 @@ const LeftHeader = () => {
 				<div className={classes.logo}>
 					<FontAwesomeIcon icon={faSoundcloud} />
 				</div>
-				<span>{CHILLABIT}</span>
+				{!user && <span className={classes.brand}>{CHILLABIT}</span>}
 			</div>
 			<div className={classes.linkWrapper}>
 				{navLinkList.map(({ key, label, to }) => (
