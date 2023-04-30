@@ -8,17 +8,7 @@ import UserDropdown from './UserDropdown';
 import useAuth from '../../hooks/useAuth';
 import { styles } from '../../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	justifyContent,
-	radius,
-	spacing,
-	typography,
-	weight,
-	width,
-} = styles;
+const { alignItems, displayFlex, justifyContent, radius, spacing, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	btn: {
