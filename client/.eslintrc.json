@@ -1,0 +1,24 @@
+{
+	"extends": ["react-app", "react-app/jest", "prettier"],
+	"rules": {
+		"sort-keys": ["warn", "asc", { "caseSensitive": true, "natural": false, "minKeys": 2 }],
+		"import/order": [
+			"error",
+			{
+				"groups": ["builtin", "external", "internal"],
+				"pathGroups": [
+					{
+						"pattern": "react",
+						"group": "external",
+						"position": "before"
+					}
+				],
+				"pathGroupsExcludedImportTypes": ["react"],
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				}
+			}
+		]
+	}
+}
