@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: chillabit_server_production
-  username: chillabit_server
+  username: mishev
   password: <%= ENV["CHILLABIT_SERVER_DATABASE_PASSWORD"] %>
