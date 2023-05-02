@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import StyledDropdown from './StyledDropdown';
-import useAuth from '../../hooks/useAuth';
-import { CHILLABIT } from '../../utils/constants';
-import { styles } from '../../utils/styles';
+import useAuth from '../../../hooks/useAuth';
+import { CHILLABIT } from '../../../utils/constants';
+import { styles } from '../../../utils/styles';
+import StyledDropdown from '../../StyledDropdown';
 
 const { displayFlex, spacing, typography, weight } = styles;
 

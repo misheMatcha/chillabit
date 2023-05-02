@@ -12,9 +12,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import StyledDropdown from './StyledDropdown';
-import useAuth from '../../hooks/useAuth';
-import { styles } from '../../utils/styles';
+import useAuth from '../../../hooks/useAuth';
+import { styles } from '../../../utils/styles';
+import StyledDropdown from '../../StyledDropdown';
 
 const { spacing, truncateText, typography, weight } = styles;
 

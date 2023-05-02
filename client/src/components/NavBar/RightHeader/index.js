@@ -1,12 +1,15 @@
 import React from 'react';
+import { faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Button from 'antd/lib/button';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import MoreButtonsDropdown from './MoreButtonsDropdown';
+import NotificationsDowndrop from './NotificationsDropdown';
 import UserDropdown from './UserDropdown';
-import useAuth from '../../hooks/useAuth';
-import { styles } from '../../utils/styles';
+import useAuth from '../../../hooks/useAuth';
+import { styles } from '../../../utils/styles';
+import CustomRenderDropdown from '../../CustomRenderDropdown';
 
 const { alignItems, displayFlex, justifyContent, radius, spacing, weight } = styles;
 
@@ -118,8 +121,15 @@ const RightHeader = () => {
 					<div className={classes.userDropdownWrapper}>
 						<UserDropdown />
 					</div>
-					<div className={classes.moreBtns}>bell</div>
-					<div className={classes.moreBtns}>mail</div>
+					<div className={classes.moreBtns}>
+						<NotificationsDowndrop />
+					</div>
+					<div className={classes.moreBtns}>
+						<CustomRenderDropdown
+							icon={faEnvelope}
+							label='messages'
+						/>
+					</div>
 				</>
 			)}
 			<div className={classes.moreBtns}>
