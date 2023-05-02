@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dropdown from 'antd/lib/dropdown';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import { styles } from '../../utils/styles';
+import { styles } from '../utils/styles';
 
 const {
 	alignItems,
@@ -97,7 +97,17 @@ const CustomRenderDropdown = ({ icon, label, hasSettings = false, items = null }
 						{hasSettings && <Link className={classes.settings}>Settings</Link>}
 					</div>
 					<div className={classes.dropdownList}>
-						<div className={classes.dropdownItem}>{items ? 'map' : `No ${label}`}</div>
+						<div className={classes.dropdownItem}>
+							{items ? (
+								<>
+									{items.map((item, i) => (
+										<Link key={i}>{item}</Link>
+									))}
+								</>
+							) : (
+								`No ${label}`
+							)}
+						</div>
 					</div>
 					<div className={classes.footer}>
 						<Link>View all {label}</Link>

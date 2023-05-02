@@ -2,7 +2,7 @@ import React from 'react';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import LeftHeader from './LeftHeader';
-import RightHeader from './RightHeader';
+import RightHeader from './RightHeader/';
 import useAuth from '../../hooks/useAuth';
 import { styles } from '../../utils/styles';
 import SearchBar from '../SearchBar';

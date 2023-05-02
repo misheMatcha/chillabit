@@ -1,44 +1,22 @@
 export const PLACEHOLDER_NOTIFICATIONS = [
 	{
 		avatar: 'image_url',
-		message: 'started following uou',
+		user: 'user',
 		type: 'follow',
-		user: 'user',
+		date: '10/10/10',
 	},
 	{
 		avatar: 'image_url',
-		message: 'liked your playlist',
-		type: 'like',
 		user: 'user',
+		type: 'like',
+		likeType: 'playlist',
+		date: '10/10/10',
 	},
 	{
 		avatar: 'image_url',
-		message: 'started following uou',
-		type: 'like',
 		user: 'user',
-	},
-	{
-		avatar: 'image_url',
-		message: 'started following uou',
 		type: 'like',
-		user: 'user',
-	},
-	{
-		avatar: 'image_url',
-		message: 'started following uou',
-		type: 'like',
-		user: 'user',
-	},
-	{
-		avatar: 'image_url',
-		message: 'started following uou',
-		type: 'like',
-		user: 'user',
-	},
-	{
-		avatar: 'image_url',
-		message: 'started following uou',
-		type: 'like',
-		user: 'user',
+		likeType: 'track',
+		date: '10/10/10',
 	},
 ];
