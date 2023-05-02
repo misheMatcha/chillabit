@@ -1,5 +1,5 @@
 import React from 'react';
-import { faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Button from 'antd/lib/button';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
