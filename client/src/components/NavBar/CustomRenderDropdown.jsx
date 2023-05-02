@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dropdown from 'antd/lib/dropdown';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -12,6 +12,7 @@ const {
 	height,
 	radius,
 	spacing,
+	textAlign,
 	typography,
 	weight,
 	width,
@@ -22,30 +23,41 @@ const useStyles = createUseStyles((theme) => ({
 		top: `${spacing['5_7']}px !important`,
 	},
 	dropdown: {
-		// backgroundColor: 'gray',
-		borderBottom: `1px solid black`,
+		backgroundColor: theme.background.surface,
+		borderBottom: `1px solid #ccc`,
 		borderBottomLeftRadius: radius[3],
 		borderBottomRightRadius: radius[3],
-		borderLeft: `1px solid black`,
-		borderRight: `1px solid black`,
+		borderLeft: `1px solid #ccc`,
+		borderRight: `1px solid #ccc`,
 		width: spacing['0_5'] * 100,
 	},
 	dropdownItem: {
+		...textAlign.center,
+		...typography.captions,
+		color: '#999',
+		fontSize: 13,
+		fontWeight: weight[700],
 		padding: spacing[2],
 	},
 	dropdownList: {
 		maxHeight: spacing['0_5'] * 100,
 	},
 	footer: {
+		'& a': {
+			color: theme.color.black,
+		},
 		...displayFlex,
-		borderTop: '1px solid black',
+		...justifyContent.center,
+		...typography.captions,
+		borderTop: '1px solid #ccc',
+		fontWeight: weight[500],
 		padding: `10px ${spacing[2]}px`,
 	},
 	header: {
 		...displayFlex,
 		...justifyContent.spaceBetween,
 		...typography.h4,
-		borderBottom: '1px solid black',
+		borderBottom: '1px solid #ccc',
 		fontWeight: weight[600],
 		padding: `${spacing[1]}px ${spacing[2]}px`,
 		textTransform: 'capitalize',
@@ -55,6 +67,8 @@ const useStyles = createUseStyles((theme) => ({
 			color: 'black',
 		},
 		...typography.h5,
+		color: '#999',
+		fontSize: 13,
 		fontWeight: weight[500],
 	},
 	trigger: {
@@ -63,14 +77,16 @@ const useStyles = createUseStyles((theme) => ({
 		...justifyContent.center,
 		...height[100].percentage,
 		...width[100].percentage,
-		color: theme.color.white,
+		backgroundColor: ({ isOpen }) => (isOpen ? '#111' : 'transparent'),
+		color: ({ isOpen }) => (isOpen ? theme.color.white : '#ccc'),
 		fontSize: spacing[2],
 	},
 }));
 
 const CustomRenderDropdown = ({ icon, label, hasSettings = false, items = null }) => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
+	const [isOpen, setIsOpen] = useState(false);
+	const classes = useStyles({ isOpen, theme });
 
 	return (
 		<Dropdown
@@ -88,8 +104,8 @@ const CustomRenderDropdown = ({ icon, label, hasSettings = false, items = null }
 					</div>
 				</div>
 			)}
+			onOpenChange={() => setIsOpen(!isOpen)}
 			overlayClassName={classes.container}
-			// placement='bottomRight'
 			trigger={['click']}
 		>
 			<Link className={classes.trigger}>
