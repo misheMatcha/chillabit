@@ -27,9 +27,15 @@ const App = () => {
 							element={<Discover />}
 						/>
 						<Route
-							path='/:username'
+							path='/:url'
 							element={<Profile />}
-						/>
+						>
+							{/* added for testing outlet */}
+							<Route
+								path='discover'
+								element={<Discover />}
+							/>
+						</Route>
 					</Route>
 
 					{/* private */}

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import useAuth from '../../hooks/useAuth';
+import { Outlet } from 'react-router';
+import useCurrentPath from '../../hooks/useCurrentPath';
 import { styles } from '../../utils/styles';
 
 const {
@@ -20,14 +21,19 @@ const useStyles = createUseStyles((theme) => ({
 	container: {},
 }));
 
-const Profile = ({ user = null }) => {
+const Profile = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	// const {user} = useAuth()
+	const { fullPath, identifier } = useCurrentPath();
+	const [user, setUser] = useState(null);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {});
 
 	return (
 		<div className={classes.container}>
 			<div>profile</div>
+			<Outlet />
 		</div>
 	);
 };
