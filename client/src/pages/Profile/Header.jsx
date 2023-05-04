@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Outlet } from 'react-router';
-import Header from './Header';
 import Sidebar from '../../components/Sidebar';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import { styles } from '../../utils/styles';
@@ -20,18 +19,27 @@ const {
 } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	container: {},
-	contentWrapper: {
-		'& > div:first-child': {
-			...displayFlex,
-			flexGrow: 1,
-		},
+	avatar: {
+		backgroundColor: 'orangered',
+		borderRadius: '50%',
+		height: 200,
+		marginRight: 30,
+		width: 200,
+	},
+	container: {
 		...displayFlex,
-		padding: '0 30px',
+		...justifyContent.spaceBetween,
+		...width[100].percentage,
+		backgroundColor: 'rebeccapurple',
+		height: 260,
+		padding: 30,
+	},
+	content: {
+		...displayFlex,
 	},
 }));
 
-const Profile = () => {
+const Header = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { fullPath, userIdentifier } = useCurrentPath();
@@ -42,13 +50,20 @@ const Profile = () => {
 
 	return (
 		<div className={classes.container}>
-			<Header />
-			<div className={classes.contentWrapper}>
-				<Outlet />
-				<Sidebar />
+			<div className={classes.content}>
+				<div className={classes.avatar} />
+				<div>
+					<div>username</div>
+					<div>blurb</div>
+					<div>loc</div>
+					<div>plus</div>
+				</div>
+			</div>
+			<div>
+				<div>upload</div>
 			</div>
 		</div>
 	);
 };
 
-export default Profile;
+export default Header;

@@ -1,4 +1,4 @@
-import { split } from 'lodash';
+import split from 'lodash/split';
 import { useLocation } from 'react-router';
 
 const useCurrentPath = () => {
