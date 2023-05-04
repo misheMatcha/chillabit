@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import Button from 'antd/lib/button';
+import Tooltip from 'antd/lib/tooltip';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Outlet } from 'react-router';
-import Sidebar from '../../components/Sidebar';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import { styles } from '../../utils/styles';
 
@@ -20,7 +20,7 @@ const {
 
 const useStyles = createUseStyles((theme) => ({
 	avatar: {
-		backgroundColor: 'orangered',
+		backgroundImage: 'linear-gradient(135deg,#8e8485,#70929c)',
 		borderRadius: '50%',
 		height: 200,
 		marginRight: 30,
@@ -28,14 +28,43 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	container: {
 		...displayFlex,
-		...justifyContent.spaceBetween,
-		...width[100].percentage,
-		backgroundColor: 'rebeccapurple',
+		background: 'linear-gradient(315deg, rgb(221, 201, 187) 0%, rgb(108, 89, 78) 100%)',
 		height: 260,
 		padding: 30,
 	},
 	content: {
+		'& > div': {
+			backgroundColor: 'rgba(0, 0, 0, 0.8)',
+			color: theme.color.white,
+			letterSpacing: -0.75,
+			width: 'max-content',
+		},
+		'& > div:not(:first-child)': {
+			...typography.body,
+			color: '#ccc',
+
+			height: spacing[3],
+			marginTop: spacing['0_5'],
+			padding: `${spacing['0_25']}px 7px`,
+		},
+	},
+	contentWrapper: {
 		...displayFlex,
+		...justifyContent.spaceBetween,
+		flexGrow: 1,
+	},
+	uploadBtn: {
+		...displayFlex,
+	},
+	uploadWrapper: {
+		backgroundColor: 'pink',
+		paddingLeft: 30,
+		width: 236,
+	},
+	username: {
+		...typography.h2,
+		fontWeight: weight[400],
+		padding: `${spacing['0_5']}px 7px`,
 	},
 }));
 
@@ -48,19 +77,25 @@ const Header = () => {
 
 	useEffect(() => {});
 
+	// Future features:
+	// - verification check mark
+	// - avatar modal
+	// - hoverable featured profiles
+
 	return (
 		<div className={classes.container}>
-			<div className={classes.content}>
-				<div className={classes.avatar} />
-				<div>
-					<div>username</div>
-					<div>blurb</div>
-					<div>loc</div>
-					<div>plus</div>
+			<div className={classes.avatar} />
+			<div className={classes.contentWrapper}>
+				<div className={classes.content}>
+					<div className={classes.username}>Purrple Cat</div>
+					<div>This is Hiderway</div>
+					<div>Boston</div>
 				</div>
 			</div>
-			<div>
-				<div>upload</div>
+			<div className={classes.uploadWrapper}>
+				<Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'>
+					<Button className={classes.uploadBtn}>upload</Button>
+				</Tooltip>
 			</div>
 		</div>
 	);
