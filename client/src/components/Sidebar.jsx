@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Outlet } from 'react-router';
-import Sidebar from '../../components/Sidebar';
-import useCurrentPath from '../../hooks/useCurrentPath';
-import { styles } from '../../utils/styles';
+import { styles } from '../utils/styles';
 
 const {
 	alignItems,
@@ -19,21 +16,14 @@ const {
 } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	container: {},
-	contentWrapper: {
-		'& > div:first-child': {
-			...displayFlex,
-			flexGrow: 1,
-		},
-		...displayFlex,
-		padding: '0 30px',
+	container: {
+		width: 300,
 	},
 }));
 
-const Profile = () => {
+const Sidebar = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { fullPath, userIdentifier } = useCurrentPath();
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 
@@ -41,13 +31,9 @@ const Profile = () => {
 
 	return (
 		<div className={classes.container}>
-			<div>profile</div>
-			<div className={classes.contentWrapper}>
-				<Outlet />
-				<Sidebar />
-			</div>
+			<div>sidebar</div>
 		</div>
 	);
 };
 
-export default Profile;
+export default Sidebar;
