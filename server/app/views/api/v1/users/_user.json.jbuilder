@@ -10,3 +10,4 @@ json.bio @user.bio
 json.url @user.url
 json.website @user.website
 json.support_url @user.support_url
+json.slug @user.slug

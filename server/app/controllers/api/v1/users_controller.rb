@@ -16,9 +16,25 @@ class Api::V1::UsersController < ApplicationController
     render json: @users
   end
 
+  def show
+    @user = User.friendly.find(params[:id])
+    if @user
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @user = User.friendly.find(params[:id])
+    return render json: @user if @user && @user.update(user_params)
+
+    render json: @user.errors, status: :unprocessable_entity
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password, :age, :gender)
+    params.require(:user).permit(:email, :username, :password, :age, :gender, :url)
   end
 end

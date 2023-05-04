@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :url, use: :slugged
+
   has_secure_password
   validates :email, :username, :password_digest, :url, presence: true
   validates :email, :url, uniqueness: true
@@ -11,6 +14,10 @@ class User < ApplicationRecord
 
   before_validation :generate_username, :generate_profile_url
 
+  def should_generate_new_friendly_id?
+    url_changed?
+  end
+
   private
 
   def generate_username
@@ -20,6 +27,6 @@ class User < ApplicationRecord
   end
 
   def generate_profile_url
-    self.url = username.downcase.gsub(' ', '-')
+    self.url = url.blank? ? username.parameterize : url.parameterize
   end
 end
