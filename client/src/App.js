@@ -6,6 +6,7 @@ import RequireAuth from './features/Authenticate/RequireAuth';
 import Discover from './pages/Discover';
 import Helmet from './pages/Helmet';
 import Landing from './pages/Landing/index';
+import Profile from './pages/Profile';
 import { light } from './utils/themes';
 
 const App = () => {
@@ -24,6 +25,10 @@ const App = () => {
 						<Route
 							path='/discover'
 							element={<Discover />}
+						/>
+						<Route
+							path='/:username'
+							element={<Profile />}
 						/>
 					</Route>
 
