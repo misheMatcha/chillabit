@@ -5,7 +5,7 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
 	const [displayModal, setDisplayModal] = useState(false);
 	const [token, setToken] = useState(null);
-	const [user, setUser] = useState(null);
+	const [currentUser, setCurrentUser] = useState(null);
 
 	// auth form
 	const [clickedSignUp, setClickedSignUp] = useState(false);
@@ -26,20 +26,20 @@ export const AuthProvider = ({ children }) => {
 		<AuthContext.Provider
 			value={{
 				clickedSignUp,
+				currentUser,
 				displayModal,
 				errors,
 				isVerified,
 				setClickedSignUp,
+				setCurrentUser,
 				setDisplayModal,
 				setErrors,
 				setIsVerified,
 				setStep,
 				setToken,
-				setUser,
 				step,
 				toggleModal,
 				token,
-				user,
 			}}
 		>
 			{children}

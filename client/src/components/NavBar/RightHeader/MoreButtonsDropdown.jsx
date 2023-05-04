@@ -38,7 +38,7 @@ const useStyles = createUseStyles((theme) => ({
 const MoreButtonsDropdown = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { user } = useAuth();
+	const { currentUser } = useAuth();
 
 	const items = [
 		{ label: 'About us' },
@@ -61,7 +61,7 @@ const MoreButtonsDropdown = () => {
 		},
 		{ label: 'Support' },
 		{
-			hasDivider: user ? true : false,
+			hasDivider: currentUser ? true : false,
 			label: 'Keyboard shortcuts',
 		},
 		{
@@ -84,7 +84,7 @@ const MoreButtonsDropdown = () => {
 		for (let i = 0; i < items.length; i++) {
 			const item = items[i];
 
-			if (!user && item.isSignedIn) continue;
+			if (!currentUser && item.isSignedIn) continue;
 
 			dropdownItems.push({
 				key: i,

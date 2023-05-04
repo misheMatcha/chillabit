@@ -33,7 +33,7 @@ const AuthForm = () => {
 		isVerified,
 		setStep,
 		setToken,
-		setUser,
+		setCurrentUser,
 	} = useAuth();
 	const classes = useStyles(step);
 
@@ -59,7 +59,7 @@ const AuthForm = () => {
 				user: { ...values, gender: isCustomGender ? gender : values.gender },
 			});
 
-			setUser(response.data.user);
+			setCurrentUser(response.data.user);
 			setToken(response.data.token);
 			setDisplayModal(false);
 			navigate(from, { replace: true });
@@ -74,7 +74,7 @@ const AuthForm = () => {
 				user: { email: values.email, password: values.password },
 			});
 
-			setUser(response.data.user);
+			setCurrentUser(response.data.user);
 			setToken(response.data.token);
 			setDisplayModal(false);
 			navigate(from, { replace: true });

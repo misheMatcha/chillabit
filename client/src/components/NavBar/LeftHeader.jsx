@@ -59,7 +59,7 @@ const useStyles = createUseStyles((theme) => ({
 		backgroundColor: theme.color.black,
 		color: theme.color.white,
 		textDecoration: theme.link.textDecoration.standard,
-		width: ({ user }) => (user ? 69 : 184),
+		width: ({ currentUser }) => (currentUser ? 69 : 184),
 	},
 }));
 
@@ -83,8 +83,8 @@ const navLinkList = [
 
 const LeftHeader = () => {
 	const theme = useTheme();
-	const { user } = useAuth();
-	const classes = useStyles({ theme, user });
+	const { currentUser } = useAuth();
+	const classes = useStyles({ currentUser, theme });
 
 	return (
 		<div className={classes.container}>
@@ -92,7 +92,7 @@ const LeftHeader = () => {
 				<div className={classes.logo}>
 					<FontAwesomeIcon icon={faSoundcloud} />
 				</div>
-				{!user && <span className={classes.brand}>{CHILLABIT}</span>}
+				{!currentUser && <span className={classes.brand}>{CHILLABIT}</span>}
 			</Link>
 			<div className={classes.linkWrapper}>
 				{navLinkList.map(({ key, label, to }) => (

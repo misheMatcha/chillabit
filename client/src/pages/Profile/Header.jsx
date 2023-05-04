@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import Tooltip from 'antd/lib/tooltip';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -54,10 +56,20 @@ const useStyles = createUseStyles((theme) => ({
 		flexGrow: 1,
 	},
 	uploadBtn: {
+		...alignItems.center,
 		...displayFlex,
+		...justifyContent.center,
+		...typography.h5,
+		...width[100].percentage,
+		borderRadius: radius[3],
+		fontWeight: weight[400],
+		height: spacing[3],
+		padding: `${spacing['0_25']}px 10px`,
+	},
+	uploadIcon: {
+		padding: spacing['0_5'],
 	},
 	uploadWrapper: {
-		backgroundColor: 'pink',
 		paddingLeft: 30,
 		width: 236,
 	},
@@ -94,7 +106,13 @@ const Header = () => {
 			</div>
 			<div className={classes.uploadWrapper}>
 				<Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'>
-					<Button className={classes.uploadBtn}>upload</Button>
+					<Button className={classes.uploadBtn}>
+						<FontAwesomeIcon
+							className={classes.uploadIcon}
+							icon={faCamera}
+						/>
+						Upload header image
+					</Button>
 				</Tooltip>
 			</div>
 		</div>

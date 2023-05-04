@@ -83,11 +83,11 @@ const useStyles = createUseStyles((theme) => ({
 const RightHeader = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { toggleModal, user } = useAuth();
+	const { toggleModal, currentUser } = useAuth();
 
 	return (
 		<div className={classes.container}>
-			{user ? (
+			{currentUser ? (
 				<div className={classes.proWrapper}>
 					<Link className={classes.proLink}>Try Go+</Link>
 					<Link className={classes.proLink}>Try Next Pro</Link>
@@ -116,7 +116,7 @@ const RightHeader = () => {
 					Upload
 				</Link>
 			</div>
-			{user && (
+			{currentUser && (
 				<>
 					<div className={classes.userDropdownWrapper}>
 						<UserDropdown />
