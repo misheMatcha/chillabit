@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: %i[create index]
+  before_action :authorized, only: %i[update]
 
   def create
     @user = User.create(user_params)
@@ -27,7 +27,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     @user = User.friendly.find(params[:id])
-    return render json: @user if @user && @user.update(user_params)
+    return render json: @user if @user && @user.update(user_params.compact_blank)
 
     render json: @user.errors, status: :unprocessable_entity
   end

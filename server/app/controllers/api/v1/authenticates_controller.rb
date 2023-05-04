@@ -1,6 +1,4 @@
 class Api::V1::AuthenticatesController < ApplicationController
-  skip_before_action :authorized, only: %i[create handle]
-
   def create
     @user = User.find_by(email: authenticate_params[:email])
     if @user && @user.authenticate(authenticate_params[:password])

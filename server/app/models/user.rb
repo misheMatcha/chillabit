@@ -10,13 +10,9 @@ class User < ApplicationRecord
                                    message: "Sorry, but you don't meet Chillabit's minimum age requirements", allow_blank: true
   validates :age, presence: { message: 'Enter your age.' }
   validates :gender, presence: { message: 'Please indicate your gender.' }
-  validates :password, length: { minimum: 8 }
+  validates :password, length: { minimum: 8 }, on: :create
 
   before_validation :generate_username, :generate_profile_url
-
-  def should_generate_new_friendly_id?
-    url_changed?
-  end
 
   private
 
@@ -28,5 +24,9 @@ class User < ApplicationRecord
 
   def generate_profile_url
     self.url = url.blank? ? username.parameterize : url.parameterize
+  end
+
+  def should_generate_new_friendly_id?
+    url_changed?
   end
 end

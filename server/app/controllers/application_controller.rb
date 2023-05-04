@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::API
-  before_action :authorized
-
   def encode_token(payload)
     JWT.encode(payload, ENV['HMAC_KEY'], 'HS256')
   end
