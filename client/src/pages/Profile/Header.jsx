@@ -11,16 +11,37 @@ import useCurrentPath from '../../hooks/useCurrentPath';
 import axios from '../../utils/axios';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, justifyContent, radius, spacing, typography, weight, width } =
-	styles;
+const {
+	alignItems,
+	displayFlex,
+	height,
+	justifyContent,
+	radius,
+	spacing,
+	typography,
+	weight,
+	width,
+} = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	avatar: {
-		backgroundImage: 'linear-gradient(135deg,#8e8485,#70929c)',
+		backgroundImage: ({ avatar }) =>
+			avatar ? `url(${avatar})` : 'linear-gradient(135deg,#8e8485,#70929c)',
 		borderRadius: '50%',
 		height: 200,
 		marginRight: 30,
 		width: 200,
+	},
+	avatarUpload: {
+		'&:hover': {
+			opacity: 1,
+		},
+		...alignItems.flexEnd,
+		...displayFlex,
+		...height[100].percentage,
+		...justifyContent.center,
+		opacity: 0,
+		paddingBottom: `${spacing['1_5']}%`,
 	},
 	container: {
 		...displayFlex,
@@ -70,10 +91,10 @@ const useStyles = createUseStyles((theme) => ({
 		color: '#333',
 		fontWeight: weight[400],
 		height: spacing[3],
-		padding: `${spacing['0_25']}px 10px`,
+		padding: `${spacing['0_25']}px ${spacing['0_5']}px`,
 	},
 	uploadIcon: {
-		padding: spacing['0_5'],
+		padding: spacing['0_7'],
 	},
 	uploadWrapper: {
 		paddingLeft: 30,
@@ -92,8 +113,8 @@ const Header = () => {
 	const { currentUser, token } = useAuth();
 	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState({});
-	const { header_bg, username } = user;
-	const classes = useStyles({ header_bg, theme });
+	const { avatar, header_bg, username } = user;
+	const classes = useStyles({ avatar, header_bg, theme });
 
 	useEffect(() => {
 		// need to add timeout
@@ -127,7 +148,7 @@ const Header = () => {
 	// - hoverable featured profiles
 
 	// add async loading later
-	const uploadAction = (file) => {
+	const uploadAction = (file, type = 'header_bg' || 'avatar') => {
 		const config = {
 			headers: {
 				authorization: `Bearer ${token}`,
@@ -136,7 +157,7 @@ const Header = () => {
 		};
 
 		axios
-			.put(`/users/${userIdentifier}`, { user: { header_bg: file } }, config)
+			.put(`/users/${userIdentifier}`, { user: { [`${type}`]: file } }, config)
 			.then((res) => {
 				setUser(res.data);
 			})
@@ -147,7 +168,24 @@ const Header = () => {
 		<></>
 	) : (
 		<div className={classes.container}>
-			<div className={classes.avatar} />
+			<div className={classes.avatar}>
+				{currentUser && userIdentifier === currentUser.url && (
+					<div className={classes.avatarUpload}>
+						<Upload
+							action={(file) => uploadAction(file, 'avatar')}
+							showUploadList={false}
+						>
+							<Button className={classes.uploadBtn}>
+								<FontAwesomeIcon
+									className={classes.uploadIcon}
+									icon={faCamera}
+								/>
+								{avatar ? 'Update' : 'Upload'} image
+							</Button>
+						</Upload>
+					</div>
+				)}
+			</div>
 			<div className={classes.contentWrapper}>
 				<div className={classes.content}>
 					<div className={classes.username}>{username}</div>
@@ -160,8 +198,7 @@ const Header = () => {
 				<div className={classes.uploadWrapper}>
 					<Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'>
 						<Upload
-							action={uploadAction}
-							name={`${userIdentifier}`}
+							action={(file) => uploadAction(file, 'header_bg')}
 							showUploadList={false}
 						>
 							<Button className={classes.uploadBtn}>

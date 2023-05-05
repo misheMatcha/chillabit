@@ -15,6 +15,7 @@ class User < ApplicationRecord
   before_validation :generate_username, :generate_profile_url
 
   has_one_attached :header_bg
+  has_one_attached :avatar
 
   private
 
