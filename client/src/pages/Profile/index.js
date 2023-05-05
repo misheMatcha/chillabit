@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Outlet } from 'react-router';
 import Header from './Header';
 import Sidebar from '../../components/Sidebar';
-import useCurrentPath from '../../hooks/useCurrentPath';
 import { styles } from '../../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	radius,
-	spacing,
-	typography,
-	weight,
-	width,
-} = styles;
+const { displayFlex, height } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {},
@@ -27,6 +15,8 @@ const useStyles = createUseStyles((theme) => ({
 			flexGrow: 1,
 		},
 		...displayFlex,
+		...height[100].percentage,
+		backgroundColor: theme.background.surface,
 		padding: '0 30px',
 	},
 }));
@@ -34,11 +24,6 @@ const useStyles = createUseStyles((theme) => ({
 const Profile = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { fullPath, userIdentifier } = useCurrentPath();
-	const [user, setUser] = useState(null);
-	const [loading, setLoading] = useState(true);
-
-	useEffect(() => {});
 
 	return (
 		<div className={classes.container}>

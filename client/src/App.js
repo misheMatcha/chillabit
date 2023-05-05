@@ -32,7 +32,7 @@ const App = () => {
 						>
 							{/* added for testing outlet */}
 							<Route
-								path='discover'
+								path=''
 								element={<Discover />}
 							/>
 						</Route>

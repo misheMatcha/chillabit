@@ -3,22 +3,15 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import Tooltip from 'antd/lib/tooltip';
+import isEmpty from 'lodash/isEmpty';
 import { createUseStyles, useTheme } from 'react-jss';
+import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
+import axios from '../../utils/axios';
 import { styles } from '../../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	radius,
-	spacing,
-	typography,
-	weight,
-	width,
-} = styles;
+const { alignItems, displayFlex, justifyContent, radius, spacing, typography, weight, width } =
+	styles;
 
 const useStyles = createUseStyles((theme) => ({
 	avatar: {
@@ -83,25 +76,55 @@ const useStyles = createUseStyles((theme) => ({
 const Header = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { fullPath, userIdentifier } = useCurrentPath();
-	const [user, setUser] = useState(null);
+	const { userIdentifier } = useCurrentPath();
+	const { currentUser } = useAuth();
 	const [loading, setLoading] = useState(true);
+	const [user, setUser] = useState({});
 
-	useEffect(() => {});
+	useEffect(() => {
+		// need to add timeout
+		const fetchUser = async () => {
+			try {
+				const response = await axios.get(`/users/${userIdentifier}`);
+				setUser(response.data);
+			} catch (err) {
+				console.log(err.response.data);
+			}
+		};
+
+		if (loading) {
+			if (isEmpty(user)) {
+				if (currentUser && currentUser.url === userIdentifier) {
+					setUser(currentUser);
+					setLoading(false);
+				} else {
+					fetchUser();
+					setLoading(false);
+				}
+			}
+		}
+
+		return () => {};
+	}, [currentUser, loading, user, userIdentifier]);
 
 	// Future features:
 	// - verification check mark
 	// - avatar modal
 	// - hoverable featured profiles
 
-	return (
+	const { username } = user;
+
+	return loading ? (
+		<></>
+	) : (
 		<div className={classes.container}>
 			<div className={classes.avatar} />
 			<div className={classes.contentWrapper}>
 				<div className={classes.content}>
-					<div className={classes.username}>Purrple Cat</div>
-					<div>This is Hiderway</div>
-					<div>Boston</div>
+					<div className={classes.username}>{username}</div>
+					{/* need to add fname + lname */}
+					{/* <div>This is Hiderway</div>
+					<div>Boston</div> */}
 				</div>
 			</div>
 			<div className={classes.uploadWrapper}>
