@@ -24,7 +24,11 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	container: {
 		...displayFlex,
-		background: 'linear-gradient(315deg, rgb(221, 201, 187) 0%, rgb(108, 89, 78) 100%)',
+		backgroundImage: ({ header_bg }) =>
+			header_bg
+				? `url(${header_bg})`
+				: 'linear-gradient(315deg, rgb(221, 201, 187) 0%, rgb(108, 89, 78) 100%)',
+		backgroundSize: 'cover',
 		height: 260,
 		padding: 30,
 	},
@@ -50,12 +54,20 @@ const useStyles = createUseStyles((theme) => ({
 		flexGrow: 1,
 	},
 	uploadBtn: {
+		'&:hover': {
+			backgroundColor: theme.color.white,
+			borderColor: 'rgba(0,0,0,.3) !important',
+			color: '#333 !important',
+		},
 		...alignItems.center,
 		...displayFlex,
 		...justifyContent.center,
 		...typography.h5,
 		...width[100].percentage,
+		backgroundColor: 'hsla(0,0%,100%,.8)',
+		border: '1px solid rgba(0,0,0,.1)',
 		borderRadius: radius[3],
+		color: '#333',
 		fontWeight: weight[400],
 		height: spacing[3],
 		padding: `${spacing['0_25']}px 10px`,
@@ -76,11 +88,12 @@ const useStyles = createUseStyles((theme) => ({
 
 const Header = () => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
 	const { userIdentifier } = useCurrentPath();
 	const { currentUser, token } = useAuth();
 	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState({});
+	const { header_bg, username } = user;
+	const classes = useStyles({ header_bg, theme });
 
 	useEffect(() => {
 		// need to add timeout
@@ -113,9 +126,7 @@ const Header = () => {
 	// - avatar modal
 	// - hoverable featured profiles
 
-	const { username } = user;
-
-	// setting up api call for uploading
+	// add async loading later
 	const uploadAction = (file) => {
 		const config = {
 			headers: {
@@ -127,7 +138,7 @@ const Header = () => {
 		axios
 			.put(`/users/${userIdentifier}`, { user: { header_bg: file } }, config)
 			.then((res) => {
-				console.log(res.data);
+				setUser(res.data);
 			})
 			.catch((err) => err.response.data);
 	};
@@ -145,22 +156,25 @@ const Header = () => {
 					<div>Boston</div> */}
 				</div>
 			</div>
-			<div className={classes.uploadWrapper}>
-				{/* <Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'> */}
-				<Upload
-					action={uploadAction}
-					name={`${userIdentifier}`}
-				>
-					<Button className={classes.uploadBtn}>
-						<FontAwesomeIcon
-							className={classes.uploadIcon}
-							icon={faCamera}
-						/>
-						Upload header image
-					</Button>
-				</Upload>
-				{/* </Tooltip> */}
-			</div>
+			{currentUser && userIdentifier === currentUser.url && (
+				<div className={classes.uploadWrapper}>
+					<Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'>
+						<Upload
+							action={uploadAction}
+							name={`${userIdentifier}`}
+							showUploadList={false}
+						>
+							<Button className={classes.uploadBtn}>
+								<FontAwesomeIcon
+									className={classes.uploadIcon}
+									icon={faCamera}
+								/>
+								Upload header image
+							</Button>
+						</Upload>
+					</Tooltip>
+				</div>
+			)}
 		</div>
 	);
 };
