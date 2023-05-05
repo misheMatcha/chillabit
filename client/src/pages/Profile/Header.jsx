@@ -3,6 +3,7 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import Tooltip from 'antd/lib/tooltip';
+import Upload from 'antd/lib/upload';
 import isEmpty from 'lodash/isEmpty';
 import { createUseStyles, useTheme } from 'react-jss';
 import useAuth from '../../hooks/useAuth';
@@ -77,7 +78,7 @@ const Header = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { userIdentifier } = useCurrentPath();
-	const { currentUser } = useAuth();
+	const { currentUser, token } = useAuth();
 	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState({});
 
@@ -114,6 +115,23 @@ const Header = () => {
 
 	const { username } = user;
 
+	// setting up api call for uploading
+	const uploadAction = (file) => {
+		const config = {
+			headers: {
+				authorization: `Bearer ${token}`,
+				'content-type': 'multipart/form-data',
+			},
+		};
+
+		axios
+			.put(`/users/${userIdentifier}`, { user: { avatar: file } }, config)
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => err.response.data);
+	};
+
 	return loading ? (
 		<></>
 	) : (
@@ -128,7 +146,11 @@ const Header = () => {
 				</div>
 			</div>
 			<div className={classes.uploadWrapper}>
-				<Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'>
+				{/* <Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'> */}
+				<Upload
+					action={uploadAction}
+					name={`${userIdentifier}`}
+				>
 					<Button className={classes.uploadBtn}>
 						<FontAwesomeIcon
 							className={classes.uploadIcon}
@@ -136,7 +158,8 @@ const Header = () => {
 						/>
 						Upload header image
 					</Button>
-				</Tooltip>
+				</Upload>
+				{/* </Tooltip> */}
 			</div>
 		</div>
 	);
