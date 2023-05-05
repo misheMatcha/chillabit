@@ -19,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
   def show
     @user = User.friendly.find(params[:id])
     if @user
-      render json: @user
+      render :show
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -27,14 +27,16 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     @user = User.friendly.find(params[:id])
-    return render json: @user if @user && @user.update(user_params.compact_blank)
-
-    render json: @user.errors, status: :unprocessable_entity
+    if @user.update!(user_params.compact_blank)
+      render :show
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password, :age, :gender, :url)
+    params.require(:user).permit(:email, :username, :password, :age, :gender, :url, :header_bg)
   end
 end

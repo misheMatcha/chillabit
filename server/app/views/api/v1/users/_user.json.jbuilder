@@ -1,7 +1,6 @@
 json.id @user.id
 json.email @user.email
 json.username @user.username
-json.password_digest @user.password_digest
 json.age @user.age
 json.gender @user.gender
 json.city @user.city
@@ -10,4 +9,4 @@ json.bio @user.bio
 json.url @user.url
 json.website @user.website
 json.support_url @user.support_url
-json.slug @user.slug
+json.header_bg polymorphic_url(@user.header_bg) if @user.header_bg.attached?

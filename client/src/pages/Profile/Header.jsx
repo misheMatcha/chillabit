@@ -125,7 +125,7 @@ const Header = () => {
 		};
 
 		axios
-			.put(`/users/${userIdentifier}`, { user: { avatar: file } }, config)
+			.put(`/users/${userIdentifier}`, { user: { header_bg: file } }, config)
 			.then((res) => {
 				console.log(res.data);
 			})
