@@ -20,7 +20,6 @@ const useStyles = createUseStyles((theme) => ({
 		},
 		...displayFlex,
 		...width[100].percentage,
-		backgroundColor: 'red',
 	},
 	contentWrapper: {
 		...displayFlex,

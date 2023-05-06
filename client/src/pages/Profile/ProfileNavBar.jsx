@@ -1,7 +1,17 @@
 import React from 'react';
+import {
+	faEllipsis,
+	faEnvelope,
+	faPencil,
+	faShareFromSquare,
+	faTowerCell,
+	faUserPlus,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link, NavLink } from 'react-router-dom';
+import StyledButton from '../../components/StyledButton';
 import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import { styles } from '../../utils/styles';
@@ -20,7 +30,9 @@ const {
 
 const useStyles = createUseStyles((theme) => ({
 	btnGroup: {
-		// ...displayFlex
+		...alignItems.center,
+		...displayFlex,
+		// backgroundColor: 'rebeccapurple',
 	},
 	container: {
 		...alignItems.center,
@@ -96,17 +108,38 @@ const ProfileNavBar = () => {
 				))}
 			</ul>
 			<div className={classes.btnGroup}>
-				<Link>Station</Link>
+				<Link>
+					<FontAwesomeIcon icon={faTowerCell} /> Station
+				</Link>
 				{currentUser === userIdentifier ? (
 					<>
-						<Button>Edit</Button>
+						<Button>
+							<FontAwesomeIcon icon={faPencil} /> Edit
+						</Button>
 					</>
 				) : (
 					<>
-						<Button>Follow</Button>
-						<Button>Share</Button>
-						<Button>Message</Button>
-						<Button>dropdown</Button>
+						<StyledButton
+							icon={faUserPlus}
+							label='Follow'
+						/>
+						{/* <Button>
+							<FontAwesomeIcon icon={faUserPlus} /> Follow
+						</Button> */}
+						<StyledButton
+							icon={faShareFromSquare}
+							label='Share'
+							special
+						/>
+						{/* <Button>
+							<FontAwesomeIcon icon={faShareFromSquare} /> Share
+						</Button> */}
+						<Button>
+							<FontAwesomeIcon icon={faEnvelope} />
+						</Button>
+						<Button>
+							<FontAwesomeIcon icon={faEllipsis} />
+						</Button>
 					</>
 				)}
 			</div>
