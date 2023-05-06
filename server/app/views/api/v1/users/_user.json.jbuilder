@@ -3,10 +3,12 @@ json.email @user.email
 json.username @user.username
 json.fname @user.fname
 json.lname @user.lname
+json.fullname @user.fname && @user.lname ? @user.fname + ' ' + @user.lname : @user.fname ? @user.fname : @user.lname
 json.age @user.age
 json.gender @user.gender
 json.city @user.city
 json.country @user.country
+json.full_location @user.city && @user.country ? @user.city + ', ' + @user.country : @user.city ? @user.city : @user.country
 json.bio @user.bio
 json.url @user.url
 json.website @user.website

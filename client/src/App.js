@@ -35,6 +35,26 @@ const App = () => {
 								path=''
 								element={<Discover />}
 							/>
+							<Route
+								path='popular-tracks'
+								element={<Discover />}
+							/>
+							<Route
+								path='tracks'
+								element={<Discover />}
+							/>
+							<Route
+								path='albums'
+								element={<Discover />}
+							/>
+							<Route
+								path='sets'
+								element={<Discover />}
+							/>
+							<Route
+								path='reposts'
+								element={<Discover />}
+							/>
 						</Route>
 					</Route>
 
