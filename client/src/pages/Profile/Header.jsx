@@ -108,13 +108,27 @@ const useStyles = createUseStyles((theme) => ({
 }));
 
 const Header = () => {
-	const theme = useTheme();
 	const { userIdentifier } = useCurrentPath();
 	const { currentUser, token } = useAuth();
+	const theme = useTheme();
+
+	const [fullName, setFullName] = useState(null);
+	const [userLocation, setFullLocation] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState({});
+
 	const { avatar, header_bg, username } = user;
 	const classes = useStyles({ avatar, header_bg, theme });
+
+	const getNameOrLocationString = (str1, str2, hasComma = false) => {
+		if (isEmpty(str1) && isEmpty(str2)) return null;
+
+		if (str1 && str2) {
+			return hasComma ? `${str1}, ${str2}` : `${str1} ${str2}`;
+		}
+
+		return str1 ? str1 : str2;
+	};
 
 	useEffect(() => {
 		// need to add timeout
@@ -122,6 +136,8 @@ const Header = () => {
 			try {
 				const response = await axios.get(`/users/${userIdentifier}`);
 				setUser(response.data);
+				setFullName(getNameOrLocationString(response.data.fname, response.data.lname));
+				setFullLocation(getNameOrLocationString(response.data.city, response.data.country, true));
 			} catch (err) {
 				console.log(err.response.data);
 			}
@@ -131,16 +147,29 @@ const Header = () => {
 			if (isEmpty(user)) {
 				if (currentUser && currentUser.url === userIdentifier) {
 					setUser(currentUser);
+					setFullName(getNameOrLocationString(currentUser.fname, currentUser.lname));
+					setFullLocation(getNameOrLocationString(currentUser.city, currentUser.country, true));
 					setLoading(false);
 				} else {
 					fetchUser();
+					// const name = getFullString(user.city, user.country);
+					// setFullLocation(name);
 					setLoading(false);
 				}
 			}
 		}
 
 		return () => {};
-	}, [currentUser, loading, user, userIdentifier]);
+	}, [
+		currentUser,
+		userLocation,
+		fullName,
+		loading,
+		setFullLocation,
+		setFullName,
+		user,
+		userIdentifier,
+	]);
 
 	// Future features:
 	// - verification check mark
@@ -148,7 +177,7 @@ const Header = () => {
 	// - hoverable featured profiles
 
 	// add async loading later
-	const uploadAction = (file, type = 'header_bg' || 'avatar') => {
+	const uploadAction = async (file, type = 'header_bg' || 'avatar') => {
 		const config = {
 			headers: {
 				authorization: `Bearer ${token}`,
@@ -156,7 +185,7 @@ const Header = () => {
 			},
 		};
 
-		axios
+		await axios
 			.put(`/users/${userIdentifier}`, { user: { [`${type}`]: file } }, config)
 			.then((res) => {
 				setUser(res.data);
@@ -189,9 +218,8 @@ const Header = () => {
 			<div className={classes.contentWrapper}>
 				<div className={classes.content}>
 					<div className={classes.username}>{username}</div>
-					{/* need to add fname + lname */}
-					{/* <div>This is Hiderway</div>
-					<div>Boston</div> */}
+					{fullName && <div>{fullName}</div>}
+					{userLocation && <div>{userLocation}</div>}
 				</div>
 			</div>
 			{currentUser && userIdentifier === currentUser.url && (

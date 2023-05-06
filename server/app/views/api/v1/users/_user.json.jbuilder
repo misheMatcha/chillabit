@@ -1,6 +1,8 @@
 json.id @user.id
 json.email @user.email
 json.username @user.username
+json.fname @user.fname
+json.lname @user.lname
 json.age @user.age
 json.gender @user.gender
 json.city @user.city
