@@ -8,7 +8,6 @@ import {
 	faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link, NavLink } from 'react-router-dom';
 import StyledButton from '../../components/StyledButton';
@@ -16,35 +15,31 @@ import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import { styles } from '../../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	height,
-	justifyContent,
-	radius,
-	spacing,
-	typography,
-	weight,
-	width,
-} = styles;
+const { alignItems, displayFlex, height, justifyContent, spacing, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	btnGroup: {
-		...alignItems.center,
+		'& > :first-child': {
+			textDecoration: theme.link.textDecoration.standard,
+		},
+		'& > :not(:first-child)': {
+			marginLeft: 5,
+		},
+		...alignItems.flexStart,
 		...displayFlex,
-		// backgroundColor: 'rebeccapurple',
+		...height[100].percentage,
 	},
 	container: {
 		...alignItems.center,
 		...displayFlex,
 		...justifyContent.spaceBetween,
 		borderBottom: `1px solid ${theme.background.highlight}`,
-		height: 34 + 15,
+		height: 50,
 		paddingTop: 15,
 	},
 	navGroup: {
 		'& li': {
-			'& a': {
+			'& > a': {
 				...alignItems.center,
 				...displayFlex,
 				...height[100].percentage,
@@ -69,7 +64,6 @@ const useStyles = createUseStyles((theme) => ({
 		margin: '1px 0 0',
 		padding: 0,
 	},
-	navLink: {},
 	navLinkActive: {
 		borderBottom: `${spacing['0_25']}px solid ${theme.color.special}`,
 		color: `${theme.color.special} !important`,
@@ -98,7 +92,7 @@ const ProfileNavBar = () => {
 					<li key={i}>
 						<NavLink
 							className={({ isActive, isPending }) =>
-								isPending ? classes.navLink : isActive ? classes.navLinkActive : classes.navLink
+								isPending ? '' : isActive ? classes.navLinkActive : ''
 							}
 							to={link.path}
 						>
@@ -109,37 +103,33 @@ const ProfileNavBar = () => {
 			</ul>
 			<div className={classes.btnGroup}>
 				<Link>
-					<FontAwesomeIcon icon={faTowerCell} /> Station
+					<StyledButton
+						icon={faTowerCell}
+						label='Station'
+					/>
 				</Link>
-				{currentUser === userIdentifier ? (
-					<>
-						<Button>
-							<FontAwesomeIcon icon={faPencil} /> Edit
-						</Button>
-					</>
+				{currentUser && currentUser.url === userIdentifier ? (
+					<StyledButton
+						icon={faPencil}
+						label='Edit'
+					/>
 				) : (
 					<>
 						<StyledButton
 							icon={faUserPlus}
 							label='Follow'
 						/>
-						{/* <Button>
-							<FontAwesomeIcon icon={faUserPlus} /> Follow
-						</Button> */}
 						<StyledButton
 							icon={faShareFromSquare}
 							label='Share'
 							special
 						/>
-						{/* <Button>
-							<FontAwesomeIcon icon={faShareFromSquare} /> Share
-						</Button> */}
-						<Button>
+						<StyledButton>
 							<FontAwesomeIcon icon={faEnvelope} />
-						</Button>
-						<Button>
+						</StyledButton>
+						<StyledButton>
 							<FontAwesomeIcon icon={faEllipsis} />
-						</Button>
+						</StyledButton>
 					</>
 				)}
 			</div>

@@ -2,6 +2,7 @@ export const styles = {
 	alignItems: {
 		center: { alignItems: 'center' },
 		flexEnd: { alignItems: 'flex-end' },
+		flexStart: { alignItems: 'flex-start' },
 	},
 	displayFlex: { display: 'flex' },
 	flexDirection: {

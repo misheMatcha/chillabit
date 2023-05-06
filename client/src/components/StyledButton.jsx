@@ -5,7 +5,7 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../utils/styles';
 
-const { displayFlex } = styles;
+const { alignItems, displayFlex, radius, spacing } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	defaultStyle: {
@@ -13,20 +13,45 @@ const useStyles = createUseStyles((theme) => ({
 			borderColor: '#ccc !important',
 			color: '#333 !important',
 		},
+		...alignItems.center,
 		...displayFlex,
 		borderColor: '#e5e5e5',
+		borderRadius: radius[3],
 		color: '#333',
 		height: 26,
+		padding: `${spacing['0_25']}px 10px`,
+	},
+	icon: {
+		fontSize: spacing['1_5'],
+	},
+	label: {
+		height: '100%',
+		marginLeft: ({ icon }) => (icon ? spacing['0_5'] : 0),
 	},
 	specialStyle: {
+		'&:hover': {
+			borderColor: `${theme.button.backgroundColor.special} !important`,
+			color: `${theme.button.color.special} !important`,
+		},
 		backgroundColor: theme.button.backgroundColor.special,
 		borderColor: theme.button.backgroundColor.special,
 		color: theme.button.color.special,
 	},
-	transparentStyle: {},
+	transparentSpecialStyle: {
+		'&:hover': {
+			borderColor: `${theme.button.backgroundColor.special} !important`,
+			color: `${theme.color.special} !important`,
+		},
+		borderColor: theme.button.backgroundColor.special,
+		color: theme.color.special,
+	},
+	transparentStyle: {
+		backgroundColor: 'transparent',
+	},
 }));
 
 const StyledButton = ({
+	children,
 	label,
 	onClick,
 	styles,
@@ -35,22 +60,34 @@ const StyledButton = ({
 	transparent = false,
 }) => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
+	const classes = useStyles({ icon, theme });
 
 	return (
 		<Button
 			className={cn(
 				classes.defaultStyle,
 				{
-					[`${classes.specialStyle}`]: special,
+					[`${classes.specialStyle}`]: special && !transparent,
 					[`${classes.transparentStyle}`]: transparent,
+					[`${classes.transparentSpecialStyle}`]: special && transparent,
 				},
 				styles
 			)}
 			onClick={onClick}
 		>
-			{icon && <FontAwesomeIcon icon={icon} />}
-			{label}
+			{children ? (
+				children
+			) : (
+				<>
+					{icon && (
+						<FontAwesomeIcon
+							className={classes.icon}
+							icon={icon}
+						/>
+					)}
+					<span className={classes.label}>{label}</span>
+				</>
+			)}
 		</Button>
 	);
 };
