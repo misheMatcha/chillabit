@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
 
 	// auth form
-	const [clickedSignUp, setClickedSignUp] = useState(false);
 	const [errors, setErrors] = useState({});
 	const [isVerified, setIsVerified] = useState(false);
 	const [step, setStep] = useState(1);
@@ -18,19 +17,16 @@ export const AuthProvider = ({ children }) => {
 		const body = document.getElementsByTagName('body')[0];
 		body.style.overflow = displayModal ? null : 'hidden';
 
-		if (isNewUser) setClickedSignUp(true);
 		setDisplayModal(!displayModal);
 	};
 
 	return (
 		<AuthContext.Provider
 			value={{
-				clickedSignUp,
 				currentUser,
 				displayModal,
 				errors,
 				isVerified,
-				setClickedSignUp,
 				setCurrentUser,
 				setDisplayModal,
 				setErrors,

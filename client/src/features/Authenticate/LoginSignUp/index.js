@@ -47,7 +47,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const LoginSignUp = () => {
+const LoginSignUp = ({ newUser = false }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { toggleModal } = useAuth();
@@ -61,7 +61,7 @@ const LoginSignUp = () => {
 			>
 				<FontAwesomeIcon icon={faXmark} />
 			</Button> */}
-			<Header />
+			<Header newUser={newUser} />
 			<AuthForm />
 			<Footer />
 		</div>

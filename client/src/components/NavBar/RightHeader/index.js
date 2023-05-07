@@ -106,7 +106,7 @@ const RightHeader = () => {
 					<Button
 						className={classes.btn}
 						// onClick={() => toggleModal(true)}
-						onClick={() => openModal('auth')}
+						onClick={() => openModal('auth', { newUser: true })}
 					>
 						Create account
 					</Button>
