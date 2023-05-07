@@ -55,12 +55,12 @@ const LoginSignUp = () => {
 
 	return (
 		<div className={classes.container}>
-			<Button
+			{/* <Button
 				className={classes.close}
 				onClick={() => closeModal()}
 			>
 				<FontAwesomeIcon icon={faXmark} />
-			</Button>
+			</Button> */}
 			<Header />
 			<AuthForm />
 			<Footer />

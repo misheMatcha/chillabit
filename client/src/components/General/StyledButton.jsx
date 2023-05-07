@@ -24,9 +24,11 @@ const useStyles = createUseStyles((theme) => ({
 	icon: {
 		fontSize: spacing['1_5'],
 	},
+	iconSpacing: {
+		marginRight: spacing['0_5'],
+	},
 	label: {
 		height: '100%',
-		marginLeft: ({ icon }) => (icon ? spacing['0_5'] : 0),
 	},
 	specialStyle: {
 		'&:hover': {
@@ -81,7 +83,7 @@ const StyledButton = ({
 				<>
 					{icon && (
 						<FontAwesomeIcon
-							className={classes.icon}
+							className={cn(classes.icon, { [`${classes.iconSpacing}`]: icon && label })}
 							icon={icon}
 						/>
 					)}
