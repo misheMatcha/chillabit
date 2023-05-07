@@ -14,7 +14,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
-import StyledDropdown from '../../StyledDropdown';
+import StyledDropdown from '../../General/StyledDropdown';
 
 const { spacing, truncateText, typography, weight } = styles;
 

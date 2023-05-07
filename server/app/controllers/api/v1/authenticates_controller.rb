@@ -10,7 +10,7 @@ class Api::V1::AuthenticatesController < ApplicationController
     end
   end
 
-  def handle
+  def verify_handle
     if (authenticate_params[:email] == '' && authenticate_params[:url] == '') || (authenticate_params[:email] != '' && !URI::MailTo::EMAIL_REGEXP.match?(authenticate_params[:email]))
       return render json: { message: 'Enter a valid email address or profile url.' }, status: :unprocessable_entity
     end

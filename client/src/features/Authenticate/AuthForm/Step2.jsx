@@ -7,7 +7,7 @@ import size from 'lodash/size';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
 import FormError from './FormError';
-import StyledInput from './StyledInput';
+import StyledInput from '../../../components/General/StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
 

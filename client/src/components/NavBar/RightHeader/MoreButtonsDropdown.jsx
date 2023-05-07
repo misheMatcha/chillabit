@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
-import StyledDropdown from '../../StyledDropdown';
+import StyledDropdown from '../../General/StyledDropdown';
 
 const { displayFlex, spacing, typography, weight } = styles;
 

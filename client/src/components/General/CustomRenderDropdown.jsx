@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dropdown from 'antd/lib/dropdown';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import { styles } from '../utils/styles';
+import { styles } from '../../utils/styles';
 
 const {
 	alignItems,

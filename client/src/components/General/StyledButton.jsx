@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import { styles } from '../utils/styles';
+import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, radius, spacing } = styles;
 

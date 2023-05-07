@@ -2,7 +2,7 @@ import React from 'react';
 import Input from 'antd/lib/input';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import { styles } from '../../../utils/styles';
+import { styles } from '../../utils/styles';
 
 const { radius, spacing, typography, weight } = styles;
 

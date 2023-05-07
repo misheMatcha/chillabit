@@ -5,7 +5,7 @@ import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
 import FormError from './FormError';
-import StyledInput from './StyledInput';
+import StyledInput from '../../../components/General/StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import axios from '../../../utils/axios';
 import { styles } from '../../../utils/styles';
@@ -38,7 +38,7 @@ const Step1 = ({ form }) => {
 		}
 
 		try {
-			const response = await axios.post('/authenticates/handle', handles);
+			const response = await axios.post('/verify_handle', handles);
 			setIsVerified(response.data.isVerified);
 			form.setFieldValue('email', response.data.email);
 			setStep(2);

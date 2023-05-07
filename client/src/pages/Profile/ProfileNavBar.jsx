@@ -10,7 +10,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link, NavLink } from 'react-router-dom';
-import StyledButton from '../../components/StyledButton';
+import StyledButton from '../../components/General/StyledButton';
 import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import { styles } from '../../utils/styles';

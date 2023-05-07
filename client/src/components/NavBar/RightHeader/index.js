@@ -9,7 +9,7 @@ import NotificationsDowndrop from './NotificationsDropdown';
 import UserDropdown from './UserDropdown';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
-import CustomRenderDropdown from '../../CustomRenderDropdown';
+import CustomRenderDropdown from '../../General/CustomRenderDropdown';
 
 const { alignItems, displayFlex, justifyContent, radius, spacing, weight } = styles;
 
