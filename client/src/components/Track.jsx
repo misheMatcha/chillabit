@@ -17,6 +17,7 @@ import Dropdown from 'antd/lib/dropdown';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import useModal from '../hooks/useModal';
 import { styles } from '../utils/styles';
 
 const { displayFlex, flexDirection, height, justifyContent, truncateText, typography, width } =
@@ -154,6 +155,7 @@ const Track = ({ artist, cover, title }) => {
 	const theme = useTheme();
 	const classes = useStyles({ cover, theme });
 	const { toggleModal } = useAuth();
+	const { openModal } = useModal();
 
 	return (
 		<div className={classes.container}>
@@ -176,7 +178,8 @@ const Track = ({ artist, cover, title }) => {
 				<div className={classes.playableActions}>
 					<Button
 						className={classes.action}
-						onClick={() => toggleModal()}
+						// onClick={() => toggleModal()}
+						onClick={() => openModal('auth')}
 					>
 						<FontAwesomeIcon
 							className={classes.icon}
@@ -185,7 +188,8 @@ const Track = ({ artist, cover, title }) => {
 					</Button>
 					<Button
 						className={classes.action}
-						onClick={() => toggleModal()}
+						// onClick={() => toggleModal()}
+						onClick={() => openModal('auth')}
 					>
 						<FontAwesomeIcon
 							className={classes.icon}

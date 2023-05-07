@@ -46,7 +46,7 @@ const AuthForm = () => {
 				setClickedSignUp(false);
 			}
 		};
-	});
+	}, []);
 
 	const navigate = useNavigate();
 	const location = useLocation();

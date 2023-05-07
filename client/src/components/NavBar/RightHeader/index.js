@@ -99,14 +99,14 @@ const RightHeader = () => {
 					<Button
 						className={cn(classes.btn, classes.clear)}
 						// onClick={() => toggleModal()}
-						onClick={() => openModal()}
+						onClick={() => openModal('auth')}
 					>
 						Sign in
 					</Button>
 					<Button
 						className={classes.btn}
 						// onClick={() => toggleModal(true)}
-						onClick={() => openModal()}
+						onClick={() => openModal('auth')}
 					>
 						Create account
 					</Button>

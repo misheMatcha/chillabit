@@ -6,6 +6,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import Footer from './Footer';
 import Header from './Header';
 import useAuth from '../../../hooks/useAuth';
+import useModal from '../../../hooks/useModal';
 import { styles } from '../../../utils/styles';
 import AuthForm from '../AuthForm/index';
 
@@ -50,12 +51,13 @@ const LoginSignUp = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { toggleModal } = useAuth();
+	const { closeModal } = useModal();
 
 	return (
 		<div className={classes.container}>
 			<Button
 				className={classes.close}
-				onClick={() => toggleModal()}
+				onClick={() => closeModal()}
 			>
 				<FontAwesomeIcon icon={faXmark} />
 			</Button>

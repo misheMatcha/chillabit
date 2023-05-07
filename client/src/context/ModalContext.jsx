@@ -1,23 +1,30 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Modal from '../components/UI/Modal';
+import LoginSignUp from '../features/Authenticate/LoginSignUp';
 
 const ModalContext = createContext({});
 
 export const ModalProvider = ({ children }) => {
 	const [modal, setModal] = useState();
 	const [modalConfig, setModalConfig] = useState({});
+	const body = document.getElementsByTagName('body')[0];
 
-	const openModal = (content) => {
-		console.log('open');
-		setModal(content);
+	const openModal = (content, contentConfig, modalConfigOptions) => {
+		if (content === 'auth') {
+			setModal(<LoginSignUp {...contentConfig} />);
+		}
+		setModalConfig(modalConfigOptions);
+		body.style.overflow = 'hidden';
 	};
 
 	const closeModal = () => {
-		console.log('close');
 		setModal(null);
 		setModalConfig({});
+		body.style.overflow = null;
 	};
+
+	useEffect(() => {}, [modal, modalConfig]);
 
 	return (
 		<ModalContext.Provider
