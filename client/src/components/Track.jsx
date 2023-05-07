@@ -19,16 +19,8 @@ import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { styles } from '../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	truncateText,
-	typography,
-	width,
-} = styles;
+const { displayFlex, flexDirection, height, justifyContent, truncateText, typography, width } =
+	styles;
 
 const COVER_SIZE = 180;
 
@@ -61,7 +53,7 @@ const useStyles = createUseStyles((theme, cover) => ({
 	},
 	cover: {
 		'&:hover': {
-			'& $playHover, $playableActions': {
+			'& $playHover, $playableActions, $playWrapper': {
 				opacity: 1,
 			},
 		},
@@ -97,10 +89,10 @@ const useStyles = createUseStyles((theme, cover) => ({
 		opacity: 0,
 	},
 	playWrapper: {
-		...alignItems.flexEnd,
-		...displayFlex,
-		...justifyContent.center,
-		...width[100].percentage,
+		margin: 'auto',
+		opacity: 0,
+		position: 'relative',
+		top: COVER_SIZE - 114,
 	},
 	playableActions: {
 		height: 22,
@@ -166,19 +158,19 @@ const Track = ({ artist, cover, title }) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.cover}>
+				<div className={classes.playWrapper}>
+					<Link>
+						<FontAwesomeIcon
+							onClick={() => console.log('plays song')}
+							className={classes.play}
+							icon={faCirclePlay}
+						/>
+					</Link>
+				</div>
 				<Link
 					to='/home'
 					className={classes.playHover}
 				>
-					<div className={classes.playWrapper}>
-						<Link>
-							<FontAwesomeIcon
-								onClick={() => console.log('plays song')}
-								className={classes.play}
-								icon={faCirclePlay}
-							/>
-						</Link>
-					</div>
 					<div className={classes.playableActionsGradient} />
 				</Link>
 				<div className={classes.playableActions}>
