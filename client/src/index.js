@@ -6,6 +6,7 @@ import { ThemeProvider } from 'react-jss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import { AuthProvider } from './context/AuthContext';
+import { ModalProvider } from './context/ModalContext';
 import reportWebVitals from './reportWebVitals';
 import { light } from './utils/themes';
 
@@ -15,12 +16,14 @@ root.render(
 		<ThemeProvider theme={light}>
 			<BrowserRouter>
 				<AuthProvider>
-					<Routes>
-						<Route
-							path='/*'
-							element={<App />}
-						/>
-					</Routes>
+					<ModalProvider>
+						<Routes>
+							<Route
+								path='/*'
+								element={<App />}
+							/>
+						</Routes>
+					</ModalProvider>
 				</AuthProvider>
 			</BrowserRouter>
 		</ThemeProvider>

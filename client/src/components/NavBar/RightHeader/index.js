@@ -8,6 +8,7 @@ import MoreButtonsDropdown from './MoreButtonsDropdown';
 import NotificationsDowndrop from './NotificationsDropdown';
 import UserDropdown from './UserDropdown';
 import useAuth from '../../../hooks/useAuth';
+import useModal from '../../../hooks/useModal';
 import { styles } from '../../../utils/styles';
 import CustomRenderDropdown from '../../General/CustomRenderDropdown';
 
@@ -84,6 +85,7 @@ const RightHeader = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { toggleModal, currentUser } = useAuth();
+	const { openModal } = useModal();
 
 	return (
 		<div className={classes.container}>
@@ -96,13 +98,15 @@ const RightHeader = () => {
 				<div className={classes.loginMenu}>
 					<Button
 						className={cn(classes.btn, classes.clear)}
-						onClick={() => toggleModal()}
+						// onClick={() => toggleModal()}
+						onClick={() => openModal()}
 					>
 						Sign in
 					</Button>
 					<Button
 						className={classes.btn}
-						onClick={() => toggleModal(true)}
+						// onClick={() => toggleModal(true)}
+						onClick={() => openModal()}
 					>
 						Create account
 					</Button>
