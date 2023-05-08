@@ -6,7 +6,6 @@ import Form from 'antd/lib/form';
 import size from 'lodash/size';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
-import FormError from './FormError';
 import StyledInput from '../../../components/General/StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
@@ -74,12 +73,11 @@ const Step2 = ({ form }) => {
 					name='password'
 				>
 					<StyledInput
-						isInvalid={errors.message}
+						error={errors.message}
 						placeholder='Your password'
 						type='password'
 					/>
 				</Form.Item>
-				{errors.message && <FormError>{errors.message}</FormError>}
 			</div>
 			<Form.Item className={classes.spacing}>
 				{isVerified ? (

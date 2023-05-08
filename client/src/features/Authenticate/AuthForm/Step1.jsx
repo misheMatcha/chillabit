@@ -4,7 +4,6 @@ import * as cn from 'classnames';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
-import FormError from './FormError';
 import StyledInput from '../../../components/General/StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import axios from '../../../utils/axios';
@@ -56,11 +55,10 @@ const Step1 = ({ form }) => {
 					name='email'
 				>
 					<StyledInput
-						isInvalid={errors.message}
+						error={errors.message}
 						placeholder='Your email address or profile URL'
 					/>
 				</Form.Item>
-				{errors.message && <FormError>{errors.message}</FormError>}
 			</div>
 			<FormButton onClick={verifyHandle}>Continue</FormButton>
 		</div>

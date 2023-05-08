@@ -5,7 +5,6 @@ import Select from 'antd/lib/select';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
-import FormError from './FormError';
 import StyledInput from '../../../components/General/StyledInput';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
@@ -34,6 +33,12 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	customInput: {
 		paddingTop: spacing[1],
+	},
+	error: {
+		...typography.captions,
+		color: theme.color.error,
+		marginBottom: spacing['1_5'],
+		marginTop: spacing['0_7'],
 	},
 	select: {
 		'& div': {
@@ -109,7 +114,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							<InputNumber className={classes.ageInput} />
 						</Form.Item>
 					</label>
-					{errors.age && <FormError>{errors.age}</FormError>}
+					{errors.age && <div className={classes.error}>{errors.age}</div>}
 				</div>
 				<div className={cn({ [`${classes.spacingSection}`]: !errors.gender })}>
 					<label>
@@ -134,7 +139,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 						{isCustomGender && (
 							<div className={classes.customInput}>
 								<StyledInput
-									isInvalid={errors.gender}
+									error={errors.gender}
 									maxLength={16}
 									onChange={(e) => setGender(e.target.value)}
 									placeholder='Custom gender'
@@ -142,7 +147,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							</div>
 						)}
 					</label>
-					{errors.gender && <FormError>{errors.gender}</FormError>}
+					{errors.gender && !isCustomGender && <div className={classes.error}>{errors.gender}</div>}
 				</div>
 			</div>
 			<FormButton htmlType='submit'>Continue</FormButton>

@@ -20,6 +20,12 @@ const useStyles = createUseStyles((theme) => ({
 		fontWeight: weight[400],
 		height: spacing[5],
 	},
+	error: {
+		...typography.captions,
+		color: theme.color.error,
+		marginBottom: spacing['1_5'],
+		marginTop: spacing['0_7'],
+	},
 	invalid: {
 		'&:focus, &:hover': {
 			borderColor: theme.input.borderColor.invalid,
@@ -28,29 +34,23 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const StyledInput = ({
-	isInvalid,
-	maxLength,
-	onChange,
-	onClick,
-	placeholder,
-	styles,
-	type,
-	value,
-}) => {
+const StyledInput = ({ error, maxLength, onChange, onClick, placeholder, styles, type, value }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
-		<Input
-			className={cn(classes.container, { [`${classes.invalid}`]: isInvalid }, styles)}
-			maxLength={maxLength}
-			onChange={onChange}
-			onClick={onClick}
-			placeholder={placeholder}
-			type={type}
-			value={value}
-		/>
+		<div>
+			<Input
+				className={cn(classes.container, { [`${classes.invalid}`]: error }, styles)}
+				maxLength={maxLength}
+				onChange={onChange}
+				onClick={onClick}
+				placeholder={placeholder}
+				type={type}
+				value={value}
+			/>
+			{error && <div className={classes.error}>{error}</div>}
+		</div>
 	);
 };
 
