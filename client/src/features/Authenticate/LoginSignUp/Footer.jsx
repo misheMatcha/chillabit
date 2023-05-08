@@ -34,6 +34,7 @@ const useStyles = createUseStyles((theme) => ({
 	moreInfo: {
 		...textAlign.center,
 		color: theme.color.black,
+		marginBottom: '1em',
 	},
 	passwordReset: {
 		...textAlign.center,
@@ -62,11 +63,11 @@ const Footer = () => {
 						</span>
 					</p>
 					{step === 2 && (
-						<p className={classes.moreInfo}>
+						<div className={classes.moreInfo}>
 							<div>Are you trying to sign in?</div>
 							<div>The email address that you entered was not found.</div>
 							<div>Double-check your email address.</div>
-						</p>
+						</div>
 					)}
 				</div>
 			)}

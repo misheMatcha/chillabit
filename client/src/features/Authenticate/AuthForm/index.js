@@ -7,6 +7,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import useAuth from '../../../hooks/useAuth';
+import useModal from '../../../hooks/useModal';
 import axios from '../../../utils/axios';
 
 const useStyles = createUseStyles({
@@ -35,6 +36,7 @@ const AuthForm = () => {
 		setToken,
 		setCurrentUser,
 	} = useAuth();
+	const { closeModal } = useModal();
 	const classes = useStyles(step);
 
 	useEffect(() => {
@@ -61,6 +63,7 @@ const AuthForm = () => {
 			setCurrentUser(response.data.user);
 			setToken(response.data.token);
 			setDisplayModal(false);
+			closeModal();
 			navigate(from, { replace: true });
 		} catch (err) {
 			setErrors(err.response.data);
@@ -76,6 +79,7 @@ const AuthForm = () => {
 			setCurrentUser(response.data.user);
 			setToken(response.data.token);
 			setDisplayModal(false);
+			closeModal();
 			navigate(from, { replace: true });
 		} catch (err) {
 			setErrors(err.response.data);

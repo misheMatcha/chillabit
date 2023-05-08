@@ -197,20 +197,20 @@ const Header = () => {
 			</div>
 			{currentUser && userIdentifier === currentUser.url && (
 				<div className={classes.uploadWrapper}>
-					<Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'>
-						<Upload
-							action={(file) => uploadAction(file, 'header_bg')}
-							showUploadList={false}
-						>
-							<Button className={classes.uploadBtn}>
-								<FontAwesomeIcon
-									className={classes.uploadIcon}
-									icon={faCamera}
-								/>
-								Upload header image
-							</Button>
-						</Upload>
-					</Tooltip>
+					{/* <Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'> */}
+					<Upload
+						action={(file) => uploadAction(file, 'header_bg')}
+						showUploadList={false}
+					>
+						<Button className={classes.uploadBtn}>
+							<FontAwesomeIcon
+								className={classes.uploadIcon}
+								icon={faCamera}
+							/>
+							Upload header image
+						</Button>
+					</Upload>
+					{/* </Tooltip> */}
 				</div>
 			)}
 		</div>
