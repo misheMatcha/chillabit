@@ -13,6 +13,7 @@ import { Link, NavLink } from 'react-router-dom';
 import StyledButton from '../../components/General/StyledButton';
 import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
+import useModal from '../../hooks/useModal';
 import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, height, justifyContent, spacing, weight } = styles;
@@ -68,6 +69,9 @@ const useStyles = createUseStyles((theme) => ({
 		borderBottom: `${spacing['0_25']}px solid ${theme.color.special}`,
 		color: `${theme.color.special} !important`,
 	},
+	profileModal: {
+		width: 850,
+	},
 }));
 
 const navLinkList = [
@@ -83,6 +87,7 @@ const ProfileNavBar = () => {
 	const theme = useTheme();
 	const { currentUser } = useAuth();
 	const { userIdentifier } = useCurrentPath();
+	const { openModal } = useModal();
 	const classes = useStyles({ theme });
 
 	return (
@@ -108,10 +113,12 @@ const ProfileNavBar = () => {
 						label='Station'
 					/>
 				</Link>
-				{currentUser && currentUser.url === userIdentifier ? (
+				{/* {currentUser && currentUser.url === userIdentifier ? ( */}
+				{true ? (
 					<StyledButton
 						icon={faPencil}
 						label='Edit'
+						onClick={() => openModal('profile-edit', {}, { modalStyles: classes.profileModal })}
 					/>
 				) : (
 					<>

@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Modal from '../components/UI/Modal';
 import LoginSignUp from '../features/Authenticate/LoginSignUp';
+import ProfileEditForm from '../pages/Profile/Edit';
 
 const ModalContext = createContext({});
 
@@ -13,7 +14,10 @@ export const ModalProvider = ({ children }) => {
 	const openModal = (content, contentConfig, modalConfigOptions) => {
 		if (content === 'auth') {
 			setModal(<LoginSignUp {...contentConfig} />);
+		} else {
+			setModal(<ProfileEditForm {...contentConfig} />);
 		}
+
 		setModalConfig(modalConfigOptions);
 		body.style.overflow = 'hidden';
 	};
@@ -23,8 +27,6 @@ export const ModalProvider = ({ children }) => {
 		setModalConfig({});
 		body.style.overflow = null;
 	};
-
-	useEffect(() => {}, [modal, modalConfig]);
 
 	return (
 		<ModalContext.Provider
