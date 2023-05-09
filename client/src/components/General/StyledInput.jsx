@@ -41,7 +41,7 @@ const StyledInput = (props) => {
 	return (
 		<>
 			<Input
-				className={cn(classes.container, { [`${classes.invalid}`]: props.error }, styles)}
+				className={cn(classes.container, { [`${classes.invalid}`]: props.error }, props.styles)}
 				{...props}
 			/>
 			{props.error && <div className={classes.error}>{props.error}</div>}

@@ -54,6 +54,7 @@ const useStyles = createUseStyles((theme) => ({
 
 const StyledButton = ({
 	children,
+	htmlType,
 	label,
 	onClick,
 	styles,
@@ -75,6 +76,7 @@ const StyledButton = ({
 				},
 				styles
 			)}
+			htmlType={htmlType}
 			onClick={onClick}
 		>
 			{children ? (

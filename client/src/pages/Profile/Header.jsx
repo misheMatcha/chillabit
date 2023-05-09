@@ -153,7 +153,7 @@ const Header = () => {
 	const uploadAction = async (file, type = 'header_bg' || 'avatar') => {
 		const config = {
 			headers: {
-				authorization: `Bearer ${token}`,
+				authorization: token,
 				'content-type': 'multipart/form-data',
 			},
 		};

@@ -3,11 +3,14 @@ import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'antd/lib/form';
+import * as cn from 'classnames';
+import { isEmpty, omitBy } from 'lodash';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledButton from '../../components/General/StyledButton';
 import StyledInput from '../../components/General/StyledInput';
 import useAuth from '../../hooks/useAuth';
 import useModal from '../../hooks/useModal';
+import axios from '../../utils/axios';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
@@ -34,18 +37,65 @@ const useStyles = createUseStyles((theme) => ({
 		borderRadius: '50%',
 		marginRight: 18,
 	},
-	container: {},
+	container: {
+		// ...displayFlex,
+		// ...flexDirection.column,
+		// border: '1px solid blue',
+	},
+	formItem: {
+		'& .ant-row': {
+			// border: '1px solid red',
+		},
+		'& .ant-form-item-row': {
+			...flexDirection.column,
+		},
+		'& .ant-col': {
+			flex: 0,
+		},
+		'& .ant-form-item-label': {
+			'& label': {
+				'&::after': {
+					content: "''",
+				},
+				...alignItems.flexStart,
+				...displayFlex,
+				...typography.captions,
+				fontSize: 13,
+				// fontSize: spacing['1_5'],
+				height: 25,
+			},
+		},
+		'& .ant-form-item-control': {},
+		// border: '1px solid blue',
+		marginBottom: 15,
+	},
 	formBtnGroup: {
 		...displayFlex,
+	},
+	halfWidth: {
+		width: 256,
+	},
+	input: {
+		height: 26,
+		// backgroundColor: 'yellow',
 	},
 	linkGroup: {
 		...displayFlex,
 	},
 	mainWrapper: {
+		'& > div:nth-child(2)': {
+			...width[100].percentage,
+		},
 		...displayFlex,
+	},
+	required: {
+		'& .ant-form-item-label > label::after': {
+			content: "'*'",
+		},
 	},
 	rowWrapper: {
 		...displayFlex,
+		...justifyContent.spaceBetween,
 	},
 	urlWrapper: {
 		...displayFlex,
@@ -56,13 +106,38 @@ const ProfileEditForm = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [form] = Form.useForm();
-	const { currentUser } = useAuth();
+	const { currentUser, token } = useAuth();
 	const [loading, setLoading] = useState(true);
 	const { closeModal } = useModal();
+
+	const { avatar, bio, city, country, fname, lname, support_url, url, username, website } =
+		currentUser;
 
 	useEffect(() => {
 		if (currentUser) setLoading(false);
 	}, [currentUser, loading]);
+
+	const updateUser = async (values) => {
+		const config = {
+			headers: {
+				authorization: token,
+				'content-type': 'multipart/form-data',
+			},
+		};
+
+		const updatedValues = omitBy(values, (v) => isEmpty(v));
+
+		try {
+			const response = await axios.put(`users/${currentUser.url}`, { user: updatedValues }, config);
+			console.log(response.data);
+		} catch (err) {
+			console.log(err.response.data);
+		}
+	};
+
+	const handleInputChange = (e, field) => {
+		form.setFieldValue(field, e.target.value);
+	};
 
 	return loading ? (
 		<></>
@@ -70,6 +145,8 @@ const ProfileEditForm = () => {
 		<Form
 			className={classes.container}
 			form={form}
+			initialValues={currentUser}
+			onFinish={(values) => updateUser(values)}
 		>
 			<div>Edit your Profile</div>
 			<div className={classes.mainWrapper}>
@@ -80,44 +157,73 @@ const ProfileEditForm = () => {
 					/>
 				</div>
 				<div>
-					<Form.Item name='username'>
-						Display name *
-						<StyledInput defaultValue={currentUser.username} />
+					<Form.Item
+						className={cn(classes.formItem, classes.required)}
+						label='Display name'
+						name='username'
+					>
+						<StyledInput onChange={(e) => handleInputChange(e, 'username')} />
 					</Form.Item>
-					<Form.Item name='username'>
-						Profile URL *
+					<Form.Item
+						className={cn(classes.formItem, classes.required)}
+						label='Profile URL'
+						name='url'
+					>
 						<div className={classes.urlWrapper}>
 							{CHILLABIT}.com/
 							<StyledInput defaultValue={currentUser.url} />
 						</div>
 					</Form.Item>
 					<div className={classes.rowWrapper}>
-						<Form.Item name='username'>
-							First name
-							<StyledInput defaultValue={currentUser.fname} />
+						<Form.Item
+							className={cn(classes.formItem, classes.halfWidth)}
+							label='First name'
+							name='fname'
+						>
+							<StyledInput
+								onChange={(e) => handleInputChange(e, 'fname')}
+								styles={classes.input}
+							/>
 						</Form.Item>
-						<Form.Item name='username'>
-							Last name
-							<StyledInput defaultValue={currentUser.lname} />
+						<Form.Item
+							className={cn(classes.formItem, classes.halfWidth)}
+							label='Last name'
+							name='lname'
+						>
+							<StyledInput
+								onChange={(e) => handleInputChange(e, 'lname')}
+								styles={classes.input}
+							/>
 						</Form.Item>
 					</div>
 					<div className={classes.rowWrapper}>
-						<label>
-							City
-							<StyledInput defaultValue={currentUser.city} />
-						</label>
-						<label>
-							Country
-							<StyledInput defaultValue={currentUser.country} />
-						</label>
+						<Form.Item
+							className={cn(classes.formItem, classes.halfWidth)}
+							label='City'
+							name='city'
+						>
+							<StyledInput
+								onChange={(e) => handleInputChange(e, 'city')}
+								styles={classes.input}
+							/>
+						</Form.Item>
+						<Form.Item
+							className={cn(classes.formItem, classes.halfWidth)}
+							label='Country'
+							name='country'
+						>
+							<StyledInput
+								onChange={(e) => handleInputChange(e, 'country')}
+								styles={classes.input}
+							/>
+						</Form.Item>
 					</div>
-					<label>
-						Bio
-						<StyledInput defaultValue={currentUser.bio} />
-					</label>
+					<Form.Item name='bio'>
+						<StyledInput onChange={(e) => handleInputChange(e, 'bop')} />
+					</Form.Item>
 				</div>
 			</div>
-			<div>
+			{/* <div>
 				<div>
 					Your links <FontAwesomeIcon icon={faCircleQuestion} />
 				</div>
@@ -128,13 +234,16 @@ const ProfileEditForm = () => {
 						special
 					/>
 				</div>
-			</div>
+			</div> */}
 			<div className={classes.formBtnGroup}>
 				<StyledButton
 					label='Cancel'
 					onClick={closeModal}
 				/>
-				<StyledButton label='Save changes' />
+				<StyledButton
+					htmlType='submit'
+					label='Save changes'
+				/>
 			</div>
 		</Form>
 	);
