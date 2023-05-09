@@ -70,7 +70,7 @@ const useStyles = createUseStyles((theme) => ({
 		color: `${theme.color.special} !important`,
 	},
 	profileModal: {
-		padding: 25,
+		padding: 0,
 		width: 850,
 	},
 }));

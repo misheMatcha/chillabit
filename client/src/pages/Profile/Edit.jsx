@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faCamera, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
 import * as cn from 'classnames';
 import { isEmpty, omitBy } from 'lodash';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -22,8 +23,6 @@ const {
 	justifyContent,
 	radius,
 	spacing,
-	textAlign,
-	truncateText,
 	typography,
 	weight,
 	width,
@@ -31,24 +30,42 @@ const {
 
 const useStyles = createUseStyles((theme) => ({
 	avatarWrapper: {
-		height: 260,
-		minWidth: 260,
-		backgroundColor: 'blue',
+		...alignItems.flexEnd,
+		...displayFlex,
+		...justifyContent.center,
+		backgroundImage: ({ currentUser }) =>
+			currentUser.avatar ? `url(${currentUser.avatar})` : 'linear-gradient(135deg,#8e8485,#70929c)',
 		borderRadius: '50%',
-		marginRight: 18,
+		height: 260,
+		marginRight: spacing['2_25'],
+		minWidth: 260,
+		paddingBottom: spacing[4],
 	},
 	container: {
-		// ...displayFlex,
-		// ...flexDirection.column,
-		// border: '1px solid blue',
+		'& > div:not(:last-child)': {
+			padding: 25,
+		},
+		'& input, textarea': {
+			borderRadius: radius[3],
+		},
+	},
+	formBtnGroup: {
+		'& > :first-child': {
+			'&:hover': {
+				borderColor: 'transparent !important',
+			},
+			borderColor: 'transparent',
+			marginRight: 5,
+		},
+		'& > :last-child': {
+			fontWeight: weight[600],
+		},
+		...displayFlex,
+		...justifyContent.flexEnd,
+		borderTop: `1px solid ${theme.background.highlight}`,
+		padding: 25,
 	},
 	formItem: {
-		'& .ant-row': {
-			// border: '1px solid red',
-		},
-		'& .ant-form-item-row': {
-			...flexDirection.column,
-		},
 		'& .ant-col': {
 			flex: 0,
 		},
@@ -61,23 +78,24 @@ const useStyles = createUseStyles((theme) => ({
 				...displayFlex,
 				...typography.captions,
 				fontSize: 13,
-				// fontSize: spacing['1_5'],
 				height: 25,
 			},
 		},
-		'& .ant-form-item-control': {},
-		// border: '1px solid blue',
-		marginBottom: 15,
-	},
-	formBtnGroup: {
-		...displayFlex,
+		'& .ant-form-item-row': {
+			...flexDirection.column,
+		},
+		paddingBottom: 15,
 	},
 	halfWidth: {
+		'& .ant-form-item-control-input': {
+			minHeight: spacing['3_25'],
+		},
 		width: 256,
 	},
 	input: {
-		height: 26,
-		// backgroundColor: 'yellow',
+		...height[100].percentage,
+		...typography.captions,
+		fontSize: 13,
 	},
 	linkGroup: {
 		...displayFlex,
@@ -97,25 +115,50 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...justifyContent.spaceBetween,
 	},
-	urlWrapper: {
+	title: {
+		...typography.h2,
+		borderBottom: `1px solid ${theme.background.highlight}`,
+		fontSize: spacing['2_5'] + spacing['0_25'],
+		fontWeight: weight[500],
+		marginBottom: spacing[3],
+	},
+	urlEdit: {
+		...alignItems.flexEnd,
 		...displayFlex,
+		...justifyContent.spaceBetween,
+		color: '#333',
+		flexGrow: 1,
+	},
+	urlWrapper: {
+		'& input': {
+			height: spacing['3_25'],
+			padding: spacing['0_25'],
+		},
+		...alignItems.center,
+		...displayFlex,
+		color: '#999',
+		height: spacing[3_25],
+		textTransform: 'lowercase',
 	},
 }));
 
 const ProfileEditForm = () => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
 	const [form] = Form.useForm();
 	const { currentUser, token } = useAuth();
+	const classes = useStyles({ currentUser, theme });
 	const [loading, setLoading] = useState(true);
+	const [editUrl, setEditUrl] = useState(false);
+	// const [editWebsite, setEditWebsite] = useState(false);
+	// const [editSupportUrl, setEditSupportUrl] = useState(false);
 	const { closeModal } = useModal();
 
-	const { avatar, bio, city, country, fname, lname, support_url, url, username, website } =
-		currentUser;
-
 	useEffect(() => {
-		if (currentUser) setLoading(false);
-	}, [currentUser, loading]);
+		if (currentUser) {
+			setLoading(false);
+			form.setFieldValue('url', currentUser.url);
+		}
+	}, [currentUser, form, loading]);
 
 	const updateUser = async (values) => {
 		const config = {
@@ -148,7 +191,7 @@ const ProfileEditForm = () => {
 			initialValues={currentUser}
 			onFinish={(values) => updateUser(values)}
 		>
-			<div>Edit your Profile</div>
+			<div className={classes.title}>Edit your Profile</div>
 			<div className={classes.mainWrapper}>
 				<div className={classes.avatarWrapper}>
 					<StyledButton
@@ -171,7 +214,20 @@ const ProfileEditForm = () => {
 					>
 						<div className={classes.urlWrapper}>
 							{CHILLABIT}.com/
-							<StyledInput defaultValue={currentUser.url} />
+							{editUrl ? (
+								<StyledInput
+									defaultValue={currentUser.url}
+									styles={classes.input}
+								/>
+							) : (
+								<span className={classes.urlEdit}>
+									{form.getFieldValue('url')}{' '}
+									<StyledButton
+										icon={faPencil}
+										onClick={() => setEditUrl(true)}
+									/>
+								</span>
+							)}
 						</div>
 					</Form.Item>
 					<div className={classes.rowWrapper}>
@@ -218,8 +274,20 @@ const ProfileEditForm = () => {
 							/>
 						</Form.Item>
 					</div>
-					<Form.Item name='bio'>
-						<StyledInput onChange={(e) => handleInputChange(e, 'bop')} />
+					<Form.Item
+						className={classes.formItem}
+						label='Bio'
+						name='bio'
+					>
+						<Input.TextArea
+							name='bio'
+							placeholder='Tell the world a little bit about yourself. The shorter the better.'
+							rows={3}
+						/>
+						{/* <StyledInput
+							onChange={(e) => handleInputChange(e, 'bio')}
+							placeholder='Tell the world a little bit about yourself. The shorter the better.'
+						/> */}
 					</Form.Item>
 				</div>
 			</div>
@@ -243,6 +311,7 @@ const ProfileEditForm = () => {
 				<StyledButton
 					htmlType='submit'
 					label='Save changes'
+					special
 				/>
 			</div>
 		</Form>
