@@ -34,23 +34,18 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const StyledInput = ({ error, maxLength, onChange, onClick, placeholder, styles, type, value }) => {
+const StyledInput = (props) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
-		<div>
+		<>
 			<Input
-				className={cn(classes.container, { [`${classes.invalid}`]: error }, styles)}
-				maxLength={maxLength}
-				onChange={onChange}
-				onClick={onClick}
-				placeholder={placeholder}
-				type={type}
-				value={value}
+				className={cn(classes.container, { [`${classes.invalid}`]: props.error }, styles)}
+				{...props}
 			/>
-			{error && <div className={classes.error}>{error}</div>}
-		</div>
+			{props.error && <div className={classes.error}>{props.error}</div>}
+		</>
 	);
 };
 
