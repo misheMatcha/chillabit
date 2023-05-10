@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
-import { faCamera, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faCamera, faDollarSign, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import * as cn from 'classnames';
 import { isEmpty, omitBy } from 'lodash';
 import { createUseStyles, useTheme } from 'react-jss';
+import { Link } from 'react-router-dom';
 import StyledButton from '../../components/General/StyledButton';
 import StyledInput from '../../components/General/StyledInput';
 import useAuth from '../../hooks/useAuth';
@@ -93,12 +94,32 @@ const useStyles = createUseStyles((theme) => ({
 		width: 256,
 	},
 	input: {
-		...height[100].percentage,
 		...typography.captions,
 		fontSize: 13,
+		height: spacing['3_25'],
+		padding: `${spacing['0_25']}px 7px`,
+	},
+	linkContact: {
+		'& > input:nth-child(2)': {
+			width: 485,
+		},
+		'& > input:nth-child(3)': {
+			width: 243,
+		},
 	},
 	linkGroup: {
 		...displayFlex,
+	},
+	linkList: {
+		'& li': {
+			...displayFlex,
+			...justifyContent.spaceBetween,
+		},
+		margin: 0,
+		padding: 0,
+	},
+	linkWrapper: {
+		border: '1px solid black',
 	},
 	mainWrapper: {
 		'& > div:nth-child(2)': {
@@ -149,14 +170,14 @@ const ProfileEditForm = () => {
 	const classes = useStyles({ currentUser, theme });
 	const [loading, setLoading] = useState(true);
 	const [editUrl, setEditUrl] = useState(false);
-	// const [editWebsite, setEditWebsite] = useState(false);
-	// const [editSupportUrl, setEditSupportUrl] = useState(false);
+	const [linkList, setLinkList] = useState([{ type: 'contact' }, { type: 'support' }]);
 	const { closeModal } = useModal();
 
 	useEffect(() => {
 		if (currentUser) {
-			setLoading(false);
 			form.setFieldValue('url', currentUser.url);
+			// setLinkList(currentUser.links);
+			setLoading(false);
 		}
 	}, [currentUser, form, loading]);
 
@@ -168,6 +189,7 @@ const ProfileEditForm = () => {
 			},
 		};
 
+		form.setFieldValue('links', linkList);
 		const updatedValues = omitBy(values, (v) => isEmpty(v));
 
 		try {
@@ -284,25 +306,65 @@ const ProfileEditForm = () => {
 							placeholder='Tell the world a little bit about yourself. The shorter the better.'
 							rows={3}
 						/>
-						{/* <StyledInput
-							onChange={(e) => handleInputChange(e, 'bio')}
-							placeholder='Tell the world a little bit about yourself. The shorter the better.'
-						/> */}
 					</Form.Item>
 				</div>
 			</div>
-			{/* <div>
+			<div className={classes.linkWrapper}>
 				<div>
 					Your links <FontAwesomeIcon icon={faCircleQuestion} />
 				</div>
+				<ul className={classes.linkList}>
+					{linkList.map((link, i) =>
+						link.type === 'contact' ? (
+							<li
+								className={classes.linkContact}
+								key={i}
+							>
+								<FontAwesomeIcon icon={faTrash} />
+								<StyledInput
+									placeholder='Web or email address'
+									styles={classes.input}
+								/>
+								<StyledInput
+									placeholder='Short title'
+									styles={classes.input}
+								/>
+								<StyledButton icon={faTrash} />
+							</li>
+						) : (
+							<li
+								className={classes.linkItem}
+								key={i}
+							>
+								<FontAwesomeIcon icon={faDollarSign} />
+								<div>
+									<StyledInput
+										placeholder='e.g.: http://paypal.me/username'
+										styles={classes.input}
+									/>
+									<div>
+										Supported platforms: PayPal, Cash app, Venmo, Bandcamp, Shopify, Kickstarter,
+										Patreon, and Gofundme. <Link>Learn more</Link>
+									</div>
+								</div>
+								<StyledButton icon={faCircleQuestion} />
+								<StyledButton icon={faTrash} />
+							</li>
+						)
+					)}
+				</ul>
 				<div className={classes.linkGroup}>
-					<StyledButton label='Add link' />
+					<StyledButton
+						label='Add link'
+						onClick={() => setLinkList([...linkList, { title: '', type: 'contact', url: '' }])}
+					/>
 					<StyledButton
 						label='Add support link'
+						onClick={() => setLinkList([...linkList, { type: 'support', url: '' }])}
 						special
 					/>
 				</div>
-			</div> */}
+			</div>
 			<div className={classes.formBtnGroup}>
 				<StyledButton
 					label='Cancel'
