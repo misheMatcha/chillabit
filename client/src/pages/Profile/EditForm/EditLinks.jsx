@@ -13,7 +13,9 @@ import { styles } from '../../../utils/styles';
 const { alignItems, displayFlex, justifyContent, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	container: {},
+	container: {
+		padding: '0 25px',
+	},
 	formBtns: {
 		'& > :first-child': {
 			marginRight: spacing['0_5'],
@@ -34,15 +36,20 @@ const useStyles = createUseStyles((theme) => ({
 		height: spacing[2],
 		marginRight: 10,
 		marginTop: spacing['0_5'],
-		width: spacing[2],
+		minWidth: spacing[2],
 	},
-	inputContact: {},
+	inputContactTitle: {
+		width: 242,
+	},
+	inputContactUrl: {
+		width: 484,
+	},
 	inputContent: {
 		flexGrow: 1,
 	},
 	inputwrapper: {
 		'& > button': {
-			marginRight: 10,
+			marginRight: spacing[1],
 		},
 		'& > div': {
 			marginRight: spacing[1],
@@ -51,12 +58,25 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	link: {
 		...displayFlex,
-		// border: '1px solid black',
 		marginBottom: spacing['2_25'],
 		padding: '10px 0',
 	},
 	linkList: {
 		margin: `${spacing['2_25']}px 0`,
+	},
+	moreInfoBtn: {
+		'& > span': {
+			'& > svg': {
+				fontSize: 16,
+			},
+			...displayFlex,
+		},
+		'&:hover': {
+			borderColor: `${theme.color.transparent} !important`,
+		},
+		borderColor: theme.color.transparent,
+		margin: 0,
+		padding: 0,
 	},
 	supportIcon: {
 		backgroundColor: '#38d !important',
@@ -69,7 +89,12 @@ const useStyles = createUseStyles((theme) => ({
 		marginTop: spacing['0_7'],
 	},
 	title: {
+		'& > svg': {
+			fontSize: spacing[2],
+			marginLeft: spacing['0_5'],
+		},
 		borderBottom: `1px solid ${theme.background.highlight}`,
+		color: '#999',
 		paddingBottom: spacing['0_7'],
 	},
 }));
@@ -112,7 +137,9 @@ const EditLinks = () => {
 									<div className={classes.inputContent}>
 										<div className={classes.inputwrapper}>
 											<StyledFormItem
-												formStyles={classes.formItem}
+												formStyles={cn(classes.formItem, {
+													[`${classes.inputContactUrl}`]: !isSupportLink,
+												})}
 												inputStyles={classes.input}
 												name={[i, 'url']}
 												placeholder={
@@ -124,13 +151,20 @@ const EditLinks = () => {
 											/>
 											{!isSupportLink && (
 												<StyledFormItem
-													formStyles={classes.formItem}
+													formStyles={cn(classes.formItem, {
+														[`${classes.inputContactTitle}`]: !isSupportLink,
+													})}
 													name={[i, 'title']}
 													placeholder='Short title'
 													small
 												/>
 											)}
-											{isSupportLink && <StyledButton icon={faCircleQuestion} />}
+											{isSupportLink && (
+												<StyledButton
+													icon={faCircleQuestion}
+													styles={classes.moreInfoBtn}
+												/>
+											)}
 										</div>
 										{isSupportLink && (
 											<div className={classes.supportInfo}>

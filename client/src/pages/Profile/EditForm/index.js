@@ -9,7 +9,7 @@ import useAuth from '../../../hooks/useAuth';
 import useModal from '../../../hooks/useModal';
 import { styles } from '../../../utils/styles';
 
-const { alignItems, displayFlex, justifyContent, spacing } = styles;
+const { alignItems, displayFlex, justifyContent, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	avatar: {
@@ -24,14 +24,12 @@ const useStyles = createUseStyles((theme) => ({
 		minWidth: 260,
 		paddingBottom: spacing['3_5'],
 	},
-	container: {
-		padding: '25px 25px 0',
-	},
 	containerBtns: {
 		'& > :first-child': {
 			marginRight: spacing['0_7'],
 		},
 		...displayFlex,
+		...justifyContent.flexEnd,
 		borderTop: `1px solid ${theme.background.highlight}`,
 		padding: 25,
 	},
@@ -40,6 +38,18 @@ const useStyles = createUseStyles((theme) => ({
 			flexGrow: 1,
 		},
 		...displayFlex,
+		padding: '25px 25px 0',
+	},
+	title: {
+		'& > span': {
+			...displayFlex,
+			borderBottom: `1px solid ${theme.background.highlight}`,
+		},
+		...typography.h2,
+		fontSize: 22,
+		fontWeight: weight[500],
+		marginBottom: spacing[3],
+		padding: '25px 25px 9px',
 	},
 }));
 
@@ -51,6 +61,7 @@ const ProfileEditForm = () => {
 	const { closeModal } = useModal();
 
 	useEffect(() => {
+		// temp placeholder for testing form lists
 		const links = [
 			{
 				type: 'support',
@@ -72,12 +83,13 @@ const ProfileEditForm = () => {
 
 	return (
 		<Form
-			className={classes.container}
 			form={form}
 			initialValues={currentUser}
 			onFinish={(values) => onSubmit(values)}
 		>
-			<div>Edit your Profile</div>
+			<div className={classes.title}>
+				<span>Edit your Profile</span>
+			</div>
 			<div className={classes.main}>
 				<div className={classes.avatar}>
 					<StyledButton
@@ -87,7 +99,6 @@ const ProfileEditForm = () => {
 				</div>
 				<EditInputs />
 			</div>
-			{/* <div>links</div> */}
 			<EditLinks />
 			<div className={classes.containerBtns}>
 				<StyledButton
