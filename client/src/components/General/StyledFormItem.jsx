@@ -51,9 +51,11 @@ const useStyles = createUseStyles((theme) => ({
 const StyledFormItem = ({
 	children,
 	formStyles,
+	inputStyles,
 	label,
-	onChange,
 	name,
+	onChange,
+	placeholder,
 	required = false,
 	small = false,
 }) => {
@@ -78,7 +80,8 @@ const StyledFormItem = ({
 			) : (
 				<StyledInput
 					onChange={onChange}
-					styles={cn({ [`${classes.input}`]: small })}
+					styles={cn({ [`${classes.input}`]: small }, inputStyles)}
+					placeholder={placeholder}
 				/>
 			)}
 		</Form.Item>

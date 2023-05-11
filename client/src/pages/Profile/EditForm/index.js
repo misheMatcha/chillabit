@@ -3,6 +3,7 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
 import EditInputs from './EditInputs';
+import EditLinks from './EditLinks';
 import StyledButton from '../../../components/General/StyledButton';
 import useAuth from '../../../hooks/useAuth';
 import useModal from '../../../hooks/useModal';
@@ -49,7 +50,21 @@ const ProfileEditForm = () => {
 	const [form] = Form.useForm();
 	const { closeModal } = useModal();
 
-	useEffect(() => {});
+	useEffect(() => {
+		const links = [
+			{
+				type: 'support',
+				url: 'hello',
+			},
+			{
+				title: 'hi there',
+				type: 'contact',
+				url: 'url',
+			},
+		];
+
+		form.setFieldValue('links', links);
+	}, [form]);
 
 	const onSubmit = (values) => {
 		console.log(values);
@@ -72,7 +87,8 @@ const ProfileEditForm = () => {
 				</div>
 				<EditInputs />
 			</div>
-			<div>links</div>
+			{/* <div>links</div> */}
+			<EditLinks />
 			<div className={classes.containerBtns}>
 				<StyledButton
 					label='Cancel'
