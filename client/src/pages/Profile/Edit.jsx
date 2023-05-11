@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
-import { faCamera, faDollarSign, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+	faCamera,
+	faDollarSign,
+	faPencil,
+	faTrash,
+	faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
@@ -9,6 +15,7 @@ import { isEmpty, omitBy } from 'lodash';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import StyledButton from '../../components/General/StyledButton';
+import StyledFormItem from '../../components/General/StyledFormItem';
 import StyledInput from '../../components/General/StyledInput';
 import useAuth from '../../hooks/useAuth';
 import useModal from '../../hooks/useModal';
@@ -20,7 +27,6 @@ const {
 	alignItems,
 	displayFlex,
 	flexDirection,
-	height,
 	justifyContent,
 	radius,
 	spacing,
@@ -66,71 +72,17 @@ const useStyles = createUseStyles((theme) => ({
 		borderTop: `1px solid ${theme.background.highlight}`,
 		padding: 25,
 	},
-	formItem: {
-		'& .ant-col': {
-			flex: 0,
-		},
-		'& .ant-form-item-label': {
-			'& label': {
-				'&::after': {
-					content: "''",
-				},
-				...alignItems.flexStart,
-				...displayFlex,
-				...typography.captions,
-				fontSize: 13,
-				height: 25,
-			},
-		},
-		'& .ant-form-item-row': {
-			...flexDirection.column,
-		},
-		paddingBottom: 15,
-	},
-	halfWidth: {
-		'& .ant-form-item-control-input': {
-			minHeight: spacing['3_25'],
-		},
-		width: 256,
-	},
 	input: {
 		...typography.captions,
 		fontSize: 13,
 		height: spacing['3_25'],
 		padding: `${spacing['0_25']}px 7px`,
 	},
-	linkContact: {
-		'& > input:nth-child(2)': {
-			width: 485,
-		},
-		'& > input:nth-child(3)': {
-			width: 243,
-		},
-	},
-	linkGroup: {
-		...displayFlex,
-	},
-	linkList: {
-		'& li': {
-			...displayFlex,
-			...justifyContent.spaceBetween,
-		},
-		margin: 0,
-		padding: 0,
-	},
-	linkWrapper: {
-		border: '1px solid black',
-	},
 	mainWrapper: {
 		'& > div:nth-child(2)': {
 			...width[100].percentage,
 		},
 		...displayFlex,
-	},
-	required: {
-		'& .ant-form-item-label > label::after': {
-			content: "'*'",
-		},
 	},
 	rowWrapper: {
 		...displayFlex,
@@ -170,13 +122,13 @@ const ProfileEditForm = () => {
 	const classes = useStyles({ currentUser, theme });
 	const [loading, setLoading] = useState(true);
 	const [editUrl, setEditUrl] = useState(false);
-	const [linkList, setLinkList] = useState([{ type: 'contact' }, { type: 'support' }]);
+	const [editWebsite, setEditWebsite] = useState(false);
+	const [editSupportUrl, setEditSupportUrl] = useState(false);
 	const { closeModal } = useModal();
 
 	useEffect(() => {
 		if (currentUser) {
 			form.setFieldValue('url', currentUser.url);
-			// setLinkList(currentUser.links);
 			setLoading(false);
 		}
 	}, [currentUser, form, loading]);
@@ -189,7 +141,6 @@ const ProfileEditForm = () => {
 			},
 		};
 
-		form.setFieldValue('links', linkList);
 		const updatedValues = omitBy(values, (v) => isEmpty(v));
 
 		try {
@@ -222,28 +173,33 @@ const ProfileEditForm = () => {
 					/>
 				</div>
 				<div>
-					<Form.Item
-						className={cn(classes.formItem, classes.required)}
+					<StyledFormItem
 						label='Display name'
+						onChange={(e) => handleInputChange(e, 'username')}
 						name='username'
-					>
-						<StyledInput onChange={(e) => handleInputChange(e, 'username')} />
-					</Form.Item>
-					<Form.Item
-						className={cn(classes.formItem, classes.required)}
+						required
+					/>
+					<StyledFormItem
 						label='Profile URL'
 						name='url'
+						required
 					>
 						<div className={classes.urlWrapper}>
 							{CHILLABIT}.com/
 							{editUrl ? (
-								<StyledInput
-									defaultValue={currentUser.url}
-									styles={classes.input}
-								/>
+								<>
+									<StyledInput
+										defaultValue={currentUser.url}
+										styles={classes.input}
+									/>
+									<StyledButton
+										icon={faXmark}
+										onClick={() => setEditUrl(false)}
+									/>
+								</>
 							) : (
 								<span className={classes.urlEdit}>
-									{form.getFieldValue('url')}{' '}
+									{form.getFieldValue('url')}
 									<StyledButton
 										icon={faPencil}
 										onClick={() => setEditUrl(true)}
@@ -251,118 +207,78 @@ const ProfileEditForm = () => {
 								</span>
 							)}
 						</div>
-					</Form.Item>
+					</StyledFormItem>
 					<div className={classes.rowWrapper}>
-						<Form.Item
-							className={cn(classes.formItem, classes.halfWidth)}
+						<StyledFormItem
 							label='First name'
 							name='fname'
-						>
-							<StyledInput
-								onChange={(e) => handleInputChange(e, 'fname')}
-								styles={classes.input}
-							/>
-						</Form.Item>
-						<Form.Item
-							className={cn(classes.formItem, classes.halfWidth)}
+							onChange={(e) => handleInputChange(e, 'fname')}
+							small
+						/>
+						<StyledFormItem
 							label='Last name'
 							name='lname'
-						>
-							<StyledInput
-								onChange={(e) => handleInputChange(e, 'lname')}
-								styles={classes.input}
-							/>
-						</Form.Item>
+							onChange={(e) => handleInputChange(e, 'lname')}
+							small
+						/>
 					</div>
 					<div className={classes.rowWrapper}>
-						<Form.Item
-							className={cn(classes.formItem, classes.halfWidth)}
+						<StyledFormItem
 							label='City'
 							name='city'
-						>
-							<StyledInput
-								onChange={(e) => handleInputChange(e, 'city')}
-								styles={classes.input}
-							/>
-						</Form.Item>
-						<Form.Item
-							className={cn(classes.formItem, classes.halfWidth)}
+							onChange={(e) => handleInputChange(e, 'city')}
+							small
+						/>
+						<StyledFormItem
 							label='Country'
 							name='country'
-						>
-							<StyledInput
-								onChange={(e) => handleInputChange(e, 'country')}
-								styles={classes.input}
-							/>
-						</Form.Item>
+							onChange={(e) => handleInputChange(e, 'country')}
+							small
+						/>
 					</div>
-					<Form.Item
-						className={classes.formItem}
+					<StyledFormItem
 						label='Bio'
 						name='bio'
 					>
 						<Input.TextArea
+							onChange={(e) => handleInputChange(e, 'bio')}
 							name='bio'
 							placeholder='Tell the world a little bit about yourself. The shorter the better.'
 							rows={3}
 						/>
-					</Form.Item>
+					</StyledFormItem>
 				</div>
 			</div>
 			<div className={classes.linkWrapper}>
 				<div>
 					Your links <FontAwesomeIcon icon={faCircleQuestion} />
 				</div>
-				<ul className={classes.linkList}>
-					{linkList.map((link, i) =>
-						link.type === 'contact' ? (
-							<li
-								className={classes.linkContact}
-								key={i}
-							>
-								<FontAwesomeIcon icon={faTrash} />
-								<StyledInput
-									placeholder='Web or email address'
-									styles={classes.input}
-								/>
-								<StyledInput
-									placeholder='Short title'
-									styles={classes.input}
-								/>
-								<StyledButton icon={faTrash} />
-							</li>
-						) : (
-							<li
-								className={classes.linkItem}
-								key={i}
-							>
-								<FontAwesomeIcon icon={faDollarSign} />
-								<div>
-									<StyledInput
-										placeholder='e.g.: http://paypal.me/username'
-										styles={classes.input}
-									/>
-									<div>
-										Supported platforms: PayPal, Cash app, Venmo, Bandcamp, Shopify, Kickstarter,
-										Patreon, and Gofundme. <Link>Learn more</Link>
-									</div>
-								</div>
-								<StyledButton icon={faCircleQuestion} />
-								<StyledButton icon={faTrash} />
-							</li>
-						)
-					)}
-				</ul>
 				<div className={classes.linkGroup}>
-					<StyledButton
-						label='Add link'
-						onClick={() => setLinkList([...linkList, { title: '', type: 'contact', url: '' }])}
-					/>
-					<StyledButton
-						label='Add support link'
-						onClick={() => setLinkList([...linkList, { type: 'support', url: '' }])}
-						special
-					/>
+					{editWebsite ? (
+						<StyledFormItem name='website'>
+							<>
+								<StyledInput name='website' />
+							</>
+						</StyledFormItem>
+					) : (
+						<StyledButton
+							label='Add link'
+							onClick={() => setEditWebsite(true)}
+						/>
+					)}
+					{editSupportUrl ? (
+						<StyledFormItem name='support_url'>
+							<>
+								<StyledInput name='support_url' />
+							</>
+						</StyledFormItem>
+					) : (
+						<StyledButton
+							label='Add support link'
+							onClick={() => setEditSupportUrl(true)}
+							special
+						/>
+					)}
 				</div>
 			</div>
 			<div className={classes.formBtnGroup}>
