@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Modal from '../components/UI/Modal';
 import LoginSignUp from '../features/Authenticate/LoginSignUp';
-import ProfileEditForm from '../pages/Profile/Edit';
+import ProfileEditForm from '../pages/Profile/EditForm';
 
 const ModalContext = createContext({});
 
