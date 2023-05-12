@@ -11,7 +11,6 @@ json.country @user.country
 json.full_location @user.city && @user.country ? @user.city + ', ' + @user.country : @user.city ? @user.city : @user.country
 json.bio @user.bio
 json.url @user.url
-json.website @user.website
-json.support_url @user.support_url
+json.links @user.links
 json.header_bg polymorphic_url(@user.header_bg) if @user.header_bg.attached?
 json.avatar polymorphic_url(@user.avatar) if @user.avatar.attached?

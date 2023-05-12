@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -7,6 +7,7 @@ import EditLinks from './EditLinks';
 import StyledButton from '../../../components/General/StyledButton';
 import useAuth from '../../../hooks/useAuth';
 import useModal from '../../../hooks/useModal';
+import axios from '../../../utils/axios';
 import { styles } from '../../../utils/styles';
 
 const { alignItems, displayFlex, justifyContent, spacing, typography, weight } = styles;
@@ -55,30 +56,25 @@ const useStyles = createUseStyles((theme) => ({
 
 const ProfileEditForm = () => {
 	const theme = useTheme();
-	const { currentUser } = useAuth();
+	const { currentUser, token } = useAuth();
 	const classes = useStyles({ currentUser, theme });
 	const [form] = Form.useForm();
 	const { closeModal } = useModal();
 
-	useEffect(() => {
-		// temp placeholder for testing form lists
-		const links = [
-			{
-				type: 'support',
-				url: 'hello',
+	const onSubmit = async (values) => {
+		const config = {
+			headers: {
+				authorization: token,
+				'content-type': 'multipart/form-data',
 			},
-			{
-				title: 'hi there',
-				type: 'contact',
-				url: 'url',
-			},
-		];
+		};
 
-		form.setFieldValue('links', links);
-	}, [form]);
-
-	const onSubmit = (values) => {
-		console.log(values);
+		try {
+			const response = await axios.put(`/users/${currentUser.url}`, { user: values }, config);
+			console.log(response.data);
+		} catch (err) {
+			console.log(err.response.data);
+		}
 	};
 
 	return (

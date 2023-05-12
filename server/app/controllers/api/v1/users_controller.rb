@@ -27,7 +27,9 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     @user = User.friendly.find(params[:id])
-    if @user.update!(user_params.compact_blank)
+    @user.assign_attributes(user_params)
+    @user.assign_attributes(links: user_params['links'].values) if user_params['links']
+    if @user.save!
       render :show
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -38,6 +40,6 @@ class Api::V1::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :username, :password, :age, :gender, :url, :header_bg, :avatar, :city,
-                                 :country, :fname, :lname, :bio, :support_url, :website)
+                                 :country, :fname, :lname, :bio, links: %i[type title url])
   end
 end
