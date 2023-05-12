@@ -94,6 +94,7 @@ const ProfileEditForm = () => {
 					<Form.Item
 						name='avatar'
 						normalize={(values) => values.file}
+						valuePropName='file'
 					>
 						<Upload
 							beforeUpload={(file) => {
