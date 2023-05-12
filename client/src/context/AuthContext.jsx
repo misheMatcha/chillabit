@@ -1,21 +1,19 @@
 import { createContext, useState } from 'react';
+import { isEmptyObject } from '../utils/general';
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(null);
-	const [currentUser, setCurrentUser] = useState(null);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [currentUser, setCurrentUser] = useState({});
 
 	const loginSetup = (values) => {
 		setCurrentUser(values.user);
-		setIsLoggedIn(true);
 		setToken(values.token);
 	};
 
 	const logoutSetup = () => {
 		setCurrentUser(null);
-		setIsLoggedIn(false);
 		setToken(null);
 	};
 
@@ -23,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 		<AuthContext.Provider
 			value={{
 				currentUser,
-				isLoggedIn,
+				isLoggedIn: !isEmptyObject(currentUser),
 				loginSetup,
 				logoutSetup,
 				setCurrentUser,

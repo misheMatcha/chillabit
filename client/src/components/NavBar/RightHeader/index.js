@@ -84,12 +84,12 @@ const useStyles = createUseStyles((theme) => ({
 const RightHeader = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { currentUser } = useAuth();
+	const { isLoggedIn } = useAuth();
 	const { openModal } = useModal();
 
 	return (
 		<div className={classes.container}>
-			{currentUser ? (
+			{isLoggedIn ? (
 				<div className={classes.proWrapper}>
 					<Link className={classes.proLink}>Try Go+</Link>
 					<Link className={classes.proLink}>Try Next Pro</Link>
@@ -118,7 +118,7 @@ const RightHeader = () => {
 					Upload
 				</Link>
 			</div>
-			{currentUser && (
+			{isLoggedIn && (
 				<>
 					<div className={classes.userDropdownWrapper}>
 						<UserDropdown />

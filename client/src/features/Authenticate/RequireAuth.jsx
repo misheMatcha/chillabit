@@ -3,10 +3,10 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const RequireAuth = () => {
-	const { currentUser } = useAuth();
+	const { isLoggedIn } = useAuth();
 	const location = useLocation();
 
-	return currentUser ? (
+	return isLoggedIn ? (
 		<Outlet />
 	) : (
 		<Navigate

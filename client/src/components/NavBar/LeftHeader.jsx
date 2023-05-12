@@ -59,7 +59,7 @@ const useStyles = createUseStyles((theme) => ({
 		backgroundColor: theme.color.black,
 		color: theme.color.white,
 		textDecoration: theme.link.textDecoration.standard,
-		width: ({ currentUser }) => (currentUser ? 69 : 184),
+		width: ({ isLoggedIn }) => (isLoggedIn ? 69 : 184),
 	},
 }));
 
@@ -83,8 +83,8 @@ const navLinkList = [
 
 const LeftHeader = () => {
 	const theme = useTheme();
-	const { currentUser } = useAuth();
-	const classes = useStyles({ currentUser, theme });
+	const { isLoggedIn } = useAuth();
+	const classes = useStyles({ isLoggedIn, theme });
 
 	return (
 		<div className={classes.container}>
@@ -92,7 +92,7 @@ const LeftHeader = () => {
 				<div className={classes.logo}>
 					<FontAwesomeIcon icon={faSoundcloud} />
 				</div>
-				{!currentUser && <span className={classes.brand}>{CHILLABIT}</span>}
+				{!isLoggedIn && <span className={classes.brand}>{CHILLABIT}</span>}
 			</Link>
 			<div className={classes.linkWrapper}>
 				{navLinkList.map(({ key, label, to }) => (

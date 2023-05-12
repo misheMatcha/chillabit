@@ -108,7 +108,7 @@ const useStyles = createUseStyles((theme) => ({
 }));
 
 const Header = () => {
-	const { userIdentifier } = useCurrentPath();
+	const { identifier, userPathMatches } = useCurrentPath();
 	const { currentUser, setCurrentUser, token } = useAuth();
 	const theme = useTheme();
 
@@ -122,7 +122,7 @@ const Header = () => {
 		// need to add timeout
 		const fetchUser = async () => {
 			try {
-				const response = await axios.get(`/users/${userIdentifier}`);
+				const response = await axios.get(`/users/${identifier}`);
 				setUser(response.data);
 			} catch (err) {
 				console.log(err.response.data);
@@ -131,7 +131,7 @@ const Header = () => {
 
 		if (loading) {
 			if (isEmpty(user)) {
-				if (currentUser && currentUser.url === userIdentifier) {
+				if (userPathMatches) {
 					setUser(currentUser);
 					setLoading(false);
 				} else {
@@ -141,11 +141,10 @@ const Header = () => {
 			}
 		}
 
-		if (currentUser && currentUser.url === userIdentifier && currentUser !== user)
-			setUser(currentUser);
+		if (userPathMatches && currentUser !== user) setUser(currentUser);
 
 		return () => {};
-	}, [currentUser, loading, user, userIdentifier]);
+	}, [currentUser, loading, user, identifier, userPathMatches]);
 
 	// Future features:
 	// - verification check mark
@@ -161,7 +160,7 @@ const Header = () => {
 		};
 
 		await axios
-			.put(`/users/${userIdentifier}`, { user: { [`${type}`]: file } }, config)
+			.put(`/users/${identifier}`, { user: { [`${type}`]: file } }, config)
 			.then((res) => {
 				setUser(res.data);
 				setCurrentUser(res.data);
@@ -174,7 +173,7 @@ const Header = () => {
 	) : (
 		<div className={classes.container}>
 			<div className={classes.avatar}>
-				{currentUser && userIdentifier === currentUser.url && (
+				{userPathMatches && (
 					<div className={classes.avatarUpload}>
 						<Upload
 							customRequest={({ onSuccess }) => onSuccess('ok')}
@@ -199,7 +198,7 @@ const Header = () => {
 					{full_location && <div>{full_location}</div>}
 				</div>
 			</div>
-			{currentUser && userIdentifier === currentUser.url && (
+			{userPathMatches && (
 				<div className={classes.uploadWrapper}>
 					{/* <Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'> */}
 					<Upload

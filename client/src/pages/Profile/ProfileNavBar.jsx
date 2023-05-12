@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link, NavLink } from 'react-router-dom';
 import StyledButton from '../../components/General/StyledButton';
-import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import useModal from '../../hooks/useModal';
 import { styles } from '../../utils/styles';
@@ -86,8 +85,7 @@ const navLinkList = [
 
 const ProfileNavBar = () => {
 	const theme = useTheme();
-	const { currentUser } = useAuth();
-	const { userIdentifier } = useCurrentPath();
+	const { userPathMatches } = useCurrentPath();
 	const { openModal } = useModal();
 	const classes = useStyles({ theme });
 
@@ -114,8 +112,7 @@ const ProfileNavBar = () => {
 						label='Station'
 					/>
 				</Link>
-				{/* {currentUser && currentUser.url === userIdentifier ? ( */}
-				{true ? (
+				{userPathMatches ? (
 					<StyledButton
 						icon={faPencil}
 						label='Edit'
