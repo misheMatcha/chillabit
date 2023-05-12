@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
+import Upload from 'antd/lib/upload';
 import { createUseStyles, useTheme } from 'react-jss';
 import EditInputs from './EditInputs';
 import EditLinks from './EditLinks';
@@ -17,8 +18,8 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItems.flexEnd,
 		...displayFlex,
 		...justifyContent.center,
-		backgroundImage: ({ currentUser }) =>
-			currentUser.avatar ? `url(${currentUser.avatar})` : 'linear-gradient(135deg,#8e8485,#70929c)',
+		backgroundImage: ({ avatarPreview }) =>
+			avatarPreview ? `url(${avatarPreview})` : 'linear-gradient(135deg,#8e8485,#70929c)',
 		borderRadius: '50%',
 		height: 260,
 		marginRight: spacing['2_25'],
@@ -56,8 +57,9 @@ const useStyles = createUseStyles((theme) => ({
 
 const ProfileEditForm = () => {
 	const theme = useTheme();
-	const { currentUser, token } = useAuth();
-	const classes = useStyles({ currentUser, theme });
+	const { currentUser, setCurrentUser, token } = useAuth();
+	const [avatarPreview, setAvatarPreview] = useState(currentUser.avatar);
+	const classes = useStyles({ avatarPreview, currentUser, theme });
 	const [form] = Form.useForm();
 	const { closeModal } = useModal();
 
@@ -71,7 +73,8 @@ const ProfileEditForm = () => {
 
 		try {
 			const response = await axios.put(`/users/${currentUser.url}`, { user: values }, config);
-			console.log(response.data);
+			setCurrentUser(response.data);
+			closeModal();
 		} catch (err) {
 			console.log(err.response.data);
 		}
@@ -88,10 +91,23 @@ const ProfileEditForm = () => {
 			</div>
 			<div className={classes.main}>
 				<div className={classes.avatar}>
-					<StyledButton
-						icon={faCamera}
-						label='Update image'
-					/>
+					<Form.Item
+						name='avatar'
+						normalize={(values) => values.file}
+					>
+						<Upload
+							beforeUpload={(file) => {
+								setAvatarPreview(URL.createObjectURL(file));
+								return false;
+							}}
+							showUploadList={false}
+						>
+							<StyledButton
+								icon={faCamera}
+								label='Update image'
+							/>
+						</Upload>
+					</Form.Item>
 				</div>
 				<EditInputs />
 			</div>

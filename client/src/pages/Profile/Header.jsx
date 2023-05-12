@@ -109,7 +109,7 @@ const useStyles = createUseStyles((theme) => ({
 
 const Header = () => {
 	const { userIdentifier } = useCurrentPath();
-	const { currentUser, token } = useAuth();
+	const { currentUser, setCurrentUser, token } = useAuth();
 	const theme = useTheme();
 
 	const [loading, setLoading] = useState(true);
@@ -150,7 +150,7 @@ const Header = () => {
 	// - hoverable featured profiles
 
 	// add async loading later
-	const uploadAction = async (file, type = 'header_bg' || 'avatar') => {
+	const uploadAction = (file, type = 'header_bg' || 'avatar') => {
 		const config = {
 			headers: {
 				authorization: token,
@@ -158,12 +158,13 @@ const Header = () => {
 			},
 		};
 
-		await axios
+		axios
 			.put(`/users/${userIdentifier}`, { user: { [`${type}`]: file } }, config)
 			.then((res) => {
 				setUser(res.data);
+				setCurrentUser(res.data);
 			})
-			.catch((err) => err.response.data);
+			.catch((err) => console.log(err.response.data));
 	};
 
 	return loading ? (
@@ -174,6 +175,12 @@ const Header = () => {
 				{currentUser && userIdentifier === currentUser.url && (
 					<div className={classes.avatarUpload}>
 						<Upload
+							customRequest={({ onSuccess }) => onSuccess('ok')}
+							// beforeUpload={(file) => {
+							// setAvatarFile(file);
+							// console.log(avatarFile);
+							// return false;
+							// }}
 							action={(file) => uploadAction(file, 'avatar')}
 							showUploadList={false}
 						>
@@ -200,6 +207,7 @@ const Header = () => {
 					{/* <Tooltip title='For best results, upload PNG or JPG images of at least 2480x520 pixels. 2MB file-size limit.'> */}
 					<Upload
 						action={(file) => uploadAction(file, 'header_bg')}
+						customRequest={({ onSuccess }) => onSuccess('ok')}
 						showUploadList={false}
 					>
 						<Button className={classes.uploadBtn}>
