@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
-import useAuth from '../../hooks/useAuth';
 import useModal from '../../hooks/useModal';
 import { styles } from '../../utils/styles';
 
@@ -93,7 +92,6 @@ const useStyles = createUseStyles((theme) => ({
 const SignOff = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { toggleModal } = useAuth();
 	const { openModal } = useModal();
 
 	return (
@@ -106,7 +104,6 @@ const SignOff = () => {
 				<div className={classes.create}>
 					<Button
 						className={classes.createBtn}
-						// onClick={() => toggleModal(true)}
 						onClick={() => openModal('auth')}
 					>
 						Create account
@@ -116,7 +113,6 @@ const SignOff = () => {
 					Already have an account?
 					<Button
 						className={classes.signinBtn}
-						// onClick={() => toggleModal()}
 						onClick={() => openModal('auth')}
 					>
 						Sign in

@@ -84,7 +84,7 @@ const useStyles = createUseStyles((theme) => ({
 const RightHeader = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { toggleModal, currentUser } = useAuth();
+	const { currentUser } = useAuth();
 	const { openModal } = useModal();
 
 	return (
@@ -98,14 +98,12 @@ const RightHeader = () => {
 				<div className={classes.loginMenu}>
 					<Button
 						className={cn(classes.btn, classes.clear)}
-						// onClick={() => toggleModal()}
 						onClick={() => openModal('auth')}
 					>
 						Sign in
 					</Button>
 					<Button
 						className={classes.btn}
-						// onClick={() => toggleModal(true)}
 						onClick={() => openModal('auth', { newUser: true })}
 					>
 						Create account

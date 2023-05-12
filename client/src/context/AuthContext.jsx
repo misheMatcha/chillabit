@@ -3,38 +3,42 @@ import { createContext, useState } from 'react';
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-	const [displayModal, setDisplayModal] = useState(false);
 	const [token, setToken] = useState(null);
 	const [currentUser, setCurrentUser] = useState(null);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	// auth form
 	const [errors, setErrors] = useState({});
 	const [isVerified, setIsVerified] = useState(false);
 	const [step, setStep] = useState(1);
 
-	const toggleModal = (isNewUser = false) => {
-		// prevents scroll on modal
-		const body = document.getElementsByTagName('body')[0];
-		body.style.overflow = displayModal ? null : 'hidden';
+	const loginSetup = (values) => {
+		setCurrentUser(values.user);
+		setIsLoggedIn(true);
+		setToken(values.token);
+	};
 
-		setDisplayModal(!displayModal);
+	const logoutSetup = () => {
+		setCurrentUser(null);
+		setIsLoggedIn(false);
+		setToken(null);
 	};
 
 	return (
 		<AuthContext.Provider
 			value={{
 				currentUser,
-				displayModal,
 				errors,
+				isLoggedIn,
 				isVerified,
+				loginSetup,
+				logoutSetup,
 				setCurrentUser,
-				setDisplayModal,
 				setErrors,
 				setIsVerified,
 				setStep,
 				setToken,
 				step,
-				toggleModal,
 				token,
 			}}
 		>

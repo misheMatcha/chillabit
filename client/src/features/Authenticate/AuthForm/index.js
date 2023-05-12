@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Form from 'antd/lib/form';
 import { FormProvider } from 'antd/lib/form/context';
+import { pick } from 'lodash';
 import { createUseStyles } from 'react-jss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Step1 from './Step1';
@@ -25,27 +26,15 @@ const useStyles = createUseStyles({
 const AuthForm = () => {
 	const [gender, setGender] = useState('');
 	const [isCustomGender, setIsCustomGender] = useState(false);
-	const {
-		displayModal,
-		setDisplayModal,
-		setErrors,
-		setIsVerified,
-		step,
-		isVerified,
-		setStep,
-		setToken,
-		setCurrentUser,
-	} = useAuth();
+	const { loginSetup, setErrors, setIsVerified, step, isVerified, setStep } = useAuth();
 	const { closeModal } = useModal();
 	const classes = useStyles(step);
 
 	useEffect(() => {
 		return () => {
-			if (!displayModal) {
-				setErrors({});
-				setIsVerified(false);
-				setStep(1);
-			}
+			setErrors({});
+			setIsVerified(false);
+			setStep(1);
 		};
 	}, []);
 
@@ -60,9 +49,7 @@ const AuthForm = () => {
 				user: { ...values, gender: isCustomGender ? gender : values.gender },
 			});
 
-			setCurrentUser(response.data.user);
-			setToken(response.data.token);
-			setDisplayModal(false);
+			loginSetup(response.data);
 			closeModal();
 			navigate(from, { replace: true });
 		} catch (err) {
@@ -73,12 +60,10 @@ const AuthForm = () => {
 	const loginUser = async (values) => {
 		try {
 			const response = await axios.post('/login', {
-				user: { email: values.email, password: values.password },
+				user: pick(values, ['email', 'password']),
 			});
 
-			setCurrentUser(response.data.user);
-			setToken(response.data.token);
-			setDisplayModal(false);
+			loginSetup(response.data);
 			closeModal();
 			navigate(from, { replace: true });
 		} catch (err) {
