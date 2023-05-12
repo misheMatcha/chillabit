@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import useAuth from '../../../hooks/useAuth';
+import useAuthForm from '../../../hooks/useAuthForm';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
@@ -42,7 +42,7 @@ const Header = ({ newUser }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
-	const { isVerified, step } = useAuth();
+	const { isVerified, step } = useAuthForm();
 
 	useEffect(() => {}, [step]);
 

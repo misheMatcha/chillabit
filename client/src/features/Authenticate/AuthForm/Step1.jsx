@@ -5,7 +5,7 @@ import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
 import StyledInput from '../../../components/General/StyledInput';
-import useAuth from '../../../hooks/useAuth';
+import useAuthForm from '../../../hooks/useAuthForm';
 import axios from '../../../utils/axios';
 import { styles } from '../../../utils/styles';
 
@@ -24,7 +24,7 @@ const useStyles = createUseStyles({
 
 const Step1 = ({ form }) => {
 	const classes = useStyles();
-	const { errors, setErrors, setIsVerified, setStep } = useAuth();
+	const { errors, nextStep, setIsVerified, updateFormErrors } = useAuthForm();
 
 	const verifyHandle = async () => {
 		const handle = form.getFieldValue('email');
@@ -40,10 +40,10 @@ const Step1 = ({ form }) => {
 			const response = await axios.post('/verify_handle', handles);
 			setIsVerified(response.data.isVerified);
 			form.setFieldValue('email', response.data.email);
-			setStep(2);
-			setErrors({});
+			nextStep();
+			updateFormErrors({});
 		} catch (err) {
-			setErrors(err.response.data);
+			updateFormErrors(err.response.data);
 		}
 	};
 

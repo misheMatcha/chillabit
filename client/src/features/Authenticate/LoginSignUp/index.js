@@ -2,6 +2,7 @@ import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import Footer from './Footer';
 import Header from './Header';
+import { AuthFormProvider } from '../../../context/AuthFormContext';
 import { styles } from '../../../utils/styles';
 import AuthForm from '../AuthForm/index';
 
@@ -47,11 +48,13 @@ const LoginSignUp = ({ newUser = false }) => {
 	const classes = useStyles({ theme });
 
 	return (
-		<div className={classes.container}>
-			<Header newUser={newUser} />
-			<AuthForm />
-			<Footer />
-		</div>
+		<AuthFormProvider>
+			<div className={classes.container}>
+				<Header newUser={newUser} />
+				<AuthForm />
+				<Footer />
+			</div>
+		</AuthFormProvider>
 	);
 };
 

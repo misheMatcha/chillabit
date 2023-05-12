@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
+import useAuthForm from '../../../hooks/useAuthForm';
 import { styles } from '../../../utils/styles';
 
 const { spacing, textAlign, typography, width } = styles;
@@ -45,7 +45,7 @@ const Footer = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
-	const { step, isVerified } = useAuth();
+	const { isVerified, step } = useAuthForm();
 
 	return (
 		<div className={classes.container}>

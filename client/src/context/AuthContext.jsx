@@ -7,11 +7,6 @@ export const AuthProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-	// auth form
-	const [errors, setErrors] = useState({});
-	const [isVerified, setIsVerified] = useState(false);
-	const [step, setStep] = useState(1);
-
 	const loginSetup = (values) => {
 		setCurrentUser(values.user);
 		setIsLoggedIn(true);
@@ -28,17 +23,11 @@ export const AuthProvider = ({ children }) => {
 		<AuthContext.Provider
 			value={{
 				currentUser,
-				errors,
 				isLoggedIn,
-				isVerified,
 				loginSetup,
 				logoutSetup,
 				setCurrentUser,
-				setErrors,
-				setIsVerified,
-				setStep,
 				setToken,
-				step,
 				token,
 			}}
 		>

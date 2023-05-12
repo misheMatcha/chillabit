@@ -6,7 +6,7 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
 import StyledInput from '../../../components/General/StyledInput';
-import useAuth from '../../../hooks/useAuth';
+import useAuthForm from '../../../hooks/useAuthForm';
 import { styles } from '../../../utils/styles';
 
 const { alignItems, displayFlex, radius, spacing, typography, weight, width } = styles;
@@ -84,7 +84,7 @@ const genderOptions = [
 
 const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 	const theme = useTheme();
-	const { errors } = useAuth();
+	const { errors } = useAuthForm();
 	const classes = useStyles({ errors, isCustomGender, theme });
 
 	return (

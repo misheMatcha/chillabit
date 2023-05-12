@@ -2,31 +2,22 @@ import 'antd/dist/reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { ThemeProvider } from 'react-jss';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import App from './App';
-import { AuthProvider } from './context/AuthContext';
-import { ModalProvider } from './context/ModalContext';
+import MainProvider from './context/MainProvider';
 import reportWebVitals from './reportWebVitals';
-import { light } from './utils/themes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<ThemeProvider theme={light}>
-			<BrowserRouter>
-				<AuthProvider>
-					<ModalProvider>
-						<Routes>
-							<Route
-								path='/*'
-								element={<App />}
-							/>
-						</Routes>
-					</ModalProvider>
-				</AuthProvider>
-			</BrowserRouter>
-		</ThemeProvider>
+		<MainProvider>
+			<Routes>
+				<Route
+					path='/*'
+					element={<App />}
+				/>
+			</Routes>
+		</MainProvider>
 	</React.StrictMode>
 );
 

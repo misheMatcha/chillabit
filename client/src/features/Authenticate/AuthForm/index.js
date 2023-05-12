@@ -7,6 +7,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import useAuth from '../../../hooks/useAuth';
+import useAuthForm from '../../../hooks/useAuthForm';
 import useModal from '../../../hooks/useModal';
 import axios from '../../../utils/axios';
 
@@ -22,20 +23,27 @@ const useStyles = createUseStyles({
 	},
 });
 
+const initialValues = {
+	age: '',
+	email: '',
+	gender: '',
+	password: '',
+	username: '',
+};
+
 const AuthForm = () => {
 	const [gender, setGender] = useState('');
 	const [isCustomGender, setIsCustomGender] = useState(false);
-	const { loginSetup, setErrors, setIsVerified, step, isVerified, setStep } = useAuth();
+	const { loginSetup } = useAuth();
+	const { step, isVerified, updateFormErrors } = useAuthForm();
 	const { closeModal } = useModal();
 	const classes = useStyles(step);
 
 	useEffect(() => {
 		return () => {
-			setErrors({});
-			setIsVerified(false);
-			setStep(1);
+			updateFormErrors({});
 		};
-	}, []);
+	}, [updateFormErrors]);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -52,7 +60,7 @@ const AuthForm = () => {
 			closeModal();
 			navigate(from, { replace: true });
 		} catch (err) {
-			setErrors(err.response.data);
+			updateFormErrors(err.response.data);
 		}
 	};
 
@@ -66,7 +74,7 @@ const AuthForm = () => {
 			closeModal();
 			navigate(from, { replace: true });
 		} catch (err) {
-			setErrors(err.response.data);
+			updateFormErrors(err.response.data);
 		}
 	};
 
@@ -74,13 +82,7 @@ const AuthForm = () => {
 		<div>
 			<Form
 				form={form}
-				initialValues={{
-					age: '',
-					email: '',
-					gender: '',
-					password: '',
-					username: '',
-				}}
+				initialValues={initialValues}
 				onFinish={(values) => {
 					isVerified ? loginUser(values) : signUpUser(values);
 				}}

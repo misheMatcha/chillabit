@@ -7,7 +7,7 @@ import size from 'lodash/size';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
 import StyledInput from '../../../components/General/StyledInput';
-import useAuth from '../../../hooks/useAuth';
+import useAuthForm from '../../../hooks/useAuthForm';
 import { styles } from '../../../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, spacing, textAlign, typography, width } = styles;
@@ -51,7 +51,7 @@ const useStyles = createUseStyles((theme) => ({
 
 const Step2 = ({ form }) => {
 	const theme = useTheme();
-	const { errors, setErrors, isVerified, setIsVerified, setStep } = useAuth();
+	const { errors, isVerified, nextStep, prevStep, setIsVerified, updateFormErrors } = useAuthForm();
 	const classes = useStyles({ errors, isVerified, theme });
 
 	return (
@@ -60,8 +60,8 @@ const Step2 = ({ form }) => {
 				className={classes.backBtn}
 				onClick={() => {
 					setIsVerified(false);
-					setStep(1);
-					setErrors({});
+					prevStep();
+					updateFormErrors({});
 				}}
 			>
 				<FontAwesomeIcon icon={faCaretLeft} />
@@ -89,11 +89,11 @@ const Step2 = ({ form }) => {
 							const passwordLength = size(form.getFieldValue('password'));
 
 							if (passwordLength < 8) {
-								setErrors({ message: 'Password must be at least 8 characters' });
+								updateFormErrors({ message: 'Password must be at least 8 characters' });
 							} else if (passwordLength > 72) {
-								setErrors({ message: 'Password must be less than 72 characters.' });
+								updateFormErrors({ message: 'Password must be less than 72 characters.' });
 							} else {
-								setStep(3);
+								nextStep();
 							}
 						}}
 					>
