@@ -3,6 +3,7 @@ import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
+import * as cn from 'classnames';
 import size from 'lodash/size';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
@@ -38,29 +39,49 @@ const useStyles = createUseStyles((theme) => ({
 			marginBottom: spacing[2],
 		},
 		'& > div:nth-child(2)': {
-			marginBottom: ({ errors }) => (errors.message ? 0 : spacing[2]),
+			marginBottom: spacing[2],
 		},
 		...displayFlex,
 		...flexDirection.column,
-		marginBottom: ({ isVerified }) => (isVerified ? spacing[2] : 0),
+		marginBottom: 0,
+	},
+	errorSpacing: {
+		'& > div:nth-child(2)': {
+			marginBottom: 0,
+		},
+	},
+	hidden: {
+		display: 'none',
 	},
 	spacing: {
 		margin: 0,
 	},
+	verifiedSpacing: {
+		marginBottom: spacing[2],
+	},
 }));
 
-const Step2 = ({ form }) => {
+const Step2 = () => {
 	const theme = useTheme();
-	const { errors, isVerified, nextStep, prevStep, setIsVerified, updateFormErrors } = useAuthForm();
-	const classes = useStyles({ errors, isVerified, theme });
+	const { errors, isVerified, nextStep, prevStep, setIsVerified, step, updateFormErrors } =
+		useAuthForm();
+	const classes = useStyles({ errors, isVerified, step, theme });
+	const form = Form.useFormInstance();
 
 	return (
-		<div className={classes.container}>
+		<div
+			className={cn(classes.container, {
+				[`${classes.hidden}`]: step !== 2,
+				[`${classes.errorSpacing}`]: errors.message,
+				[`${classes.verifiedSpacing}`]: isVerified,
+			})}
+		>
 			<Button
 				className={classes.backBtn}
 				onClick={() => {
 					setIsVerified(false);
 					prevStep();
+					form.setFieldValue('password', '');
 					updateFormErrors({});
 				}}
 			>

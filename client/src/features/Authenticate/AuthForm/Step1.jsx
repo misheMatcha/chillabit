@@ -17,14 +17,18 @@ const useStyles = createUseStyles({
 		...flexDirection.column,
 		...justifyContent.spaceBetween,
 	},
+	hidden: {
+		display: 'none',
+	},
 	spacing: {
 		margin: 0,
 	},
 });
 
-const Step1 = ({ form }) => {
-	const classes = useStyles();
-	const { errors, nextStep, setIsVerified, updateFormErrors } = useAuthForm();
+const Step1 = () => {
+	const { errors, nextStep, setIsVerified, step, updateFormErrors } = useAuthForm();
+	const classes = useStyles({ step });
+	const form = Form.useFormInstance();
 
 	const verifyHandle = async () => {
 		const handle = form.getFieldValue('email');
@@ -48,7 +52,11 @@ const Step1 = ({ form }) => {
 	};
 
 	return (
-		<div className={classes.container}>
+		<div
+			className={cn(classes.container, {
+				[`${classes.hidden}`]: step !== 1,
+			})}
+		>
 			<div>
 				<Form.Item
 					className={cn({ [`${classes.spacing}`]: errors.message })}

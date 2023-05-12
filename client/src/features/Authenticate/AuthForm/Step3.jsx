@@ -17,16 +17,22 @@ const useStyles = createUseStyles((theme) => ({
 			height: `${spacing[5]}px !important`,
 		},
 		'&.ant-input-number-focused, &:focus, &:hover': {
-			borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
+			borderColor: '#ccc',
 			boxShadow: 'none',
 		},
 		...typography.h3,
 		...width[100].percentage,
 		backgroundColor: theme.color.white,
-		borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
+		borderColor: '#ccc',
 		borderRadius: radius[4],
 		color: '#333',
 		height: spacing[5],
+	},
+	ageInputError: {
+		'&.ant-input-number-focused, &:focus, &:hover': {
+			borderColor: theme.color.error,
+		},
+		borderColor: theme.color.error,
 	},
 	container: {
 		marginBottom: spacing[2],
@@ -39,6 +45,9 @@ const useStyles = createUseStyles((theme) => ({
 		color: theme.color.error,
 		marginBottom: spacing['1_5'],
 		marginTop: spacing['0_7'],
+	},
+	hidden: {
+		display: 'none',
 	},
 	select: {
 		'& div': {
@@ -82,13 +91,17 @@ const genderOptions = [
 	{ label: 'Prefer not to say', value: 'n/a' },
 ];
 
-const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
+const Step3 = () => {
 	const theme = useTheme();
-	const { errors } = useAuthForm();
+	const { errors, isCustomGender, setGender, setIsCustomGender, step } = useAuthForm();
 	const classes = useStyles({ errors, isCustomGender, theme });
 
 	return (
-		<div className={classes.container}>
+		<div
+			className={cn(classes.container, {
+				[`${classes.hidden}`]: step !== 3,
+			})}
+		>
 			<div>
 				<div>
 					<label>
@@ -111,7 +124,11 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							className={classes.spacing}
 							name='age'
 						>
-							<InputNumber className={classes.ageInput} />
+							<InputNumber
+								className={cn(classes.ageInput, {
+									[`${classes.ageInputError}`]: errors.age,
+								})}
+							/>
 						</Form.Item>
 					</label>
 					{errors.age && <div className={classes.error}>{errors.age}</div>}

@@ -4,6 +4,8 @@ import useGeneral from '../hooks/useGeneral';
 const AuthFormContext = createContext({});
 
 export const AuthFormProvider = ({ children }) => {
+	const [gender, setGender] = useState('');
+	const [isCustomGender, setIsCustomGender] = useState(false);
 	const [isVerified, setIsVerified] = useState(false);
 	const [step, setStep] = useState(1);
 
@@ -21,9 +23,13 @@ export const AuthFormProvider = ({ children }) => {
 		<AuthFormContext.Provider
 			value={{
 				errors,
+				gender,
+				isCustomGender,
 				isVerified,
 				nextStep,
 				prevStep,
+				setGender,
+				setIsCustomGender,
 				setIsVerified,
 				step,
 				updateFormErrors,

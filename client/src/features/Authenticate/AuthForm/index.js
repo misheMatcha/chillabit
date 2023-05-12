@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Form from 'antd/lib/form';
 import pick from 'lodash/pick';
 import { createUseStyles } from 'react-jss';
@@ -10,8 +10,12 @@ import useAuth from '../../../hooks/useAuth';
 import useAuthForm from '../../../hooks/useAuthForm';
 import useModal from '../../../hooks/useModal';
 import axios from '../../../utils/axios';
+import { styles } from '../../../utils/styles';
+
+const { width } = styles;
 
 const useStyles = createUseStyles({
+	container: { ...width[100].percentage },
 	step1: {
 		display: (step) => (step === 1 ? 'block' : 'none'),
 	},
@@ -32,18 +36,10 @@ const initialValues = {
 };
 
 const AuthForm = () => {
-	const [gender, setGender] = useState('');
-	const [isCustomGender, setIsCustomGender] = useState(false);
 	const { loginSetup } = useAuth();
-	const { step, isVerified, updateFormErrors } = useAuthForm();
+	const { gender, step, isCustomGender, isVerified, updateFormErrors } = useAuthForm();
 	const { closeModal } = useModal();
 	const classes = useStyles(step);
-
-	useEffect(() => {
-		return () => {
-			updateFormErrors({});
-		};
-	}, [updateFormErrors]);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -79,29 +75,18 @@ const AuthForm = () => {
 	};
 
 	return (
-		<div>
-			<Form
-				form={form}
-				initialValues={initialValues}
-				onFinish={(values) => {
-					isVerified ? loginUser(values) : signUpUser(values);
-				}}
-			>
-				<div className={classes.step1}>
-					<Step1 form={form} />
-				</div>
-				<div className={classes.step2}>
-					<Step2 form={form} />
-				</div>
-				<div className={classes.step3}>
-					<Step3
-						isCustomGender={isCustomGender}
-						setGender={setGender}
-						setIsCustomGender={setIsCustomGender}
-					/>
-				</div>
-			</Form>
-		</div>
+		<Form
+			className={classes.container}
+			form={form}
+			initialValues={initialValues}
+			onFinish={(values) => {
+				isVerified ? loginUser(values) : signUpUser(values);
+			}}
+		>
+			<Step1 />
+			<Step2 />
+			<Step3 />
+		</Form>
 	);
 };
 
