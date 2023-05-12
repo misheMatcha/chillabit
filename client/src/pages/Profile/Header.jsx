@@ -141,6 +141,9 @@ const Header = () => {
 			}
 		}
 
+		if (currentUser && currentUser.url === userIdentifier && currentUser !== user)
+			setUser(currentUser);
+
 		return () => {};
 	}, [currentUser, loading, user, userIdentifier]);
 
@@ -149,8 +152,7 @@ const Header = () => {
 	// - avatar modal
 	// - hoverable featured profiles
 
-	// add async loading later
-	const uploadAction = (file, type = 'header_bg' || 'avatar') => {
+	const uploadAction = async (file, type = 'header_bg' || 'avatar') => {
 		const config = {
 			headers: {
 				authorization: token,
@@ -158,7 +160,7 @@ const Header = () => {
 			},
 		};
 
-		axios
+		await axios
 			.put(`/users/${userIdentifier}`, { user: { [`${type}`]: file } }, config)
 			.then((res) => {
 				setUser(res.data);
@@ -176,11 +178,6 @@ const Header = () => {
 					<div className={classes.avatarUpload}>
 						<Upload
 							customRequest={({ onSuccess }) => onSuccess('ok')}
-							// beforeUpload={(file) => {
-							// setAvatarFile(file);
-							// console.log(avatarFile);
-							// return false;
-							// }}
 							action={(file) => uploadAction(file, 'avatar')}
 							showUploadList={false}
 						>

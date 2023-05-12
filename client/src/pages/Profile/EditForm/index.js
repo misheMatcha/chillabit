@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
 import Upload from 'antd/lib/upload';
+import omit from 'lodash/omit';
 import { createUseStyles, useTheme } from 'react-jss';
 import EditInputs from './EditInputs';
 import EditLinks from './EditLinks';
@@ -71,8 +72,14 @@ const ProfileEditForm = () => {
 			},
 		};
 
+		const updatedValues = typeof values.avatar === 'string' ? omit(values, ['avatar']) : values;
+
 		try {
-			const response = await axios.put(`/users/${currentUser.url}`, { user: values }, config);
+			const response = await axios.put(
+				`/users/${currentUser.url}`,
+				{ user: updatedValues },
+				config
+			);
 			setCurrentUser(response.data);
 			closeModal();
 		} catch (err) {
