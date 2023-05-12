@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Form from 'antd/lib/form';
-import { FormProvider } from 'antd/lib/form/context';
-import { pick } from 'lodash';
+import pick from 'lodash/pick';
 import { createUseStyles } from 'react-jss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Step1 from './Step1';
@@ -72,37 +71,35 @@ const AuthForm = () => {
 	};
 
 	return (
-		<FormProvider>
-			<div>
-				<Form
-					form={form}
-					initialValues={{
-						age: '',
-						email: '',
-						gender: '',
-						password: '',
-						username: '',
-					}}
-					onFinish={(values) => {
-						isVerified ? loginUser(values) : signUpUser(values);
-					}}
-				>
-					<div className={classes.step1}>
-						<Step1 form={form} />
-					</div>
-					<div className={classes.step2}>
-						<Step2 form={form} />
-					</div>
-					<div className={classes.step3}>
-						<Step3
-							isCustomGender={isCustomGender}
-							setGender={setGender}
-							setIsCustomGender={setIsCustomGender}
-						/>
-					</div>
-				</Form>
-			</div>
-		</FormProvider>
+		<div>
+			<Form
+				form={form}
+				initialValues={{
+					age: '',
+					email: '',
+					gender: '',
+					password: '',
+					username: '',
+				}}
+				onFinish={(values) => {
+					isVerified ? loginUser(values) : signUpUser(values);
+				}}
+			>
+				<div className={classes.step1}>
+					<Step1 form={form} />
+				</div>
+				<div className={classes.step2}>
+					<Step2 form={form} />
+				</div>
+				<div className={classes.step3}>
+					<Step3
+						isCustomGender={isCustomGender}
+						setGender={setGender}
+						setIsCustomGender={setIsCustomGender}
+					/>
+				</div>
+			</Form>
+		</div>
 	);
 };
 
