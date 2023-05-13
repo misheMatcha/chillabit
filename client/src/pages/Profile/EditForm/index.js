@@ -8,6 +8,7 @@ import EditInputs from './EditInputs';
 import EditLinks from './EditLinks';
 import StyledButton from '../../../components/General/StyledButton';
 import useAuth from '../../../hooks/useAuth';
+import useGeneral from '../../../hooks/useGeneral';
 import useModal from '../../../hooks/useModal';
 import axios from '../../../utils/axios';
 import { styles } from '../../../utils/styles';
@@ -59,6 +60,7 @@ const useStyles = createUseStyles((theme) => ({
 const ProfileEditForm = () => {
 	const theme = useTheme();
 	const { currentUser, setCurrentUser, token } = useAuth();
+	const { setUser } = useGeneral();
 	const [avatarPreview, setAvatarPreview] = useState(currentUser.avatar);
 	const classes = useStyles({ avatarPreview, currentUser, theme });
 	const [form] = Form.useForm();
@@ -81,6 +83,7 @@ const ProfileEditForm = () => {
 				config
 			);
 			setCurrentUser(response.data);
+			setUser(response.data);
 			closeModal();
 		} catch (err) {
 			console.log(err.response.data);

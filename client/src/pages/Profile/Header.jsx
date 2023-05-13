@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import Tooltip from 'antd/lib/tooltip';
 import Upload from 'antd/lib/upload';
-import isEmpty from 'lodash/isEmpty';
 import { createUseStyles, useTheme } from 'react-jss';
 import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
+import useGeneral from '../../hooks/useGeneral';
 import axios from '../../utils/axios';
+import { isEmptyObject } from '../../utils/general';
 import { styles } from '../../utils/styles';
 
 const {
@@ -110,38 +111,17 @@ const useStyles = createUseStyles((theme) => ({
 const Header = () => {
 	const { identifier, userPathMatches } = useCurrentPath();
 	const { currentUser, setCurrentUser, token } = useAuth();
+	const { user, setUser } = useGeneral();
 	const theme = useTheme();
 
 	const [loading, setLoading] = useState(true);
-	const [user, setUser] = useState({});
 
 	const { avatar, fullname, full_location, header_bg, username } = user;
 	const classes = useStyles({ avatar, header_bg, theme });
 
 	useEffect(() => {
 		// need to add timeout
-		const fetchUser = async () => {
-			try {
-				const response = await axios.get(`/users/${identifier}`);
-				setUser(response.data);
-			} catch (err) {
-				console.log(err.response.data);
-			}
-		};
-
-		if (loading) {
-			if (isEmpty(user)) {
-				if (userPathMatches) {
-					setUser(currentUser);
-					setLoading(false);
-				} else {
-					fetchUser();
-					setLoading(false);
-				}
-			}
-		}
-
-		if (userPathMatches && currentUser !== user) setUser(currentUser);
+		if (loading && !isEmptyObject(user)) setLoading(false);
 
 		return () => {};
 	}, [currentUser, loading, user, identifier, userPathMatches]);

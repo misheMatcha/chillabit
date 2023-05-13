@@ -4,7 +4,7 @@ const GeneralContext = createContext({});
 
 export const GeneralProvider = ({ children }) => {
 	const [errors, setErrors] = useState({});
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState({});
 
 	return (
 		<GeneralContext.Provider
