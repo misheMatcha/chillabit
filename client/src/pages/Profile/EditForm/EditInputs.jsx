@@ -63,20 +63,25 @@ const EditInputs = () => {
 
 	useEffect(() => {
 		const handleOutsideClick = (e) => {
-			if (ref.current && !ref.current.input.contains(e.target)) setEditUrl(false);
+			if (ref.current && !ref.current.input.contains(e.target) && form.getFieldValue('url') !== '')
+				setEditUrl(false);
 		};
 
 		document.addEventListener('click', handleOutsideClick, true);
 		return () => {
 			document.removeEventListener('click', handleOutsideClick, true);
 		};
-	}, [ref]);
+	}, [form, ref]);
 
 	return (
 		<div className={classes.container}>
 			<StyledFormItem
-				label='Disyplay name'
+				label='Display name'
 				name='username'
+				rules={[
+					{ message: 'Enter your display name. You can change it later.', required: true },
+					{ max: 50, message: 'Enter a display name that is up to 50 characters.' },
+				]}
 				required
 			/>
 			<StyledFormItem
@@ -84,6 +89,7 @@ const EditInputs = () => {
 				label='Profile URL'
 				name='url'
 				required
+				rules={[{ message: 'Enter a profile URL.', required: true }]}
 			>
 				{editUrl ? (
 					<Input

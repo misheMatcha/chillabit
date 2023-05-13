@@ -28,7 +28,13 @@ class Api::V1::UsersController < ApplicationController
   def update
     @user = User.friendly.find(params[:id])
     @user.assign_attributes(user_params)
-    @user.assign_attributes(links: user_params['links'].values) if user_params['links']
+
+    if user_params['links'].blank?
+      @user.assign_attributes(links: [])
+    else
+      @user.assign_attributes(links: user_params['links'].values) if user_params['links']
+    end
+
     if @user.save!
       render :show
     else

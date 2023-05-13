@@ -15,7 +15,7 @@ const useStyles = createUseStyles((theme) => ({
 		'& .ant-form-item-label': {
 			'& label': {
 				'&::after': {
-					content: "''",
+					// content: "''",
 				},
 				...alignItems.flexStart,
 				...displayFlex,
@@ -42,20 +42,28 @@ const useStyles = createUseStyles((theme) => ({
 		padding: `${spacing['0_25']}px 7px`,
 	},
 	required: {
-		'& .ant-form-item-label > label::after': {
-			content: "'*'",
+		'& .ant-form-item-required': {
+			'&::after': {
+				color: `${theme.color.error} !important`,
+				content: "'*' !important",
+			},
+			'&::before': {
+				display: 'none !important',
+			},
 		},
 	},
 }));
 
 const StyledFormItem = ({
 	children,
+	dependencies,
 	formStyles,
 	inputStyles,
 	label,
 	name,
 	onChange,
 	placeholder,
+	rules,
 	required = false,
 	small = false,
 }) => {
@@ -72,8 +80,10 @@ const StyledFormItem = ({
 				},
 				formStyles
 			)}
+			colon={false}
 			label={label}
 			name={name}
+			rules={rules}
 		>
 			{children ? (
 				children

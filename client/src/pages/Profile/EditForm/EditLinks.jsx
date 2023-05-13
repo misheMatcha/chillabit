@@ -4,6 +4,7 @@ import { faDollarSign, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'antd/lib/form';
 import * as cn from 'classnames';
+import includes from 'lodash/includes';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import StyledButton from '../../../components/General/StyledButton';
@@ -147,6 +148,25 @@ const EditLinks = () => {
 														? 'e.g.: https://paypal.me/username'
 														: 'Web or email address'
 												}
+												rules={[
+													({ getFieldValue }) => ({
+														validator(_, value) {
+															const titleFieldEmpty =
+																getFieldValue(['links', link.name, 'title']) === '';
+															if (value === '' && !titleFieldEmpty) {
+																return Promise.reject(new Error('Enter a web or email address.'));
+															} else if (
+																(titleFieldEmpty && value === '') ||
+																includes(value, '@') ||
+																includes(value, 'https://')
+															) {
+																return Promise.resolve();
+															}
+
+															return Promise.reject(new Error('This URL or email is invalid.'));
+														},
+													}),
+												]}
 												small
 											/>
 											{!isSupportLink && (
