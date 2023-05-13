@@ -34,6 +34,7 @@ const useStyles = createUseStyles((theme) => ({
 		...height[100].percentage,
 		...width[100].percentage,
 		backgroundColor: 'hsla(0,0%,94.9%,.9)',
+		overflowY: 'scroll',
 		position: 'fixed',
 		zIndex: spacing[2],
 	},

@@ -21,6 +21,7 @@ const useStyles = createUseStyles((theme) => ({
 		'& > :first-child': {
 			marginRight: spacing['0_5'],
 		},
+		...alignItems.center,
 		...displayFlex,
 	},
 	formItem: {
@@ -64,6 +65,11 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	linkList: {
 		margin: `${spacing['2_25']}px 0`,
+	},
+	maxLinks: {
+		...typography.captions,
+		color: theme.color.error,
+		marginLeft: spacing['0_7'],
 	},
 	moreInfoBtn: {
 		'& > span': {
@@ -122,102 +128,117 @@ const EditLinks = () => {
 				Your links <FontAwesomeIcon icon={faCircleQuestion} />
 			</div>
 			<Form.List name='links'>
-				{(links, { add, remove }) => (
-					<div className={classes.linkList}>
-						{links.map((link, i) => {
-							const isSupportLink = form.getFieldValue('links')[i].type === 'support';
+				{(links, { add, remove }) => {
+					const linksNotMaxed = links.length < 10 ? true : false;
 
-							return (
-								<div
-									className={classes.link}
-									key={link.key}
-								>
-									<div className={cn(classes.icon, { [`${classes.supportIcon}`]: isSupportLink })}>
-										{isSupportLink && <FontAwesomeIcon icon={faDollarSign} />}
-									</div>
-									<div className={classes.inputContent}>
-										<div className={classes.inputwrapper}>
-											<StyledFormItem
-												formStyles={cn(classes.formItem, {
-													[`${classes.inputContactUrl}`]: !isSupportLink,
-												})}
-												inputStyles={classes.input}
-												name={[i, 'url']}
-												placeholder={
-													isSupportLink
-														? 'e.g.: https://paypal.me/username'
-														: 'Web or email address'
-												}
-												rules={[
-													({ getFieldValue }) => ({
-														validator(_, value) {
-															const titleFieldEmpty =
-																getFieldValue(['links', link.name, 'title']) === '';
-															if (value === '' && !titleFieldEmpty) {
-																return Promise.reject(new Error('Enter a web or email address.'));
-															} else if (
-																(titleFieldEmpty && value === '') ||
-																includes(value, '@') ||
-																includes(value, 'https://')
-															) {
-																return Promise.resolve();
-															}
+					return (
+						<div className={classes.linkList}>
+							{links.map((link, i) => {
+								const isSupportLink =
+									form.getFieldValue(['links', link.name, 'type']) === 'support';
 
-															return Promise.reject(new Error('This URL or email is invalid.'));
-														},
-													}),
-												]}
-												small
-											/>
-											{!isSupportLink && (
+								return (
+									<div
+										className={classes.link}
+										key={link.key}
+									>
+										<div
+											className={cn(classes.icon, { [`${classes.supportIcon}`]: isSupportLink })}
+										>
+											{isSupportLink && <FontAwesomeIcon icon={faDollarSign} />}
+										</div>
+										<div className={classes.inputContent}>
+											<div className={classes.inputwrapper}>
 												<StyledFormItem
 													formStyles={cn(classes.formItem, {
-														[`${classes.inputContactTitle}`]: !isSupportLink,
+														[`${classes.inputContactUrl}`]: !isSupportLink,
 													})}
-													name={[i, 'title']}
-													placeholder='Short title'
+													inputStyles={classes.input}
+													name={[i, 'url']}
+													placeholder={
+														isSupportLink
+															? 'e.g.: https://paypal.me/username'
+															: 'Web or email address'
+													}
+													rules={[
+														({ getFieldValue }) => ({
+															validator(_, value) {
+																const titleFieldEmpty =
+																	getFieldValue(['links', link.name, 'title']) === '';
+																if (!isSupportLink && value === '' && !titleFieldEmpty) {
+																	return Promise.reject(new Error('Enter a web or email address.'));
+																} else if (
+																	(isSupportLink && value === '') ||
+																	(titleFieldEmpty && value === '') ||
+																	includes(value, '@') ||
+																	includes(value, 'https://')
+																) {
+																	return Promise.resolve();
+																}
+
+																return Promise.reject(new Error('This URL or email is invalid.'));
+															},
+														}),
+													]}
 													small
 												/>
-											)}
+												{!isSupportLink && (
+													<StyledFormItem
+														formStyles={cn(classes.formItem, {
+															[`${classes.inputContactTitle}`]: !isSupportLink,
+														})}
+														name={[i, 'title']}
+														placeholder='Short title'
+														small
+													/>
+												)}
+												{isSupportLink && (
+													<StyledButton
+														icon={faCircleQuestion}
+														styles={classes.moreInfoBtn}
+													/>
+												)}
+											</div>
 											{isSupportLink && (
-												<StyledButton
-													icon={faCircleQuestion}
-													styles={classes.moreInfoBtn}
-												/>
+												<div className={classes.supportInfo}>
+													Supported platforms: PayPal, Cash app, Venmo, Bandcamp, Shopify,
+													Kickstarter, Patreon, and Gofundme. <Link>Learn more</Link>
+												</div>
 											)}
 										</div>
-										{isSupportLink && (
-											<div className={classes.supportInfo}>
-												Supported platforms: PayPal, Cash app, Venmo, Bandcamp, Shopify,
-												Kickstarter, Patreon, and Gofundme. <Link>Learn more</Link>
-											</div>
-										)}
-									</div>
 
-									<StyledButton
-										icon={faTrash}
-										onClick={() => remove(link.name)}
-									/>
-								</div>
-							);
-						})}
-						<div className={classes.formBtns}>
-							<StyledButton
-								label='Add link'
-								onClick={() => {
-									if (links.length < 10) add(defaultContactLink);
-								}}
-							/>
-							<StyledButton
-								label='Add support link'
-								onClick={() => {
-									if (links.length < 10) add(defaultSupportLink);
-								}}
-								special
-							/>
+										<StyledButton
+											icon={faTrash}
+											onClick={() => remove(link.name)}
+										/>
+									</div>
+								);
+							})}
+							<div className={classes.formBtns}>
+								<StyledButton
+									disabled={!linksNotMaxed}
+									label='Add link'
+									onClick={() => {
+										if (linksNotMaxed) add(defaultContactLink);
+									}}
+								/>
+								<StyledButton
+									disabled={!linksNotMaxed}
+									label='Add support link'
+									onClick={() => {
+										if (linksNotMaxed) add(defaultSupportLink);
+									}}
+									special
+								/>
+								{!linksNotMaxed && (
+									<div className={classes.maxLinks}>
+										A maximum of 10 links can be added to your profile.
+									</div>
+								)}
+							</div>
 						</div>
-					</div>
-				)}
+					);
+				}}
 			</Form.List>
 		</div>
 	);

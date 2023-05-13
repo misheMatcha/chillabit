@@ -9,6 +9,16 @@ const { alignItems, displayFlex, radius, spacing } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	defaultStyle: {
+		'&:disabled': {
+			'&:hover': {
+				borderColor: '#e5e5e5 !important',
+				color: '#ccc !important',
+			},
+			backgroundColor: theme.background.highlight,
+			borderColor: '#e5e5e5',
+			color: '#ccc',
+			cursor: 'default',
+		},
 		'&:hover': {
 			borderColor: '#ccc !important',
 			color: '#333 !important',
@@ -54,6 +64,7 @@ const useStyles = createUseStyles((theme) => ({
 
 const StyledButton = ({
 	children,
+	disabled,
 	htmlType,
 	label,
 	onClick,
@@ -76,6 +87,7 @@ const StyledButton = ({
 				},
 				styles
 			)}
+			disabled={disabled}
 			htmlType={htmlType}
 			onClick={onClick}
 		>

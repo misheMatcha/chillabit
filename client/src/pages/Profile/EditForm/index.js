@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
 import Upload from 'antd/lib/upload';
+import { filter, values } from 'lodash';
 import omit from 'lodash/omit';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
@@ -72,17 +73,18 @@ const ProfileEditForm = () => {
 
 	const onSubmit = async (values) => {
 		if (hasErrors(form.getFieldsError())) return;
-
-		const config = {
-			headers: {
-				authorization: token,
-				'content-type': 'multipart/form-data',
-			},
-		};
-
-		const updatedValues = typeof values.avatar === 'string' ? omit(values, ['avatar']) : values;
-
 		try {
+			const config = {
+				headers: {
+					authorization: token,
+					'content-type': 'multipart/form-data',
+				},
+			};
+
+			const updatedValues = typeof values.avatar === 'string' ? omit(values, ['avatar']) : values;
+
+			updatedValues.links = filter(updatedValues.links, (link) => link.url !== '');
+
 			const response = await axios.put(
 				`/users/${currentUser.url}`,
 				{ user: updatedValues },

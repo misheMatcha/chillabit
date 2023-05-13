@@ -56,7 +56,6 @@ const useStyles = createUseStyles((theme) => ({
 
 const StyledFormItem = ({
 	children,
-	dependencies,
 	formStyles,
 	inputStyles,
 	label,
