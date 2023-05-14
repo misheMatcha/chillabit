@@ -5,6 +5,7 @@ import Discover from './pages/Discover';
 import Helmet from './pages/Helmet';
 import Landing from './pages/Landing/index';
 import Profile from './pages/Profile';
+import PopularTracks from './pages/Profile/PopularTracks';
 
 const App = () => {
 	return (
@@ -32,7 +33,7 @@ const App = () => {
 					/>
 					<Route
 						path='popular-tracks'
-						element={<Discover />}
+						element={<PopularTracks />}
 					/>
 					<Route
 						path='tracks'

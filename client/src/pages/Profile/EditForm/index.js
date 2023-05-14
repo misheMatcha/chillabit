@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
 import Upload from 'antd/lib/upload';
-import { filter, values } from 'lodash';
+import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
