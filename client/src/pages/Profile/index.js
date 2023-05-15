@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Outlet } from 'react-router';
+import All from './All';
 import Header from './Header';
 import ProfileNavBar from './ProfileNavBar';
 import Sidebar from '../../components/Sidebar';
@@ -24,6 +25,8 @@ const useStyles = createUseStyles((theme) => ({
 		},
 		...displayFlex,
 		...width[100].percentage,
+		height: '100%',
+		paddingTop: 20,
 	},
 	contentWrapper: {
 		...displayFlex,
@@ -40,7 +43,7 @@ const Profile = () => {
 	const [loading, setLoading] = useState(true);
 	const { currentUser } = useAuth();
 	const { setUser, user } = useGeneral();
-	const { identifier, userPathMatches } = useCurrentPath();
+	const { fullPath, identifier, userPathMatches } = useCurrentPath();
 
 	useEffect(() => {
 		const fetchUser = async () => {
@@ -68,7 +71,7 @@ const Profile = () => {
 			<div className={classes.contentWrapper}>
 				<ProfileNavBar />
 				<div className={classes.content}>
-					<Outlet />
+					{fullPath === `/${identifier}` ? <All /> : <Outlet />}
 					<Sidebar />
 				</div>
 			</div>

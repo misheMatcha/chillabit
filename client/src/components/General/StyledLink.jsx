@@ -74,6 +74,13 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
+// ONLY USE IN ProfilePageTemplate
+// TODO
+// - refac for all styles
+// - refac styles to reflect button styles
+// - update other components
+// - remove StyledLink from landing
+
 const StyledLink = ({
 	children,
 	icon,
@@ -112,7 +119,8 @@ const StyledLink = ({
 				children
 			) : (
 				<div>
-					<FontAwesomeIcon icon={icon} /> <span>{label}</span>
+					{icon && <FontAwesomeIcon icon={icon} />}
+					<span>{label}</span>
 				</div>
 			)}
 		</Link>

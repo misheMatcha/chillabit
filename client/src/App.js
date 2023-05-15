@@ -5,7 +5,11 @@ import Discover from './pages/Discover';
 import Helmet from './pages/Helmet';
 import Landing from './pages/Landing/index';
 import Profile from './pages/Profile';
-import PopularTracks from './pages/Profile/PopularTracks';
+import Albums from './pages/Profile/Pages/Albums';
+import Playlists from './pages/Profile/Pages/Playlists';
+import PopularTracks from './pages/Profile/Pages/PopularTracks';
+import Reposts from './pages/Profile/Pages/Reposts';
+import Tracks from './pages/Profile/Pages/Tracks';
 
 const App = () => {
 	return (
@@ -37,19 +41,19 @@ const App = () => {
 					/>
 					<Route
 						path='tracks'
-						element={<Discover />}
+						element={<Tracks />}
 					/>
 					<Route
 						path='albums'
-						element={<Discover />}
+						element={<Albums />}
 					/>
 					<Route
 						path='sets'
-						element={<Discover />}
+						element={<Playlists />}
 					/>
 					<Route
 						path='reposts'
-						element={<Discover />}
+						element={<Reposts />}
 					/>
 				</Route>
 			</Route>
