@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Outlet } from 'react-router';
-import All from './All';
 import Header from './Header';
 import ProfileNavBar from './ProfileNavBar';
 import Sidebar from '../../components/Sidebar';
@@ -43,7 +42,7 @@ const Profile = () => {
 	const [loading, setLoading] = useState(true);
 	const { currentUser } = useAuth();
 	const { setUser, user } = useGeneral();
-	const { fullPath, identifier, userPathMatches } = useCurrentPath();
+	const { identifier, userPathMatches } = useCurrentPath();
 
 	useEffect(() => {
 		const fetchUser = async () => {
@@ -71,7 +70,7 @@ const Profile = () => {
 			<div className={classes.contentWrapper}>
 				<ProfileNavBar />
 				<div className={classes.content}>
-					{fullPath === `/${identifier}` ? <All /> : <Outlet />}
+					<Outlet />
 					<Sidebar />
 				</div>
 			</div>

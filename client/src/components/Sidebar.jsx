@@ -8,18 +8,7 @@ import { LINKS_PLACEHOLDER } from '../data/userPlaceholders';
 import useGeneral from '../hooks/useGeneral';
 import { styles } from '../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	radius,
-	spacing,
-	typography,
-	weight,
-	width,
-} = styles;
+const { alignItems, displayFlex, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -139,33 +128,32 @@ const Sidebar = () => {
 					<div>143</div>
 				</Link>
 			</div>
-			{/* {user.bio && ( */}
-			<div
-				className={cn(classes.descriptionWrapper, { [`${classes.truncatedWrapper}`]: !showMore })}
-			>
-				<div className={cn(classes.description, { [`${classes.truncated}`]: !showMore })}>
-					{user.bio}
-					im a place holder :)
+			{user.bio && (
+				<div
+					className={cn(classes.descriptionWrapper, { [`${classes.truncatedWrapper}`]: !showMore })}
+				>
+					<div className={cn(classes.description, { [`${classes.truncated}`]: !showMore })}>
+						{user.bio}
+					</div>
+					{showMore ? (
+						<Link
+							className={classes.descriptionShow}
+							onClick={toggleShowMore}
+							to='#'
+						>
+							Show less <FontAwesomeIcon icon={faCaretUp} />
+						</Link>
+					) : (
+						<Link
+							className={classes.descriptionShow}
+							onClick={toggleShowMore}
+							to='#'
+						>
+							Show more <FontAwesomeIcon icon={faCaretDown} />
+						</Link>
+					)}
 				</div>
-				{showMore ? (
-					<Link
-						className={classes.descriptionShow}
-						onClick={toggleShowMore}
-						to='#'
-					>
-						Show less <FontAwesomeIcon icon={faCaretUp} />
-					</Link>
-				) : (
-					<Link
-						className={classes.descriptionShow}
-						onClick={toggleShowMore}
-						to='#'
-					>
-						Show more <FontAwesomeIcon icon={faCaretDown} />
-					</Link>
-				)}
-			</div>
-			{/* )} */}
+			)}
 			{user.links && (
 				<ul className={classes.links}>
 					{LINKS_PLACEHOLDER.map((link, i) => (

@@ -6,6 +6,7 @@ import Helmet from './pages/Helmet';
 import Landing from './pages/Landing/index';
 import Profile from './pages/Profile';
 import Albums from './pages/Profile/Pages/Albums';
+import All from './pages/Profile/Pages/All';
 import Playlists from './pages/Profile/Pages/Playlists';
 import PopularTracks from './pages/Profile/Pages/PopularTracks';
 import Reposts from './pages/Profile/Pages/Reposts';
@@ -33,7 +34,7 @@ const App = () => {
 					{/* added for testing outlet */}
 					<Route
 						path=''
-						element={<Discover />}
+						element={<All />}
 					/>
 					<Route
 						path='popular-tracks'
