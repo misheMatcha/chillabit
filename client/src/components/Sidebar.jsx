@@ -15,8 +15,6 @@ const useStyles = createUseStyles((theme) => ({
 		'& a': {
 			textDecoration: theme.link.textDecoration.standard,
 		},
-		paddingLeft: 30,
-		width: 360,
 	},
 	description: {
 		marginBottom: 10,

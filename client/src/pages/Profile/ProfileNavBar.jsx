@@ -36,6 +36,7 @@ const useStyles = createUseStyles((theme) => ({
 		...justifyContent.spaceBetween,
 		borderBottom: `1px solid ${theme.background.highlight}`,
 		height: 50,
+		marginBottom: spacing['2_5'],
 		paddingTop: 15,
 	},
 	navGroup: {
