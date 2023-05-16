@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link, NavLink } from 'react-router-dom';
 import StyledButton from '../../components/General/StyledButton';
+import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import useModal from '../../hooks/useModal';
 import { styles } from '../../utils/styles';
@@ -75,7 +76,7 @@ const useStyles = createUseStyles((theme) => ({
 }));
 
 const navLinkList = [
-	{ label: 'All', path: '' },
+	{ label: 'All', path: `` },
 	{ label: 'Popular tracks', path: 'popular-tracks' },
 	{ label: 'Tracks', path: 'tracks' },
 	{ label: 'Albums', path: 'albums' },
@@ -87,6 +88,7 @@ const ProfileNavBar = () => {
 	const theme = useTheme();
 	const { userPathMatches } = useCurrentPath();
 	const { openModal } = useModal();
+	const { isLoggedIn } = useAuth();
 	const classes = useStyles({ theme });
 
 	return (
@@ -98,6 +100,7 @@ const ProfileNavBar = () => {
 							className={({ isActive, isPending }) =>
 								isPending ? '' : isActive ? classes.navLinkActive : ''
 							}
+							end
 							to={link.path}
 						>
 							{link.label}
@@ -129,12 +132,16 @@ const ProfileNavBar = () => {
 							label='Share'
 							special
 						/>
-						<StyledButton>
-							<FontAwesomeIcon icon={faEnvelope} />
-						</StyledButton>
-						<StyledButton>
-							<FontAwesomeIcon icon={faEllipsis} />
-						</StyledButton>
+						{isLoggedIn && !userPathMatches && (
+							<>
+								<StyledButton>
+									<FontAwesomeIcon icon={faEnvelope} />
+								</StyledButton>
+								<StyledButton>
+									<FontAwesomeIcon icon={faEllipsis} />
+								</StyledButton>
+							</>
+						)}
 					</>
 				)}
 			</div>
