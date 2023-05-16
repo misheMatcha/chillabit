@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import RequireAuth from './features/Authenticate/RequireAuth';
 import Discover from './pages/Discover';
-import Helmet from './pages/Helmet';
 import Landing from './pages/Landing/index';
+import Layout from './pages/Layout';
 import Profile from './pages/Profile';
 import Albums from './pages/Profile/Pages/Albums';
 import All from './pages/Profile/Pages/All';
@@ -21,7 +21,7 @@ const App = () => {
 			/>
 			<Route
 				path='/'
-				element={<Helmet />}
+				element={<Layout />}
 			>
 				<Route
 					path='/discover'
@@ -31,7 +31,6 @@ const App = () => {
 					path='/:url'
 					element={<Profile />}
 				>
-					{/* added for testing outlet */}
 					<Route
 						path=''
 						element={<All />}

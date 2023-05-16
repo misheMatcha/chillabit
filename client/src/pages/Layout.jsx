@@ -26,7 +26,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const Helmet = () => {
+const Layout = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -40,4 +40,4 @@ const Helmet = () => {
 	);
 };
 
-export default Helmet;
+export default Layout;
