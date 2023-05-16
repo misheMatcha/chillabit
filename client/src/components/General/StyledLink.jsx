@@ -5,18 +5,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import { styles } from '../../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	justifyContent,
-	height,
-	radius,
-	spacing,
-	textAlign,
-	typography,
-	weight,
-	width,
-} = styles;
+const { displayFlex, radius, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	bold: {
