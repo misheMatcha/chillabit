@@ -5,9 +5,8 @@ import Select from 'antd/lib/select';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
-import FormError from './FormError';
-import StyledInput from './StyledInput';
-import useAuth from '../../../hooks/useAuth';
+import StyledInput from '../../../components/General/StyledInput';
+import useAuthForm from '../../../hooks/useAuthForm';
 import { styles } from '../../../utils/styles';
 
 const { alignItems, displayFlex, radius, spacing, typography, weight, width } = styles;
@@ -18,22 +17,37 @@ const useStyles = createUseStyles((theme) => ({
 			height: `${spacing[5]}px !important`,
 		},
 		'&.ant-input-number-focused, &:focus, &:hover': {
-			borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
+			borderColor: '#ccc',
 			boxShadow: 'none',
 		},
 		...typography.h3,
 		...width[100].percentage,
 		backgroundColor: theme.color.white,
-		borderColor: ({ errors }) => (errors.age ? theme.color.error : '#ccc'),
+		borderColor: '#ccc',
 		borderRadius: radius[4],
 		color: '#333',
 		height: spacing[5],
+	},
+	ageInputError: {
+		'&.ant-input-number-focused, &:focus, &:hover': {
+			borderColor: theme.color.error,
+		},
+		borderColor: theme.color.error,
 	},
 	container: {
 		marginBottom: spacing[2],
 	},
 	customInput: {
 		paddingTop: spacing[1],
+	},
+	error: {
+		...typography.captions,
+		color: theme.color.error,
+		marginBottom: spacing['1_5'],
+		marginTop: spacing['0_7'],
+	},
+	hidden: {
+		display: 'none',
 	},
 	select: {
 		'& div': {
@@ -77,13 +91,17 @@ const genderOptions = [
 	{ label: 'Prefer not to say', value: 'n/a' },
 ];
 
-const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
+const Step3 = () => {
 	const theme = useTheme();
-	const { errors } = useAuth();
+	const { errors, isCustomGender, setGender, setIsCustomGender, step } = useAuthForm();
 	const classes = useStyles({ errors, isCustomGender, theme });
 
 	return (
-		<div className={classes.container}>
+		<div
+			className={cn(classes.container, {
+				[`${classes.hidden}`]: step !== 3,
+			})}
+		>
 			<div>
 				<div>
 					<label>
@@ -106,10 +124,14 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							className={classes.spacing}
 							name='age'
 						>
-							<InputNumber className={classes.ageInput} />
+							<InputNumber
+								className={cn(classes.ageInput, {
+									[`${classes.ageInputError}`]: errors.age,
+								})}
+							/>
 						</Form.Item>
 					</label>
-					{errors.age && <FormError>{errors.age}</FormError>}
+					{errors.age && <div className={classes.error}>{errors.age}</div>}
 				</div>
 				<div className={cn({ [`${classes.spacingSection}`]: !errors.gender })}>
 					<label>
@@ -134,7 +156,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 						{isCustomGender && (
 							<div className={classes.customInput}>
 								<StyledInput
-									isInvalid={errors.gender}
+									error={errors.gender}
 									maxLength={16}
 									onChange={(e) => setGender(e.target.value)}
 									placeholder='Custom gender'
@@ -142,7 +164,7 @@ const Step3 = ({ isCustomGender, setGender, setIsCustomGender }) => {
 							</div>
 						)}
 					</label>
-					{errors.gender && <FormError>{errors.gender}</FormError>}
+					{errors.gender && !isCustomGender && <div className={classes.error}>{errors.gender}</div>}
 				</div>
 			</div>
 			<FormButton htmlType='submit'>Continue</FormButton>

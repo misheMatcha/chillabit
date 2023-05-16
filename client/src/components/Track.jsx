@@ -16,19 +16,11 @@ import Button from 'antd/lib/button';
 import Dropdown from 'antd/lib/dropdown';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import useModal from '../hooks/useModal';
 import { styles } from '../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	truncateText,
-	typography,
-	width,
-} = styles;
+const { displayFlex, flexDirection, height, justifyContent, truncateText, typography, width } =
+	styles;
 
 const COVER_SIZE = 180;
 
@@ -61,7 +53,7 @@ const useStyles = createUseStyles((theme, cover) => ({
 	},
 	cover: {
 		'&:hover': {
-			'& $playHover, $playableActions': {
+			'& $playHover, $playableActions, $playWrapper': {
 				opacity: 1,
 			},
 		},
@@ -97,10 +89,10 @@ const useStyles = createUseStyles((theme, cover) => ({
 		opacity: 0,
 	},
 	playWrapper: {
-		...alignItems.flexEnd,
-		...displayFlex,
-		...justifyContent.center,
-		...width[100].percentage,
+		margin: 'auto',
+		opacity: 0,
+		position: 'relative',
+		top: COVER_SIZE - 114,
 	},
 	playableActions: {
 		height: 22,
@@ -161,30 +153,30 @@ const items = [
 const Track = ({ artist, cover, title }) => {
 	const theme = useTheme();
 	const classes = useStyles({ cover, theme });
-	const { toggleModal } = useAuth();
+	const { openModal } = useModal();
 
 	return (
 		<div className={classes.container}>
 			<div className={classes.cover}>
+				<div className={classes.playWrapper}>
+					<Link>
+						<FontAwesomeIcon
+							onClick={() => console.log('plays song')}
+							className={classes.play}
+							icon={faCirclePlay}
+						/>
+					</Link>
+				</div>
 				<Link
 					to='/home'
 					className={classes.playHover}
 				>
-					<div className={classes.playWrapper}>
-						<Link>
-							<FontAwesomeIcon
-								onClick={() => console.log('plays song')}
-								className={classes.play}
-								icon={faCirclePlay}
-							/>
-						</Link>
-					</div>
 					<div className={classes.playableActionsGradient} />
 				</Link>
 				<div className={classes.playableActions}>
 					<Button
 						className={classes.action}
-						onClick={() => toggleModal()}
+						onClick={() => openModal('auth')}
 					>
 						<FontAwesomeIcon
 							className={classes.icon}
@@ -193,7 +185,7 @@ const Track = ({ artist, cover, title }) => {
 					</Button>
 					<Button
 						className={classes.action}
-						onClick={() => toggleModal()}
+						onClick={() => openModal('auth')}
 					>
 						<FontAwesomeIcon
 							className={classes.icon}

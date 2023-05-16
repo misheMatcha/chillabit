@@ -8,8 +8,9 @@ import MoreButtonsDropdown from './MoreButtonsDropdown';
 import NotificationsDowndrop from './NotificationsDropdown';
 import UserDropdown from './UserDropdown';
 import useAuth from '../../../hooks/useAuth';
+import useModal from '../../../hooks/useModal';
 import { styles } from '../../../utils/styles';
-import CustomRenderDropdown from '../../CustomRenderDropdown';
+import CustomRenderDropdown from '../../General/CustomRenderDropdown';
 
 const { alignItems, displayFlex, justifyContent, radius, spacing, weight } = styles;
 
@@ -83,11 +84,12 @@ const useStyles = createUseStyles((theme) => ({
 const RightHeader = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { toggleModal, user } = useAuth();
+	const { isLoggedIn } = useAuth();
+	const { openModal } = useModal();
 
 	return (
 		<div className={classes.container}>
-			{user ? (
+			{isLoggedIn ? (
 				<div className={classes.proWrapper}>
 					<Link className={classes.proLink}>Try Go+</Link>
 					<Link className={classes.proLink}>Try Next Pro</Link>
@@ -96,13 +98,13 @@ const RightHeader = () => {
 				<div className={classes.loginMenu}>
 					<Button
 						className={cn(classes.btn, classes.clear)}
-						onClick={() => toggleModal()}
+						onClick={() => openModal('auth')}
 					>
 						Sign in
 					</Button>
 					<Button
 						className={classes.btn}
-						onClick={() => toggleModal(true)}
+						onClick={() => openModal('auth', { newUser: true })}
 					>
 						Create account
 					</Button>
@@ -116,7 +118,7 @@ const RightHeader = () => {
 					Upload
 				</Link>
 			</div>
-			{user && (
+			{isLoggedIn && (
 				<>
 					<div className={classes.userDropdownWrapper}>
 						<UserDropdown />

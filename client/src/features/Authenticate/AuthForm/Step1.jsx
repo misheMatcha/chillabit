@@ -4,9 +4,8 @@ import * as cn from 'classnames';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
-import FormError from './FormError';
-import StyledInput from './StyledInput';
-import useAuth from '../../../hooks/useAuth';
+import StyledInput from '../../../components/General/StyledInput';
+import useAuthForm from '../../../hooks/useAuthForm';
 import axios from '../../../utils/axios';
 import { styles } from '../../../utils/styles';
 
@@ -18,14 +17,18 @@ const useStyles = createUseStyles({
 		...flexDirection.column,
 		...justifyContent.spaceBetween,
 	},
+	hidden: {
+		display: 'none',
+	},
 	spacing: {
 		margin: 0,
 	},
 });
 
-const Step1 = ({ form }) => {
-	const classes = useStyles();
-	const { errors, setErrors, setIsVerified, setStep } = useAuth();
+const Step1 = () => {
+	const { errors, nextStep, setIsVerified, step, updateFormErrors } = useAuthForm();
+	const classes = useStyles({ step });
+	const form = Form.useFormInstance();
 
 	const verifyHandle = async () => {
 		const handle = form.getFieldValue('email');
@@ -38,29 +41,32 @@ const Step1 = ({ form }) => {
 		}
 
 		try {
-			const response = await axios.post('/authenticates/handle', handles);
+			const response = await axios.post('/verify_handle', handles);
 			setIsVerified(response.data.isVerified);
 			form.setFieldValue('email', response.data.email);
-			setStep(2);
-			setErrors({});
+			nextStep();
+			updateFormErrors({});
 		} catch (err) {
-			setErrors(err.response.data);
+			updateFormErrors(err.response.data);
 		}
 	};
 
 	return (
-		<div className={classes.container}>
+		<div
+			className={cn(classes.container, {
+				[`${classes.hidden}`]: step !== 1,
+			})}
+		>
 			<div>
 				<Form.Item
 					className={cn({ [`${classes.spacing}`]: errors.message })}
 					name='email'
 				>
 					<StyledInput
-						isInvalid={errors.message}
+						error={errors.message}
 						placeholder='Your email address or profile URL'
 					/>
 				</Form.Item>
-				{errors.message && <FormError>{errors.message}</FormError>}
 			</div>
 			<FormButton onClick={verifyHandle}>Continue</FormButton>
 		</div>

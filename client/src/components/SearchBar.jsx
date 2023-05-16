@@ -69,12 +69,12 @@ const useStyles = createUseStyles((theme) => ({
 const SearchBar = ({ isNav = false }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { user } = useAuth();
+	const { isLoggedIn } = useAuth();
 
 	return (
 		<Search
 			className={cn(classes.defaultStyle, { [`${classes.navStyle}`]: isNav })}
-			placeholder={user ? 'Search' : 'Search for artists, bands, tracks, podcasts'}
+			placeholder={isLoggedIn ? 'Search' : 'Search for artists, bands, tracks, podcasts'}
 		/>
 	);
 };

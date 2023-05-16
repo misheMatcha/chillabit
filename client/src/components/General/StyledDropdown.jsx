@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Dropdown from 'antd/lib/dropdown';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import { styles } from '../utils/styles';
+import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, justifyContent, radius, spacing, typography, weight } = styles;
 

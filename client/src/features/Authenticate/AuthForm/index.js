@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Form from 'antd/lib/form';
+import pick from 'lodash/pick';
 import { createUseStyles } from 'react-jss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import useAuth from '../../../hooks/useAuth';
+import useAuthForm from '../../../hooks/useAuthForm';
+import useModal from '../../../hooks/useModal';
 import axios from '../../../utils/axios';
+import { styles } from '../../../utils/styles';
+
+const { width } = styles;
 
 const useStyles = createUseStyles({
+	container: { ...width[100].percentage },
 	step1: {
 		display: (step) => (step === 1 ? 'block' : 'none'),
 	},
@@ -20,33 +27,19 @@ const useStyles = createUseStyles({
 	},
 });
 
-const AuthForm = () => {
-	const [gender, setGender] = useState('');
-	const [isCustomGender, setIsCustomGender] = useState(false);
-	const {
-		displayModal,
-		setClickedSignUp,
-		setDisplayModal,
-		setErrors,
-		setIsVerified,
-		step,
-		isVerified,
-		setStep,
-		setToken,
-		setUser,
-	} = useAuth();
-	const classes = useStyles(step);
+const initialValues = {
+	age: '',
+	email: '',
+	gender: '',
+	password: '',
+	username: '',
+};
 
-	useEffect(() => {
-		return () => {
-			if (!displayModal) {
-				setErrors({});
-				setIsVerified(false);
-				setStep(1);
-				setClickedSignUp(false);
-			}
-		};
-	});
+const AuthForm = () => {
+	const { loginSetup } = useAuth();
+	const { gender, step, isCustomGender, isVerified, updateFormErrors } = useAuthForm();
+	const { closeModal } = useModal();
+	const classes = useStyles(step);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -59,60 +52,41 @@ const AuthForm = () => {
 				user: { ...values, gender: isCustomGender ? gender : values.gender },
 			});
 
-			setUser(response.data.user);
-			setToken(response.data.token);
-			setDisplayModal(false);
+			loginSetup(response.data);
+			closeModal();
 			navigate(from, { replace: true });
 		} catch (err) {
-			setErrors(err.response.data);
+			updateFormErrors(err.response.data);
 		}
 	};
 
 	const loginUser = async (values) => {
 		try {
 			const response = await axios.post('/login', {
-				user: { email: values.email, password: values.password },
+				user: pick(values, ['email', 'password']),
 			});
 
-			setUser(response.data.user);
-			setToken(response.data.token);
-			setDisplayModal(false);
+			loginSetup(response.data);
+			closeModal();
 			navigate(from, { replace: true });
 		} catch (err) {
-			setErrors(err.response.data);
+			updateFormErrors(err.response.data);
 		}
 	};
 
 	return (
-		<div>
-			<Form
-				form={form}
-				initialValues={{
-					age: '',
-					email: '',
-					gender: '',
-					password: '',
-					username: '',
-				}}
-				onFinish={(values) => {
-					isVerified ? loginUser(values) : signUpUser(values);
-				}}
-			>
-				<div className={classes.step1}>
-					<Step1 form={form} />
-				</div>
-				<div className={classes.step2}>
-					<Step2 form={form} />
-				</div>
-				<div className={classes.step3}>
-					<Step3
-						isCustomGender={isCustomGender}
-						setGender={setGender}
-						setIsCustomGender={setIsCustomGender}
-					/>
-				</div>
-			</Form>
-		</div>
+		<Form
+			className={classes.container}
+			form={form}
+			initialValues={initialValues}
+			onFinish={(values) => {
+				isVerified ? loginUser(values) : signUpUser(values);
+			}}
+		>
+			<Step1 />
+			<Step2 />
+			<Step3 />
+		</Form>
 	);
 };
 

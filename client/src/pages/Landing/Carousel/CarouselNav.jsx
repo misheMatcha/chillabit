@@ -5,7 +5,7 @@ import Button from 'antd/lib/button';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
+import useModal from '../../../hooks/useModal';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
@@ -75,7 +75,7 @@ const useStyles = createUseStyles((theme) => ({
 const CarouselNav = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { toggleModal } = useAuth();
+	const { openModal } = useModal();
 
 	return (
 		<div className={classes.container}>
@@ -89,13 +89,13 @@ const CarouselNav = () => {
 			<div className={classes.actionsWrapper}>
 				<Button
 					className={cn(classes.btn, classes.clear)}
-					onClick={() => toggleModal()}
+					onClick={() => openModal('auth')}
 				>
 					Sign in
 				</Button>
 				<Button
 					className={classes.btn}
-					onClick={() => toggleModal(true)}
+					onClick={() => openModal('auth')}
 				>
 					Create account
 				</Button>

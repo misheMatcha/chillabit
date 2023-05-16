@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
-import StyledDropdown from '../../StyledDropdown';
+import StyledDropdown from '../../General/StyledDropdown';
 
 const { displayFlex, spacing, typography, weight } = styles;
 
@@ -38,7 +38,7 @@ const useStyles = createUseStyles((theme) => ({
 const MoreButtonsDropdown = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { user } = useAuth();
+	const { isLoggedIn } = useAuth();
 
 	const items = [
 		{ label: 'About us' },
@@ -61,7 +61,7 @@ const MoreButtonsDropdown = () => {
 		},
 		{ label: 'Support' },
 		{
-			hasDivider: user ? true : false,
+			hasDivider: isLoggedIn ? true : false,
 			label: 'Keyboard shortcuts',
 		},
 		{
@@ -84,7 +84,7 @@ const MoreButtonsDropdown = () => {
 		for (let i = 0; i < items.length; i++) {
 			const item = items[i];
 
-			if (!user && item.isSignedIn) continue;
+			if (!isLoggedIn && item.isSignedIn) continue;
 
 			dropdownItems.push({
 				key: i,

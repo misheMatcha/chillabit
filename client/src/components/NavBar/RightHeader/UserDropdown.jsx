@@ -14,7 +14,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { styles } from '../../../utils/styles';
-import StyledDropdown from '../../StyledDropdown';
+import StyledDropdown from '../../General/StyledDropdown';
 
 const { spacing, truncateText, typography, weight } = styles;
 
@@ -63,20 +63,27 @@ const useStyles = createUseStyles((theme) => ({
 const UserDropdown = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { user } = useAuth();
+	const { currentUser } = useAuth();
 
 	const items = [
-		{ icon: faUser, label: 'Profile' },
-		{ icon: faHeart, label: 'Likes' },
-		{ icon: faRadio, label: 'Stations' },
-		{ icon: faUserGroup, label: 'Who to follow' },
-		{ icon: faStar, label: 'Try Next Pro' },
-		{ icon: faWaveSquare, label: 'Tracks' },
-		{ icon: faArrowUpFromBracket, label: 'Distribute' },
+		{ icon: faUser, label: 'Profile', to: `${currentUser.url}` },
+		{ icon: faHeart, label: 'Likes', to: '' },
+		{ icon: faRadio, label: 'Stations', to: '' },
+		{ icon: faUserGroup, label: 'Who to follow', to: '' },
+		{ icon: faStar, label: 'Try Next Pro', to: '' },
+		{ icon: faWaveSquare, label: 'Tracks', to: '' },
+		{ icon: faArrowUpFromBracket, label: 'Distribute', to: '' },
 	].map((item, i) => ({
 		icon: <FontAwesomeIcon icon={item.icon} />,
 		key: i,
-		label: <Link className={classes.dropdownItem}>{item.label}</Link>,
+		label: (
+			<Link
+				className={classes.dropdownItem}
+				to={item.to}
+			>
+				{item.label}
+			</Link>
+		),
 	}));
 
 	return (
@@ -88,7 +95,7 @@ const UserDropdown = () => {
 		>
 			<Link>
 				<div className={classes.avatar} />
-				<span className={classes.username}>{user.username}</span>
+				<span className={classes.username}>{currentUser.username}</span>
 				<FontAwesomeIcon
 					className={classes.arrow}
 					icon={faAngleDown}

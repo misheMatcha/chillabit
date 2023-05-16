@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../../../utils/styles';
-import CustomRenderDropdown from '../../CustomRenderDropdown';
+import CustomRenderDropdown from '../../General/CustomRenderDropdown';
 
 const {
 	alignItems,

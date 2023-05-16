@@ -39,8 +39,8 @@ const useStyles = createUseStyles((theme) => ({
 
 const NavBar = () => {
 	const theme = useTheme();
-	const { user } = useAuth();
-	const classes = useStyles({ theme, user });
+	const { isLoggedIn } = useAuth();
+	const classes = useStyles({ theme });
 
 	return (
 		<div className={classes.container}>
@@ -48,8 +48,8 @@ const NavBar = () => {
 				<LeftHeader />
 				<div
 					className={cn(classes.middleHeader, {
-						[`${classes.setWidth}`]: !user,
-						[`${classes.dynamicWidth}`]: user,
+						[`${classes.setWidth}`]: !isLoggedIn,
+						[`${classes.dynamicWidth}`]: isLoggedIn,
 					})}
 				>
 					<SearchBar isNav />

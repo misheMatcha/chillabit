@@ -1,11 +1,8 @@
 import React from 'react';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'antd/lib/button';
 import { createUseStyles, useTheme } from 'react-jss';
 import Footer from './Footer';
 import Header from './Header';
-import useAuth from '../../../hooks/useAuth';
+import { AuthFormProvider } from '../../../context/AuthFormContext';
 import { styles } from '../../../utils/styles';
 import AuthForm from '../AuthForm/index';
 
@@ -46,23 +43,18 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const LoginSignUp = () => {
+const LoginSignUp = ({ newUser = false }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { toggleModal } = useAuth();
 
 	return (
-		<div className={classes.container}>
-			<Button
-				className={classes.close}
-				onClick={() => toggleModal()}
-			>
-				<FontAwesomeIcon icon={faXmark} />
-			</Button>
-			<Header />
-			<AuthForm />
-			<Footer />
-		</div>
+		<AuthFormProvider>
+			<div className={classes.container}>
+				<Header newUser={newUser} />
+				<AuthForm />
+				<Footer />
+			</div>
+		</AuthFormProvider>
 	);
 };
 

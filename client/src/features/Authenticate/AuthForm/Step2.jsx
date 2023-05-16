@@ -3,12 +3,12 @@ import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
+import * as cn from 'classnames';
 import size from 'lodash/size';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormButton from './FormButton';
-import FormError from './FormError';
-import StyledInput from './StyledInput';
-import useAuth from '../../../hooks/useAuth';
+import StyledInput from '../../../components/General/StyledInput';
+import useAuthForm from '../../../hooks/useAuthForm';
 import { styles } from '../../../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, spacing, textAlign, typography, width } = styles;
@@ -39,30 +39,50 @@ const useStyles = createUseStyles((theme) => ({
 			marginBottom: spacing[2],
 		},
 		'& > div:nth-child(2)': {
-			marginBottom: ({ errors }) => (errors.message ? 0 : spacing[2]),
+			marginBottom: spacing[2],
 		},
 		...displayFlex,
 		...flexDirection.column,
-		marginBottom: ({ isVerified }) => (isVerified ? spacing[2] : 0),
+		marginBottom: 0,
+	},
+	errorSpacing: {
+		'& > div:nth-child(2)': {
+			marginBottom: 0,
+		},
+	},
+	hidden: {
+		display: 'none',
 	},
 	spacing: {
 		margin: 0,
 	},
+	verifiedSpacing: {
+		marginBottom: spacing[2],
+	},
 }));
 
-const Step2 = ({ form }) => {
+const Step2 = () => {
 	const theme = useTheme();
-	const { errors, setErrors, isVerified, setIsVerified, setStep } = useAuth();
-	const classes = useStyles({ errors, isVerified, theme });
+	const { errors, isVerified, nextStep, prevStep, setIsVerified, step, updateFormErrors } =
+		useAuthForm();
+	const classes = useStyles({ errors, isVerified, step, theme });
+	const form = Form.useFormInstance();
 
 	return (
-		<div className={classes.container}>
+		<div
+			className={cn(classes.container, {
+				[`${classes.hidden}`]: step !== 2,
+				[`${classes.errorSpacing}`]: errors.message,
+				[`${classes.verifiedSpacing}`]: isVerified,
+			})}
+		>
 			<Button
 				className={classes.backBtn}
 				onClick={() => {
 					setIsVerified(false);
-					setStep(1);
-					setErrors({});
+					prevStep();
+					form.setFieldValue('password', '');
+					updateFormErrors({});
 				}}
 			>
 				<FontAwesomeIcon icon={faCaretLeft} />
@@ -74,12 +94,11 @@ const Step2 = ({ form }) => {
 					name='password'
 				>
 					<StyledInput
-						isInvalid={errors.message}
+						error={errors.message}
 						placeholder='Your password'
 						type='password'
 					/>
 				</Form.Item>
-				{errors.message && <FormError>{errors.message}</FormError>}
 			</div>
 			<Form.Item className={classes.spacing}>
 				{isVerified ? (
@@ -91,11 +110,11 @@ const Step2 = ({ form }) => {
 							const passwordLength = size(form.getFieldValue('password'));
 
 							if (passwordLength < 8) {
-								setErrors({ message: 'Password must be at least 8 characters' });
+								updateFormErrors({ message: 'Password must be at least 8 characters' });
 							} else if (passwordLength > 72) {
-								setErrors({ message: 'Password must be less than 72 characters.' });
+								updateFormErrors({ message: 'Password must be less than 72 characters.' });
 							} else {
-								setStep(3);
+								nextStep();
 							}
 						}}
 					>

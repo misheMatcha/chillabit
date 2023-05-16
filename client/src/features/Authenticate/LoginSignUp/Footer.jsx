@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
+import useAuthForm from '../../../hooks/useAuthForm';
 import { styles } from '../../../utils/styles';
 
 const { spacing, textAlign, typography, width } = styles;
@@ -34,6 +34,7 @@ const useStyles = createUseStyles((theme) => ({
 	moreInfo: {
 		...textAlign.center,
 		color: theme.color.black,
+		marginBottom: '1em',
 	},
 	passwordReset: {
 		...textAlign.center,
@@ -44,7 +45,7 @@ const Footer = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
-	const { step, isVerified } = useAuth();
+	const { isVerified, step } = useAuthForm();
 
 	return (
 		<div className={classes.container}>
@@ -62,11 +63,11 @@ const Footer = () => {
 						</span>
 					</p>
 					{step === 2 && (
-						<p className={classes.moreInfo}>
+						<div className={classes.moreInfo}>
 							<div>Are you trying to sign in?</div>
 							<div>The email address that you entered was not found.</div>
 							<div>Double-check your email address.</div>
-						</p>
+						</div>
 					)}
 				</div>
 			)}

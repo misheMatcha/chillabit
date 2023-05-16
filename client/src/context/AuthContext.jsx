@@ -1,45 +1,32 @@
 import { createContext, useState } from 'react';
+import { isEmptyObject } from '../utils/general';
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-	const [displayModal, setDisplayModal] = useState(false);
 	const [token, setToken] = useState(null);
-	const [user, setUser] = useState(null);
+	const [currentUser, setCurrentUser] = useState({});
 
-	// auth form
-	const [clickedSignUp, setClickedSignUp] = useState(false);
-	const [errors, setErrors] = useState({});
-	const [isVerified, setIsVerified] = useState(false);
-	const [step, setStep] = useState(1);
+	const loginSetup = (values) => {
+		setCurrentUser(values.user);
+		setToken(values.token);
+	};
 
-	const toggleModal = (isNewUser = false) => {
-		// prevents scroll on modal
-		const body = document.getElementsByTagName('body')[0];
-		body.style.overflow = displayModal ? null : 'hidden';
-
-		if (isNewUser) setClickedSignUp(true);
-		setDisplayModal(!displayModal);
+	const logoutSetup = () => {
+		setCurrentUser(null);
+		setToken(null);
 	};
 
 	return (
 		<AuthContext.Provider
 			value={{
-				clickedSignUp,
-				displayModal,
-				errors,
-				isVerified,
-				setClickedSignUp,
-				setDisplayModal,
-				setErrors,
-				setIsVerified,
-				setStep,
+				currentUser,
+				isLoggedIn: !isEmptyObject(currentUser),
+				loginSetup,
+				logoutSetup,
+				setCurrentUser,
 				setToken,
-				setUser,
-				step,
-				toggleModal,
 				token,
-				user,
 			}}
 		>
 			{children}
