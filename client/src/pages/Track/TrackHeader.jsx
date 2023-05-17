@@ -3,7 +3,7 @@ import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import { TRACKS_HEADER_PLACEHOLDER } from '../../data/TrackPlaceholders';
+import { TRACKS_HEADER_PLACEHOLDER } from '../../data/trackPlaceholders';
 import useGeneral from '../../hooks/useGeneral';
 import { styles } from '../../utils/styles';
 
@@ -34,6 +34,7 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		backgroundImage: 'linear-gradient(315deg, rgb(221, 201, 187) 0%, rgb(108, 89, 78) 100%)',
 		height: 380,
+		marginBottom: spacing['2_5'],
 	},
 	content: {
 		'& > div:first-child': {
@@ -55,6 +56,16 @@ const useStyles = createUseStyles((theme) => ({
 	listenInfo: {
 		...displayFlex,
 	},
+	tags: {
+		'&::before': {
+			content: "'#'",
+			marginRight: 3,
+		},
+		backgroundColor: '#999',
+		border: `1px solid #999`,
+		borderRadius: spacing['2_5'],
+		padding: `3px ${spacing[1]}px 0`,
+	},
 	title: {
 		...typography.h2,
 		fontWeight: weight[500],
@@ -62,12 +73,23 @@ const useStyles = createUseStyles((theme) => ({
 		lineHeight: '37px',
 		padding: `${spacing['0_25']}px ${spacing[1]}px 0`,
 	},
-	trackInfo: {
+	trackDesc: {
 		'& > div': {
 			backgroundColor: 'rgba(0, 0, 0, 0.8)',
 			color: theme.color.white,
 			width: 'max-content',
 		},
+	},
+	trackInfo: {
+		'& > div:first-child': {
+			marginBottom: spacing[2],
+		},
+		...alignItems.flexEnd,
+		...displayFlex,
+		...flexDirection.column,
+		...typography.h4,
+		color: theme.color.white,
+		fontWeight: weight[600],
 	},
 }));
 
@@ -87,14 +109,14 @@ const TrackHeader = () => {
 								<FontAwesomeIcon icon={faCirclePlay} />
 							</Link>
 						</div>
-						<div className={classes.trackInfo}>
+						<div className={classes.trackDesc}>
 							<div className={classes.title}>{title}</div>
 							<div className={classes.artist}>{artist}</div>
 						</div>
 					</div>
-					<div>
+					<div className={classes.trackInfo}>
 						<div>{date}</div>
-						<div># {tags}</div>
+						<div className={classes.tags}>{tags}</div>
 					</div>
 				</div>
 			</div>
