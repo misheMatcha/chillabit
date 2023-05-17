@@ -54,7 +54,17 @@ const useStyles = createUseStyles((theme) => ({
 		minWidth: 340,
 	},
 	listenInfo: {
+		...alignItems.center,
 		...displayFlex,
+	},
+	play: {
+		'& > a': {
+			...displayFlex,
+			color: theme.color.special,
+			height: '100%',
+		},
+		fontSize: 60,
+		marginRight: 5,
 	},
 	tags: {
 		'&::before': {
@@ -104,7 +114,7 @@ const TrackHeader = () => {
 			<div className={classes.content}>
 				<div>
 					<div className={classes.listenInfo}>
-						<div>
+						<div className={classes.play}>
 							<Link>
 								<FontAwesomeIcon icon={faCirclePlay} />
 							</Link>
