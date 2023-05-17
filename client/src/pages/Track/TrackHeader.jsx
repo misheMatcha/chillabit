@@ -1,0 +1,106 @@
+import React from 'react';
+import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { createUseStyles, useTheme } from 'react-jss';
+import { Link } from 'react-router-dom';
+import { TRACKS_HEADER_PLACEHOLDER } from '../../data/TrackPlaceholders';
+import useGeneral from '../../hooks/useGeneral';
+import { styles } from '../../utils/styles';
+
+const {
+	alignItems,
+	displayFlex,
+	flexDirection,
+	justifyContent,
+	spacing,
+	typography,
+	weight,
+	width,
+} = styles;
+
+const useStyles = createUseStyles((theme) => ({
+	artist: {
+		...alignItems.center,
+		...displayFlex,
+		...typography.body,
+		color: '#ccc',
+		fontSize: spacing[2],
+		letterSpacing: -0.25,
+		lineHeight: 1.2,
+		marginTop: spacing['0_5'],
+		padding: `${spacing['0_5']}px ${spacing[1]}px ${spacing['0_25']}px`,
+	},
+	container: {
+		...displayFlex,
+		backgroundImage: 'linear-gradient(315deg, rgb(221, 201, 187) 0%, rgb(108, 89, 78) 100%)',
+		height: 380,
+	},
+	content: {
+		'& > div:first-child': {
+			...displayFlex,
+			...justifyContent.spaceBetween,
+		},
+		...displayFlex,
+		...flexDirection.column,
+		...justifyContent.spaceBetween,
+		...width[100].percentage,
+		margin: '30px 10px 30px 30px',
+	},
+	image: {
+		background: ({ trackCover }) => `url(${trackCover})`,
+		height: 340,
+		margin: spacing['2_5'],
+		minWidth: 340,
+	},
+	listenInfo: {
+		...displayFlex,
+	},
+	title: {
+		...typography.h2,
+		fontWeight: weight[500],
+		letterSpacing: -0.75,
+		lineHeight: '37px',
+		padding: `${spacing['0_25']}px ${spacing[1]}px 0`,
+	},
+	trackInfo: {
+		'& > div': {
+			backgroundColor: 'rgba(0, 0, 0, 0.8)',
+			color: theme.color.white,
+			width: 'max-content',
+		},
+	},
+}));
+
+const { artist, date, tags, title, trackCover } = TRACKS_HEADER_PLACEHOLDER;
+
+const TrackHeader = () => {
+	const theme = useTheme();
+	const { user } = useGeneral();
+	const classes = useStyles({ theme, trackCover, user });
+	return (
+		<div className={classes.container}>
+			<div className={classes.content}>
+				<div>
+					<div className={classes.listenInfo}>
+						<div>
+							<Link>
+								<FontAwesomeIcon icon={faCirclePlay} />
+							</Link>
+						</div>
+						<div className={classes.trackInfo}>
+							<div className={classes.title}>{title}</div>
+							<div className={classes.artist}>{artist}</div>
+						</div>
+					</div>
+					<div>
+						<div>{date}</div>
+						<div># {tags}</div>
+					</div>
+				</div>
+			</div>
+			<div className={classes.image} />
+		</div>
+	);
+};
+
+export default TrackHeader;

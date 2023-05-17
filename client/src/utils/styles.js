@@ -126,5 +126,3 @@ export const styles = {
 		max: { width: 1240 },
 	},
 };
-
-// need to figure out color theme later and add colors to styles

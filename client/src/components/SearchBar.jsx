@@ -8,10 +8,6 @@ import { styles } from '../utils/styles';
 const { Search } = Input;
 const { radius, spacing, typography, weight } = styles;
 
-// TODO
-// - add onSearch fnc
-// - remove onClick animation
-
 const useStyles = createUseStyles((theme) => ({
 	defaultStyle: {
 		'& .ant-input': {

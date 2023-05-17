@@ -2,7 +2,7 @@ import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../utils/styles';
 
-const { displayFlex, flexDirection, height, spacing } = styles;
+const { displayFlex, flexDirection, height } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -20,10 +20,6 @@ const useStyles = createUseStyles((theme) => ({
 		...height[100].percentage,
 		padding: '0 30px',
 	},
-	header: {
-		// marginBottom: spacing['2_5'],
-		// minHeight: 380,
-	},
 	nav: {
 		padding: '0 30px',
 	},
@@ -33,13 +29,13 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const PageTemplate = ({ children, header, nav, sidebar }) => {
+const PageLayoutTemplate = ({ children, header, nav, sidebar }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.header}>{header}</div>
+			<div>{header}</div>
 			{nav && <div className={classes.nav}>{nav}</div>}
 			<div className={classes.contentWrapper}>
 				<div className={classes.content}>{children}</div>
@@ -49,4 +45,4 @@ const PageTemplate = ({ children, header, nav, sidebar }) => {
 	);
 };
 
-export default PageTemplate;
+export default PageLayoutTemplate;

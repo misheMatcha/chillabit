@@ -63,7 +63,6 @@ const useStyles = createUseStyles((theme) => ({
 		'& > div:not(:first-child)': {
 			...typography.body,
 			color: '#ccc',
-
 			height: spacing[3],
 			marginTop: spacing['0_5'],
 			padding: `${spacing['0_25']}px 7px`,
@@ -119,16 +118,10 @@ const Header = () => {
 	const classes = useStyles({ avatar, header_bg, theme });
 
 	useEffect(() => {
-		// need to add timeout
 		if (loading && !isEmptyObject(user)) setLoading(false);
 
 		return () => {};
 	}, [currentUser, loading, user, identifier, userPathMatches]);
-
-	// Future features:
-	// - verification check mark
-	// - avatar modal
-	// - hoverable featured profiles
 
 	const uploadAction = async (file, type = 'header_bg' || 'avatar') => {
 		const config = {

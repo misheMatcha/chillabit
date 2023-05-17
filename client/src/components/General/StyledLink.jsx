@@ -8,9 +8,7 @@ import { styles } from '../../utils/styles';
 const { displayFlex, radius, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	bold: {
-		// fontWeight: weight[600],
-	},
+	bold: {},
 	btn: {
 		border: `1px solid black`,
 		padding: `${spacing['0_25']}px 15px`,
@@ -28,11 +26,7 @@ const useStyles = createUseStyles((theme) => ({
 		textDecoration: theme.link.textDecoration.standard,
 		width: 'fit-content',
 	},
-	large: {
-		// fontSize: spacing['2_25'],
-		// height: spacing['5_7'],
-		// padding: `${spacing['1_5']}px ${spacing[2]}px`,
-	},
+	large: {},
 	medium: {
 		height: spacing[5],
 		padding: '10px 15px',
@@ -62,13 +56,6 @@ const useStyles = createUseStyles((theme) => ({
 		color: theme.color.white,
 	},
 }));
-
-// ONLY USE IN ProfilePageTemplate
-// TODO
-// - refac for all styles
-// - refac styles to reflect button styles
-// - update other components
-// - remove StyledLink from landing
 
 const StyledLink = ({
 	children,

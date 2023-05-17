@@ -18,10 +18,6 @@ const {
 	width,
 } = styles;
 
-// TODO
-// - add backend logic later
-// - shape data
-
 const useStyles = createUseStyles((theme) => ({
 	avatar: {
 		backgroundImage: 'linear-gradient(135deg,#8e8485,#70929c)',

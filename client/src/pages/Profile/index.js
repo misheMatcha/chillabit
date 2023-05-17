@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
+import Header from './Header';
+import ProfileNavBar from './ProfileNavBar';
+import Sidebar from '../../components/Sidebar';
 import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import useGeneral from '../../hooks/useGeneral';
 import axios from '../../utils/axios';
+import PageLayoutTemplate from '../PageLayoutTemplate';
 
 const Profile = () => {
 	const [loading, setLoading] = useState(true);
@@ -31,7 +35,15 @@ const Profile = () => {
 		}
 	}, [currentUser, identifier, loading, setUser, user, userPathMatches]);
 
-	return <Outlet />;
+	return (
+		<PageLayoutTemplate
+			header={<Header />}
+			nav={<ProfileNavBar />}
+			sidebar={<Sidebar />}
+		>
+			<Outlet />
+		</PageLayoutTemplate>
+	);
 };
 
 export default Profile;

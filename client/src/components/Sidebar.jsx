@@ -91,8 +91,6 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-// refac when working on main sidebar
-
 const Sidebar = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });

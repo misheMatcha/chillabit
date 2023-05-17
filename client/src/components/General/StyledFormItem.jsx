@@ -14,9 +14,6 @@ const useStyles = createUseStyles((theme) => ({
 		},
 		'& .ant-form-item-label': {
 			'& label': {
-				'&::after': {
-					// content: "''",
-				},
 				...alignItems.flexStart,
 				...displayFlex,
 				...typography.captions,
