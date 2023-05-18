@@ -1,6 +1,14 @@
-export const TRACKS_HEADER_PLACEHOLDER = {
+export const TRACK_PLACEHOLDER = {
 	artist: 'Destroylonely',
 	date: '2 months ago',
+	desc: `19 new songs <3
+  I have put every drop of my creativity and time into this project.
+  Thx for listening I really appreciate you.
+  
+  Digital DL:
+  ochamusic.bandcamp.com/releases
+  
+  Merch: teespring.com/stores/ochashop`,
 	tags: 'Hip-hop & Rap',
 	title: 'if looks could kill',
 	trackCover: 'https://i1.sndcdn.com/artworks-OCMocoQ2WryGhN4h-IMKFVg-t500x500.jpg',
@@ -111,3 +119,10 @@ export const TRACKS_REPOSTS_LIST_PLACEHOLDER = [
 		username: 'elsalvador101',
 	},
 ];
+
+export const TRACK_USER_PLACEHOLDER = {
+	avatar: 'https://i1.sndcdn.com/avatars-sRv2ypy5mFkcvNSa-EBvOCg-t500x500.jpg',
+	followers: '6,887',
+	tracks: '100',
+	username: 'ocha',
+};

@@ -3,7 +3,7 @@ import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import { TRACKS_HEADER_PLACEHOLDER } from '../../data/trackPlaceholders';
+import { TRACK_PLACEHOLDER } from '../../data/trackPlaceholders';
 import useGeneral from '../../hooks/useGeneral';
 import { styles } from '../../utils/styles';
 
@@ -103,7 +103,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const { artist, date, tags, title, trackCover } = TRACKS_HEADER_PLACEHOLDER;
+const { artist, date, tags, title, trackCover } = TRACK_PLACEHOLDER;
 
 const TrackHeader = () => {
 	const theme = useTheme();
