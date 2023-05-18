@@ -56,39 +56,58 @@ export const TRACKS_PLAYLISTS_PLACEHOLDER = [
 
 export const TRACKS_LIKES_LIST_PLACEHOLDER = [
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-1pFXgERySuK3QuWt-EbuYmQ-t500x500.jpg',
+		username: 'Vio',
 	},
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-HQTc2r265SiKFlTx-4I6jrA-t500x500.jpg',
+		username: 'Kei2 Lee',
 	},
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-000566577291-d9g3kh-t500x500.jpg',
+		username: 'Retrollenia',
 	},
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-GayPfmRpKDAlVqmo-SnqSFg-t500x500.jpg',
+		username: 'Terence Im',
 	},
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-MKTlMoCFfMzrfgxK-Ih6MOw-t500x500.jpg',
+		username: 'Alisa',
+	},
+];
+
+export const TRACKS_REPOSTS_LIST_PLACEHOLDER = [
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-wBOOZrhhLWyoVXc5-vH4JOg-t500x500.jpg',
+		username: '𝕓𝕦𝕙𝕝𝕚𝕤𝕥𝕚𝕔',
 	},
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-hgbTPFkk9B70EBPf-RVKr8Q-t500x500.jpg',
+		username: 'yung gaze🍋',
 	},
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-LTTqr0ymzWwA76yd-d34vfA-t500x500.jpg',
+		username: 'shabiki',
 	},
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-QTjRIwS46uzWINJK-de4NMg-t500x500.jpg',
+		username: 'skylerthatbitch',
 	},
 	{
-		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
-		username: 'Baccxludaa',
+		avatar: 'https://i1.sndcdn.com/avatars-gBQgV7u1Izvy0tOo-5LaX7A-t500x500.jpg',
+		username: 'Lofi Koala',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-YzWXch7RB5ekN5wr-fIsCJQ-t500x500.jpg',
+		username: 'pingu',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-000571444887-v7du4l-t500x500.jpg',
+		username: `ReGG W/ 2 G'S`,
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-000465076506-hkr9tt-t500x500.jpg',
+		username: 'elsalvador101',
 	},
 ];

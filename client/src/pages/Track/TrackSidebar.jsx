@@ -8,6 +8,7 @@ import SidebarUsers from '../../components/General/Sidebar/SidebarUsers';
 import {
 	TRACKS_LIKES_LIST_PLACEHOLDER,
 	TRACKS_PLAYLISTS_PLACEHOLDER,
+	TRACKS_REPOSTS_LIST_PLACEHOLDER,
 	TRACKS_SIDEBAR_LIST_PLACEHOLDER,
 } from '../../data/trackPlaceholders';
 
@@ -53,7 +54,7 @@ const TrackSidebar = () => {
 				icon={faRepeat}
 				title='4,700 reposts'
 			>
-				a
+				<SidebarUsers users={TRACKS_REPOSTS_LIST_PLACEHOLDER} />
 			</SidebarSection>
 		</div>
 	);
