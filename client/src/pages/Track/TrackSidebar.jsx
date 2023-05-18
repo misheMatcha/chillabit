@@ -1,10 +1,10 @@
 import React from 'react';
 import { faClone, faHeart, faRepeat, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { createUseStyles } from 'react-jss';
-import SidebarPlaylist from '../../components/Sidebar/SidebarPlaylist';
-import SidebarSection from '../../components/Sidebar/SidebarSection';
-import SidebarTrack from '../../components/Sidebar/SidebarTrack';
-import SidebarUsers from '../../components/Sidebar/SidebarUsers';
+import SidebarPlaylist from '../../components/SidebarSections/SidebarPlaylist';
+import SidebarSection from '../../components/SidebarSections/SidebarSection';
+import SidebarTrack from '../../components/SidebarSections/SidebarTrack';
+import SidebarUsers from '../../components/SidebarSections/SidebarUsers';
 import {
 	TRACKS_LIKES_LIST_PLACEHOLDER,
 	TRACKS_PLAYLISTS_PLACEHOLDER,

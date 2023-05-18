@@ -106,7 +106,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const Header = () => {
+const ProfileHeader = () => {
 	const { identifier, userPathMatches } = useCurrentPath();
 	const { currentUser, setCurrentUser, token } = useAuth();
 	const { user, setUser } = useGeneral();
@@ -191,4 +191,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default ProfileHeader;

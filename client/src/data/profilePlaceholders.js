@@ -1,4 +1,4 @@
-export const LINKS_PLACEHOLDER = [
+export const PROFILE_LINKS_PLACEHOLDER = [
 	{
 		title: 'Tik Tok',
 		url: '',

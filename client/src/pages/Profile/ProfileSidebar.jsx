@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import { LINKS_PLACEHOLDER } from '../data/userPlaceholders';
-import useGeneral from '../hooks/useGeneral';
-import { styles } from '../utils/styles';
+import { PROFILE_LINKS_PLACEHOLDER } from '../../data/profilePlaceholders';
+import useGeneral from '../../hooks/useGeneral';
+import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, spacing, typography, weight } = styles;
 
@@ -91,7 +91,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const Sidebar = () => {
+const ProfileSidebar = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { user } = useGeneral();
@@ -152,7 +152,7 @@ const Sidebar = () => {
 			)}
 			{user.links && (
 				<ul className={classes.links}>
-					{LINKS_PLACEHOLDER.map((link, i) => (
+					{PROFILE_LINKS_PLACEHOLDER.map((link, i) => (
 						<li key={i}>
 							<Link
 								className={classes.link}
@@ -173,4 +173,4 @@ const Sidebar = () => {
 	);
 };
 
-export default Sidebar;
+export default ProfileSidebar;

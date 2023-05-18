@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
-import Header from './Header';
+import ProfileHeader from './ProfileHeader';
 import ProfileNavBar from './ProfileNavBar';
-import Sidebar from '../../components/Sidebar';
+import ProfileSidebar from './ProfileSidebar';
 import useAuth from '../../hooks/useAuth';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import useGeneral from '../../hooks/useGeneral';
@@ -37,9 +37,9 @@ const Profile = () => {
 
 	return (
 		<PageLayoutTemplate
-			header={<Header />}
+			header={<ProfileHeader />}
 			nav={<ProfileNavBar />}
-			sidebar={<Sidebar />}
+			sidebar={<ProfileSidebar />}
 		>
 			<Outlet />
 		</PageLayoutTemplate>
