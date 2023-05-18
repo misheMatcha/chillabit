@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import { styles } from '../../../utils/styles';
+import { styles } from '../../utils/styles';
 
 const { displayFlex, spacing } = styles;
 

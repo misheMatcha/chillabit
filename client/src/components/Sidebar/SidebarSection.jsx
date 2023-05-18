@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import { styles } from '../../../utils/styles';
+import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, justifyContent, spacing, typography, weight } = styles;
 

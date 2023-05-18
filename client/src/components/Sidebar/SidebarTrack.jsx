@@ -3,7 +3,7 @@ import { faHeart, faMessage, faPlay, faRepeat } from '@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import { styles } from '../../../utils/styles';
+import { styles } from '../../utils/styles';
 
 const { displayFlex, flexDirection, justifyContent, spacing, truncateText, typography, weight } =
 	styles;
