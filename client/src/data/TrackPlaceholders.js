@@ -6,7 +6,7 @@ export const TRACKS_HEADER_PLACEHOLDER = {
 	trackCover: 'https://i1.sndcdn.com/artworks-OCMocoQ2WryGhN4h-IMKFVg-t500x500.jpg',
 };
 
-export const TRACKS_SIDEBAR_LIST = [
+export const TRACKS_SIDEBAR_LIST_PLACEHOLDER = [
 	{
 		artist: 'Thảo Hoàng (Moon Hjp)',
 		comments: '4',
@@ -33,5 +33,62 @@ export const TRACKS_SIDEBAR_LIST = [
 		reposts: '8',
 		title: 'Tự Em Đa Tình (Lofi Ver.) - Quinn x Will M.mp3',
 		trackCover: 'https://i1.sndcdn.com/avatars-000985587295-jcr7e5-t500x500.jpg',
+	},
+];
+
+export const TRACKS_PLAYLISTS_PLACEHOLDER = [
+	{
+		artist: 'Baccxiudaa',
+		image: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		title: '.',
+	},
+	{
+		artist: 'Khoi Tran The',
+		image: 'https://i1.sndcdn.com/artworks-000661279933-tirieu-t500x500.jpg',
+		title: 'Sad n Chill',
+	},
+	{
+		artist: 'Bích Phượngg',
+		image: 'https://i1.sndcdn.com/artworks-fVZHXMvt62bmCRLi-S2R2cg-t500x500.jpg',
+		title: `Nhạc:)) `,
+	},
+];
+
+export const TRACKS_LIKES_LIST_PLACEHOLDER = [
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
+	},
+	{
+		avatar: 'https://i1.sndcdn.com/avatars-byv0VHIubOzvT27X-YKM3xw-t500x500.jpg',
+		username: 'Baccxludaa',
 	},
 ];

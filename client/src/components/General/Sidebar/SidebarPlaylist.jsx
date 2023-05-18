@@ -1,6 +1,4 @@
 import React from 'react';
-import { faHeart, faMessage, faPlay, faRepeat } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import { styles } from '../../../utils/styles';
@@ -25,23 +23,14 @@ const useStyles = createUseStyles((theme) => ({
 		...typography.captions,
 		margin: '5px 0',
 	},
-	content: {
-		...displayFlex,
-		...flexDirection.column,
-		width: 240,
-	},
 	image: {
 		height: 50,
 		width: 50,
 	},
-	statLink: {
-		'& svg': {
-			fontSize: 10,
-			marginRight: spacing['0_25'],
-		},
-		color: '#999',
-		fontSize: spacing['1_5'],
-		marginRight: spacing['1_5'],
+	main: {
+		...displayFlex,
+		...flexDirection.column,
+		width: 240,
 	},
 	title: {
 		...typography.h5,
@@ -52,43 +41,25 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const SidebarTrack = ({ track }) => {
+const SidebarPlaylist = ({ playlist }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
-	const { artist, comments, likes, plays, reposts, title, trackCover } = track;
+	const { artist, image, title } = playlist;
 
 	return (
 		<div className={classes.container}>
 			<img
 				className={classes.image}
-				src={trackCover}
+				src={image}
 				alt={title}
 			/>
-			<div className={classes.content}>
+			<div className={classes.main}>
 				<Link className={classes.artist}>{artist}</Link>
 				<Link className={classes.title}>{title}</Link>
-				<div>
-					<Link className={classes.statLink}>
-						<FontAwesomeIcon icon={faPlay} />
-						{plays}
-					</Link>
-					<Link className={classes.statLink}>
-						<FontAwesomeIcon icon={faHeart} />
-						{likes}
-					</Link>
-					<Link className={classes.statLink}>
-						<FontAwesomeIcon icon={faRepeat} />
-						{reposts}
-					</Link>
-					<Link className={classes.statLink}>
-						<FontAwesomeIcon icon={faMessage} />
-						{comments}
-					</Link>
-				</div>
 			</div>
 		</div>
 	);
 };
 
-export default SidebarTrack;
+export default SidebarPlaylist;
