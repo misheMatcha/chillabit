@@ -5,55 +5,49 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import { styles } from '../../utils/styles';
 
-const { displayFlex, radius, spacing, typography } = styles;
+const { displayFlex, radius, spacing, truncateText, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	bold: {},
-	btn: {
-		border: `1px solid black`,
-		padding: `${spacing['0_25']}px 15px`,
-	},
 	default: {
 		'&:hover': {
 			color: '#333',
 		},
-		...typography.body,
 		...displayFlex,
-		borderRadius: radius[3],
+		...typography.body,
+		// borderRadius: radius[3],
 		color: theme.link.color.standard,
-		fontWeight: ({ bold }) => bold,
-		height: 30,
+		fontSize: spacing['1_7'],
 		textDecoration: theme.link.textDecoration.standard,
-		width: 'fit-content',
 	},
-	large: {},
-	medium: {
-		height: spacing[5],
-		padding: '10px 15px',
+	defaultContent: {
+		...truncateText,
+	},
+	icon: {
+		marginRight: spacing['0_7'],
+	},
+	small: {
+		'& $icon': {
+			fontSize: 10,
+		},
+		...typography.captions,
+		fontSize: spacing['1_5'],
+	},
+	primary: {
+		color: '#999',
+	},
+	secondary: {
+		color: theme.color.white,
 	},
 	special: {
 		'&:hover': {
-			color: theme.button.color.special,
+			color: theme.color.special,
 		},
-		backgroundColor: theme.button.backgroundColor.special,
-		borderColor: theme.button.backgroundColor.special,
-		color: theme.button.color.special,
+		color: theme.color.special,
 	},
-	transparent: {
-		backgroundColor: theme.color.transparent,
-	},
-	transparentSpecial: {
-		'&:hover': {
-			color: theme.button.backgroundColor.special,
+	hover: {
+		'&:hover $icon': {
+			color: '#999',
 		},
-		color: theme.button.backgroundColor.special,
-	},
-	transparentWhite: {
-		'&:hover': {
-			color: theme.color.white,
-		},
-		borderColor: theme.color.white,
-		color: theme.color.white,
 	},
 }));
 
@@ -63,29 +57,28 @@ const StyledLink = ({
 	label,
 	styles,
 	to,
-	bold = 500,
-	button = false,
 	large = false,
 	medium = false,
+	small = false,
 	special = false,
 	transparent = false,
 	white = false,
+	primary = false,
+	secondary = false,
+	noIconHover = false,
 }) => {
 	const theme = useTheme();
-	const classes = useStyles({ bold, theme });
+	const classes = useStyles({ theme });
 
 	return (
 		<Link
 			className={cn(
 				classes.default,
 				{
-					[`${classes.btn}`]: (button && !special) || (button && special),
-					[`${classes.special}`]: (special && !button) || (special && button),
-					[`${classes.transparent}`]: transparent,
-					[`${classes.transparentSpecial}`]: transparent && special,
-					[`${classes.transparentWhite}`]: transparent && white,
-					[`${classes.large}`]: large,
-					[`${classes.medium}`]: medium,
+					[`${classes.small}`]: small,
+					[`${classes.primary}`]: primary,
+					[`${classes.secondary}`]: secondary,
+					[`${classes.special}`]: special,
 				},
 				styles
 			)}
@@ -94,8 +87,17 @@ const StyledLink = ({
 			{children ? (
 				children
 			) : (
-				<div>
-					{icon && <FontAwesomeIcon icon={icon} />}
+				<div
+					className={cn(classes.defaultContent, {
+						[`${classes.hover}`]: noIconHover,
+					})}
+				>
+					{icon && (
+						<FontAwesomeIcon
+							className={cn({ [`${classes.icon}`]: icon })}
+							icon={icon}
+						/>
+					)}
 					<span>{label}</span>
 				</div>
 			)}

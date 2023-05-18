@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
+import StyledLink from '../../components/General/StyledLink';
 import { PROFILE_LINKS_PLACEHOLDER } from '../../data/profilePlaceholders';
 import useGeneral from '../../hooks/useGeneral';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, spacing, typography, weight } = styles;
+const { alignItems, displayFlex, flexDirection, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -35,15 +36,6 @@ const useStyles = createUseStyles((theme) => ({
 	descriptionWrapper: {
 		marginBottom: spacing['2_5'],
 	},
-	link: {
-		'&:hover': {
-			color: '#333',
-		},
-		color: '#999',
-	},
-	linkIcon: {
-		marginRight: spacing[1],
-	},
 	links: {
 		'& > li:not(:last-child)': {
 			marginBottom: spacing['0_5'],
@@ -58,8 +50,8 @@ const useStyles = createUseStyles((theme) => ({
 			borderLeft: `1px solid ${theme.background.highlight}`,
 			paddingLeft: 12,
 		},
+		...flexDirection.column,
 		...typography.h3,
-		color: '#999',
 		flex: 1,
 		fontSize: 22,
 		fontWeight: weight[500],
@@ -102,27 +94,30 @@ const ProfileSidebar = () => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.statsWrapper}>
-				<Link
-					className={classes.stats}
+				<StyledLink
+					styles={classes.stats}
 					to={`/${user.url}/followers`}
+					primary
 				>
 					<div className={classes.statsTitle}>Followers</div>
 					<div>277K</div>
-				</Link>
-				<Link
-					className={classes.stats}
+				</StyledLink>
+				<StyledLink
+					styles={classes.stats}
 					to={`/${user.url}/following`}
+					primary
 				>
 					<div className={classes.statsTitle}>Following</div>
 					<div>5</div>
-				</Link>
-				<Link
-					className={classes.stats}
+				</StyledLink>
+				<StyledLink
+					styles={classes.stats}
 					to={`/${user.url}/tracks`}
+					primary
 				>
 					<div className={classes.statsTitle}>Tracks</div>
 					<div>143</div>
-				</Link>
+				</StyledLink>
 			</div>
 			{user.bio && (
 				<div
@@ -154,17 +149,13 @@ const ProfileSidebar = () => {
 				<ul className={classes.links}>
 					{PROFILE_LINKS_PLACEHOLDER.map((link, i) => (
 						<li key={i}>
-							<Link
-								className={classes.link}
-								target='_blank'
+							<StyledLink
 								to={link.url}
-							>
-								<FontAwesomeIcon
-									className={classes.linkIcon}
-									icon={faEarthAmerica}
-								/>
-								{link.title}
-							</Link>
+								target='_blank'
+								icon={faEarthAmerica}
+								label={link.title}
+								primary
+							/>
 						</li>
 					))}
 				</ul>

@@ -24,8 +24,8 @@ const useStyles = createUseStyles((theme) => ({
 		padding: '0 30px',
 	},
 	sidebar: {
+		minWidth: 330,
 		paddingLeft: 30,
-		width: 330,
 	},
 }));
 

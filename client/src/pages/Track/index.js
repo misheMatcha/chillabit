@@ -1,24 +1,15 @@
 import React from 'react';
 import { faUserGroup, faUserPlus, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import TrackHeader from './TrackHeader';
 import TrackSidebar from './TrackSidebar';
 import StyledButton from '../../components/General/StyledButton';
+import StyledLink from '../../components/General/StyledLink';
 import { TRACK_PLACEHOLDER, TRACK_USER_PLACEHOLDER } from '../../data/trackPlaceholders';
 import { styles } from '../../utils/styles';
 import PageLayoutTemplate from '../PageLayoutTemplate';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	spacing,
-	typography,
-	weight,
-} = styles;
+const { displayFlex, height, spacing, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	avatar: {
@@ -35,21 +26,24 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		flexGrow: 1,
 	},
+	stat: {
+		fontWeight: weight[600],
+	},
 	userInfo: {
 		paddingRight: 30,
 		width: 150,
 	},
 	userStats: {
+		'& > :first-child': {
+			marginRight: spacing['1_5'],
+		},
 		...displayFlex,
-		color: '#999',
-		...typography.captions,
-		fontSize: spacing['1_5'],
 		marginBottom: 5,
 	},
 	username: {
-		...typography.captions,
-		fontSize: 14,
+		color: '#333',
 		fontWeight: weight[400],
+		letterSpacing: -0.5,
 		margin: `${spacing['0_7']}px 0 5px`,
 	},
 }));
@@ -74,16 +68,26 @@ const Track = () => {
 							alt=''
 						/>
 					</div>
-					<div className={classes.username}>{username}</div>
+					<StyledLink styles={classes.username}>{username}</StyledLink>
 					<div className={classes.userStats}>
-						<div>
-							<FontAwesomeIcon icon={faUserGroup} />
-							{followers}
-						</div>
-						<div>
-							<FontAwesomeIcon icon={faWaveSquare} />
-							{tracks}
-						</div>
+						<StyledLink
+							styles={classes.stat}
+							to=''
+							icon={faUserGroup}
+							label={followers}
+							primary
+							small
+							noIconHover
+						/>
+						<StyledLink
+							styles={classes.stat}
+							to=''
+							icon={faWaveSquare}
+							label={tracks}
+							primary
+							small
+							noIconHover
+						/>
 					</div>
 					<StyledButton
 						icon={faUserPlus}

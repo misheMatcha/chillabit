@@ -1,23 +1,15 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Link } from 'react-router-dom';
 import { styles } from '../../utils/styles';
+import StyledLink from '../General/StyledLink';
 
-const { displayFlex, flexDirection, justifyContent, spacing, truncateText, typography, weight } =
-	styles;
+const { displayFlex, flexDirection, justifyContent, truncateText, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	artist: {
-		...typography.h5,
 		...truncateText,
-		color: '#999',
-		fontSize: spacing['1_7'],
-		fontWeight: weight[600],
 	},
 	container: {
-		'& a': {
-			textDecoration: theme.link.textDecoration.standard,
-		},
 		...displayFlex,
 		...justifyContent.spaceBetween,
 		...typography.captions,
@@ -33,11 +25,8 @@ const useStyles = createUseStyles((theme) => ({
 		width: 240,
 	},
 	title: {
-		...typography.h5,
 		...truncateText,
 		color: '#333',
-		fontSize: spacing['1_7'],
-		fontWeight: weight[500],
 	},
 }));
 
@@ -55,8 +44,19 @@ const SidebarPlaylist = ({ playlist }) => {
 				alt={title}
 			/>
 			<div className={classes.main}>
-				<Link className={classes.artist}>{artist}</Link>
-				<Link className={classes.title}>{title}</Link>
+				<StyledLink
+					styles={classes.artist}
+					to=''
+					primary
+				>
+					{artist}
+				</StyledLink>
+				<StyledLink
+					styles={classes.title}
+					to=''
+				>
+					{title}
+				</StyledLink>
 			</div>
 		</div>
 	);

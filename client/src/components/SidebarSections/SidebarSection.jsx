@@ -1,10 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Link } from 'react-router-dom';
 import { styles } from '../../utils/styles';
+import StyledLink from '../General/StyledLink';
 
-const { alignItems, displayFlex, justifyContent, spacing, typography, weight } = styles;
+const { displayFlex, justifyContent, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -19,21 +19,16 @@ const useStyles = createUseStyles((theme) => ({
 		},
 	},
 	titleWrapper: {
-		'&:hover $viewAll': {
-			color: '#333',
+		'&:hover $title': {
+			color: '#999',
 		},
-		...alignItems.center,
 		...displayFlex,
 		...justifyContent.spaceBetween,
 		...typography.body,
 		borderBottom: `1px solid ${theme.background.highlight}`,
-		color: '#999',
-		fontSize: spacing['1_7'],
-		fontWeight: weight[600],
+		fontSize: 15,
 		height: 30,
 		letterSpacing: -0.5,
-		lineHeight: spacing[3],
-		textDecoration: theme.link.textDecoration.standard,
 	},
 	viewAll: {},
 }));
@@ -44,16 +39,17 @@ const SidebarSection = ({ children, icon, title, viewAllUrl }) => {
 
 	return (
 		<div className={classes.container}>
-			<Link
-				className={classes.titleWrapper}
+			<StyledLink
+				styles={classes.titleWrapper}
 				to={viewAllUrl}
+				primary
 			>
 				<div className={classes.title}>
 					<FontAwesomeIcon icon={icon} />
 					{title}
 				</div>
 				<div className={classes.viewAll}>View all</div>
-			</Link>
+			</StyledLink>
 			<div className={classes.main}>{children}</div>
 		</div>
 	);

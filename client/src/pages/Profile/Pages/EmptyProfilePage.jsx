@@ -2,6 +2,7 @@ import React from 'react';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledLink from '../../../components/General/StyledLink';
+import StyledLinkButton from '../../../components/General/StyledLinkButton';
 import { styles } from '../../../utils/styles';
 import EmptyLists from '../assets/empty_lists.png';
 import EmptyReposts from '../assets/empty_reposts.png';
@@ -20,7 +21,6 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	iconWrapper: {},
 	link: {
-		fontSize: spacing['1_7'],
 		height: spacing['2_25'],
 		marginBottom: spacing['1_5'],
 		marginTop: spacing[1],
@@ -83,7 +83,7 @@ const EmptyProfilePage = ({
 				styles={classes.link}
 			/>
 			{uploadButton && (
-				<StyledLink
+				<StyledLinkButton
 					label='Upload now'
 					button
 					medium

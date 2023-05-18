@@ -1,19 +1,14 @@
 import React from 'react';
 import { faHeart, faMessage, faPlay, faRepeat } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Link } from 'react-router-dom';
 import { styles } from '../../utils/styles';
+import StyledLink from '../General/StyledLink';
 
-const { displayFlex, flexDirection, justifyContent, spacing, truncateText, typography, weight } =
-	styles;
+const { displayFlex, flexDirection, justifyContent, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	artist: {
 		...typography.h5,
-		...truncateText,
-		color: '#999',
-		fontSize: spacing['1_7'],
 		fontWeight: weight[600],
 	},
 	container: {
@@ -34,20 +29,15 @@ const useStyles = createUseStyles((theme) => ({
 		height: 50,
 		width: 50,
 	},
-	statLink: {
-		'& svg': {
-			fontSize: 10,
-			marginRight: spacing['0_25'],
+	stats: {
+		'& > :not(:last-child)': {
+			marginRight: spacing['1_5'],
 		},
-		color: '#999',
-		fontSize: spacing['1_5'],
-		marginRight: spacing['1_5'],
+		...displayFlex,
 	},
 	title: {
 		...typography.h5,
-		...truncateText,
 		color: '#333',
-		fontSize: spacing['1_7'],
 		fontWeight: weight[500],
 	},
 }));
@@ -66,25 +56,51 @@ const SidebarTrack = ({ track }) => {
 				alt={title}
 			/>
 			<div className={classes.content}>
-				<Link className={classes.artist}>{artist}</Link>
-				<Link className={classes.title}>{title}</Link>
-				<div>
-					<Link className={classes.statLink}>
-						<FontAwesomeIcon icon={faPlay} />
-						{plays}
-					</Link>
-					<Link className={classes.statLink}>
-						<FontAwesomeIcon icon={faHeart} />
-						{likes}
-					</Link>
-					<Link className={classes.statLink}>
-						<FontAwesomeIcon icon={faRepeat} />
-						{reposts}
-					</Link>
-					<Link className={classes.statLink}>
-						<FontAwesomeIcon icon={faMessage} />
-						{comments}
-					</Link>
+				<StyledLink
+					styles={classes.artist}
+					to=''
+					label={artist}
+					primary
+				/>
+				<StyledLink
+					styles={classes.title}
+					to=''
+					label={title}
+					primary
+				/>
+				<div className={classes.stats}>
+					<StyledLink
+						icon={faPlay}
+						label={plays}
+						small
+						primary
+						labelHover
+						noIconHover
+					/>
+					<StyledLink
+						icon={faHeart}
+						label={likes}
+						small
+						primary
+						labelHover
+						noIconHover
+					/>
+					<StyledLink
+						icon={faRepeat}
+						label={reposts}
+						small
+						primary
+						labelHover
+						noIconHover
+					/>
+					<StyledLink
+						icon={faMessage}
+						label={comments}
+						small
+						primary
+						labelHover
+						noIconHover
+					/>
 				</div>
 			</div>
 		</div>
