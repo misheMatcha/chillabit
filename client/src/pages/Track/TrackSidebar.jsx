@@ -1,34 +1,30 @@
 import React from 'react';
 import { faClone, faHeart, faRepeat, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import SidebarSection from '../../components/General/Sidebar/SidebarSection';
-import { styles } from '../../utils/styles';
-
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	justifyContent,
-	spacing,
-	typography,
-	weight,
-	width,
-} = styles;
+import SidebarTrack from '../../components/General/Sidebar/SidebarTrack';
+import { TRACKS_SIDEBAR_LIST } from '../../data/trackPlaceholders';
 
 const useStyles = createUseStyles((theme) => ({
-	container: {},
+	container: {
+		paddingTop: 10,
+	},
 }));
 
 const TrackSidebar = () => {
-	const theme = useTheme();
-	const classes = useStyles({ theme });
+	const classes = useStyles();
 	return (
 		<div className={classes.container}>
 			<SidebarSection
 				icon={faWaveSquare}
 				title='Related tracks'
 			>
-				a
+				{TRACKS_SIDEBAR_LIST.map((track, i) => (
+					<SidebarTrack
+						key={i}
+						track={track}
+					/>
+				))}
 			</SidebarSection>
 			<SidebarSection
 				icon={faClone}

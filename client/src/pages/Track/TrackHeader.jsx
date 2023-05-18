@@ -126,7 +126,7 @@ const TrackHeader = () => {
 					</div>
 					<div className={classes.trackInfo}>
 						<div>{date}</div>
-						<div className={classes.tags}>{tags}</div>
+						{tags && <div className={classes.tags}>{tags}</div>}
 					</div>
 				</div>
 			</div>

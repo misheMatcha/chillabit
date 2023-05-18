@@ -10,8 +10,7 @@ const useStyles = createUseStyles((theme) => ({
 	container: {
 		marginBottom: spacing['2_5'],
 	},
-	content: {
-		// border: '1px solid black',
+	main: {
 		paddingTop: 5,
 	},
 	title: {
@@ -20,7 +19,7 @@ const useStyles = createUseStyles((theme) => ({
 		},
 	},
 	titleWrapper: {
-		'&:hover > div:last-child': {
+		'&:hover $viewAll': {
 			color: '#333',
 		},
 		...alignItems.center,
@@ -36,6 +35,7 @@ const useStyles = createUseStyles((theme) => ({
 		lineHeight: spacing[3],
 		textDecoration: theme.link.textDecoration.standard,
 	},
+	viewAll: {},
 }));
 
 const SidebarSection = ({ children, icon, title, viewAllUrl }) => {
@@ -52,9 +52,9 @@ const SidebarSection = ({ children, icon, title, viewAllUrl }) => {
 					<FontAwesomeIcon icon={icon} />
 					{title}
 				</div>
-				<div>View all</div>
+				<div className={classes.viewAll}>View all</div>
 			</Link>
-			<div className={classes.content}>{children}</div>
+			<div className={classes.main}>{children}</div>
 		</div>
 	);
 };
