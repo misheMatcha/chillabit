@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import StyledLink from './StyledLink';
+import StyledLink from '../../components/General/StyledLink';
 import SearchBar from '../../components/SearchBar';
 import Track from '../../components/Track';
 import { PLACEHOLDER_TRACK_LIST } from '../../data/placeholderTrackList';
@@ -68,8 +68,6 @@ const useStyles = createUseStyles((theme) => ({
 	upload: {
 		...typography.h4,
 		fontWeight: weight[500],
-		paddingLeft: 23,
-		paddingRight: 23,
 	},
 }));
 
@@ -82,7 +80,13 @@ const Trending = () => {
 			<div className={classes.search}>
 				<SearchBar />
 				<span className={classes.or}>or</span>
-				<StyledLink styles={classes.upload}>Upload your own</StyledLink>
+				<StyledLink
+					styles={classes.upload}
+					label='Upload your own'
+					button
+					large
+					special
+				/>
 			</div>
 			<div className={classes.trending}>
 				<div className={classes.title}>
@@ -102,7 +106,13 @@ const Trending = () => {
 					})}
 				</ul>
 				<div className={classes.explore}>
-					<StyledLink>Explore trending playlists</StyledLink>
+					<StyledLink
+						to=''
+						button
+						large
+						special
+						label='Explore trending playlists'
+					/>
 				</div>
 			</div>
 		</div>

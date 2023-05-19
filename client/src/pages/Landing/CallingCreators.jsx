@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import CreatorImage from './assets/creator_image.jpg';
-import StyledLink from './StyledLink';
+import StyledLink from '../../components/General/StyledLink';
 import { CHILLABIT } from '../../utils/constants';
 import { styles } from '../../utils/styles';
 
@@ -20,13 +20,6 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	content: {
 		width: 520,
-	},
-	link: {
-		padding: `13px ${spacing[3]}px`,
-	},
-	linkWrapper: {
-		...displayFlex,
-		height: spacing['5_7'],
 	},
 	tagline: {
 		...typography.h2,
@@ -52,13 +45,13 @@ const CallingCreators = () => {
 					Get on {CHILLABIT} to connect with fans, share your sounds, and grow your audience. What
 					are you waiting for?
 				</div>
-				<div className={classes.linkWrapper}>
+				<div>
 					<StyledLink
-						clear
-						styles={classes.link}
-					>
-						Find out more
-					</StyledLink>
+						label='Find out more'
+						button
+						primary
+						large
+					/>
 				</div>
 			</div>
 		</div>

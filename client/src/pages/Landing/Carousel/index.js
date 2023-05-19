@@ -1,13 +1,12 @@
 import React from 'react';
 import Carousel from 'antd/lib/carousel';
-import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import CarouselNav from './CarouselNav';
+import StyledLink from '../../../components/General/StyledLink';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 import DiscoverBanner from '../assets/discover_banner.jpg';
 import UpcomingBanner from '../assets/upcoming_banner.jpeg';
-import StyledLink from '../StyledLink';
 
 const {
 	alignItems,
@@ -39,11 +38,16 @@ const useStyles = createUseStyles((theme) => ({
 		height: 454,
 	},
 	learnMore: {
+		fontSize: spacing[2],
 		...displayFlex,
 		...justifyContent.center,
-		...typography.body,
 		flexGrow: 1,
-		marginRight: 25,
+		marginRight: spacing[3],
+	},
+	link: {
+		fontSize: spacing['2_25'],
+		paddingLeft: 15,
+		paddingRight: 15,
 	},
 	linkWrapper: {
 		...displayFlex,
@@ -69,7 +73,7 @@ const useStyles = createUseStyles((theme) => ({
 	tagline: {
 		...textAlign.center,
 		...typography.body,
-		fontSize: 18,
+		fontSize: spacing['2_25'],
 		marginBottom: 10,
 		width: 530,
 	},
@@ -104,12 +108,19 @@ const LandingCarousel = () => {
 							</div>
 							<div className={classes.linkWrapper}>
 								<StyledLink
-									clear
-									styles={cn(classes.learnMore)}
-								>
-									Learn more
-								</StyledLink>
-								<StyledLink>Try it for free for 30 days</StyledLink>
+									styles={classes.learnMore}
+									label='Learn more'
+									button
+									large
+									primary
+								/>
+								<StyledLink
+									styles={classes.link}
+									label='Try it for free for 30 days'
+									button
+									large
+									special
+								/>
 							</div>
 						</div>
 					</div>
@@ -121,7 +132,13 @@ const LandingCarousel = () => {
 								create, find your fans, and connect with other artists.
 							</div>
 							<div className={classes.linkWrapper}>
-								<StyledLink>Start uploading today</StyledLink>
+								<StyledLink
+									styles={classes.link}
+									label='Start uploading today'
+									button
+									large
+									special
+								/>
 							</div>
 						</div>
 					</div>

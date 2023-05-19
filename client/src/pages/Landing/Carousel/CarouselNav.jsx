@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Link } from 'react-router-dom';
+import StyledLink from '../../../components/General/StyledLink';
 import useModal from '../../../hooks/useModal';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
@@ -99,7 +99,10 @@ const CarouselNav = () => {
 				>
 					Create account
 				</Button>
-				<Link>For Artists</Link>
+				<StyledLink
+					label='For Artists'
+					secondary
+				/>
 			</div>
 		</div>
 	);

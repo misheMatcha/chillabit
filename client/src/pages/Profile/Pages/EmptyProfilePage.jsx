@@ -2,7 +2,6 @@ import React from 'react';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledLink from '../../../components/General/StyledLink';
-import StyledLinkButton from '../../../components/General/StyledLinkButton';
 import { styles } from '../../../utils/styles';
 import EmptyLists from '../assets/empty_lists.png';
 import EmptyReposts from '../assets/empty_reposts.png';
@@ -42,36 +41,22 @@ const EmptyProfilePage = ({
 	const classes = useStyles({ theme });
 
 	const getIcon = (type) => {
-		switch (type) {
-			case 'all':
-				return (
-					<img
-						src={EmptyTracksAndLists}
-						alt='empty'
-					/>
-				);
-			case 'tracks':
-				return (
-					<img
-						src={EmptyTracks}
-						alt='empty'
-					/>
-				);
-			case 'lists':
-				return (
-					<img
-						src={EmptyLists}
-						alt='empty'
-					/>
-				);
-			default:
-				return (
-					<img
-						src={EmptyReposts}
-						alt='empty'
-					/>
-				);
+		let imgSrc = EmptyReposts;
+
+		if (type === 'all') {
+			imgSrc = EmptyTracksAndLists;
+		} else if (type === 'tracks') {
+			imgSrc = EmptyTracks;
+		} else if (type === 'lists') {
+			imgSrc = EmptyLists;
 		}
+
+		return (
+			<img
+				src={imgSrc}
+				alt='empty'
+			/>
+		);
 	};
 
 	return (
@@ -83,12 +68,12 @@ const EmptyProfilePage = ({
 				styles={classes.link}
 			/>
 			{uploadButton && (
-				<StyledLinkButton
+				<StyledLink
+					to='/upload'
 					label='Upload now'
 					button
 					medium
 					special
-					to='/upload'
 				/>
 			)}
 		</div>
