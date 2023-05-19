@@ -83,6 +83,13 @@ const useStyles = createUseStyles((theme) => ({
 		borderColor: theme.button.backgroundColor.special,
 		color: theme.button.color.special,
 	},
+	teritary: {
+		'&:hover': {
+			color: theme.color.special,
+		},
+		backgroundColor: theme.color.transparent,
+		color: theme.color.special,
+	},
 }));
 
 const StyledLink = ({
@@ -96,7 +103,7 @@ const StyledLink = ({
 	medium = false,
 	small = false,
 	special = false,
-	transparent = false,
+	teritary = false,
 	primary = false,
 	secondary = false,
 	noIconHover = false,
@@ -116,8 +123,9 @@ const StyledLink = ({
 					[`${classes.primary}`]: primary,
 					[`${classes.primaryBtn}`]: primary && button,
 					[`${classes.secondary}`]: secondary,
+					[`${classes.teritary}`]: teritary,
 					[`${classes.special}`]: special,
-					[`${classes.specialBtn}`]: special && button,
+					[`${classes.specialBtn}`]: (special && button) || teritary,
 				},
 				styles
 			)}
