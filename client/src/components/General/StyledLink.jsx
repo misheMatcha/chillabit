@@ -96,6 +96,7 @@ const StyledLink = ({
 	children,
 	icon,
 	label,
+	onCLick,
 	styles,
 	to,
 	button = false,
@@ -129,6 +130,7 @@ const StyledLink = ({
 				},
 				styles
 			)}
+			onClick={onCLick}
 			to={to}
 		>
 			{children ? (

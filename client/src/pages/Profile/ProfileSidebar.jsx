@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import { faCaretDown, faCaretUp, faEarthAmerica } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as cn from 'classnames';
+import React from 'react';
+import { faEarthAmerica } from '@fortawesome/free-solid-svg-icons';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Link } from 'react-router-dom';
 import StyledLink from '../../components/General/StyledLink';
+import TruncateSection from '../../components/General/TruncateSection';
 import { PROFILE_LINKS_PLACEHOLDER } from '../../data/profilePlaceholders';
 import useGeneral from '../../hooks/useGeneral';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, flexDirection, spacing, typography, weight } = styles;
+const { displayFlex, flexDirection, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -18,23 +16,7 @@ const useStyles = createUseStyles((theme) => ({
 		},
 	},
 	description: {
-		marginBottom: 10,
-	},
-	descriptionShow: {
-		'& > :last-child': {
-			marginLeft: spacing[1],
-		},
-		'& > svg': {
-			fontSize: 16,
-		},
-		...alignItems.center,
-		...displayFlex,
 		...typography.captions,
-		color: theme.color.black,
-		fontWeight: weight[400],
-	},
-	descriptionWrapper: {
-		marginBottom: spacing['2_5'],
 	},
 	links: {
 		'& > li:not(:last-child)': {
@@ -67,29 +49,12 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		marginBottom: spacing['1_7'],
 	},
-	truncated: {
-		maxHeight: 85,
-		overflow: 'hidden',
-	},
-	truncatedWrapper: {
-		'&::after': {
-			background: 'linear-gradient(hsla(0,0%,100%,0),#fff)',
-			bottom: 54,
-			content: "''",
-			display: 'block',
-			height: 25,
-			position: 'relative',
-		},
-	},
 }));
 
 const ProfileSidebar = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { user } = useGeneral();
-	const [showMore, setShowMore] = useState(false);
-
-	const toggleShowMore = () => setShowMore(!showMore);
 
 	return (
 		<div className={classes.container}>
@@ -120,30 +85,12 @@ const ProfileSidebar = () => {
 				</StyledLink>
 			</div>
 			{user.bio && (
-				<div
-					className={cn(classes.descriptionWrapper, { [`${classes.truncatedWrapper}`]: !showMore })}
+				<TruncateSection
+					maxHeight={85}
+					styles={classes.description}
 				>
-					<div className={cn(classes.description, { [`${classes.truncated}`]: !showMore })}>
-						{user.bio}
-					</div>
-					{showMore ? (
-						<Link
-							className={classes.descriptionShow}
-							onClick={toggleShowMore}
-							to='#'
-						>
-							Show less <FontAwesomeIcon icon={faCaretUp} />
-						</Link>
-					) : (
-						<Link
-							className={classes.descriptionShow}
-							onClick={toggleShowMore}
-							to='#'
-						>
-							Show more <FontAwesomeIcon icon={faCaretDown} />
-						</Link>
-					)}
-				</div>
+					<p>{user.bio}</p>
+				</TruncateSection>
 			)}
 			{user.links && (
 				<ul className={classes.links}>

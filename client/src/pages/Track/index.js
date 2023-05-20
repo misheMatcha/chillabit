@@ -5,6 +5,7 @@ import TrackHeader from './TrackHeader';
 import TrackSidebar from './TrackSidebar';
 import StyledButton from '../../components/General/StyledButton';
 import StyledLink from '../../components/General/StyledLink';
+import TruncateSection from '../../components/General/TruncateSection';
 import { TRACK_PLACEHOLDER, TRACK_USER_PLACEHOLDER } from '../../data/trackPlaceholders';
 import { styles } from '../../utils/styles';
 import PageLayoutTemplate from '../PageLayoutTemplate';
@@ -96,7 +97,9 @@ const Track = () => {
 					/>
 				</div>
 				<div className={classes.mainWrapper}>
-					<div>{TRACK_PLACEHOLDER.desc}</div>
+					<TruncateSection maxHeight={140}>
+						<p>{TRACK_PLACEHOLDER.desc}</p>
+					</TruncateSection>
 				</div>
 			</div>
 		</PageLayoutTemplate>
