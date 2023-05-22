@@ -31,7 +31,7 @@ const useStyles = createUseStyles((theme) => ({
 		fontWeight: weight[600],
 	},
 	userInfo: {
-		paddingRight: 30,
+		paddingRight: spacing['3_7'],
 		width: 150,
 	},
 	userStats: {

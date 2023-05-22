@@ -56,7 +56,7 @@ const useStyles = createUseStyles((theme) => ({
 			},
 			backgroundColor: '#e5e5e5',
 			height: spacing['3_5'],
-			width: 30,
+			width: spacing['3_7'],
 		},
 		'& .anticon anticon-search': {},
 	},

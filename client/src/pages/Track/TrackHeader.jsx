@@ -45,7 +45,7 @@ const useStyles = createUseStyles((theme) => ({
 		...flexDirection.column,
 		...justifyContent.spaceBetween,
 		...width[100].percentage,
-		margin: '30px 10px 30px 30px',
+		margin: `${spacing['3_7']}px 10px ${spacing['3_7']}px ${spacing['3_7']}px`,
 	},
 	image: {
 		background: ({ trackCover }) => `url(${trackCover})`,

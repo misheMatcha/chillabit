@@ -29,7 +29,7 @@ const useStyles = createUseStyles((theme) => ({
 			avatar ? `url(${avatar})` : 'linear-gradient(135deg,#8e8485,#70929c)',
 		borderRadius: '50%',
 		height: 200,
-		marginRight: 30,
+		marginRight: spacing['3_7'],
 		width: 200,
 	},
 	avatarUpload: {
@@ -51,7 +51,7 @@ const useStyles = createUseStyles((theme) => ({
 				: 'linear-gradient(315deg, rgb(221, 201, 187) 0%, rgb(108, 89, 78) 100%)',
 		backgroundSize: 'cover',
 		height: 260,
-		padding: 30,
+		padding: spacing['3_7'],
 	},
 	content: {
 		'& > div': {
@@ -96,7 +96,7 @@ const useStyles = createUseStyles((theme) => ({
 		padding: spacing['0_7'],
 	},
 	uploadWrapper: {
-		paddingLeft: 30,
+		paddingLeft: spacing['3_7'],
 		width: 236,
 	},
 	username: {

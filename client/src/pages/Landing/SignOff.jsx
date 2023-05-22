@@ -17,7 +17,7 @@ const {
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
-		padding: '0 30px',
+		padding: `0 ${spacing['3_7']}px`,
 	},
 	create: {
 		height: spacing['5_7'],

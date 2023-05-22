@@ -27,7 +27,7 @@ const useStyles = createUseStyles((theme) => ({
 		...typography.body,
 		borderBottom: `1px solid ${theme.background.highlight}`,
 		fontSize: 15,
-		height: 30,
+		height: spacing['3_7'],
 		letterSpacing: -0.5,
 	},
 	viewAll: {},

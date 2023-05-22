@@ -49,7 +49,7 @@ const useStyles = createUseStyles((theme) => ({
 		...textAlign.center,
 		...typography.h2,
 		fontWeight: weight[400],
-		marginBottom: 30,
+		marginBottom: spacing['3_7'],
 		paddingTop: spacing['2_5'],
 	},
 	tracks: {

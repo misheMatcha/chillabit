@@ -2,7 +2,7 @@ import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../utils/styles';
 
-const { displayFlex, flexDirection, height } = styles;
+const { displayFlex, flexDirection, height, spacing } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -13,19 +13,19 @@ const useStyles = createUseStyles((theme) => ({
 	content: {
 		borderRight: `1px solid ${theme.background.highlight}`,
 		flexGrow: 1,
-		paddingRight: 30,
+		paddingRight: spacing['3_7'],
 	},
 	contentWrapper: {
 		...displayFlex,
 		...height[100].percentage,
-		padding: '0 30px',
+		padding: `0 ${spacing['3_7']}px`,
 	},
 	nav: {
-		padding: '0 30px',
+		padding: `0 ${spacing['3_7']}px`,
 	},
 	sidebar: {
 		minWidth: 330,
-		paddingLeft: 30,
+		paddingLeft: spacing['3_7'],
 	},
 }));
 
