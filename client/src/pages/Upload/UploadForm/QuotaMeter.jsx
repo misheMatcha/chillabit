@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledLink from '../../../components/General/StyledLink';
 import { styles } from '../../../utils/styles';
@@ -24,9 +25,13 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...justifyContent.spaceBetween,
 		border: `1px solid ${theme.background.highlight}`,
-		height: 98,
+		height: ({ isQuotaVisible }) => (isQuotaVisible ? 134 : 98),
 		marginBottom: 10,
 		padding: spacing['2_5'],
+	},
+	iconToggle: {
+		cursor: 'pointer',
+		padding: `0 ${spacing['0_5']}px`,
 	},
 	meter: {
 		'& > div': {
@@ -55,38 +60,60 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...justifyContent.spaceBetween,
 		...typography.captions,
+		overflow: 'hidden',
+	},
+	quotaInfo: {
+		...typography.captions,
+		fontSize: 13,
+		fontWeight: weight[300],
 	},
 	upsellLink: {
 		'& > a': {
 			...typography.captions,
-			fontSize: spacing['1_5'],
+			fontSize: 13,
 			fontWeight: weight[300],
 			marginRight: spacing['0_5'],
 		},
 		...displayFlex,
 		...typography.captions,
-		fontSize: spacing['1_5'],
+		fontSize: 13,
 		fontWeight: weight[300],
 	},
 }));
 
 // TODO: add percentage width when quota is used
 
+const variants = {
+	initial: { rotate: 180 },
+	stop: { rotate: 0 },
+};
+
 const QuotaMeter = () => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
+	const [isQuotaVisible, setIsQuotaVisible] = useState(false);
+	const classes = useStyles({ isQuotaVisible, theme });
 
 	return (
 		<div className={classes.container}>
 			<div className={classes.meterWrapper}>
 				<div className={classes.quota}>
 					0% of free uploads used
-					<FontAwesomeIcon icon={faAngleDown} />
+					<div>
+						<motion.div
+							className={classes.iconToggle}
+							variants={variants}
+							animate={isQuotaVisible ? 'rotate' : 'initial'}
+							onClick={() => setIsQuotaVisible(!isQuotaVisible)}
+						>
+							<FontAwesomeIcon icon={faAngleDown} />
+						</motion.div>
+					</div>
 				</div>
 				<div className={classes.meter}>
 					<div />
 					<div />
 				</div>
+				{isQuotaVisible && <div className={classes.quotaInfo}>0 of 180 minutes (0%) used.</div>}
 				<div className={classes.upsellLink}>
 					<StyledLink
 						label='Try Next Pro'
