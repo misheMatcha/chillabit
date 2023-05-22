@@ -1,6 +1,7 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import UploadForm from './UploadForm';
+import QuotaMeter from './UploadForm/QuotaMeter';
 import UploadNavBar from './UploadNavBar';
 import { styles } from '../../utils/styles';
 
@@ -15,6 +16,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	uploadForm: {
 		marginTop: 90,
+		width: spacing[1] * 100,
 	},
 }));
 
@@ -26,6 +28,7 @@ const Upload = () => {
 		<div className={classes.container}>
 			<UploadNavBar />
 			<div className={classes.uploadForm}>
+				<QuotaMeter />
 				<UploadForm />
 			</div>
 		</div>
