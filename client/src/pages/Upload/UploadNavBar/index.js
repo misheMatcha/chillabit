@@ -6,7 +6,7 @@ import StyledLink from '../../../components/General/StyledLink';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
-const { alignItems, displayFlex, height, justifyContent, spacing, typography } = styles;
+const { alignItems, displayFlex, height, justifyContent, spacing, typography, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	artistLink: {
@@ -27,6 +27,7 @@ const useStyles = createUseStyles((theme) => ({
 		},
 		...displayFlex,
 		...justifyContent.spaceBetween,
+		...width[100].percentage,
 		borderBottom: `1px solid ${theme.background.highlight}`,
 		height: 50,
 		padding: `0 ${spacing['3_7']}px`,
