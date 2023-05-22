@@ -12,6 +12,7 @@ import PopularTracks from './pages/Profile/Pages/PopularTracks';
 import Reposts from './pages/Profile/Pages/Reposts';
 import Tracks from './pages/Profile/Pages/Tracks';
 import Track from './pages/Track/index';
+import Upload from './pages/Upload';
 
 const App = () => {
 	return (
@@ -60,6 +61,10 @@ const App = () => {
 				<Route
 					path='/:user/:track'
 					element={<Track />}
+				/>
+				<Route
+					path='/upload'
+					element={<Upload />}
 				/>
 			</Route>
 

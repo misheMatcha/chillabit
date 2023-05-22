@@ -22,6 +22,13 @@ body,
 	width: 100vw;
 }
 
+ul,
+li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
 * {
 	font-family: 'Overpass', sans-serif;
 	/* aggresive disable - only fixes dropdown animation */
