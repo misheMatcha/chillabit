@@ -2,9 +2,9 @@ import React from 'react';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { createUseStyles, useTheme } from 'react-jss';
 import { NavLink } from 'react-router-dom';
-import StyledLink from '../../../components/General/StyledLink';
-import { CHILLABIT } from '../../../utils/constants';
-import { styles } from '../../../utils/styles';
+import StyledLink from '../../components/General/StyledLink';
+import { CHILLABIT } from '../../utils/constants';
+import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, height, justifyContent, spacing, typography, width } = styles;
 

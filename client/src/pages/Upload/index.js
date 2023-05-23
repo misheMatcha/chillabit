@@ -1,11 +1,10 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import UploadForm from './UploadForm';
-import QuotaMeter from './UploadForm/QuotaMeter';
 import UploadNavBar from './UploadNavBar';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, flexDirection, height, justifyContent, spacing, weight } = styles;
+const { alignItems, displayFlex, flexDirection, spacing } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -28,7 +27,6 @@ const Upload = () => {
 		<div className={classes.container}>
 			<UploadNavBar />
 			<div className={classes.uploadForm}>
-				<QuotaMeter />
 				<UploadForm />
 			</div>
 		</div>
