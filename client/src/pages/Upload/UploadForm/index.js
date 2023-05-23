@@ -1,12 +1,8 @@
 import React from 'react';
 import Form from 'antd/lib/form';
-import Radio from 'antd/lib/radio';
-import Upload from 'antd/lib/upload';
 import { createUseStyles, useTheme } from 'react-jss';
-import QuotaMeter from './QuotaMeter';
 import UploadFormData from './UploadFormData';
 import UploadFormFiles from './UploadFormFiles';
-import StyledLink from '../../../components/General/StyledLink';
 import { styles } from '../../../utils/styles';
 
 const {

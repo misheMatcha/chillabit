@@ -10,7 +10,6 @@ const useStyles = createUseStyles((theme) => ({
 	container: {
 		...displayFlex,
 		borderBottom: `1px solid ${theme.background.highlight}`,
-		padding: '14px 25px 0',
 	},
 	link: {
 		'&:hover': {
