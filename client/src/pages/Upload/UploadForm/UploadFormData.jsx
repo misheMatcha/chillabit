@@ -32,7 +32,7 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 	},
 	formWrapper: {
-		padding: '14px 25px 0',
+		padding: '14px 25px 25px',
 	},
 	required: {
 		'&::before': {

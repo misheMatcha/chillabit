@@ -1,8 +1,9 @@
 import React from 'react';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Radio from 'antd/lib/radio';
 import Upload from 'antd/lib/upload';
 import { createUseStyles, useTheme } from 'react-jss';
-import StyledLink from '../../../components/General/StyledLink';
+import StyledButton from '../../../components/General/StyledButton';
 import { styles } from '../../../utils/styles';
 
 const {
@@ -20,8 +21,17 @@ const {
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		...displayFlex,
-		// border: `1px solid ${theme.background.highlight}`,
-		// boxShadow: `0 ${spacing['0_25']}px ${spacing['1_5']}px -5px rgba(0,0,0,.1)`,
+		marginTop: 25,
+	},
+	image: {
+		...alignItems.flexEnd,
+		...displayFlex,
+		...justifyContent.center,
+		backgroundImage: 'linear-gradient(135deg,#846170,#70929c)',
+		height: 260,
+		marginRight: 18,
+		paddingBottom: 26,
+		width: 260,
 	},
 }));
 
@@ -31,7 +41,14 @@ const UploadBasicInfo = () => {
 
 	return (
 		<div className={classes.container}>
-			<div>avatar</div>
+			<div className={classes.image}>
+				<Upload>
+					<StyledButton
+						icon={faCamera}
+						label='Upload image'
+					/>
+				</Upload>
+			</div>
 			<div>
 				<div>title</div>
 				<div>permalink</div>
