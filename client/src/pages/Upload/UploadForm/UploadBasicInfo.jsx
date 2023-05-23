@@ -1,8 +1,8 @@
 import React from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
-import Radio from 'antd/lib/radio';
 import Upload from 'antd/lib/upload';
 import { createUseStyles, useTheme } from 'react-jss';
+import FormItem from '../../../components/Form/FormItem';
 import StyledButton from '../../../components/General/StyledButton';
 import { styles } from '../../../utils/styles';
 
@@ -49,8 +49,13 @@ const UploadBasicInfo = () => {
 					/>
 				</Upload>
 			</div>
-			<div>
-				<div>title</div>
+			<div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+				<FormItem
+					label='Title'
+					required
+					inputConfig={{ type: 'text' }}
+					name='title'
+				/>
 				<div>permalink</div>
 				<div>genre</div>
 				<div>additional tags</div>
