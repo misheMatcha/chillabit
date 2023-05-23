@@ -1,4 +1,5 @@
 import React from 'react';
+import Form from 'antd/lib/form';
 import Radio from 'antd/lib/radio';
 import Upload from 'antd/lib/upload';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -21,18 +22,24 @@ const {
 } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	container: {},
+	container: {
+		// border: '1px solid black',
+	},
 }));
 
 const UploadForm = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const [form] = Form.useForm();
 
 	return (
-		<div className={classes.container}>
+		<Form
+			className={classes.container}
+			form={form}
+		>
 			{/* <UploadFormFiles /> */}
 			<UploadFormData />
-		</div>
+		</Form>
 	);
 };
 
