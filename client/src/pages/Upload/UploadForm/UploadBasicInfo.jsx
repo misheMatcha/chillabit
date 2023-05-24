@@ -55,6 +55,11 @@ const UploadBasicInfo = () => {
 					required
 					inputConfig={{ type: 'text' }}
 					name='title'
+					rules={[
+						{ message: 'Enter a profile URL.', required: true },
+						{ len: 5, message: 'short.' },
+						{ message: 'short.', min: 3 },
+					]}
 				/>
 				<div>permalink</div>
 				<div>genre</div>

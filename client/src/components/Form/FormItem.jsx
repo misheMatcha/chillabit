@@ -67,12 +67,7 @@ const FormItem = ({ children, label, name, rules, styles, inputConfig = {} }) =>
 			labelAlign='left'
 			name={name}
 			validateFirst={true}
-			// rules={rules}
-			rules={[
-				{ message: 'Enter a profile URL.', required: true },
-				{ message: 'short.', len: 5 },
-				{ message: 'short.', min: 3 },
-			]}
+			rules={rules}
 		>
 			{getInput(inputConfig.type)}
 		</Form.Item>
