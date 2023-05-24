@@ -36,10 +36,14 @@ const FormInput = (props) => {
 
 	return (
 		<Input
-			className={cn(classes.container, {
-				[`${classes.default}`]: !props.error,
-				[`${classes.error}`]: props.error,
-			})}
+			className={cn(
+				classes.container,
+				{
+					[`${classes.default}`]: !props.error,
+					[`${classes.error}`]: props.error,
+				},
+				props.styles
+			)}
 			{...props}
 		/>
 	);

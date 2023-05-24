@@ -3,6 +3,7 @@ import Form from 'antd/lib/form';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormInput from './FormInput';
+import FormSelect from './FormSelect';
 import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, spacing, typography, weight } = styles;
@@ -56,6 +57,8 @@ const FormItem = ({ children, label, name, rules, styles, inputConfig = {} }) =>
 	const getInput = (type) => {
 		if (type === 'text') {
 			return <FormInput {...inputConfig} />;
+		} else if (type === 'select') {
+			return <FormSelect {...inputConfig} />;
 		}
 	};
 
