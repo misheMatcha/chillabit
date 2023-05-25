@@ -1,34 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'antd/lib/select';
-import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import FormInput from './FormInput';
 import { styles } from '../../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	radius,
-	spacing,
-	typography,
-	weight,
-} = styles;
+const { alignItems, displayFlex, radius, spacing, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	container: {
-		...displayFlex,
-	},
-	downdown: {
+	dropdown: {
 		'& .ant-select-item': {
 			...alignItems.center,
 			...displayFlex,
 			borderRadius: 0,
-			padding: '0 18px',
+			padding: `0 ${spacing['2_25']}px`,
 		},
-		'& .ant-select-item-option': {},
+		'& .ant-select-item-group': {
+			...alignItems.flexEnd,
+			...displayFlex,
+			borderBottom: `1px solid ${theme.background.highlight}`,
+			fontSize: 13,
+			fontWeight: weight[500],
+			letterSpacing: -1,
+			lineHeight: 1.3,
+			margin: `${spacing[1]}px 0`,
+			paddingBottom: spacing['0_5'],
+			paddingLeft: spacing['0_25'],
+			textTransform: 'uppercase',
+		},
 		'& .ant-select-item-option-active': {
 			'&:hover': {
 				color: theme.color.special,
@@ -36,20 +33,13 @@ const useStyles = createUseStyles((theme) => ({
 			backgroundColor: `${theme.color.transparent} !important`,
 			borderRadius: 0,
 		},
-
 		'& .ant-select-item-option-selected': {
 			backgroundColor: `${theme.color.transparent} !important`,
 			color: `${theme.color.special} !important`,
 			fontWeight: `${weight[500]} !important`,
 		},
 		borderRadius: 0,
-		padding: 0,
-	},
-	inputPosition: {
-		...flexDirection.column,
-	},
-	inputSpacing: {
-		marginLeft: 10,
+		padding: '0 0 10px',
 	},
 	select: {
 		'& .ant-select-selector': {
@@ -57,7 +47,7 @@ const useStyles = createUseStyles((theme) => ({
 			...displayFlex,
 			borderColor: '#ccc !important',
 			borderRadius: radius[3],
-			height: '26px !important',
+			height: `${spacing['3_25']}px !important`,
 			padding: '0 10px !important',
 		},
 	},
@@ -66,40 +56,15 @@ const useStyles = createUseStyles((theme) => ({
 const FormSelect = (props) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const [custom, setCustom] = useState('');
-	const [isCustom, setIsCustom] = useState(false);
 
 	return (
-		<div
-			className={cn(classes.container, {
-				[`${classes.inputPosition}`]: props.inputPosition === 'bottom',
-			})}
-		>
-			{props.customoption ? (
-				<Select
-					bordered={false}
-					className={classes.select}
-					popupClassName={classes.downdown}
-					defaultOpen={true}
-					onSelect={(value) =>
-						value === 'Custom' || value === 'custom' ? setIsCustom(true) : setIsCustom(false)
-					}
-					{...props}
-				>
-					{props.customoption}
-				</Select>
-			) : (
-				<Select
-					dropdownStyle={{ backgroundColor: 'red !important', padding: '0 !important' }}
-					defaultOpen={true}
-					onSelect={(value) =>
-						value === 'Custom' || value === 'custom' ? setIsCustom(true) : setIsCustom(false)
-					}
-					{...props}
-				/>
-			)}
-			{isCustom && <FormInput styles={classes.inputSpacing} />}
-		</div>
+		<Select
+			dropdownAlign={{ offset: [0, 0] }}
+			bordered={false}
+			className={classes.select}
+			popupClassName={classes.dropdown}
+			{...props}
+		/>
 	);
 };
 

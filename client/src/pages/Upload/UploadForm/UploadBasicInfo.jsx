@@ -1,30 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
-import Select from 'antd/lib/select';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from '../../../components/Form/FormItem';
 import StyledButton from '../../../components/General/StyledButton';
-import { TRACK_GENERE_LIST } from '../../../data/trackPlaceholders';
+import { TRACK_GENERE_OPTIONS } from '../../../data/trackPlaceholders';
 import { styles } from '../../../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	radius,
-	spacing,
-	typography,
-	weight,
-} = styles;
+const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		...displayFlex,
 		marginTop: 25,
+	},
+	formWrapper: {
+		...displayFlex,
+		...flexDirection.column,
+		flex: 1,
 	},
 	image: {
 		...alignItems.flexEnd,
@@ -32,11 +26,14 @@ const useStyles = createUseStyles((theme) => ({
 		...justifyContent.center,
 		backgroundImage: 'linear-gradient(135deg,#846170,#70929c)',
 		height: 260,
-		marginRight: 18,
-		paddingBottom: 26,
+		marginRight: spacing['2_25'],
+		paddingBottom: spacing['3_25'],
 		width: 260,
 	},
-	select: {
+	selectCustom: {
+		opacity: 0,
+	},
+	selectWithHeader: {
 		'& .ant-select-item-option-content': {
 			'& > :first-child': {
 				...typography.captions,
@@ -54,54 +51,27 @@ const useStyles = createUseStyles((theme) => ({
 			'& > :last-child': {
 				...alignItems.center,
 				...displayFlex,
-				height: 28,
-				padding: '0 18px',
+				height: spacing['3_5'],
+				padding: `0 ${spacing['2_25']}px`,
 			},
 		},
 		padding: '0 !important',
+	},
+	selectWrapper: {
+		'& > div': {
+			width: '50%',
+		},
+		'& > div:first-child': {
+			marginRight: 10,
+		},
+		...displayFlex,
 	},
 }));
 
 const UploadBasicInfo = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-
-	const getCustomOptions = () => (
-		<>
-			{TRACK_GENERE_LIST.map((genre, i) => {
-				if (genre === 'None') {
-					return (
-						<Select.Option
-							key={i}
-							value=''
-						>
-							{genre}
-						</Select.Option>
-					);
-				} else if (genre === 'Alternative Rock' || genre === 'Audiobooks') {
-					return (
-						<Select.Option
-							className={classes.select}
-							key={i}
-							value={genre}
-						>
-							<div>{genre === 'Alternative Rock' ? 'Music' : 'Audio'}</div>
-							<div>{genre}</div>
-						</Select.Option>
-					);
-				} else {
-					return (
-						<Select.Option
-							key={i}
-							value={genre}
-						>
-							{genre}
-						</Select.Option>
-					);
-				}
-			})}
-		</>
-	);
+	const [isCustomOption, setIsCustomOption] = useState(false);
 
 	return (
 		<div className={classes.container}>
@@ -113,7 +83,7 @@ const UploadBasicInfo = () => {
 					/>
 				</Upload>
 			</div>
-			<div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+			<div className={classes.formWrapper}>
 				<FormItem
 					label='Title'
 					required
@@ -126,10 +96,23 @@ const UploadBasicInfo = () => {
 					]}
 				/>
 				<div>permalink</div>
-				<FormItem
-					label='Genre'
-					inputConfig={{ customoption: getCustomOptions(), defaultValue: '', type: 'select' }}
-				/>
+				<div className={classes.selectWrapper}>
+					<FormItem
+						label='Genre'
+						inputConfig={{
+							defaultValue: '',
+							onSelect: (value) =>
+								value === 'custom' ? setIsCustomOption(true) : setIsCustomOption(false),
+							options: TRACK_GENERE_OPTIONS,
+							type: 'select',
+						}}
+					/>
+					<FormItem
+						styles={cn({ [`${classes.selectCustom}`]: !isCustomOption })}
+						label='Custom Genre'
+						inputConfig={{ type: 'text' }}
+					/>
+				</div>
 				<div>additional tags</div>
 				<div>description</div>
 				<div>caption</div>

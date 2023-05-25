@@ -6,7 +6,7 @@ import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, flexDirection, spacing, typography, weight } = styles;
+const { alignItems, displayFlex, flexDirection, spacing, typography, weight, width } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -29,7 +29,7 @@ const useStyles = createUseStyles((theme) => ({
 			},
 			...alignItems.flexStart,
 			...displayFlex,
-			fontWeight: weight[600],
+			fontWeight: weight[500],
 			marginBottom: spacing[1],
 		},
 
@@ -46,6 +46,7 @@ const useStyles = createUseStyles((theme) => ({
 		'& .ant-row': {
 			...flexDirection.column,
 		},
+		...width[100].percentage,
 		marginBottom: 10,
 	},
 }));
