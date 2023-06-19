@@ -11,6 +11,26 @@ import { styles } from '../../../utils/styles';
 const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
+	captions: {
+		'& > textarea': {
+			// backgroundColor: 'lavender',
+		},
+		'&:hover': {
+			// borderColor: 'red',
+		},
+		height: 86,
+
+		'& .ant-input-affix-wrapper': {
+			// borderColor: 'red',
+			backgroundColor: 'lavender !important',
+		},
+		'& .ant-input-affix-wrapper-focused': {
+			// backgroundColor: 'lavender !important',
+			// borderColor: 'red',
+		},
+		// '& .ant-input-textarea-affix-wrapper ant-input-textarea-show-count css-dev-only-do-not-override-w8mnev ant-input-show-count':
+		// 	{},
+	},
 	container: {
 		...displayFlex,
 		marginTop: 25,
@@ -99,6 +119,7 @@ const UploadBasicInfo = () => {
 				<div className={classes.selectWrapper}>
 					<FormItem
 						label='Genre'
+						name='genre'
 						inputConfig={{
 							defaultValue: '',
 							onSelect: (value) =>
@@ -114,8 +135,22 @@ const UploadBasicInfo = () => {
 					/>
 				</div>
 				<div>additional tags</div>
-				<div>description</div>
-				<div>caption</div>
+				<FormItem
+					label='Description'
+					name='desc'
+					inputConfig={{ placeholder: 'Describe your track', rows: 6, type: 'textarea' }}
+				/>
+				<FormItem
+					label='Caption'
+					name='caption'
+					inputConfig={{
+						maxLength: 140,
+						placeholder: 'Add a caption to your post (optional)',
+						showCount: true,
+						styles: classes.captions,
+						type: 'textarea',
+					}}
+				/>
 				<div>privacy</div>
 			</div>
 		</div>

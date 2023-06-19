@@ -4,6 +4,7 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
+import FormTextarea from './FormTextarea';
 import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, spacing, typography, weight, width } = styles;
@@ -60,6 +61,8 @@ const FormItem = ({ children, label, name, rules, styles, inputConfig = {} }) =>
 			return <FormInput {...inputConfig} />;
 		} else if (type === 'select') {
 			return <FormSelect {...inputConfig} />;
+		} else if (type === 'textarea') {
+			return <FormTextarea {...inputConfig} />;
 		}
 	};
 
