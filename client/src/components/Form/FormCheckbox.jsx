@@ -4,7 +4,7 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../../utils/styles';
 
-const { height, radius, spacing, typography, weight, width } = styles;
+const { typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -12,7 +12,7 @@ const useStyles = createUseStyles((theme) => ({
 			'&::after': {
 				borderWidth: 3,
 				left: '26%',
-				transform: 'rotate(-235) scaleX(-1) translate(-30%,-50%)',
+				transform: 'rotate(-45deg) scaleX(-1) translate(-30%,-50%)',
 				width: 12,
 			},
 			backgroundColor: `${theme.color.special} !important`,
@@ -35,9 +35,6 @@ const useStyles = createUseStyles((theme) => ({
 			fontWeight: weight[600],
 			letterSpacing: 0.025,
 			paddingLeft: 10,
-		},
-		'&:hover .ant-checkbox-inner': {
-			border: '1px solid #cecece !important',
 		},
 		width: 235,
 	},
