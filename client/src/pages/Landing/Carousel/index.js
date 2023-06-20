@@ -128,7 +128,7 @@ const LandingCarousel = () => {
 						<div className={classes.page}>
 							<div className={classes.title}>What's next in music is first on {CHILLABIT}</div>
 							<div className={classes.tagline}>
-								Upload your first track and begin your journey. SoundCloud gives you space to
+								Upload your first track and begin your journey. {CHILLABIT} gives you space to
 								create, find your fans, and connect with other artists.
 							</div>
 							<div className={classes.linkWrapper}>

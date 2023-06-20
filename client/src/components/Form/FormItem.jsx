@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'antd/lib/form';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
+import FormCheckbox from './FormCheckbox';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 import FormTextarea from './FormTextarea';
@@ -47,28 +48,42 @@ const useStyles = createUseStyles((theme) => ({
 		'& .ant-row': {
 			...flexDirection.column,
 		},
-		...width[100].percentage,
 		marginBottom: 10,
+	},
+	fullWidth: {
+		...width[100].percentage,
 	},
 }));
 
-const FormItem = ({ children, label, name, rules, styles, inputConfig = {} }) => {
+const FormItem = ({
+	children,
+	label,
+	name,
+	rules,
+	styles,
+	fullWidth = false,
+	inputConfig = {},
+}) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	const getInput = (type) => {
-		if (type === 'text') {
-			return <FormInput {...inputConfig} />;
-		} else if (type === 'select') {
-			return <FormSelect {...inputConfig} />;
-		} else if (type === 'textarea') {
-			return <FormTextarea {...inputConfig} />;
+		switch (type) {
+			case 'text':
+				return <FormInput {...inputConfig} />;
+			case 'select':
+				return <FormSelect {...inputConfig} />;
+			case 'tetextarea':
+				return <FormTextarea {...inputConfig} />;
+			case 'checkbox':
+				return <FormCheckbox {...inputConfig} />;
+			default:
 		}
 	};
 
 	return (
 		<Form.Item
-			className={cn(classes.container, styles)}
+			className={cn(classes.container, { [`${classes.fullWidth}`]: fullWidth }, styles)}
 			colon={false}
 			label={label}
 			labelAlign='left'

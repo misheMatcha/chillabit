@@ -19,6 +19,7 @@ const UploadMetadata = () => {
 	return (
 		<div>
 			<div className={classes.section}>
+				<StyledFormItem type='checkbox' />
 				<StyledFormItem
 					label='Contains music'
 					small
