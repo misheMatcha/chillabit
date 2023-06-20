@@ -1,7 +1,10 @@
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
+import UploadAdvanced from './UploadAdvanced';
 import UploadBasicInfo from './UploadBasicInfo';
 import UploadFormNav from './UploadFormNav';
+import UploadMetadata from './UploadMetadata';
+import UploadPermissions from './UploadPermissions';
 import UploadStatus from './UploadStatus';
 import StyledButton from '../../../components/General/StyledButton';
 import { styles } from '../../../utils/styles';
@@ -56,7 +59,10 @@ const UploadFormData = () => {
 			<div className={classes.container}>
 				<div className={classes.formWrapper}>
 					<UploadFormNav />
-					<UploadBasicInfo />
+					{/* <UploadBasicInfo /> */}
+					<UploadMetadata />
+					{/* <UploadPermissions /> */}
+					{/* <UploadAdvanced /> */}
 				</div>
 				<div className={classes.formSubmit}>
 					<span className={classes.required}>Required fields</span>
