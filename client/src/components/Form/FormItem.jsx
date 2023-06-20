@@ -55,15 +55,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormItem = ({
-	children,
-	label,
-	name,
-	rules,
-	styles,
-	fullWidth = false,
-	inputConfig = {},
-}) => {
+const FormItem = ({ label, name, rules, styles, fullWidth = false, inputConfig = {} }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 

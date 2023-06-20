@@ -1,24 +1,29 @@
 import React from 'react';
+import { faBan } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from '../../../components/Form/FormItem';
 import StyledLink from '../../../components/General/StyledLink';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	justifyContent,
-	radius,
-	spacing,
-	textAlign,
-	typography,
-	weight,
-	width,
-} = styles;
+const { alignItems, displayFlex, flexDirection, radius, spacing, textAlign, typography, weight } =
+	styles;
 
 const useStyles = createUseStyles((theme) => ({
+	access: {
+		'& > svg': {
+			marginRight: 4,
+		},
+		...typography.h4,
+		borderBottom: `1px solid ${theme.background.highlight}`,
+		color: '#999',
+		fontSize: 14,
+		fontWeight: weight[600],
+		letterSpacing: 0.025,
+		marginTop: 32,
+		paddingBottom: 6,
+	},
 	checkbox: {
 		marginBottom: 0,
 		paddingRight: 14,
@@ -85,7 +90,7 @@ const UploadPermissions = () => {
 				unchecked:
 					'This track will not be available for direct download in the original format it was uploaded.',
 			},
-			name: 'a',
+			name: 'download',
 		},
 		{
 			inputConfig: {
@@ -95,7 +100,7 @@ const UploadPermissions = () => {
 				unchecked:
 					'Playing this track will not be possible on devices without an internet connection.',
 			},
-			name: 'a',
+			name: 'offline',
 		},
 		{
 			inputConfig: {
@@ -104,7 +109,7 @@ const UploadPermissions = () => {
 				type: 'checkbox',
 				unchecked: 'This track will not be included in your RSS feed.',
 			},
-			name: 'a',
+			name: 'rss',
 		},
 		{
 			inputConfig: {
@@ -113,7 +118,7 @@ const UploadPermissions = () => {
 				type: 'checkbox',
 				unchecked: 'This track’s embedded-player code will only be displayed to you.',
 			},
-			name: 'a',
+			name: 'embed',
 		},
 		{
 			inputConfig: {
@@ -122,13 +127,15 @@ const UploadPermissions = () => {
 				type: 'checkbox',
 				unchecked: `This track will not be playable outside of ${CHILLABIT} and its apps.`,
 			},
-			name: 'a',
+			name: 'playback',
 		},
 	];
 
 	return (
-		<div>
-			<div>no access</div>
+		<div className={classes.container}>
+			<div className={classes.access}>
+				<FontAwesomeIcon icon={faBan} /> Access
+			</div>
 			<div className={classes.checkboxWrapper}>
 				{checkboxOptions.map((option, i) => (
 					<FormItem

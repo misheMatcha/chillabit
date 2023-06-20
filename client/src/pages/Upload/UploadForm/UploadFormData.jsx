@@ -60,8 +60,8 @@ const UploadFormData = () => {
 				<div className={classes.formWrapper}>
 					<UploadFormNav />
 					{/* <UploadBasicInfo /> */}
-					{/* <UploadMetadata /> */}
-					<UploadPermissions />
+					<UploadMetadata />
+					{/* <UploadPermissions /> */}
 					{/* <UploadAdvanced /> */}
 				</div>
 				<div className={classes.formSubmit}>
