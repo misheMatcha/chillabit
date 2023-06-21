@@ -21,13 +21,14 @@ const useStyles = createUseStyles((theme) => ({
 		fontSize: 14,
 		fontWeight: weight[600],
 		letterSpacing: 0.025,
-		marginTop: 32,
-		paddingBottom: 6,
 	},
 	checkbox: {
 		marginBottom: 0,
 		paddingRight: 14,
 		paddingTop: 10,
+	},
+	checkboxContianer: {
+		padding: '10px 0',
 	},
 	checkboxWarning: {
 		color: theme.color.error,
@@ -133,18 +134,20 @@ const UploadPermissions = () => {
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.access}>
-				<FontAwesomeIcon icon={faBan} /> Access
-			</div>
-			<div className={classes.checkboxWrapper}>
-				{checkboxOptions.map((option, i) => (
-					<FormItem
-						key={i}
-						name={option.name}
-						inputConfig={option.inputConfig}
-						styles={classes.checkbox}
-					/>
-				))}
+			<div className={classes.checkboxContianer}>
+				<div className={classes.access}>
+					<FontAwesomeIcon icon={faBan} /> Access
+				</div>
+				<div className={classes.checkboxWrapper}>
+					{checkboxOptions.map((option, i) => (
+						<FormItem
+							key={i}
+							name={option.name}
+							inputConfig={option.inputConfig}
+							styles={classes.checkbox}
+						/>
+					))}
+				</div>
 			</div>
 			<div className={classes.control}>
 				<h2 className={classes.controlTitle}>Be in control</h2>

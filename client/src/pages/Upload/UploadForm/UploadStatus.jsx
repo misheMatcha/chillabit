@@ -5,6 +5,9 @@ import { styles } from '../../../utils/styles';
 const { displayFlex, height, justifyContent, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
+	contianer: {
+		marginTop: 30,
+	},
 	dataProgressBar: {
 		backgroundColor: theme.color.special,
 	},
@@ -34,7 +37,7 @@ const UploadStatus = () => {
 	const classes = useStyles({ theme });
 
 	return (
-		<div>
+		<div className={classes.contianer}>
 			<div className={classes.info}>
 				<span>244 (Kupo kupo).wav</span>
 				<span>Ready. Click Save to post this track.</span>

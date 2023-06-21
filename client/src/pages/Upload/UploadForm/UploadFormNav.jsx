@@ -10,6 +10,7 @@ const useStyles = createUseStyles((theme) => ({
 	container: {
 		...displayFlex,
 		borderBottom: `1px solid ${theme.background.highlight}`,
+		marginBottom: 16,
 	},
 	link: {
 		'&:hover': {
@@ -48,7 +49,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const UploadFormNav = () => {
+const UploadFormNav = ({ step, setStep }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -71,8 +72,9 @@ const UploadFormNav = () => {
 		<ul className={classes.container}>
 			{uploadNavList.map((nav, i) => (
 				<li
-					className={cn(classes.list, { [`${classes.linkActive}`]: false })}
+					className={cn(classes.list, { [`${classes.linkActive}`]: nav.step === step })}
 					key={i}
+					onClick={() => setStep(nav.step)}
 				>
 					<Link className={classes.link}>{nav.label}</Link>
 				</li>

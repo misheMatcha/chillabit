@@ -31,7 +31,7 @@ const useStyles = createUseStyles((theme) => ({
 		'& > span:last-child': {
 			...typography.captions,
 			color: '#666',
-			fontSize: 13,
+			fontSize: 12,
 			fontWeight: weight[600],
 			letterSpacing: 0.025,
 			paddingLeft: 10,
@@ -40,6 +40,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	title: {
 		color: '#333',
+		fontSize: 13,
 		marginBottom: 7,
 	},
 }));
