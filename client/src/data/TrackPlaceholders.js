@@ -182,3 +182,8 @@ export const TRACK_GENERE_OPTIONS = [
 		],
 	},
 ];
+
+export const Y_N_Options = [
+	{ label: 'Yes', value: 'true' },
+	{ label: 'No', value: 'false' },
+];
