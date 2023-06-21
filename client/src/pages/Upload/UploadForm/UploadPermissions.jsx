@@ -77,7 +77,7 @@ const UploadPermissions = () => {
 	const checkboxOptions = [
 		{
 			inputConfig: {
-				checked: (
+				checkedLabel: (
 					<>
 						This track will be available for direct download in the original format it was uploaded.
 						<div className={classes.checkboxWarning}>
@@ -86,47 +86,46 @@ const UploadPermissions = () => {
 						</div>
 					</>
 				),
+				label:
+					'This track will not be available for direct download in the original format it was uploaded.',
 				title: 'Enable direct downloads',
 				type: 'checkbox',
-				unchecked:
-					'This track will not be available for direct download in the original format it was uploaded.',
 			},
 			name: 'download',
 		},
 		{
 			inputConfig: {
-				checked: 'This track can be played on devices without an internet connection.',
+				checkedLabel: 'This track can be played on devices without an internet connection.',
+				label: 'Playing this track will not be possible on devices without an internet connection.',
 				title: 'Offline listening',
 				type: 'checkbox',
-				unchecked:
-					'Playing this track will not be possible on devices without an internet connection.',
 			},
 			name: 'offline',
 		},
 		{
 			inputConfig: {
-				checked: 'This track will be included in your RSS feed if it is public.',
+				checkedLabel: 'This track will be included in your RSS feed if it is public.',
+				label: 'This track will not be included in your RSS feed.',
 				title: 'Include in RSS feed',
 				type: 'checkbox',
-				unchecked: 'This track will not be included in your RSS feed.',
 			},
 			name: 'rss',
 		},
 		{
 			inputConfig: {
-				checked: 'This track’s embedded-player code will be displayed publicly.',
+				checkedLabel: 'This track’s embedded-player code will be displayed publicly.',
+				label: 'This track’s embedded-player code will only be displayed to you.',
 				title: 'Display embed code',
 				type: 'checkbox',
-				unchecked: 'This track’s embedded-player code will only be displayed to you.',
 			},
 			name: 'embed',
 		},
 		{
 			inputConfig: {
-				checked: `This track will be playable outside of ${CHILLABIT} and its apps.`,
+				checkedLabel: `This track will be playable outside of ${CHILLABIT} and its apps.`,
+				label: `This track will not be playable outside of ${CHILLABIT} and its apps.`,
 				title: 'Enable app playback',
 				type: 'checkbox',
-				unchecked: `This track will not be playable outside of ${CHILLABIT} and its apps.`,
 			},
 			name: 'playback',
 		},
