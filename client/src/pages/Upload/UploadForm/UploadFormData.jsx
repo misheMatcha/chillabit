@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import UploadAdvanced from './UploadAdvanced';
 import UploadBasicInfo from './UploadBasicInfo';
@@ -47,22 +48,37 @@ const useStyles = createUseStyles((theme) => ({
 		},
 		...displayFlex,
 	},
+	display: {
+		display: 'none',
+	},
 }));
 
 const UploadFormData = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const [step, setStep] = useState(1);
 
 	return (
 		<div>
 			<UploadStatus />
 			<div className={classes.container}>
 				<div className={classes.formWrapper}>
-					<UploadFormNav />
-					{/* <UploadBasicInfo /> */}
-					<UploadMetadata />
-					{/* <UploadPermissions /> */}
-					{/* <UploadAdvanced /> */}
+					<UploadFormNav
+						step={step}
+						setStep={setStep}
+					/>
+					<div className={cn({ [`${classes.display}`]: step !== 1 })}>
+						<UploadBasicInfo />
+					</div>
+					<div className={cn({ [`${classes.display}`]: step !== 2 })}>
+						<UploadMetadata />
+					</div>
+					<div className={cn({ [`${classes.display}`]: step !== 3 })}>
+						<UploadPermissions />
+					</div>
+					<div className={cn({ [`${classes.display}`]: step !== 4 })}>
+						<UploadAdvanced />
+					</div>
 				</div>
 				<div className={classes.formSubmit}>
 					<span className={classes.required}>Required fields</span>

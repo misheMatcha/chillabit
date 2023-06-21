@@ -14,7 +14,7 @@ const useStyles = createUseStyles((theme) => ({
 		backgroundColor: theme.background.surface,
 	},
 	uploadForm: {
-		marginTop: 90,
+		marginTop: 18,
 		width: spacing[1] * 100,
 	},
 }));
