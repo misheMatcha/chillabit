@@ -20,7 +20,7 @@ const useStyles = createUseStyles((theme) => ({
 		...textAlign.center,
 		...displayFlex,
 		...alignItems.center,
-		height: 140 - 16,
+		height: 108,
 		width: 498,
 	},
 	info: {

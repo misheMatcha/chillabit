@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Form from 'antd/lib/form';
+import Radio from 'antd/lib/radio';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
+import { ReactComponent as AttributionIcon } from './assets/ic_by.svg';
+import { ReactComponent as NoDerivativeWorkscon } from './assets/ic_nc.svg';
+import { ReactComponent as NoncommercialIcon } from './assets/ic_ncc.svg';
+import { ReactComponent as ShareAlikeIcon } from './assets/ic_sa.svg';
 import FormItem from '../../../components/Form/FormItem';
 import { Y_N_Options } from '../../../data/trackPlaceholders';
 import { styles } from '../../../utils/styles';
@@ -29,11 +35,65 @@ const useStyles = createUseStyles((theme) => ({
 		...justifyContent.spaceBetween,
 		flexWrap: 'wrap',
 	},
+	checkboxWrap: {
+		...displayFlex,
+	},
+	checkbox: {
+		width: 'fit-content',
+	},
+	iconWrap: {
+		...displayFlex,
+	},
+	icon: {
+		height: 14,
+		width: 14,
+	},
 }));
+
+const checkboxOptions = [
+	{
+		inputConfig: {
+			label:
+				'Allow others to copy, distribute, display and perform your copyrighted work but only if they give credit the way you request.',
+			title: 'Attribution',
+			type: 'checkbox',
+		},
+		name: 'Attribution',
+	},
+	{
+		inputConfig: {
+			label:
+				'Allow others to distribute, display and perform your work—and derivative works based upon it—but for noncommercial purposes only.',
+			title: 'Noncommercial',
+			type: 'checkbox',
+		},
+		name: 'Noncommercial',
+	},
+	{
+		inputConfig: {
+			label:
+				'Allow others to copy, distribute, display and perform only verbatim copies of your work, not derivative works based upon it.',
+			title: 'No Derivative Works',
+			type: 'checkbox',
+		},
+		name: 'NoDerivativeWorks',
+	},
+	{
+		inputConfig: {
+			label:
+				'Allow others to distribute derivative works only under a license identical to the license that governs your work.',
+			title: 'Share Alike',
+			type: 'checkbox',
+		},
+		name: 'ShareAlike',
+	},
+];
 
 const UploadMetadata = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const [displayOptions, setDisplayOptions] = useState(false);
+	const form = Form.useFormInstance();
 
 	return (
 		<div className={classes.container}>
@@ -166,19 +226,44 @@ const UploadMetadata = () => {
 			<div>
 				<div>
 					<FontAwesomeIcon icon={faSquareCheck} /> License
-					<div>
-						<div>radio</div>
-						<div>icon</div>
-					</div>
-					<div>
-						<FormItem
-							inputConfig={{
-								type: 'checkbox',
-								title: 'Attribution',
-							}}
-						/>
-					</div>
 				</div>
+				<div className={classes.iconWrap}>
+					<div>
+						<Radio.Group
+							onChange={(obj) =>
+								obj.target.value === 'creative commons'
+									? setDisplayOptions(true)
+									: setDisplayOptions(false)
+							}
+						>
+							<Radio value={'all rights reservered'}>All Rights Reserved</Radio>
+							<Radio value={'creative commons'}>Creative Commons</Radio>
+						</Radio.Group>
+					</div>
+					{displayOptions && (
+						<>
+							<div>
+								<AttributionIcon className={classes.icon} />
+								<NoncommercialIcon className={classes.icon} />
+								<NoDerivativeWorkscon className={classes.icon} />
+								<ShareAlikeIcon className={classes.icon} />
+							</div>
+							<span>Some rights reserved</span>
+						</>
+					)}
+				</div>
+				{displayOptions && (
+					<div className={classes.checkboxWrap}>
+						{checkboxOptions.map((checkbox, i) => (
+							<FormItem
+								key={i}
+								name={checkbox.name}
+								styles={classes.checkbox}
+								inputConfig={checkbox.inputConfig}
+							/>
+						))}
+					</div>
+				)}
 			</div>
 		</div>
 	);
