@@ -2,6 +2,7 @@ import React from 'react';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
+import useSteps from '../../../hooks/useSteps';
 import { styles } from '../../../utils/styles';
 
 const { alignItems, displayFlex, height, spacing, typography, weight } = styles;
@@ -52,6 +53,7 @@ const useStyles = createUseStyles((theme) => ({
 const UploadFormNav = ({ step, setStep }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const { setCurrentStep } = useSteps();
 
 	const uploadNavList = [
 		{ label: 'Basic info', step: 1 },
@@ -74,7 +76,10 @@ const UploadFormNav = ({ step, setStep }) => {
 				<li
 					className={cn(classes.list, { [`${classes.linkActive}`]: nav.step === step })}
 					key={i}
-					onClick={() => setStep(nav.step)}
+					onClick={() => {
+						// setStep(nav.step);
+						setCurrentStep(nav.step);
+					}}
 				>
 					<Link className={classes.link}>{nav.label}</Link>
 				</li>
