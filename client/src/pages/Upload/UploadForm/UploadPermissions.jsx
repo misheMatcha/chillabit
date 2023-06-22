@@ -2,8 +2,9 @@ import React from 'react';
 import { faBan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
-import FormItem from '../../../components/Form/FormItem';
+import FormItem from '../../../components/form/FormItem';
 import StyledLink from '../../../components/General/StyledLink';
+import Step from '../../../components/Step';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 
@@ -132,36 +133,38 @@ const UploadPermissions = () => {
 	];
 
 	return (
-		<div className={classes.container}>
-			<div className={classes.checkboxContianer}>
-				<div className={classes.access}>
-					<FontAwesomeIcon icon={faBan} /> Access
+		<Step step={3}>
+			<div className={classes.container}>
+				<div className={classes.checkboxContianer}>
+					<div className={classes.access}>
+						<FontAwesomeIcon icon={faBan} /> Access
+					</div>
+					<div className={classes.checkboxWrapper}>
+						{checkboxOptions.map((option, i) => (
+							<FormItem
+								key={i}
+								name={option.name}
+								inputConfig={option.inputConfig}
+								styles={classes.checkbox}
+							/>
+						))}
+					</div>
 				</div>
-				<div className={classes.checkboxWrapper}>
-					{checkboxOptions.map((option, i) => (
-						<FormItem
-							key={i}
-							name={option.name}
-							inputConfig={option.inputConfig}
-							styles={classes.checkbox}
-						/>
-					))}
+				<div className={classes.control}>
+					<h2 className={classes.controlTitle}>Be in control</h2>
+					<p className={classes.controlInfo}>
+						With a Next Pro plan, you’re in charge with quiet mode. Choose whether comments should
+						be public, private, or not allowed. You can also show or hide stats.
+					</p>
+					<StyledLink
+						button
+						styles={classes.proLink}
+					>
+						Unlock with Next Pro
+					</StyledLink>
 				</div>
 			</div>
-			<div className={classes.control}>
-				<h2 className={classes.controlTitle}>Be in control</h2>
-				<p className={classes.controlInfo}>
-					With a Next Pro plan, you’re in charge with quiet mode. Choose whether comments should be
-					public, private, or not allowed. You can also show or hide stats.
-				</p>
-				<StyledLink
-					button
-					styles={classes.proLink}
-				>
-					Unlock with Next Pro
-				</StyledLink>
-			</div>
-		</div>
+		</Step>
 	);
 };
 

@@ -3,6 +3,7 @@ import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledLink from '../../../components/General/StyledLink';
+import Step from '../../../components/Step';
 import { styles } from '../../../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, spacing, textAlign, typography } = styles;
@@ -51,29 +52,31 @@ const UploadAdvanced = () => {
 	const classes = useStyles({ theme });
 
 	return (
-		<div className={classes.container}>
-			<div className={classes.content}>
-				This type of audio cannot be played before processing. To edit the track preview, use the
-				Edit functionality after the track has been processed.
-			</div>
-			<div className={classes.infoWrapper}>
-				<FontAwesomeIcon
-					className={classes.infoIcon}
-					icon={faInfo}
-				/>
-				<div className={classes.info}>
-					Select the 20 second excerpt of your track that you’d like to use as your track preview
-					for artist shortcuts. Previews help get listeners excited so choose an excerpt that best
-					represents your track.
-					<StyledLink
-						styles={classes.link}
-						small
-					>
-						Learn more
-					</StyledLink>
+		<Step step={4}>
+			<div className={classes.container}>
+				<div className={classes.content}>
+					This type of audio cannot be played before processing. To edit the track preview, use the
+					Edit functionality after the track has been processed.
+				</div>
+				<div className={classes.infoWrapper}>
+					<FontAwesomeIcon
+						className={classes.infoIcon}
+						icon={faInfo}
+					/>
+					<div className={classes.info}>
+						Select the 20 second excerpt of your track that you’d like to use as your track preview
+						for artist shortcuts. Previews help get listeners excited so choose an excerpt that best
+						represents your track.
+						<StyledLink
+							styles={classes.link}
+							small
+						>
+							Learn more
+						</StyledLink>
+					</div>
 				</div>
 			</div>
-		</div>
+		</Step>
 	);
 };
 

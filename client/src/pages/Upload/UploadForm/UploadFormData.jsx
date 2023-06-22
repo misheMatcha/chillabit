@@ -8,6 +8,7 @@ import UploadMetadata from './UploadMetadata';
 import UploadPermissions from './UploadPermissions';
 import UploadStatus from './UploadStatus';
 import StyledButton from '../../../components/General/StyledButton';
+import Steps from '../../../components/Steps';
 import { styles } from '../../../utils/styles';
 
 const { displayFlex, justifyContent, spacing, typography, weight } = styles;
@@ -59,7 +60,7 @@ const UploadFormData = () => {
 	const [step, setStep] = useState(1);
 
 	return (
-		<div>
+		<Steps numSteps={4}>
 			<UploadStatus />
 			<div className={classes.container}>
 				<div className={classes.formWrapper}>
@@ -67,18 +68,10 @@ const UploadFormData = () => {
 						step={step}
 						setStep={setStep}
 					/>
-					<div className={cn({ [`${classes.display}`]: step !== 1 })}>
-						<UploadBasicInfo />
-					</div>
-					<div className={cn({ [`${classes.display}`]: step !== 2 })}>
-						<UploadMetadata />
-					</div>
-					<div className={cn({ [`${classes.display}`]: step !== 3 })}>
-						<UploadPermissions />
-					</div>
-					<div className={cn({ [`${classes.display}`]: step !== 4 })}>
-						<UploadAdvanced />
-					</div>
+					<UploadBasicInfo />
+					<UploadMetadata />
+					<UploadPermissions />
+					<UploadAdvanced />
 				</div>
 				<div className={classes.formSubmit}>
 					<span className={classes.required}>Required fields</span>
@@ -91,7 +84,7 @@ const UploadFormData = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Steps>
 	);
 };
 
