@@ -32,7 +32,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const UploadStatus = () => {
+const Status = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -50,4 +50,4 @@ const UploadStatus = () => {
 	);
 };
 
-export default UploadStatus;
+export default Status;

@@ -71,7 +71,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const UploadPermissions = () => {
+const Permissions = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -168,4 +168,4 @@ const UploadPermissions = () => {
 	);
 };
 
-export default UploadPermissions;
+export default Permissions;

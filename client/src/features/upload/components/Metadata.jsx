@@ -5,14 +5,14 @@ import Form from 'antd/lib/form';
 import Radio from 'antd/lib/radio';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import { ReactComponent as AttributionIcon } from './assets/ic_by.svg';
-import { ReactComponent as NoDerivativeWorkscon } from './assets/ic_nc.svg';
-import { ReactComponent as NoncommercialIcon } from './assets/ic_ncc.svg';
-import { ReactComponent as ShareAlikeIcon } from './assets/ic_sa.svg';
 import FormItem from '../../../components/form/FormItem';
 import { Step } from '../../../components/steps/index';
 import { Y_N_Options } from '../../../data/trackPlaceholders';
 import { styles } from '../../../utils/styles';
+import { ReactComponent as AttributionIcon } from '../assets/ic_by.svg';
+import { ReactComponent as NoDerivativeWorkscon } from '../assets/ic_nc.svg';
+import { ReactComponent as NoncommercialIcon } from '../assets/ic_ncc.svg';
+import { ReactComponent as ShareAlikeIcon } from '../assets/ic_sa.svg';
 
 const { displayFlex, justifyContent, spacing, typography, weight } = styles;
 
@@ -90,7 +90,7 @@ const checkboxOptions = [
 	},
 ];
 
-const UploadMetadata = () => {
+const Metadata = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [displayOptions, setDisplayOptions] = useState(false);
@@ -272,4 +272,4 @@ const UploadMetadata = () => {
 	);
 };
 
-export default UploadMetadata;
+export default Metadata;

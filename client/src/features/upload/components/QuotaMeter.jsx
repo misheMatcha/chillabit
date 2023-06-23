@@ -27,6 +27,7 @@ const useStyles = createUseStyles((theme) => ({
 		border: `1px solid ${theme.background.highlight}`,
 		height: ({ isQuotaVisible }) => (isQuotaVisible ? 134 : 98),
 		marginBottom: 10,
+		marginTop: 90,
 		padding: spacing['2_5'],
 	},
 	iconToggle: {
