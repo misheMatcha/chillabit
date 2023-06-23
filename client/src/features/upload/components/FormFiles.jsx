@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Checkbox from 'antd/lib/checkbox';
 import Form from 'antd/lib/form';
 import Radio from 'antd/lib/radio';
 import Upload from 'antd/lib/upload';
+import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import QuotaMeter from './QuotaMeter';
+import FormItem from '../../../components/form/FormItem';
+import FormRadio from '../../../components/form/FormRadio';
+import StyledButton from '../../../components/General/StyledButton';
 import StyledLink from '../../../components/General/StyledLink';
 import { Step } from '../../../components/steps/index';
 import useSteps from '../../../hooks/useSteps';
@@ -19,23 +23,13 @@ const {
 	justifyContent,
 	radius,
 	spacing,
+	textAlign,
 	typography,
 	weight,
 } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	dragger: {
-		'& .ant-upload .ant-upload-btn': {
-			'& .ant-upload-drag-container': {
-				...displayFlex,
-				...flexDirection.column,
-				...justifyContent.spaceBetween,
-				...height[100].percentage,
-			},
-			...displayFlex,
-			...flexDirection.column,
-			padding: 0,
-		},
 		'& .ant-upload-drag': {
 			'&:hover': {
 				borderColor: `${theme.background.highlight} !important`,
@@ -45,14 +39,7 @@ const useStyles = createUseStyles((theme) => ({
 			border: `1px solid ${theme.background.highlight}`,
 			borderRadius: 0,
 			boxShadow: `0 ${spacing['0_25']}px ${spacing['1_5']}px -5px rgba(0,0,0,.1)`,
-			height: 391,
 		},
-	},
-	form: {
-		...alignItems.center,
-		...displayFlex,
-		...flexDirection.column,
-		padding: '100px 0',
 	},
 	info: {
 		'& > a': {
@@ -63,37 +50,17 @@ const useStyles = createUseStyles((theme) => ({
 		...justifyContent.center,
 		...typography.captions,
 		fontWeight: weight[400],
-		marginBottom: spacing['3_25'],
+		paddingBottom: spacing['1_5'],
+	},
+	main: {
+		padding: '100px 0',
+	},
+	noBottomMargin: {
+		marginBottom: 0,
 	},
 	privacy: {
-		'& > :first-child': {
-			marginRight: spacing[1],
-		},
-		...typography.captions,
-		fontSize: 13,
-	},
-	privacyBtn: {
-		'& .ant-radio': {
-			'& .ant-radio-inner': {
-				'&::after': {
-					backgroundColor: '#333',
-					content: "''",
-					display: 'block',
-					height: 28,
-					inset: 1,
-					position: 'absolute',
-					width: 28,
-				},
-				backgroundColor: 'transparent',
-				borderColor: '#666',
-			},
-		},
-		'& > span:last-child': {
-			marginLeft: spacing['0_7'],
-			padding: 0,
-		},
-		...typography.captions,
-		fontSize: 13,
+		...displayFlex,
+		...justifyContent.center,
 	},
 	title: {
 		...typography.h2,
@@ -101,27 +68,15 @@ const useStyles = createUseStyles((theme) => ({
 		fontWeight: weight[400],
 	},
 	uploadBtn: {
-		'& .ant-upload': {
-			padding: '0px !important',
+		'& .ant-btn': {
+			...displayFlex,
+			...justifyContent.center,
+			fontWeight: weight[500],
+			width: spacing['3_7'] * 10,
 		},
 		'& .ant-upload-select': {
-			'& .ant-upload': {
-				...alignItems.center,
-				...displayFlex,
-				...height[100].percentage,
-				padding: '0px !important',
-			},
+			paddingBottom: `${spacing['0_7']}px !important`,
 		},
-		...displayFlex,
-		...justifyContent.center,
-		...typography.body,
-		backgroundColor: theme.button.backgroundColor.special,
-		borderRadius: radius[3],
-		color: theme.button.color.special,
-		cursor: 'pointer',
-		height: spacing[5],
-		margin: `${spacing[2]}px 0 ${spacing['1_5']}px`,
-		width: 300,
 	},
 }));
 
@@ -138,9 +93,9 @@ const FormFiles = () => {
 			<Form.Item name='trackList'>
 				<Upload.Dragger
 					beforeUpload={(file, fileList) => {
-						setFile(file);
-						setFileList(fileList);
-						nextStep();
+						// setFile(file);
+						// setFileList(fileList);
+						// nextStep();
 						return false;
 					}}
 					className={classes.dragger}
@@ -149,47 +104,58 @@ const FormFiles = () => {
 					openFileDialogOnClick={false}
 					fileList={fileList}
 				>
-					<div className={classes.title}>Drag and drop your tracks & albums here</div>
-					<Form.Item name='trackList'>
-						<Upload
-							beforeUpload={(file, fileList) => {
-								setFile(file);
-								setFileList(fileList);
-								nextStep();
-								return false;
-							}}
-							multiple
-							showUploadList={false}
-							fileList={fileList}
+					<div className={classes.main}>
+						<div className={classes.title}>Drag and drop your tracks & albums here</div>
+						<FormItem
+							styles={classes.noBottomMargin}
+							name='trackList'
 						>
-							or choose files to upload
-						</Upload>
-					</Form.Item>
-					<Form.Item
-						name='playlist'
-						valuePropName='checked'
-					>
-						<Checkbox> Make a playlist when multiple files are selected</Checkbox>
-					</Form.Item>
-					<Form.Item name='privacy'>
-						<label className={classes.privacy}>
-							<span>Privacy:</span>
+							<Upload
+								beforeUpload={(file, fileList) => {
+									// setFile(file);
+									// setFileList(fileList);
+									// nextStep();
+									return false;
+								}}
+								className={classes.uploadBtn}
+								multiple
+								showUploadList={false}
+								fileList={fileList}
+							>
+								<StyledButton
+									special
+									label='or choose files to upload'
+								/>
+							</Upload>
+						</FormItem>
+						<FormItem
+							styles={classes.noBottomMargin}
+							name='isPlaylist'
+							valuePropName='checked'
+						>
+							<Checkbox>Make a playlist when multiple files are selected</Checkbox>
+						</FormItem>
+						<Form.Item
+							className={cn(classes.noBottomMargin, classes.privacy)}
+							label='Privacy'
+							name='public'
+						>
 							<Radio.Group defaultValue={true}>
-								<Radio
-									className={classes.privacyBtn}
+								<FormRadio
+									styles={classes.radioBtn}
 									value={true}
 								>
 									Public
-								</Radio>
-								<Radio
-									className={classes.privacyBtn}
+								</FormRadio>
+								<FormRadio
+									styles={classes.radioBtn}
 									value={false}
 								>
 									Private
-								</Radio>
+								</FormRadio>
 							</Radio.Group>
-						</label>
-					</Form.Item>
+						</Form.Item>
+					</div>
 					<div className={classes.info}>
 						Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.
 						<StyledLink label='Learn more about lossless HD.' />

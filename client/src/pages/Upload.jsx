@@ -43,7 +43,7 @@ const Upload = () => {
 					onFinish={uploadTrack}
 				>
 					<FormFiles />
-					<FormDataLayout />
+					{/* <FormDataLayout /> */}
 				</Form>
 			</Steps>
 		</UploadProvider>
