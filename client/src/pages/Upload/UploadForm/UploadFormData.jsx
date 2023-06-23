@@ -8,7 +8,7 @@ import UploadMetadata from './UploadMetadata';
 import UploadPermissions from './UploadPermissions';
 import UploadStatus from './UploadStatus';
 import StyledButton from '../../../components/General/StyledButton';
-import Steps from '../../../components/Steps';
+import { Steps } from '../../../components/steps/index';
 import { styles } from '../../../utils/styles';
 
 const { displayFlex, justifyContent, spacing, typography, weight } = styles;
