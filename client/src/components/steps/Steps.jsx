@@ -13,12 +13,15 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const Steps = ({ children, numSteps, styles }) => {
+const Steps = ({ children, defaultStep, numSteps, styles }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
-		<StepsProvider numSteps={numSteps}>
+		<StepsProvider
+			defaultStep={defaultStep}
+			numSteps={numSteps}
+		>
 			<div className={cn(classes.container, styles)}>{children}</div>
 		</StepsProvider>
 	);

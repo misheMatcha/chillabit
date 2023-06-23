@@ -31,6 +31,7 @@ const Upload = () => {
 	return (
 		<Steps
 			numSteps={2}
+			defaultStep={1}
 			styles={classes.container}
 		>
 			<Navbar />
@@ -39,7 +40,7 @@ const Upload = () => {
 				form={form}
 				onFinish={uploadTrack}
 			>
-				{/* <FormFiles /> */}
+				<FormFiles />
 				<FormDataLayout />
 			</Form>
 		</Steps>

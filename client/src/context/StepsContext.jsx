@@ -2,8 +2,8 @@ import { createContext, useState } from 'react';
 
 const StepsContext = createContext({});
 
-export const StepsProvider = ({ children, numSteps }) => {
-	const [currentStep, setCurrentStep] = useState(1);
+export const StepsProvider = ({ children, defaultStep, numSteps }) => {
+	const [currentStep, setCurrentStep] = useState(defaultStep);
 
 	const prevStep = () => {
 		if (currentStep > 0) setCurrentStep(currentStep - 1);

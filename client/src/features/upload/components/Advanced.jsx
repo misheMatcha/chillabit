@@ -52,7 +52,7 @@ const Advanced = () => {
 	const classes = useStyles({ theme });
 
 	return (
-		<Step step={4}>
+		<Step step={6}>
 			<div className={classes.container}>
 				<div className={classes.content}>
 					This type of audio cannot be played before processing. To edit the track preview, use the
