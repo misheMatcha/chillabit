@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../../../utils/styles';
+import useUpload from '../hooks/useUpload';
 
 const { displayFlex, height, justifyContent, spacing, typography } = styles;
 
@@ -35,11 +37,15 @@ const useStyles = createUseStyles((theme) => ({
 const Status = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const form = Form.useFormInstance();
+	const { file, fileList } = useUpload();
+
+	useEffect(() => {});
 
 	return (
 		<div className={classes.contianer}>
 			<div className={classes.info}>
-				<span>244 (Kupo kupo).wav</span>
+				<span>{file && file.name}</span>
 				<span>Ready. Click Save to post this track.</span>
 			</div>
 			<div className={classes.status}>

@@ -59,15 +59,14 @@ const UploadDataLayout = () => {
 	const classes = useStyles({ theme });
 	const form = Form.useFormInstance();
 
-	useEffect(() => {
-		console.log(form.getFieldValue('trackList'));
-	});
+	// useEffect(() => {
+	// 	let tracks = form.getFieldValue('trackList');
+
+	// 	console.log(tracks.file.name);
+	// });
 
 	return (
-		<Steps
-			defaultStep={3}
-			numSteps={6}
-		>
+		<Steps defaultStep={3}>
 			<Status />
 			<div className={classes.container}>
 				<FormNavbar />

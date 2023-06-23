@@ -113,8 +113,8 @@ const BasicInfo = () => {
 						name='title'
 						rules={[
 							{ message: 'Enter a profile URL.', required: true },
-							{ len: 5, message: 'short.' },
-							{ message: 'short.', min: 3 },
+							// { len: 5, message: 'short.' },
+							// { message: 'short.', min: 3 },
 						]}
 					/>
 					<div>permalink</div>

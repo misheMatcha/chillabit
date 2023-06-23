@@ -9,6 +9,7 @@ import StyledLink from '../../../components/General/StyledLink';
 import { Step } from '../../../components/steps/index';
 import useSteps from '../../../hooks/useSteps';
 import { styles } from '../../../utils/styles';
+import useUpload from '../hooks/useUpload';
 
 const {
 	alignItems,
@@ -127,19 +128,18 @@ const useStyles = createUseStyles((theme) => ({
 const FormFiles = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const [fileList, setFilesList] = useState([]);
+	const { fileList, setFile, setFileList } = useUpload();
 	const form = Form.useFormInstance();
 	const { nextStep } = useSteps();
 
 	return (
 		<Step step={1}>
 			<QuotaMeter />
-			<Form.Item
-				name='trackList'
-				// valuePropName='fileList'
-			>
+			<Form.Item name='trackList'>
 				<Upload.Dragger
-					beforeUpload={() => {
+					beforeUpload={(file, fileList) => {
+						setFile(file);
+						setFileList(fileList);
 						nextStep();
 						return false;
 					}}
@@ -149,18 +149,15 @@ const FormFiles = () => {
 					openFileDialogOnClick={false}
 					fileList={fileList}
 				>
-					{/* <div> */}
 					<div className={classes.title}>Drag and drop your tracks & albums here</div>
-					<Form.Item
-						name='trackList'
-						// valuePropName='fileList'
-					>
+					<Form.Item name='trackList'>
 						<Upload
-							beforeUpload={() => {
+							beforeUpload={(file, fileList) => {
+								setFile(file);
+								setFileList(fileList);
 								nextStep();
 								return false;
 							}}
-							// beforeUpload={() => false}
 							multiple
 							showUploadList={false}
 							fileList={fileList}
@@ -197,7 +194,6 @@ const FormFiles = () => {
 						Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.
 						<StyledLink label='Learn more about lossless HD.' />
 					</div>
-					{/* </div> */}
 				</Upload.Dragger>
 			</Form.Item>
 		</Step>
