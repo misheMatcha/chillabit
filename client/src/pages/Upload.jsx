@@ -15,7 +15,6 @@ const useStyles = createUseStyles((theme) => ({
 		backgroundColor: theme.background.surface,
 	},
 	form: {
-		// border: '1px solid black',
 		width: spacing[1] * 100,
 	},
 }));

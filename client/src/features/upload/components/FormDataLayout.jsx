@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import Advanced from './Advanced';
 import BasicInfo from './BasicInfo';
@@ -13,30 +13,26 @@ import { styles } from '../../../utils/styles';
 const { displayFlex, justifyContent, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	container: {
-		border: `1px solid ${theme.background.highlight}`,
-		boxShadow: `0 ${spacing['0_25']}px ${spacing['1_5']}px -5px rgba(0,0,0,.1)`,
-	},
-	formSubmit: {
-		// ...displayFlex,
-		// ...justifyContent.spaceBetween,
-		// ...typography.captions,
-		// borderTop: `1px solid ${theme.background.highlight}`,
-		// height: 67,
-		// padding: `${spacing['2_5']}px 25px`,
-	},
-	formSubmitBtns: {
+	btns: {
 		'& > button:first-child': {
-			// borderColor: theme.color.transparent,
-			// marginRight: spacing['0_5'],
+			borderColor: theme.color.transparent,
+			marginRight: spacing['0_5'],
 		},
 		'& > button:last-child': {
-			// fontWeight: weight[600],
+			fontWeight: weight[600],
 		},
-		// ...displayFlex,
+		...displayFlex,
 	},
-	formWrapper: {
-		// padding: '14px 25px 25px',
+	container: {
+		'& > :first-child': {
+			paddingTop: 14,
+		},
+		'& > :not(last-child)': {
+			paddingLeft: 25,
+			paddingRight: 25,
+		},
+		border: `1px solid ${theme.background.highlight}`,
+		boxShadow: `0 ${spacing['0_25']}px ${spacing['1_5']}px -5px rgba(0,0,0,.1)`,
 	},
 	required: {
 		'&::before': {
@@ -47,6 +43,13 @@ const useStyles = createUseStyles((theme) => ({
 			verticalAlign: 'super',
 		},
 		...displayFlex,
+	},
+	submitSection: {
+		...displayFlex,
+		...justifyContent.spaceBetween,
+		...typography.captions,
+		borderTop: `1px solid ${theme.background.highlight}`,
+		padding: `${spacing['2_5']}px 25px`,
 	},
 }));
 
@@ -63,15 +66,17 @@ const UploadDataLayout = () => {
 				<Metadata />
 				<Permissions />
 				<Advanced />
-				<div>
+				<div className={classes.submitSection}>
 					<div className={classes.required}>Required fields</div>
-					<StyledButton>Cancel</StyledButton>
-					<StyledButton
-						htmlType='submit'
-						special
-					>
-						Save
-					</StyledButton>
+					<div className={classes.btns}>
+						<StyledButton>Cancel</StyledButton>
+						<StyledButton
+							htmlType='submit'
+							special
+						>
+							Save
+						</StyledButton>
+					</div>
 				</div>
 			</div>
 		</Steps>
