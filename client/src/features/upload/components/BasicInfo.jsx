@@ -95,7 +95,7 @@ const BasicInfo = () => {
 	const [isCustomOption, setIsCustomOption] = useState(false);
 
 	return (
-		<Step step={1}>
+		<Step step={3}>
 			<div className={classes.container}>
 				<div className={classes.image}>
 					<Upload>

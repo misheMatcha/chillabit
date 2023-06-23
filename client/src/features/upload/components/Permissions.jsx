@@ -133,7 +133,7 @@ const Permissions = () => {
 	];
 
 	return (
-		<Step step={3}>
+		<Step step={5}>
 			<div className={classes.container}>
 				<div className={classes.checkboxContianer}>
 					<div className={classes.access}>

@@ -56,9 +56,9 @@ const FormNavbar = ({ step, setStep }) => {
 	const { setCurrentStep } = useSteps();
 
 	const uploadNavList = [
-		{ label: 'Basic info', step: 1 },
-		{ label: 'Metadata', step: 2 },
-		{ label: 'Permissions', step: 3 },
+		{ label: 'Basic info', step: 3 },
+		{ label: 'Metadata', step: 4 },
+		{ label: 'Permissions', step: 5 },
 		{
 			label: (
 				<>
@@ -66,7 +66,7 @@ const FormNavbar = ({ step, setStep }) => {
 					<span className={classes.new}>new</span>
 				</>
 			),
-			step: 4,
+			step: 6,
 		},
 	];
 

@@ -97,7 +97,7 @@ const Metadata = () => {
 	const form = Form.useFormInstance();
 
 	return (
-		<Step step={2}>
+		<Step step={4}>
 			<div className={classes.container}>
 				<div className={classes.section}>
 					<FormItem

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
 import Advanced from './Advanced';
 import BasicInfo from './BasicInfo';
@@ -56,9 +57,17 @@ const useStyles = createUseStyles((theme) => ({
 const UploadDataLayout = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const form = Form.useFormInstance();
+
+	useEffect(() => {
+		console.log(form.getFieldValue('trackList'));
+	});
 
 	return (
-		<Steps numSteps={4}>
+		<Steps
+			defaultStep={3}
+			numSteps={6}
+		>
 			<Status />
 			<div className={classes.container}>
 				<FormNavbar />

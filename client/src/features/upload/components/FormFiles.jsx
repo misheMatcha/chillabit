@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Checkbox from 'antd/lib/checkbox';
+import Form from 'antd/lib/form';
 import Radio from 'antd/lib/radio';
 import Upload from 'antd/lib/upload';
 import { createUseStyles, useTheme } from 'react-jss';
 import QuotaMeter from './QuotaMeter';
 import StyledLink from '../../../components/General/StyledLink';
 import { Step } from '../../../components/steps/index';
+import useSteps from '../../../hooks/useSteps';
 import { styles } from '../../../utils/styles';
 
 const {
@@ -124,24 +127,54 @@ const useStyles = createUseStyles((theme) => ({
 const FormFiles = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const [fileList, setFilesList] = useState([]);
+	const form = Form.useFormInstance();
+	const { nextStep } = useSteps();
 
 	return (
 		<Step step={1}>
 			<QuotaMeter />
-			<Upload.Dragger
-				className={classes.dragger}
-				multiple
-				openFileDialogOnClick={false}
+			<Form.Item
+				name='trackList'
+				// valuePropName='fileList'
 			>
-				<div className={classes.form}>
+				<Upload.Dragger
+					beforeUpload={() => {
+						nextStep();
+						return false;
+					}}
+					className={classes.dragger}
+					multiple
+					showUploadList={false}
+					openFileDialogOnClick={false}
+					fileList={fileList}
+				>
+					{/* <div> */}
 					<div className={classes.title}>Drag and drop your tracks & albums here</div>
-					<Upload
-						className={classes.uploadBtn}
-						showUploadList={false}
+					<Form.Item
+						name='trackList'
+						// valuePropName='fileList'
 					>
-						or choose files to upload
-					</Upload>
-					<div>
+						<Upload
+							beforeUpload={() => {
+								nextStep();
+								return false;
+							}}
+							// beforeUpload={() => false}
+							multiple
+							showUploadList={false}
+							fileList={fileList}
+						>
+							or choose files to upload
+						</Upload>
+					</Form.Item>
+					<Form.Item
+						name='playlist'
+						valuePropName='checked'
+					>
+						<Checkbox> Make a playlist when multiple files are selected</Checkbox>
+					</Form.Item>
+					<Form.Item name='privacy'>
 						<label className={classes.privacy}>
 							<span>Privacy:</span>
 							<Radio.Group defaultValue={true}>
@@ -159,13 +192,14 @@ const FormFiles = () => {
 								</Radio>
 							</Radio.Group>
 						</label>
+					</Form.Item>
+					<div className={classes.info}>
+						Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.
+						<StyledLink label='Learn more about lossless HD.' />
 					</div>
-				</div>
-				<div className={classes.info}>
-					Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.
-					<StyledLink label='Learn more about lossless HD.' />
-				</div>
-			</Upload.Dragger>
+					{/* </div> */}
+				</Upload.Dragger>
+			</Form.Item>
 		</Step>
 	);
 };
