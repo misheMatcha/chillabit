@@ -4,6 +4,7 @@ import Upload from 'antd/lib/upload';
 import { createUseStyles, useTheme } from 'react-jss';
 import QuotaMeter from './QuotaMeter';
 import StyledLink from '../../../components/General/StyledLink';
+import { Step } from '../../../components/steps/index';
 import { styles } from '../../../utils/styles';
 
 const {
@@ -120,12 +121,12 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const UploadFormFiles = () => {
+const FormFiles = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
-		<>
+		<Step step={1}>
 			<QuotaMeter />
 			<Upload.Dragger
 				className={classes.dragger}
@@ -165,8 +166,8 @@ const UploadFormFiles = () => {
 					<StyledLink label='Learn more about lossless HD.' />
 				</div>
 			</Upload.Dragger>
-		</>
+		</Step>
 	);
 };
 
-export default UploadFormFiles;
+export default FormFiles;

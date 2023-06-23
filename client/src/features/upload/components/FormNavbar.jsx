@@ -50,7 +50,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const UploadFormNav = ({ step, setStep }) => {
+const FormNavbar = ({ step, setStep }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { setCurrentStep } = useSteps();
@@ -88,4 +88,4 @@ const UploadFormNav = ({ step, setStep }) => {
 	);
 };
 
-export default UploadFormNav;
+export default FormNavbar;

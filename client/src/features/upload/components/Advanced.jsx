@@ -47,7 +47,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const UploadAdvanced = () => {
+const Advanced = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -80,4 +80,4 @@ const UploadAdvanced = () => {
 	);
 };
 
-export default UploadAdvanced;
+export default Advanced;

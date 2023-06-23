@@ -89,7 +89,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const UploadBasicInfo = () => {
+const BasicInfo = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [isCustomOption, setIsCustomOption] = useState(false);
@@ -160,4 +160,4 @@ const UploadBasicInfo = () => {
 	);
 };
 
-export default UploadBasicInfo;
+export default BasicInfo;
