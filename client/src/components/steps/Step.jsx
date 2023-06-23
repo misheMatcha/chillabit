@@ -1,8 +1,8 @@
 import React from 'react';
 import * as cn from 'classnames';
 import { createUseStyles } from 'react-jss';
-import useSteps from '../hooks/useSteps';
-import { styles } from '../utils/styles';
+import useSteps from '../../hooks/useSteps';
+import { styles } from '../../utils/styles';
 
 const { height, width } = styles;
 

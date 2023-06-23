@@ -5,7 +5,7 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from '../../../components/form/FormItem';
 import StyledButton from '../../../components/General/StyledButton';
-import Step from '../../../components/Step';
+import { Step } from '../../../components/steps/index';
 import { TRACK_GENERE_OPTIONS } from '../../../data/trackPlaceholders';
 import { styles } from '../../../utils/styles';
 

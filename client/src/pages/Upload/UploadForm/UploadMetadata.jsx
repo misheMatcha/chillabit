@@ -10,7 +10,7 @@ import { ReactComponent as NoDerivativeWorkscon } from './assets/ic_nc.svg';
 import { ReactComponent as NoncommercialIcon } from './assets/ic_ncc.svg';
 import { ReactComponent as ShareAlikeIcon } from './assets/ic_sa.svg';
 import FormItem from '../../../components/form/FormItem';
-import Step from '../../../components/Step';
+import { Step } from '../../../components/steps/index';
 import { Y_N_Options } from '../../../data/trackPlaceholders';
 import { styles } from '../../../utils/styles';
 

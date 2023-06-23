@@ -1,8 +1,8 @@
 import React from 'react';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import { StepsProvider } from '../context/StepsContext';
-import { styles } from '../utils/styles';
+import { StepsProvider } from '../../context/StepsContext';
+import { styles } from '../../utils/styles';
 
 const { height, width } = styles;
 

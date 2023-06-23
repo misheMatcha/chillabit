@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from '../../../components/form/FormItem';
 import StyledLink from '../../../components/General/StyledLink';
-import Step from '../../../components/Step';
+import { Step } from '../../../components/steps/index';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
 

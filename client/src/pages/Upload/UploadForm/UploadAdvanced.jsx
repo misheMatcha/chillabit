@@ -3,7 +3,7 @@ import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import StyledLink from '../../../components/General/StyledLink';
-import Step from '../../../components/Step';
+import { Step } from '../../../components/steps/index';
 import { styles } from '../../../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, spacing, textAlign, typography } = styles;
