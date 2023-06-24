@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import Form from 'antd/lib/form';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -9,6 +10,7 @@ import StyledButton from '../../../components/General/StyledButton';
 import { Step } from '../../../components/steps/index';
 import { TRACK_GENERE_OPTIONS } from '../../../data/trackPlaceholders';
 import { styles } from '../../../utils/styles';
+import useUpload from '../hooks/useUpload';
 
 const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography } = styles;
 
@@ -98,11 +100,10 @@ const BasicInfo = () => {
 	const theme = useTheme();
 	const [coverPreview, setCoverPreview] = useState('');
 	const classes = useStyles({ coverPreview, theme });
-	const [isCustomOption, setIsCustomOption] = useState(false);
+	const [editCustomGenre, setEditCustomGenre] = useState(false);
+	const { customGenre, setCustomGenre } = useUpload();
 
-	useEffect(() => {
-		console.log(coverPreview);
-	});
+	const form = Form.useFormInstance();
 
 	return (
 		<Step step={3}>
@@ -137,27 +138,35 @@ const BasicInfo = () => {
 					<FormUrl
 						label='Permalink'
 						name='permalink'
-						// required
 					/>
 					<div className={classes.selectWrapper}>
-						{/* <FormItem
+						<FormItem
 							label='Genre'
 							name='genre'
 							inputConfig={{
-								defaultValue: '',
-								onSelect: (value) =>
-									value === 'custom' ? setIsCustomOption(true) : setIsCustomOption(false),
+								onSelect: (value) => {
+									if (value === 'custom') {
+										setEditCustomGenre(true);
+									} else {
+										setEditCustomGenre(false);
+										setCustomGenre('');
+									}
+								},
 								options: TRACK_GENERE_OPTIONS,
 								type: 'select',
 							}}
-						/> */}
-						{/* <FormItem
-							styles={cn({ [`${classes.selectCustom}`]: !isCustomOption })}
+						/>
+						<FormItem
+							styles={cn({ [`${classes.selectCustom}`]: !editCustomGenre })}
 							label='Custom Genre'
-							inputConfig={{ type: 'text' }}
-						/> */}
+							inputConfig={{
+								onChange: (e) => setCustomGenre(e.target.value),
+								type: 'text',
+								value: customGenre,
+							}}
+						/>
 					</div>
-					<div>additional tags</div>
+					{/* <div>additional tags</div> */}
 					{/* <FormItem
 						label='Description'
 						name='desc'
@@ -173,7 +182,7 @@ const BasicInfo = () => {
 							styles: classes.captions,
 							type: 'textarea',
 					}} /> */}
-					<div>privacy</div>
+					{/* <div>privacy</div> */}
 				</div>
 			</div>
 		</Step>

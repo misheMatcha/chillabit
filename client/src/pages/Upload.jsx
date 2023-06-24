@@ -42,6 +42,7 @@ const Upload = () => {
 					form={form}
 					onFinish={uploadTrack}
 					initialValues={{
+						genre: '',
 						public: true,
 					}}
 				>
