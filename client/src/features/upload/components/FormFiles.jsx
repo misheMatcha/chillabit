@@ -1,5 +1,4 @@
 import React from 'react';
-import Checkbox from 'antd/lib/checkbox';
 import Form from 'antd/lib/form';
 import Radio from 'antd/lib/radio';
 import Upload from 'antd/lib/upload';
@@ -15,18 +14,7 @@ import useSteps from '../../../hooks/useSteps';
 import { styles } from '../../../utils/styles';
 import useUpload from '../hooks/useUpload';
 
-const {
-	alignItems,
-	displayFlex,
-	flexDirection,
-	height,
-	justifyContent,
-	radius,
-	spacing,
-	textAlign,
-	typography,
-	weight,
-} = styles;
+const { displayFlex, justifyContent, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	dragger: {
@@ -59,6 +47,10 @@ const useStyles = createUseStyles((theme) => ({
 		marginBottom: 0,
 	},
 	privacy: {
+		'& .ant-form-item-label > label': {
+			...typography.captions,
+			fontSize: `${spacing['1_5']}px !important`,
+		},
 		...displayFlex,
 		...justifyContent.center,
 	},
@@ -132,27 +124,27 @@ const FormFiles = () => {
 							styles={classes.noBottomMargin}
 							name='isPlaylist'
 							valuePropName='checked'
-						>
-							<Checkbox>Make a playlist when multiple files are selected</Checkbox>
-						</FormItem>
+							inputConfig={{
+								label: 'Make a playlist when multiple files are selected',
+								type: 'checkbox',
+							}}
+						/>
 						<Form.Item
 							className={cn(classes.noBottomMargin, classes.privacy)}
 							label='Privacy'
 							name='public'
 						>
-							<Radio.Group defaultValue={true}>
+							<Radio.Group>
 								<FormRadio
 									styles={classes.radioBtn}
 									value={true}
-								>
-									Public
-								</FormRadio>
+									label='Public'
+								/>
 								<FormRadio
 									styles={classes.radioBtn}
 									value={false}
-								>
-									Private
-								</FormRadio>
+									label='Private'
+								/>
 							</Radio.Group>
 						</Form.Item>
 					</div>

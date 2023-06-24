@@ -4,7 +4,7 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../../utils/styles';
 
-const { spacing } = styles;
+const { spacing, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -12,19 +12,17 @@ const useStyles = createUseStyles((theme) => ({
 			'& .ant-radio-inner': {
 				'&::after': {
 					backgroundColor: '#333',
-					content: "''",
-					display: 'block',
-					height: spacing['3_5'],
-					inset: 1,
-					position: 'absolute',
-					width: spacing['3_5'],
 				},
-				backgroundColor: 'transparent',
+				backgroundColor: theme.background.highlight,
 				borderColor: '#666',
+				height: 14,
+				width: 14,
 			},
 		},
 		'& > span:last-child': {
-			marginLeft: spacing['0_7'],
+			fontSize: spacing['1_5'],
+			fontWeight: weight[500],
+			marginLeft: spacing['0_5'],
 			padding: 0,
 		},
 	},

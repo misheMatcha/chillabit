@@ -61,6 +61,7 @@ const FormItem = ({
 	name,
 	rules,
 	styles,
+	valuePropName,
 	fullWidth = false,
 	inputConfig = {},
 }) => {
@@ -90,6 +91,7 @@ const FormItem = ({
 			name={name}
 			validateFirst={true}
 			rules={rules}
+			valuePropName={valuePropName}
 		>
 			{children ? children : getInput(inputConfig.type)}
 		</Form.Item>
