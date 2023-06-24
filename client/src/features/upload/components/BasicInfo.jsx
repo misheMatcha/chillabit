@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from '../../../components/form/FormItem';
-import FormUrl from '../../../components/form/FormUrl';
+import { FormTags, FormUrl } from '../../../components/form/index';
 import StyledButton from '../../../components/General/StyledButton';
 import { Step } from '../../../components/steps/index';
 import { TRACK_GENERE_OPTIONS } from '../../../data/trackPlaceholders';
@@ -166,7 +167,10 @@ const BasicInfo = () => {
 							}}
 						/>
 					</div>
-					{/* <div>additional tags</div> */}
+					<FormTags
+						label='Additional tags'
+						name='tags'
+					/>
 					{/* <FormItem
 						label='Description'
 						name='desc'
