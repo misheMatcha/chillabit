@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from '../../../components/form/FormItem';
+import FormUrl from '../../../components/form/FormUrl';
 import StyledButton from '../../../components/General/StyledButton';
 import { Step } from '../../../components/steps/index';
 import { TRACK_GENERE_OPTIONS } from '../../../data/trackPlaceholders';
@@ -36,7 +37,7 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		marginTop: 25,
 	},
-	formWrapper: {
+	inputsWrapper: {
 		...displayFlex,
 		...flexDirection.column,
 		flex: 1,
@@ -45,7 +46,11 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItems.flexEnd,
 		...displayFlex,
 		...justifyContent.center,
-		backgroundImage: 'linear-gradient(135deg,#846170,#70929c)',
+		// backgroundImage: 'linear-gradient(135deg,#846170,#70929c)',
+		backgroundImage: ({ coverPreview }) =>
+			coverPreview ? `url(${coverPreview})` : 'linear-gradient(135deg,#846170,#70929c)',
+		backgroundSize: 'cover',
+		border: `1px solid #ccc`,
 		height: 260,
 		marginRight: spacing['2_25'],
 		paddingBottom: spacing['3_25'],
@@ -91,35 +96,51 @@ const useStyles = createUseStyles((theme) => ({
 
 const BasicInfo = () => {
 	const theme = useTheme();
-	const classes = useStyles({ theme });
+	const [coverPreview, setCoverPreview] = useState('');
+	const classes = useStyles({ coverPreview, theme });
 	const [isCustomOption, setIsCustomOption] = useState(false);
+
+	useEffect(() => {
+		console.log(coverPreview);
+	});
 
 	return (
 		<Step step={3}>
 			<div className={classes.container}>
-				<div className={classes.image}>
-					<Upload>
+				<FormItem
+					name='track_cover'
+					normalize={(values) => values.file}
+					valuePropName='file'
+					styles={classes.image}
+				>
+					<Upload
+						beforeUpload={(file) => {
+							setCoverPreview(URL.createObjectURL(file));
+							return false;
+						}}
+						showUploadList={false}
+					>
 						<StyledButton
 							icon={faCamera}
-							label='Upload image'
+							label='Update image'
 						/>
 					</Upload>
-				</div>
-				<div className={classes.formWrapper}>
+				</FormItem>
+				<div className={classes.inputsWrapper}>
 					<FormItem
 						label='Title'
 						required
 						inputConfig={{ type: 'text' }}
 						name='title'
-						rules={[
-							{ message: 'Enter a profile URL.', required: true },
-							// { len: 5, message: 'short.' },
-							// { message: 'short.', min: 3 },
-						]}
+						rules={[{ message: 'Enter a title.', required: true }]}
 					/>
-					<div>permalink</div>
+					<FormUrl
+						label='Permalink'
+						name='permalink'
+						// required
+					/>
 					<div className={classes.selectWrapper}>
-						<FormItem
+						{/* <FormItem
 							label='Genre'
 							name='genre'
 							inputConfig={{
@@ -129,20 +150,20 @@ const BasicInfo = () => {
 								options: TRACK_GENERE_OPTIONS,
 								type: 'select',
 							}}
-						/>
-						<FormItem
+						/> */}
+						{/* <FormItem
 							styles={cn({ [`${classes.selectCustom}`]: !isCustomOption })}
 							label='Custom Genre'
 							inputConfig={{ type: 'text' }}
-						/>
+						/> */}
 					</div>
 					<div>additional tags</div>
-					<FormItem
+					{/* <FormItem
 						label='Description'
 						name='desc'
 						inputConfig={{ placeholder: 'Describe your track', rows: 6, type: 'textarea' }}
-					/>
-					<FormItem
+					/> */}
+					{/* <FormItem
 						label='Caption'
 						name='caption'
 						inputConfig={{
@@ -151,8 +172,7 @@ const BasicInfo = () => {
 							showCount: true,
 							styles: classes.captions,
 							type: 'textarea',
-						}}
-					/>
+					}} /> */}
 					<div>privacy</div>
 				</div>
 			</div>

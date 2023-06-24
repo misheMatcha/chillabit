@@ -30,7 +30,9 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormInput = (props) => {
+const preventDefault = (e) => e.preventDefault();
+
+const FormInput = (props, { onPressEnter = preventDefault }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -44,6 +46,7 @@ const FormInput = (props) => {
 				},
 				props.styles
 			)}
+			onPressEnter={onPressEnter}
 			{...props}
 		/>
 	);
