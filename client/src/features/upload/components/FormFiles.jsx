@@ -76,20 +76,21 @@ const FormFiles = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const { fileList, setFile, setFileList } = useUpload();
-	const form = Form.useFormInstance();
 	const { nextStep } = useSteps();
+
+	const beforeUpload = (file, fileList) => {
+		setFile(file);
+		setFileList(fileList);
+		nextStep();
+		return false;
+	};
 
 	return (
 		<Step step={1}>
 			<QuotaMeter />
 			<Form.Item name='trackList'>
 				<Upload.Dragger
-					beforeUpload={(file, fileList) => {
-						// setFile(file);
-						// setFileList(fileList);
-						// nextStep();
-						return false;
-					}}
+					beforeUpload={beforeUpload}
 					className={classes.dragger}
 					multiple
 					showUploadList={false}
@@ -103,12 +104,7 @@ const FormFiles = () => {
 							name='trackList'
 						>
 							<Upload
-								beforeUpload={(file, fileList) => {
-									// setFile(file);
-									// setFileList(fileList);
-									// nextStep();
-									return false;
-								}}
+								beforeUpload={beforeUpload}
 								className={classes.uploadBtn}
 								multiple
 								showUploadList={false}
