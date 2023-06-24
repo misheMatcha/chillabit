@@ -41,6 +41,9 @@ const Upload = () => {
 					className={classes.form}
 					form={form}
 					onFinish={uploadTrack}
+					initialValues={{
+						public: true,
+					}}
 				>
 					<FormFiles />
 					{/* <FormDataLayout /> */}

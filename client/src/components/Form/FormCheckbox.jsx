@@ -4,16 +4,43 @@ import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from '../../utils/styles';
 
-const { typography, weight } = styles;
+const { alignItems, displayFlex, justifyContent, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		'& .ant-checkbox-checked .ant-checkbox-inner': {
 			'&::after': {
+				borderColor: '#333',
+				left: '15%',
+			},
+			backgroundColor: `${theme.background.highlight} !important`,
+			borderColor: `#333 !important`,
+		},
+		'& .ant-checkbox-checked:after': {
+			border: 'none !important',
+		},
+		'& .ant-checkbox-inner': {
+			backgroundColor: `${theme.background.highlight} !important`,
+			borderColor: `#333 !important`,
+			borderRadius: spacing['0_25'],
+			height: 13,
+			width: 13,
+		},
+		'& > span:last-child': {
+			...typography.captions,
+			fontSize: 13,
+		},
+		...displayFlex,
+		...justifyContent.center,
+		...alignItems.center,
+	},
+	special: {
+		'& .ant-checkbox-checked .ant-checkbox-inner': {
+			'&::after': {
 				borderWidth: 3,
 				left: '26%',
 				transform: 'rotate(-45deg) scaleX(-1) translate(-30%,-50%)',
-				width: 12,
+				width: spacing['1_5'],
 			},
 			backgroundColor: `${theme.color.special} !important`,
 			borderColor: `${theme.color.special} !important`,
@@ -44,19 +71,21 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormCheckbox = (props) => {
+const FormCheckbox = ({ checkedLabel, children, label, styles, title, special = false }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [isChecked, setIsChecked] = useState(false);
 
-	return (
+	return special ? (
 		<Checkbox
-			className={cn(classes.container, props.styles)}
+			className={cn(classes.special, styles)}
 			onChange={() => setIsChecked(!isChecked)}
 		>
-			<div className={classes.title}>{props.title}</div>
-			{isChecked && props.checkedLabel ? props.checkedLabel : props.label}
+			<div className={classes.title}>{title}</div>
+			{isChecked && checkedLabel ? checkedLabel : label}
 		</Checkbox>
+	) : (
+		<Checkbox className={cn(classes.container, styles)}>{children ? children : label}</Checkbox>
 	);
 };
 
