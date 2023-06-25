@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import Tag from 'antd/lib/tag';
+import * as cn from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from './FormItem';
@@ -27,6 +28,9 @@ const useStyles = createUseStyles((theme) => ({
 		zIndex: 1,
 	},
 	container: {},
+	display: {
+		display: 'none',
+	},
 	input: {
 		'&:focus, &:focus:hover': {
 			boxShadow: 'none !important',
@@ -71,7 +75,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormInput = (props) => {
+const FormTags = ({ label, name }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [tags, setTags] = useState([]);
@@ -79,78 +83,89 @@ const FormInput = (props) => {
 	const [displayAddTag, setDisplayAddTag] = useState(false);
 
 	const form = Form.useFormInstance();
-	const ref = useRef(null);
+	const inputRef = useRef(null);
 
 	useEffect(() => {
-		const tagInput = ref.current.input;
+		const tagInput = inputRef.current.input;
+
+		const handleFocusOutInput = (e) => {
+			const addTagDiv = document.getElementById('addTag');
+			console.log(addTagDiv);
+			setDisplayAddTag(false);
+		};
+
+		tagInput.addEventListener('focusout', handleFocusOutInput, true);
+		return () => {
+			tagInput.removeEventListener('focusout', handleFocusOutInput, true);
+		};
+	}, []);
+
+	useEffect(() => {
+		const tagInput = inputRef.current.input;
 
 		let timeout = null;
-
-		const handleInputTyping = (e) => {
+		const handleKeyDown = (e) => {
 			clearTimeout(timeout);
 
 			timeout = setTimeout(() => {
 				if (tag) setDisplayAddTag(true);
-				// console.log(e.target.value);
 			}, 1000);
-			// console.log(ref);
 		};
 
-		const handleStartTyping = (e) => {
-			setDisplayAddTag(false);
-			// console.log(ref.current.focus);
+		const handleKeyUp = (e) => setDisplayAddTag(false);
+
+		const handleFocusInInput = (e) => {
+			if (tag) setDisplayAddTag(true);
 		};
 
-		const handleFocus = (e) => {
-			e && tag ? setDisplayAddTag(true) : setDisplayAddTag(false);
-		};
-
-		// tagInput.addEventListener('focus', handleFocus, true);
-		// tagInput.addEventListener('keydown', handleStartTyping, true);
-		// tagInput.addEventListener('keyup', handleInputTyping, true);
+		tagInput.addEventListener('focusin', handleFocusInInput, true);
+		tagInput.addEventListener('keydown', handleKeyUp, true);
+		tagInput.addEventListener('keyup', handleKeyDown, true);
 		return () => {
-			// tagInput.addEventListener('focusout', handleFocus, true);
-			// tagInput.addEventListener('keydown', handleStartTyping, true);
-			// tagInput.removeEventListener('keyup', handleInputTyping, true);
+			tagInput.removeEventListener('focusin', handleFocusInInput, true);
+			tagInput.removeEventListener('keydown', handleKeyUp, true);
+			tagInput.removeEventListener('keyup', handleKeyDown, true);
 		};
-	}, [ref, tag, tags]);
+	}, [tag]);
+
+	useEffect(() => {
+		form.setFieldValue(name, tags);
+	}, [form, name, tags]);
 
 	const addTag = (e) => {
 		e.preventDefault();
 
-		if (tag) {
+		if (tags.includes(tag)) {
+			setTag('');
+			setDisplayAddTag(false);
+		} else if (tags.length === 0 || tag) {
 			setTags([...tags, tag]);
 			setTag('');
 			setDisplayAddTag(false);
 		}
 	};
 
-	const removeTag = (i) => {
-		console.log(i);
-		const tagsCopy = tags.slice();
-		if (tagsCopy.length === 1) {
-			setTags([]);
-		} else {
-			tagsCopy.splice(i, 1);
-			setTags(tagsCopy);
-		}
-		setDisplayAddTag(false);
+	const removeTag = (e) => {
+		const newTags = [...tags];
+		const index = newTags.indexOf(e.target.innerHTML);
+		newTags.splice(index, 1);
+		setTags(newTags);
 	};
 
 	return (
-		<FormItem {...props}>
+		<FormItem
+			label={label}
+			name={name}
+		>
 			<div className={classes.container}>
 				<div className={classes.tags}>
 					{tags.map((tag, i) => (
 						<Tag
 							className={classes.tag}
-							key={i}
+							key={`${i}-${tag}`}
 							closable
 							closeIcon={<>{tag}</>}
-							onClose={(e) => {
-								console.log('e: ', e.target);
-								// console.log('i: ', i);
-							}}
+							onClose={removeTag}
 						>
 							<FontAwesomeIcon icon={faHashtag} />
 						</Tag>
@@ -163,21 +178,19 @@ const FormInput = (props) => {
 						placeholder={
 							isEmpty(tags) ? 'Add tags to describe the genre and mood of your track' : ''
 						}
-						ref={ref}
+						ref={inputRef}
 						value={tag}
 					/>
 				</div>
-				{displayAddTag && (
-					<div
-						className={classes.addTag}
-						onClick={addTag}
-					>
-						Add "{tag}"
-					</div>
-				)}
+				<div
+					className={cn(classes.addTag, { [`${classes.display}`]: !displayAddTag })}
+					onClick={addTag}
+				>
+					Add "{tag}"
+				</div>
 			</div>
 		</FormItem>
 	);
 };
 
-export default FormInput;
+export default FormTags;
