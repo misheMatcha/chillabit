@@ -29,7 +29,8 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	container: {},
 	display: {
-		display: 'none',
+		// display: 'none',
+		opacity: 0,
 	},
 	input: {
 		'&:focus, &:focus:hover': {
@@ -86,22 +87,22 @@ const FormTags = ({ label, name }) => {
 	const inputRef = useRef(null);
 
 	useEffect(() => {
-		const tagInput = inputRef.current.input;
-
 		const handleFocusOutInput = (e) => {
-			const addTagDiv = document.getElementById('addTag');
-			console.log(addTagDiv);
-			setDisplayAddTag(false);
+			const div = document.getElementById('addTagDiv');
+			const outsideInput = inputRef.current && !inputRef.current.input.contains(e.target);
+			const notAddTagDiv = e.target !== div;
+
+			if (outsideInput && notAddTagDiv) setDisplayAddTag(false);
 		};
 
-		tagInput.addEventListener('focusout', handleFocusOutInput, true);
+		document.addEventListener('click', handleFocusOutInput, true);
 		return () => {
-			tagInput.removeEventListener('focusout', handleFocusOutInput, true);
+			document.removeEventListener('click', handleFocusOutInput, true);
 		};
 	}, []);
 
 	useEffect(() => {
-		const tagInput = inputRef.current.input;
+		const input = inputRef.current.input;
 
 		let timeout = null;
 		const handleKeyDown = (e) => {
@@ -118,13 +119,13 @@ const FormTags = ({ label, name }) => {
 			if (tag) setDisplayAddTag(true);
 		};
 
-		tagInput.addEventListener('focusin', handleFocusInInput, true);
-		tagInput.addEventListener('keydown', handleKeyUp, true);
-		tagInput.addEventListener('keyup', handleKeyDown, true);
+		input.addEventListener('focusin', handleFocusInInput, true);
+		input.addEventListener('keydown', handleKeyUp, true);
+		input.addEventListener('keyup', handleKeyDown, true);
 		return () => {
-			tagInput.removeEventListener('focusin', handleFocusInInput, true);
-			tagInput.removeEventListener('keydown', handleKeyUp, true);
-			tagInput.removeEventListener('keyup', handleKeyDown, true);
+			input.removeEventListener('focusin', handleFocusInInput, true);
+			input.removeEventListener('keydown', handleKeyUp, true);
+			input.removeEventListener('keyup', handleKeyDown, true);
 		};
 	}, [tag]);
 
@@ -183,6 +184,7 @@ const FormTags = ({ label, name }) => {
 					/>
 				</div>
 				<div
+					id='addTagDiv'
 					className={cn(classes.addTag, { [`${classes.display}`]: !displayAddTag })}
 					onClick={addTag}
 				>
