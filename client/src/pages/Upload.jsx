@@ -46,7 +46,7 @@ const Upload = () => {
 						public: true,
 					}}
 				>
-					<FormFiles />
+					{/* <FormFiles /> */}
 					<FormDataLayout />
 				</Form>
 			</Steps>
