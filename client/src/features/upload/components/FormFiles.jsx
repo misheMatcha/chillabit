@@ -125,7 +125,7 @@ const FormFiles = () => {
 								type: 'checkbox',
 							}}
 						/>
-						<Form.Item
+						{/* <Form.Item
 							className={cn(classes.noBottomMargin, classes.privacy)}
 							label='Privacy'
 							name='public'
@@ -142,7 +142,7 @@ const FormFiles = () => {
 									label='Private'
 								/>
 							</Radio.Group>
-						</Form.Item>
+						</Form.Item> */}
 					</div>
 					<div className={classes.info}>
 						Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.

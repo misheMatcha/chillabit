@@ -5,6 +5,7 @@ import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from '../../../components/form/FormItem';
+import FormRadio from '../../../components/form/FormRadio';
 import {
 	FormInput,
 	FormSelect,
@@ -175,7 +176,16 @@ const BasicInfo = () => {
 							formatter: ({ count }) => 140 - count,
 						}}
 					/>
-					{/* <div>privacy</div> */}
+					<FormRadio
+						formConfig={{
+							label: 'Privacy:',
+							name: 'public',
+						}}
+						options={[
+							{ label: 'Public', value: true },
+							{ label: 'Private', value: false },
+						]}
+					/>
 				</div>
 			</div>
 		</Step>

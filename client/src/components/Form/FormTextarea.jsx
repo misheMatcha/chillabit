@@ -32,21 +32,14 @@ const useStyles = createUseStyles((theme) => ({
 			},
 			padding: `0 43px 0 7px !important`,
 		},
-		'& .ant-input-status-error': {
-			// borderColor: 'blue !important',
-		},
-
 		'& .ant-input-suffix': {
 			'& .ant-input-data-count': {
 				bottom: 74,
 				marginRight: spacing[1],
 			},
 		},
-		'&:focus, &:focus:hover': {
-			// borderColor: '999 !important',
-		},
 		'&:hover': {
-			// borderColor: '#ccc !important',
+			borderColor: '#ccc !important',
 		},
 		boxShadow: 'none',
 		height: 101,
