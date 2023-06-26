@@ -2,6 +2,7 @@ import React from 'react';
 import Radio from 'antd/lib/radio';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
+import FormItem from './FormItem';
 import { styles } from '../../utils/styles';
 
 const { spacing, weight } = styles;
@@ -28,17 +29,24 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormRadio = (props, { children, styles }) => {
+const FormRadio = ({ children, formConfig, styles, options = [], ...props }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
-		<Radio
-			className={cn(classes.container, styles)}
-			{...props}
-		>
-			{children ? children : props.label}
-		</Radio>
+		<FormItem {...formConfig}>
+			<Radio.Group>
+				{options.map((radio, i) => (
+					<Radio
+						key={`${i}-${radio.label}`}
+						className={cn(classes.container, styles)}
+						{...radio}
+					>
+						{radio.label}
+					</Radio>
+				))}
+			</Radio.Group>
+		</FormItem>
 	);
 };
 
