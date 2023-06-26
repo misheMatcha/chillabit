@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
-import Input from 'antd/lib/input';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from '../../../components/form/FormItem';
-import { FormTags, FormUrl } from '../../../components/form/index';
+import {
+	FormInput,
+	FormSelect,
+	FormTags,
+	FormTextarea,
+	FormUrl,
+} from '../../../components/form/index';
 import StyledButton from '../../../components/General/StyledButton';
 import { Step } from '../../../components/steps/index';
 import { TRACK_GENERE_OPTIONS } from '../../../data/trackPlaceholders';
@@ -16,26 +21,6 @@ import useUpload from '../hooks/useUpload';
 const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
-	captions: {
-		'& > textarea': {
-			// backgroundColor: 'lavender',
-		},
-		'&:hover': {
-			// borderColor: 'red',
-		},
-		height: 86,
-
-		'& .ant-input-affix-wrapper': {
-			// borderColor: 'red',
-			backgroundColor: 'lavender !important',
-		},
-		'& .ant-input-affix-wrapper-focused': {
-			// backgroundColor: 'lavender !important',
-			// borderColor: 'red',
-		},
-		// '& .ant-input-textarea-affix-wrapper ant-input-textarea-show-count css-dev-only-do-not-override-w8mnev ant-input-show-count':
-		// 	{},
-	},
 	container: {
 		...displayFlex,
 		marginTop: 25,
@@ -129,63 +114,67 @@ const BasicInfo = () => {
 					</Upload>
 				</FormItem>
 				<div className={classes.inputsWrapper}>
-					<FormItem
-						label='Title'
-						required
-						inputConfig={{ type: 'text' }}
-						name='title'
-						rules={[{ message: 'Enter a title.', required: true }]}
+					<FormInput
+						formConfig={{
+							label: 'Title',
+							name: 'title',
+							required: true,
+							rules: [{ message: 'Enter a title.', required: true }],
+						}}
 					/>
 					<FormUrl
 						label='Permalink'
 						name='permalink'
 					/>
 					<div className={classes.selectWrapper}>
-						<FormItem
-							label='Genre'
-							name='genre'
-							inputConfig={{
-								onSelect: (value) => {
-									if (value === 'custom') {
-										setEditCustomGenre(true);
-									} else {
-										setEditCustomGenre(false);
-										setCustomGenre('');
-									}
-								},
-								options: TRACK_GENERE_OPTIONS,
-								type: 'select',
+						<FormSelect
+							formConfig={{
+								label: 'Genre',
+								name: 'genre',
 							}}
+							onSelect={(value) => {
+								if (value === 'custom') {
+									setEditCustomGenre(true);
+								} else {
+									setEditCustomGenre(false);
+									setCustomGenre('');
+								}
+							}}
+							options={TRACK_GENERE_OPTIONS}
 						/>
-						<FormItem
-							styles={cn({ [`${classes.selectCustom}`]: !editCustomGenre })}
-							label='Custom Genre'
-							inputConfig={{
-								onChange: (e) => setCustomGenre(e.target.value),
-								type: 'text',
-								value: customGenre,
+						<FormInput
+							formConfig={{
+								label: 'Custom Genre',
+								styles: cn({ [`${classes.selectCustom}`]: !editCustomGenre }),
 							}}
+							onChange={(e) => setCustomGenre(e.target.value)}
+							value={customGenre}
 						/>
 					</div>
 					<FormTags
 						label='Additional tags'
 						name='tags'
 					/>
-					{/* <FormItem
-						label='Description'
-						name='desc'
-						inputConfig={{ placeholder: 'Describe your track', rows: 6, type: 'textarea' }}
-					/> */}
-					{/* <FormItem
-						label='Caption'
-						name='caption'
-						inputConfig={{
-							maxLength: 140,
-							placeholder: 'Add a caption to your post (optional)',
-							showCount: true,
-							styles: classes.captions,
-							type: 'textarea',
-					}} /> */}
+					<FormTextarea
+						formConfig={{
+							label: 'Description',
+							name: 'desc',
+						}}
+						placeholder='Describe your track'
+						rows={6}
+					/>
+					<FormTextarea
+						formConfig={{
+							label: 'Caption',
+							name: 'caption',
+							rules: [{ max: 140, message: 'Enter a track caption that is up to 140 characters.' }],
+						}}
+						placeholder='Add a caption to your post (optional)'
+						disableReize
+						showCount={{
+							formatter: ({ count }) => 140 - count,
+						}}
+					/>
 					{/* <div>privacy</div> */}
 				</div>
 			</div>

@@ -76,7 +76,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormTags = ({ label, name }) => {
+const FormTags = ({ name, ...props }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [tags, setTags] = useState([]);
@@ -155,8 +155,8 @@ const FormTags = ({ label, name }) => {
 
 	return (
 		<FormItem
-			label={label}
 			name={name}
+			{...props}
 		>
 			<div className={classes.container}>
 				<div className={classes.tags}>
