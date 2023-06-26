@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Input from 'antd/lib/input';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
+import FormItem from './FormItem';
 import { styles } from '../../utils/styles';
 
-const { alignItems, displayFlex, radius, spacing, weight } = styles;
+const { radius, spacing } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -24,30 +25,52 @@ const useStyles = createUseStyles((theme) => ({
 		color: '#333',
 		padding: `${spacing['0_25']}px 7px`,
 	},
-	disableResize: {
-		'& > textarea': {
-			resize: 'none',
+	showCount: {
+		'& .ant-input': {
+			'&::placeholder': {
+				color: '#999',
+			},
+			padding: `0 43px 0 7px !important`,
 		},
+		'& .ant-input-status-error': {
+			// borderColor: 'blue !important',
+		},
+
+		'& .ant-input-suffix': {
+			'& .ant-input-data-count': {
+				bottom: 74,
+				marginRight: spacing[1],
+			},
+		},
+		'&:focus, &:focus:hover': {
+			// borderColor: '999 !important',
+		},
+		'&:hover': {
+			// borderColor: '#ccc !important',
+		},
+		boxShadow: 'none',
+		height: 101,
 	},
-	showCount: {},
 }));
 
-const FormTextarea = (props) => {
+const FormTextarea = ({ formConfig, styles, disableReize = false, ...props }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
-		<Input.TextArea
-			className={cn(
-				classes.container,
-				{
-					// [`${classes.showCount}`]: props.showCount,
-					// [`${classes.disableResize}`]: props.showCount,
-				},
-				props.styles
-			)}
-			{...props}
-		/>
+		<FormItem {...formConfig}>
+			<Input.TextArea
+				className={cn(
+					classes.container,
+					{
+						[`${classes.showCount}`]: props.showCount,
+					},
+					styles
+				)}
+				style={{ resize: disableReize ? 'none' : '' }}
+				{...props}
+			/>
+		</FormItem>
 	);
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'antd/lib/select';
 import { createUseStyles, useTheme } from 'react-jss';
+import FormItem from './FormItem';
 import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, radius, spacing, weight } = styles;
@@ -53,18 +54,20 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormSelect = (props) => {
+const FormSelect = ({ formConfig, ...props }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
-		<Select
-			dropdownAlign={{ offset: [0, 0] }}
-			bordered={false}
-			className={classes.select}
-			popupClassName={classes.dropdown}
-			{...props}
-		/>
+		<FormItem {...formConfig}>
+			<Select
+				dropdownAlign={{ offset: [0, 0] }}
+				bordered={false}
+				className={classes.select}
+				popupClassName={classes.dropdown}
+				{...props}
+			/>
+		</FormItem>
 	);
 };
 

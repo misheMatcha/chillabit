@@ -37,7 +37,7 @@ const useStyles = createUseStyles({
 	},
 });
 
-const FormUrl = (props) => {
+const FormUrl = ({ name, ...props }) => {
 	const [editUrl, setEditUrl] = useState(false);
 	const [url, setUrl] = useState('');
 	const { currentUser } = useAuth();
@@ -48,11 +48,7 @@ const FormUrl = (props) => {
 
 	useEffect(() => {
 		const handleOutsideClick = (e) => {
-			if (
-				ref.current &&
-				!ref.current.input.contains(e.target) &&
-				form.getFieldValue(props.name) !== ''
-			)
+			if (ref.current && !ref.current.input.contains(e.target) && form.getFieldValue(name) !== '')
 				setEditUrl(false);
 		};
 
@@ -60,10 +56,11 @@ const FormUrl = (props) => {
 		return () => {
 			document.removeEventListener('click', handleOutsideClick, true);
 		};
-	}, [form, props.name, ref]);
+	}, [form, name, ref]);
 
 	return (
 		<FormItem
+			name={name}
 			{...props}
 			styles={classes.container}
 		>
@@ -71,7 +68,7 @@ const FormUrl = (props) => {
 				{editUrl ? (
 					<Input
 						className={classes.input}
-						name={props.name}
+						name={name}
 						onChange={(e) => setUrl(e.target.value)}
 						onPressEnter={() => setEditUrl(false)}
 						ref={ref}
@@ -79,7 +76,7 @@ const FormUrl = (props) => {
 					/>
 				) : (
 					<>
-						<span>{form.getFieldValue(props.name)}</span>
+						<span>{form.getFieldValue(name)}</span>
 						<StyledButton
 							icon={faPencil}
 							onClick={() => setEditUrl(true)}
