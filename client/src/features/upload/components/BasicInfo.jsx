@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Form from 'antd/lib/form';
+import Tooltip from 'antd/lib/tooltip';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -26,24 +27,23 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		marginTop: 25,
 	},
-	inputsWrapper: {
-		...displayFlex,
-		...flexDirection.column,
-		flex: 1,
-	},
 	image: {
 		...alignItems.flexEnd,
 		...displayFlex,
 		...justifyContent.center,
-		// backgroundImage: 'linear-gradient(135deg,#846170,#70929c)',
-		backgroundImage: ({ coverPreview }) =>
-			coverPreview ? `url(${coverPreview})` : 'linear-gradient(135deg,#846170,#70929c)',
+		// backgroundImage: ({ coverPreview }) =>
+		// 	coverPreview ? `url(${coverPreview})` : 'linear-gradient(135deg,#846170,#70929c)',
 		backgroundSize: 'cover',
 		border: `1px solid #ccc`,
 		height: 260,
 		marginRight: spacing['2_25'],
 		paddingBottom: spacing['3_25'],
 		width: 260,
+	},
+	inputsWrapper: {
+		...displayFlex,
+		...flexDirection.column,
+		flex: 1,
 	},
 	selectCustom: {
 		opacity: 0,
@@ -81,6 +81,31 @@ const useStyles = createUseStyles((theme) => ({
 		},
 		...displayFlex,
 	},
+	tooltip: {
+		'& .ant-tooltip-content': {
+			width: 200,
+		},
+		'& .ant-tooltip-inner': {
+			'& > span:last-child': {
+				...displayFlex,
+				...justifyContent.flexEnd,
+			},
+			...typography.captions,
+			backgroundColor: theme.background.surface,
+			border: '1px solid #ccc',
+			borderRadius: 0,
+			boxShadow: `0 2px 7px -1px rgba
+      (0,0,0,.4)`,
+			color: '#333',
+			fontSize: spacing['1_5'],
+			padding: 10,
+		},
+	},
+	tooltipBtn: {
+		fontSize: 11,
+		height: 22,
+		padding: `${spacing['0_25']}px ${spacing[1]}px`,
+	},
 }));
 
 const BasicInfo = () => {
@@ -89,8 +114,6 @@ const BasicInfo = () => {
 	const classes = useStyles({ coverPreview, theme });
 	const [editCustomGenre, setEditCustomGenre] = useState(false);
 	const { customGenre, setCustomGenre } = useUpload();
-
-	const form = Form.useFormInstance();
 
 	return (
 		<Step step={3}>
@@ -204,7 +227,30 @@ const BasicInfo = () => {
 							},
 							{
 								disabled: true,
-								label: 'Scheduled',
+								label: (
+									<Tooltip
+										arrow={false}
+										overlayClassName={classes.tooltip}
+										placement='bottom'
+										title={
+											<>
+												<span>
+													Get a Next Pro subscription to schedule when your tracks go live.
+												</span>
+												<span>
+													<StyledButton
+														styles={classes.tooltipBtn}
+														special
+													>
+														Upgrade now
+													</StyledButton>
+												</span>
+											</>
+										}
+									>
+										Scheduled
+									</Tooltip>
+								),
 								value: '',
 							},
 						]}
