@@ -1,8 +1,8 @@
 import React from 'react';
 import Radio from 'antd/lib/radio';
 import * as cn from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
 import { createUseStyles, useTheme } from 'react-jss';
-import FormItem from './FormItem';
 import { styles } from '../../utils/styles';
 
 const { spacing, weight } = styles;
@@ -27,26 +27,108 @@ const useStyles = createUseStyles((theme) => ({
 			padding: 0,
 		},
 	},
+	flexStart: {
+		'& > span:first-child, > span:last-child': {
+			alignSelf: 'flex-start',
+		},
+		marginBottom: spacing['1_5'],
+	},
+	label: {
+		height: 14,
+	},
+	labelDesc: {
+		color: '#666',
+		fontSize: spacing['1_5'],
+		lineHeight: 1.2,
+		paddingTop: spacing['0_7'],
+	},
 }));
 
-const FormRadio = ({ children, formConfig, styles, options = [], ...props }) => {
+const wrapperVariants = {
+	animate: {
+		height: 'auto',
+	},
+	exit: {
+		height: 0,
+		transition: {
+			delay: 0,
+			duration: 0.5,
+		},
+	},
+	initial: {
+		height: 0,
+	},
+	transition: {
+		delay: 0.5,
+		duration: 0.5,
+	},
+};
+
+const variants = {
+	animate: {
+		opacity: 1,
+	},
+	exit: {
+		opacity: 0,
+		transition: {
+			duration: 0.2,
+		},
+	},
+	initial: {
+		opacity: 0,
+	},
+	transition: {
+		delay: 0.5,
+		duration: 1,
+	},
+};
+
+const FormRadio = ({
+	children,
+	isCurrentValue,
+	label,
+	labelDesc,
+	value,
+	alignFlexStart = false,
+	animated = false,
+	styles,
+	...props
+}) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
 	return (
-		<FormItem {...formConfig}>
-			<Radio.Group>
-				{options.map((radio, i) => (
-					<Radio
-						key={`${i}-${radio.label}`}
-						className={cn(classes.container, styles)}
-						{...radio}
-					>
-						{radio.label}
-					</Radio>
-				))}
-			</Radio.Group>
-		</FormItem>
+		<Radio
+			className={cn(
+				classes.container,
+				{
+					[`${classes.flexStart}`]: alignFlexStart,
+				},
+				styles
+			)}
+			value={value}
+			{...props}
+		>
+			{animated ? (
+				<>
+					<div className={classes.label}>{label}</div>
+					<AnimatePresence>
+						{isCurrentValue(value) && (
+							<motion.div
+								className={classes.labelDesc}
+								{...wrapperVariants}
+							>
+								<motion.span {...variants}>{labelDesc}</motion.span>
+							</motion.div>
+						)}
+					</AnimatePresence>
+				</>
+			) : children ? (
+				children
+			) : (
+				label
+			)}
+		</Radio>
 	);
 };
 
