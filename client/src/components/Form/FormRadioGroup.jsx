@@ -1,25 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Form from 'antd/lib/form';
 import Radio from 'antd/lib/radio';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import FormItem from './FormItem';
+import FormRadio from './FormRadio';
 import { styles } from '../../utils/styles';
 
-const { spacing, weight } = styles;
+const { displayFlex, flexDirection, spacing, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
+	col: {
+		...displayFlex,
+		...flexDirection.column,
+	},
 	container: {
-		'& .ant-radio': {
-			'& .ant-radio-inner': {
-				'&::after': {
-					backgroundColor: '#333',
-				},
-				backgroundColor: theme.background.highlight,
-				borderColor: '#666',
-				height: 14,
-				width: 14,
-			},
-		},
 		'& > span:last-child': {
 			fontSize: spacing['1_5'],
 			fontWeight: weight[500],
@@ -29,21 +24,34 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormRadioGroup = ({ children, formConfig, styles, options = [], ...props }) => {
+const FormRadioGroup = ({ formConfig, column = false, options = [] }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const [currentValue, setCurrentValue] = useState('');
+
+	const form = Form.useFormInstance();
+
+	useEffect(() => {
+		if (currentValue === '') setCurrentValue(form.getFieldValue(formConfig.name));
+	}, [currentValue, form, formConfig.name]);
+
+	const isCurrentValue = (value) => currentValue === value;
 
 	return (
 		<FormItem {...formConfig}>
-			<Radio.Group>
-				{options.map((radio, i) => (
-					<Radio
-						key={`${i}-${radio.label}`}
-						className={cn(classes.container, styles)}
-						{...radio}
-					>
-						{radio.label}
-					</Radio>
+			<Radio.Group
+				className={cn({
+					[`${classes.col}`]: column,
+				})}
+				onChange={(e) => setCurrentValue(e.target.value)}
+			>
+				{options.map(({ label, ...option }, i) => (
+					<FormRadio
+						key={`${i}-${label}`}
+						label={label}
+						isCurrentValue={isCurrentValue}
+						{...option}
+					/>
 				))}
 			</Radio.Group>
 		</FormItem>

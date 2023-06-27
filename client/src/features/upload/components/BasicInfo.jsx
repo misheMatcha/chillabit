@@ -4,10 +4,10 @@ import Form from 'antd/lib/form';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import FormItem from '../../../components/form/FormItem';
-import FormRadio from '../../../components/form/FormRadio';
 import {
 	FormInput,
+	FormItem,
+	FormRadioGroup,
 	FormSelect,
 	FormTags,
 	FormTextarea,
@@ -179,14 +179,34 @@ const BasicInfo = () => {
 							formatter: ({ count }) => 140 - count,
 						}}
 					/>
-					<FormRadio
+					<FormRadioGroup
+						animated
+						column
 						formConfig={{
 							label: 'Privacy:',
 							name: 'public',
 						}}
 						options={[
-							{ label: 'Public', value: true },
-							{ label: 'Private', value: false },
+							{
+								alignFlexStart: true,
+								animated: true,
+								label: 'Public',
+								labelDesc: 'Anyone will be able to listen to this track.',
+								value: true,
+							},
+							{
+								alignFlexStart: true,
+								animated: true,
+								label: 'Private',
+								labelDesc:
+									'Only you and people you share a secret link with will be able to listen to this track.',
+								value: false,
+							},
+							{
+								disabled: true,
+								label: 'Scheduled',
+								value: '',
+							},
 						]}
 					/>
 				</div>
