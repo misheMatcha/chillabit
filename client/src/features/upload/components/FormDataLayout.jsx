@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import Form from 'antd/lib/form';
+import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import Advanced from './Advanced';
 import BasicInfo from './BasicInfo';
@@ -8,7 +7,7 @@ import Metadata from './Metadata';
 import Permissions from './Permissions';
 import Status from './Status';
 import StyledButton from '../../../components/General/StyledButton';
-import { Steps } from '../../../components/steps/index';
+import { Step, Steps } from '../../../components/steps/index';
 import { styles } from '../../../utils/styles';
 
 const { displayFlex, justifyContent, spacing, typography, weight } = styles;
@@ -57,37 +56,32 @@ const useStyles = createUseStyles((theme) => ({
 const UploadDataLayout = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const form = Form.useFormInstance();
-
-	// useEffect(() => {
-	// 	let tracks = form.getFieldValue('trackList');
-
-	// 	console.log(tracks.file.name);
-	// });
 
 	return (
-		<Steps defaultStep={3}>
-			<Status />
-			<div className={classes.container}>
-				<FormNavbar />
-				<BasicInfo />
-				{/* <Metadata />
+		<Step step={2}>
+			<Steps defaultStep={3}>
+				<Status />
+				<div className={classes.container}>
+					<FormNavbar />
+					<BasicInfo />
+					{/* <Metadata />
 				<Permissions />
 				<Advanced /> */}
-				<div className={classes.submitSection}>
-					<div className={classes.required}>Required fields</div>
-					<div className={classes.btns}>
-						<StyledButton>Cancel</StyledButton>
-						<StyledButton
-							htmlType='submit'
-							special
-						>
-							Save
-						</StyledButton>
+					<div className={classes.submitSection}>
+						<div className={classes.required}>Required fields</div>
+						<div className={classes.btns}>
+							<StyledButton>Cancel</StyledButton>
+							<StyledButton
+								htmlType='submit'
+								special
+							>
+								Save
+							</StyledButton>
+						</div>
 					</div>
 				</div>
-			</div>
-		</Steps>
+			</Steps>
+		</Step>
 	);
 };
 

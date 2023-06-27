@@ -34,7 +34,7 @@ const useStyles = createUseStyles((theme) => ({
 		},
 		'& .ant-input-suffix': {
 			'& .ant-input-data-count': {
-				bottom: 74,
+				bottom: 36,
 				marginRight: spacing[1],
 			},
 		},
