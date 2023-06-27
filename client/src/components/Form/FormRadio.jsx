@@ -27,20 +27,27 @@ const useStyles = createUseStyles((theme) => ({
 			padding: 0,
 		},
 	},
+	disabled: {
+		'& .ant-radio': {
+			'& .ant-radio-inner': {
+				backgroundColor: '#e5e5e5',
+				borderColor: '#ccc',
+			},
+		},
+		'& > span:last-child': {
+			color: '#999',
+		},
+	},
 	flexStart: {
 		'& > span:first-child, > span:last-child': {
 			alignSelf: 'flex-start',
 		},
 		marginBottom: spacing['1_5'],
 	},
-	label: {
-		height: 14,
-	},
 	labelDesc: {
 		color: '#666',
 		fontSize: spacing['1_5'],
 		lineHeight: 1.2,
-		paddingTop: spacing['0_7'],
 	},
 }));
 
@@ -85,6 +92,7 @@ const variants = {
 
 const FormRadio = ({
 	children,
+	disabled,
 	isCurrentValue,
 	label,
 	labelDesc,
@@ -102,6 +110,7 @@ const FormRadio = ({
 			className={cn(
 				classes.container,
 				{
+					[`${classes.disabled}`]: disabled,
 					[`${classes.flexStart}`]: alignFlexStart,
 				},
 				styles
