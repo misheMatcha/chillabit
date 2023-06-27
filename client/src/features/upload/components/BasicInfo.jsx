@@ -118,14 +118,17 @@ const BasicInfo = () => {
 					<FormInput
 						formConfig={{
 							label: 'Title',
+							marginTop: false,
 							name: 'title',
 							required: true,
 							rules: [{ message: 'Enter a title.', required: true }],
 						}}
+						placeholder='Name your track'
 					/>
 					<FormUrl
 						label='Permalink'
 						name='permalink'
+						required
 					/>
 					<div className={classes.selectWrapper}>
 						<FormSelect
