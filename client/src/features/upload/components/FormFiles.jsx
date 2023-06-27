@@ -1,12 +1,10 @@
 import React from 'react';
 import Form from 'antd/lib/form';
-import Radio from 'antd/lib/radio';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import QuotaMeter from './QuotaMeter';
-import FormItem from '../../../components/form/FormItem';
-import FormRadio from '../../../components/form/FormRadio';
+import { FormCheckbox, FormItem, FormRadioGroup } from '../../../components/form/index';
 import StyledButton from '../../../components/General/StyledButton';
 import StyledLink from '../../../components/General/StyledLink';
 import { Step } from '../../../components/steps/index';
@@ -116,33 +114,35 @@ const FormFiles = () => {
 								/>
 							</Upload>
 						</FormItem>
-						<FormItem
-							styles={classes.noBottomMargin}
-							name='isPlaylist'
-							valuePropName='checked'
-							inputConfig={{
-								label: 'Make a playlist when multiple files are selected',
-								type: 'checkbox',
+						<FormCheckbox
+							formConfig={{
+								name: 'isPlaylist',
+								styles: classes.noBottomMargin,
+								valuePropName: 'checked',
 							}}
+							label='Make a playlist when multiple files are selected'
 						/>
-						{/* <Form.Item
-							className={cn(classes.noBottomMargin, classes.privacy)}
-							label='Privacy'
-							name='public'
-						>
-							<Radio.Group>
-								<FormRadio
-									styles={classes.radioBtn}
-									value={true}
-									label='Public'
-								/>
-								<FormRadio
-									styles={classes.radioBtn}
-									value={false}
-									label='Private'
-								/>
-							</Radio.Group>
-						</Form.Item> */}
+						<FormRadioGroup
+							formConfig={{
+								className: cn(classes.noBottomMargin, classes.privacy),
+								colon: true,
+								label: 'Privacy',
+								name: 'public',
+								topLabel: false,
+							}}
+							options={[
+								{
+									label: 'Public',
+									styles: classes.radioBtn,
+									value: true,
+								},
+								{
+									label: 'Private',
+									styles: classes.radioBtn,
+									value: false,
+								},
+							]}
+						/>
 					</div>
 					<div className={classes.info}>
 						Provide FLAC, WAV, ALAC, or AIFF for highest audio quality.

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Checkbox from 'antd/lib/checkbox';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
+import FormItem from './FormItem';
 import { styles } from '../../utils/styles';
 
 const { alignItems, displayFlex, justifyContent, spacing, typography, weight } = styles;
@@ -71,21 +72,40 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormCheckbox = ({ checkedLabel, children, label, styles, title, special = false }) => {
+const FormCheckbox = ({
+	formConfig,
+	checkedLabel,
+	children,
+	label,
+	styles,
+	title,
+	special = false,
+	...props
+}) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [isChecked, setIsChecked] = useState(false);
 
-	return special ? (
-		<Checkbox
-			className={cn(classes.special, styles)}
-			onChange={() => setIsChecked(!isChecked)}
-		>
-			<div className={classes.title}>{title}</div>
-			{isChecked && checkedLabel ? checkedLabel : label}
-		</Checkbox>
-	) : (
-		<Checkbox className={cn(classes.container, styles)}>{children ? children : label}</Checkbox>
+	return (
+		<FormItem {...formConfig}>
+			{special ? (
+				<Checkbox
+					className={cn(classes.special, styles)}
+					onChange={() => setIsChecked(!isChecked)}
+					{...props}
+				>
+					<div className={classes.title}>{title}</div>
+					{isChecked && checkedLabel ? checkedLabel : label}
+				</Checkbox>
+			) : (
+				<Checkbox
+					className={cn(classes.container, styles)}
+					{...props}
+				>
+					{children ? children : label}
+				</Checkbox>
+			)}
+		</FormItem>
 	);
 };
 
