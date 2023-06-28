@@ -65,7 +65,7 @@ const UploadDataLayout = () => {
 					<FormNavbar />
 					<BasicInfo />
 					<Metadata />
-					{/* <Permissions /> */}
+					<Permissions />
 					{/* <Advanced /> */}
 					<div className={classes.submitSection}>
 						<div className={classes.required}>Required fields</div>

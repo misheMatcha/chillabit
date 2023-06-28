@@ -60,7 +60,7 @@ const useStyles = createUseStyles((theme) => ({
 			...typography.captions,
 			color: '#666',
 			fontSize: 13,
-			fontWeight: weight[600],
+			fontWeight: weight[500],
 			letterSpacing: 0.025,
 			paddingLeft: 10,
 		},
