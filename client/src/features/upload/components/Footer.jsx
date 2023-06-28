@@ -21,6 +21,7 @@ const useStyles = createUseStyles((theme) => ({
 		...typography.captions,
 		...displayFlex,
 		...flexDirection.column,
+		marginBottom: spacing['3_7'],
 		padding: spacing['2_5'],
 		width: 800,
 	},
