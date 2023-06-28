@@ -17,6 +17,7 @@ const useStyles = createUseStyles((theme) => ({
 		color: theme.color.white,
 		height: spacing['5_7'],
 		position: 'fixed',
+		zIndex: 1,
 	},
 	dynamicWidth: {
 		maxWidth: 408,

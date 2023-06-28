@@ -3,7 +3,7 @@ import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Steps } from '../components/steps';
 import { UploadProvider } from '../features/upload/context/UploadContext';
-import { Navbar, FormDataLayout, FormFiles } from '../features/upload/index';
+import { Navbar, FormDataLayout, FormFiles, Footer } from '../features/upload/index';
 import { styles } from '../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, spacing } = styles;
@@ -16,6 +16,7 @@ const useStyles = createUseStyles((theme) => ({
 		backgroundColor: theme.background.surface,
 	},
 	form: {
+		overflow: 'hidden',
 		width: spacing[1] * 100,
 	},
 }));
@@ -50,6 +51,7 @@ const Upload = () => {
 					<FormFiles />
 					<FormDataLayout />
 				</Form>
+				<Footer />
 			</Steps>
 		</UploadProvider>
 	);
