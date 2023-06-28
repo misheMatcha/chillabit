@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Tooltip from 'antd/lib/tooltip';
-import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import {
+	FormImageUpload,
 	FormInput,
-	FormItem,
 	FormRadioGroup,
 	FormSelect,
 	FormTags,
@@ -25,19 +23,6 @@ const useStyles = createUseStyles((theme) => ({
 	container: {
 		...displayFlex,
 		marginTop: 25,
-	},
-	image: {
-		...alignItems.flexEnd,
-		...displayFlex,
-		...justifyContent.center,
-		backgroundImage: ({ coverPreview }) =>
-			coverPreview ? `url(${coverPreview})` : 'linear-gradient(135deg,#846170,#70929c)',
-		backgroundSize: 'cover',
-		border: `1px solid #ccc`,
-		height: 260,
-		marginRight: spacing['2_25'],
-		paddingBottom: spacing['3_25'],
-		width: 260,
 	},
 	inputsWrapper: {
 		...displayFlex,
@@ -109,33 +94,14 @@ const useStyles = createUseStyles((theme) => ({
 
 const BasicInfo = () => {
 	const theme = useTheme();
-	const [coverPreview, setCoverPreview] = useState('');
-	const classes = useStyles({ coverPreview, theme });
+	const classes = useStyles({ theme });
 	const [editCustomGenre, setEditCustomGenre] = useState(false);
 	const { customGenre, setCustomGenre } = useUpload();
 
 	return (
 		<Step step={3}>
 			<div className={classes.container}>
-				<FormItem
-					name='track_cover'
-					normalize={(values) => values.file}
-					valuePropName='file'
-					styles={classes.image}
-				>
-					<Upload
-						beforeUpload={(file) => {
-							setCoverPreview(URL.createObjectURL(file));
-							return false;
-						}}
-						showUploadList={false}
-					>
-						<StyledButton
-							icon={faCamera}
-							label='Update image'
-						/>
-					</Upload>
-				</FormItem>
+				<FormImageUpload formConfig={{ name: 'track_cover' }} />
 				<div className={classes.inputsWrapper}>
 					<FormInput
 						formConfig={{
