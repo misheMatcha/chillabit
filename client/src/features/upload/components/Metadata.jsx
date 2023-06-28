@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Form from 'antd/lib/form';
-import Radio from 'antd/lib/radio';
-import * as cn from 'classnames';
-import { createUseStyles, useTheme } from 'react-jss';
-import FormItem from '../../../components/form/FormItem';
+import React from 'react';
+import { createUseStyles } from 'react-jss';
+import MetadataLicense from './MetadataLicense';
+import { FormInput, FormSelect } from '../../../components/form';
 import { Step } from '../../../components/steps/index';
 import { Y_N_Options } from '../../../data/trackPlaceholders';
 import { styles } from '../../../utils/styles';
-import { ReactComponent as AttributionIcon } from '../assets/ic_by.svg';
-import { ReactComponent as NoDerivativeWorkscon } from '../assets/ic_nc.svg';
-import { ReactComponent as NoncommercialIcon } from '../assets/ic_ncc.svg';
-import { ReactComponent as ShareAlikeIcon } from '../assets/ic_sa.svg';
 
-const { displayFlex, justifyContent, spacing, typography, weight } = styles;
+const { displayFlex, justifyContent } = styles;
 
-const useStyles = createUseStyles((theme) => ({
+const useStyles = createUseStyles({
 	container: {
 		'& > div:first-child': {
 			marginBottom: 38,
@@ -36,237 +28,126 @@ const useStyles = createUseStyles((theme) => ({
 		...justifyContent.spaceBetween,
 		flexWrap: 'wrap',
 	},
-	checkboxWrap: {
-		...displayFlex,
-	},
-	checkbox: {
-		width: 'fit-content',
-	},
-	iconWrap: {
-		...displayFlex,
-	},
-	icon: {
-		height: 14,
-		width: 14,
-	},
-}));
-
-const checkboxOptions = [
-	{
-		inputConfig: {
-			label:
-				'Allow others to copy, distribute, display and perform your copyrighted work but only if they give credit the way you request.',
-			title: 'Attribution',
-			type: 'checkbox',
-		},
-		name: 'Attribution',
-	},
-	{
-		inputConfig: {
-			label:
-				'Allow others to distribute, display and perform your work—and derivative works based upon it—but for noncommercial purposes only.',
-			title: 'Noncommercial',
-			type: 'checkbox',
-		},
-		name: 'Noncommercial',
-	},
-	{
-		inputConfig: {
-			label:
-				'Allow others to copy, distribute, display and perform only verbatim copies of your work, not derivative works based upon it.',
-			title: 'No Derivative Works',
-			type: 'checkbox',
-		},
-		name: 'NoDerivativeWorks',
-	},
-	{
-		inputConfig: {
-			label:
-				'Allow others to distribute derivative works only under a license identical to the license that governs your work.',
-			title: 'Share Alike',
-			type: 'checkbox',
-		},
-		name: 'ShareAlike',
-	},
-];
+});
 
 const Metadata = () => {
-	const theme = useTheme();
-	const classes = useStyles({ theme });
-	const [displayOptions, setDisplayOptions] = useState(false);
-	const form = Form.useFormInstance();
+	const classes = useStyles();
 
 	return (
 		<Step step={4}>
 			<div className={classes.container}>
 				<div className={classes.section}>
-					<FormItem
-						label='Contains music'
-						name='music'
-						inputConfig={{
-							options: Y_N_Options,
-							type: 'select',
+					<FormSelect
+						formConfig={{
+							label: 'Contains music',
+							name: 'music',
+							styles: classes.input,
 						}}
-						styles={classes.input}
+						options={Y_N_Options}
 					/>
-					<FormItem
-						label='Artist'
-						name='artist_name'
-						inputConfig={{
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'Artist',
+							name: 'artist_name',
+							styles: classes.item,
 						}}
-						styles={classes.item}
 					/>
-					<FormItem
-						label='Publisher'
-						name='publisher'
-						inputConfig={{
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'Publisher',
+							name: 'publisher',
+							styles: classes.item,
 						}}
-						styles={classes.item}
 					/>
-					<FormItem
-						label='ISRC'
-						name='isrc'
-						inputConfig={{
-							placeholder: 'e.g. USS1Z1001234',
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'ISRC',
+							name: 'isrc',
+							styles: classes.item,
 						}}
-						styles={classes.item}
+						placeholder='e.g. USS1Z1001234'
 					/>
-					<FormItem
-						label='Composer'
-						name='composer'
-						inputConfig={{
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'Composer',
+							name: 'composer',
+							styles: classes.item,
 						}}
-						styles={classes.item}
 					/>
-					<FormItem
-						label='Release title'
-						name='release_title'
-						inputConfig={{
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'Release title',
+							name: 'release_title',
+							styles: classes.item,
 						}}
-						styles={classes.item}
 					/>
 				</div>
-				<FormItem
-					fullWidth
-					label='Buy-link'
-					name='buy_link'
-					inputConfig={{
-						type: 'text',
+				<FormInput
+					formConfig={{
+						label: 'Buy-link',
+						name: 'buy_link',
+						styles: classes.item,
 					}}
-					styles={classes.item}
 				/>
 				<div className={classes.section}>
-					<FormItem
-						label='Album title'
-						name='album_title'
-						inputConfig={{
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'Album title',
+							name: 'album_title',
+							styles: classes.item,
 						}}
-						styles={classes.item}
 					/>
-					<FormItem
-						label='Record label'
-						name='record_label'
-						inputConfig={{
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'Record label',
+							name: 'record_label',
+							styles: classes.item,
 						}}
-						styles={classes.item}
 					/>
-					<FormItem
-						label='Release date'
-						name='release_date'
-						inputConfig={{
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'Release date',
+							name: 'release_date',
+							styles: classes.item,
 						}}
-						styles={classes.item}
 					/>
 				</div>
 				<div className={classes.section}>
-					<FormItem
-						label='Album Barcode'
-						name='album_barcode'
-						inputConfig={{
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'Album Barcode',
+							name: 'album_barcode',
+							styles: classes.item,
 						}}
-						styles={classes.item}
 					/>
-					<FormItem
-						label='ISWC'
-						name='iswc'
-						inputConfig={{
-							placeholder: 'e.g. T-034.524.680-1',
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'ISWC',
+							name: 'iswc',
+							styles: classes.input,
 						}}
-						styles={classes.input}
+						placeholder='e.g. T-034.524.680-1'
 					/>
 				</div>
 				<div className={classes.section}>
-					<FormItem
-						label='P line'
-						name='p_line'
-						inputConfig={{
-							placeholder: 'e.g. 2007 XYZ Record Company Limited',
-							type: 'text',
+					<FormInput
+						formConfig={{
+							label: 'P line',
+							name: 'p_line',
+							styles: classes.item,
 						}}
-						styles={classes.item}
+						placeholder='e.g. 2007 XYZ Record Company Limited'
 					/>
-					<FormItem
-						label='Contains explicit content'
-						name='explicit'
-						inputConfig={{
-							options: Y_N_Options,
-							type: 'select',
+					<FormSelect
+						formConfig={{
+							label: 'Contains explicit content',
+							name: 'explicit',
+							styles: classes.input,
 						}}
-						styles={classes.input}
+						options={Y_N_Options}
 					/>
 				</div>
-				<div>
-					<div>
-						<FontAwesomeIcon icon={faSquareCheck} /> License
-					</div>
-					<div className={classes.iconWrap}>
-						<div>
-							<Radio.Group
-								onChange={(obj) =>
-									obj.target.value === 'creative commons'
-										? setDisplayOptions(true)
-										: setDisplayOptions(false)
-								}
-							>
-								<Radio value={'all rights reservered'}>All Rights Reserved</Radio>
-								<Radio value={'creative commons'}>Creative Commons</Radio>
-							</Radio.Group>
-						</div>
-						{displayOptions && (
-							<>
-								<div>
-									<AttributionIcon className={classes.icon} />
-									<NoncommercialIcon className={classes.icon} />
-									<NoDerivativeWorkscon className={classes.icon} />
-									<ShareAlikeIcon className={classes.icon} />
-								</div>
-								<span>Some rights reserved</span>
-							</>
-						)}
-					</div>
-					{displayOptions && (
-						<div className={classes.checkboxWrap}>
-							{checkboxOptions.map((checkbox, i) => (
-								<FormItem
-									key={i}
-									name={checkbox.name}
-									styles={classes.checkbox}
-									inputConfig={checkbox.inputConfig}
-								/>
-							))}
-						</div>
-					)}
-				</div>
+				<MetadataLicense />
 			</div>
 		</Step>
 	);

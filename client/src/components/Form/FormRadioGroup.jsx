@@ -24,7 +24,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormRadioGroup = ({ formConfig, column = false, options = [] }) => {
+const FormRadioGroup = ({ onChange, column = false, formConfig = {}, options = [] }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [currentValue, setCurrentValue] = useState('');
@@ -43,7 +43,10 @@ const FormRadioGroup = ({ formConfig, column = false, options = [] }) => {
 				className={cn({
 					[`${classes.col}`]: column,
 				})}
-				onChange={(e) => setCurrentValue(e.target.value)}
+				onChange={(e) => {
+					setCurrentValue(e.target.value);
+					if (onChange) onChange(e);
+				}}
 			>
 				{options.map(({ label, ...option }, i) => (
 					<FormRadio

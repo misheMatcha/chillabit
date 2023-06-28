@@ -3,7 +3,10 @@ import Radio from 'antd/lib/radio';
 import * as cn from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { createUseStyles, useTheme } from 'react-jss';
+import { ANIMATE_VARIANTS } from '../../utils/constants';
 import { styles } from '../../utils/styles';
+
+const { fadeInAndOut, openAndClose } = ANIMATE_VARIANTS;
 
 const { spacing, weight } = styles;
 
@@ -51,45 +54,6 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const wrapperVariants = {
-	animate: {
-		height: 'auto',
-	},
-	exit: {
-		height: 0,
-		transition: {
-			delay: 0,
-			duration: 0.5,
-		},
-	},
-	initial: {
-		height: 0,
-	},
-	transition: {
-		delay: 0.5,
-		duration: 0.5,
-	},
-};
-
-const variants = {
-	animate: {
-		opacity: 1,
-	},
-	exit: {
-		opacity: 0,
-		transition: {
-			duration: 0.2,
-		},
-	},
-	initial: {
-		opacity: 0,
-	},
-	transition: {
-		delay: 0.5,
-		duration: 1,
-	},
-};
-
 const FormRadio = ({
 	children,
 	disabled,
@@ -125,9 +89,9 @@ const FormRadio = ({
 						{isCurrentValue(value) && (
 							<motion.div
 								className={classes.labelDesc}
-								{...wrapperVariants}
+								{...openAndClose}
 							>
-								<motion.span {...variants}>{labelDesc}</motion.span>
+								<motion.span {...fadeInAndOut}>{labelDesc}</motion.span>
 							</motion.div>
 						)}
 					</AnimatePresence>
