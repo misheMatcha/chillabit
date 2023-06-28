@@ -24,7 +24,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormRadioGroup = ({ onChange, column = false, formConfig = {}, options = [] }) => {
+const FormRadioGroup = ({ onChange, styles, column = false, formConfig = {}, options = [] }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 	const [currentValue, setCurrentValue] = useState('');
@@ -53,6 +53,7 @@ const FormRadioGroup = ({ onChange, column = false, formConfig = {}, options = [
 						key={`${i}-${label}`}
 						label={label}
 						isCurrentValue={isCurrentValue}
+						// className={styles}
 						{...option}
 					/>
 				))}

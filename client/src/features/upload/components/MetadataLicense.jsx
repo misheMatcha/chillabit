@@ -14,7 +14,7 @@ import { ReactComponent as ShareAlikeIcon } from '../assets/ic_sa.svg';
 
 const { fadeInAndOut, openAndClose } = ANIMATE_VARIANTS;
 
-const { alignItems, displayFlex, justifyContent, spacing, typography, weight } = styles;
+const { alignItems, displayFlex, spacing, typography } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	checkbox: {
@@ -23,10 +23,12 @@ const useStyles = createUseStyles((theme) => ({
 	checkboxWrapper: {
 		...displayFlex,
 	},
-	container: {},
+	container: {
+		paddingTop: 10,
+	},
 	icon: {
 		height: 14,
-		marginRight: 2,
+		marginRight: spacing['0_25'],
 		width: 14,
 	},
 	iconWrapper: {
@@ -40,22 +42,31 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		...alignItems.center,
 	},
-	radioGroup: {
-		// border: '1px solid black',
+	radio: {
+		'& > span:last-child': {
+			fontSize: 13,
+		},
 	},
 	radioWrapper: {
 		...displayFlex,
-		// border: '1px solid black',
 	},
 	title: {
+		'& > svg': {
+			color: '#666',
+			marginRight: spacing['0_25'],
+		},
 		borderBottom: `1px solid ${theme.background.highlight}`,
+		color: '#999',
+		paddingBottom: spacing['0_7'],
 	},
 }));
 
 const MetadataLicense = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const [display, setDisplay] = useState(false);
+	const [displayCheckboxes, setDisplayCheckboxes] = useState(false);
+	const [displayNoncommercialIcon, setDisplayNoncommercialIcon] = useState(false);
+	const [derivativeOrShare, setDerivativeOrShare] = useState('');
 	const form = Form.useFormInstance();
 
 	const checkboxOptions = [
@@ -74,6 +85,7 @@ const MetadataLicense = () => {
 			},
 			label:
 				'Allow others to distribute, display and perform your work—and derivative works based upon it—but for noncommercial purposes only.',
+			onChange: (e) => setDisplayNoncommercialIcon(!displayNoncommercialIcon),
 			special: true,
 			title: 'Noncommercial',
 		},
@@ -84,8 +96,11 @@ const MetadataLicense = () => {
 			label:
 				'Allow others to copy, distribute, display and perform only verbatim copies of your work, not derivative works based upon it.',
 			onChange: (e) => {
-				if (e.target.checked && form.getFieldValue('ShareAlike')) {
-					form.setFieldValue('ShareAlike', false);
+				if (e.target.checked) {
+					if (form.getFieldValue('ShareAlike')) form.setFieldValue('ShareAlike', false);
+					setDerivativeOrShare('NoDerivativeWorks');
+				} else {
+					setDerivativeOrShare('');
 				}
 			},
 			special: true,
@@ -99,8 +114,12 @@ const MetadataLicense = () => {
 				'Allow others to distribute derivative works only under a license identical to the license that governs your work.',
 
 			onChange: (e) => {
-				if (e.target.checked && form.getFieldValue('NoDerivativeWorks')) {
-					form.setFieldValue('NoDerivativeWorks', false);
+				if (e.target.checked) {
+					if (form.getFieldValue('NoDerivativeWorks'))
+						form.setFieldValue('NoDerivativeWorks', false);
+					setDerivativeOrShare('ShareAlike');
+				} else {
+					setDerivativeOrShare('');
 				}
 			},
 			special: true,
@@ -115,25 +134,30 @@ const MetadataLicense = () => {
 			</div>
 			<div className={classes.radioWrapper}>
 				<FormRadioGroup
-					onChange={(e) => setDisplay(e.target.value === 'CC' ? true : false)}
-					formConfig={{ name: 'license', styles: classes.radioGroup }}
+					onChange={(e) => setDisplayCheckboxes(e.target.value === 'CC' ? true : false)}
+					formConfig={{ name: 'license' }}
 					options={[
-						{ label: 'All Rights Reserved', value: 'ARR' },
-						{ label: 'Creative Commons', value: 'CC' },
+						{ label: 'All Rights Reserved', styles: classes.radio, value: 'ARR' },
+						{ label: 'Creative Commons', styles: classes.radio, value: 'CC' },
 					]}
 				/>
-				{display && (
+				{displayCheckboxes && (
 					<div className={classes.iconWrapper}>
 						<AttributionIcon className={classes.icon} />
-						<NoncommercialIcon className={classes.icon} />
-						<NoDerivativeWorkscon className={classes.icon} />
-						<ShareAlikeIcon className={classes.icon} />
+						{displayNoncommercialIcon && <NoncommercialIcon className={classes.icon} />}
+						{derivativeOrShare === 'NoDerivativeWorks' ? (
+							<NoDerivativeWorkscon className={classes.icon} />
+						) : derivativeOrShare === 'ShareAlike' ? (
+							<ShareAlikeIcon className={classes.icon} />
+						) : (
+							<></>
+						)}
 						<span>Some rights reserved</span>
 					</div>
 				)}
 			</div>
 			<AnimatePresence>
-				{display && (
+				{displayCheckboxes && (
 					<motion.div {...openAndClose}>
 						<motion.div
 							{...fadeInAndOut}
