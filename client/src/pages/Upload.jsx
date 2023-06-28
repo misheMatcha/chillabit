@@ -33,7 +33,7 @@ const Upload = () => {
 		<UploadProvider>
 			<Steps
 				numSteps={2}
-				defaultStep={1}
+				defaultStep={2}
 				styles={classes.container}
 			>
 				<Navbar />
@@ -43,6 +43,7 @@ const Upload = () => {
 					onFinish={uploadTrack}
 					initialValues={{
 						genre: '',
+						license: 'ARR',
 						public: true,
 					}}
 				>
