@@ -39,7 +39,6 @@ const useStyles = createUseStyles((theme) => ({
 		...displayFlex,
 		flexWrap: 'wrap',
 	},
-	container: {},
 	control: {
 		...alignItems.center,
 		...displayFlex,
@@ -119,7 +118,7 @@ const Permissions = () => {
 
 	return (
 		<Step step={5}>
-			<div className={classes.container}>
+			<div>
 				<div className={classes.checkboxContianer}>
 					<div className={classes.access}>
 						<FontAwesomeIcon icon={faBan} /> Access

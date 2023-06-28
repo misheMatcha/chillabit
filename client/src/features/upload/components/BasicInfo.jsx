@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
-import Form from 'antd/lib/form';
 import Tooltip from 'antd/lib/tooltip';
 import Upload from 'antd/lib/upload';
 import * as cn from 'classnames';
@@ -31,8 +30,8 @@ const useStyles = createUseStyles((theme) => ({
 		...alignItems.flexEnd,
 		...displayFlex,
 		...justifyContent.center,
-		// backgroundImage: ({ coverPreview }) =>
-		// 	coverPreview ? `url(${coverPreview})` : 'linear-gradient(135deg,#846170,#70929c)',
+		backgroundImage: ({ coverPreview }) =>
+			coverPreview ? `url(${coverPreview})` : 'linear-gradient(135deg,#846170,#70929c)',
 		backgroundSize: 'cover',
 		border: `1px solid #ccc`,
 		height: 260,

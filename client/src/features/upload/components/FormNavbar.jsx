@@ -9,9 +9,12 @@ const { alignItems, displayFlex, height, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
+		'& > li:first-child': {
+			marginLeft: 0,
+		},
 		...displayFlex,
 		borderBottom: `1px solid ${theme.background.highlight}`,
-		marginBottom: 16,
+		marginBottom: spacing[2],
 	},
 	link: {
 		'&:hover': {
@@ -22,7 +25,7 @@ const useStyles = createUseStyles((theme) => ({
 		...height[100].percentage,
 		...typography.h1,
 		color: '#333',
-		fontSize: 26,
+		fontSize: spacing['3_25'],
 		fontWeight: weight[600],
 		letterSpacing: -1,
 	},
@@ -50,10 +53,10 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const FormNavbar = ({ step, setStep }) => {
+const FormNavbar = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
-	const { setCurrentStep } = useSteps();
+	const { currentStep, setCurrentStep } = useSteps();
 
 	const uploadNavList = [
 		{ label: 'Basic info', step: 3 },
@@ -71,20 +74,19 @@ const FormNavbar = ({ step, setStep }) => {
 	];
 
 	return (
-		<ul className={classes.container}>
-			{uploadNavList.map((nav, i) => (
-				<li
-					className={cn(classes.list, { [`${classes.linkActive}`]: nav.step === step })}
-					key={i}
-					onClick={() => {
-						// setStep(nav.step);
-						setCurrentStep(nav.step);
-					}}
-				>
-					<Link className={classes.link}>{nav.label}</Link>
-				</li>
-			))}
-		</ul>
+		<div>
+			<ul className={classes.container}>
+				{uploadNavList.map(({ label, step }, i) => (
+					<li
+						className={cn(classes.list, { [`${classes.linkActive}`]: step === currentStep })}
+						key={i}
+						onClick={() => setCurrentStep(step)}
+					>
+						<Link className={classes.link}>{label}</Link>
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 };
 
