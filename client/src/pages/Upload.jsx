@@ -33,7 +33,7 @@ const Upload = () => {
 		<UploadProvider>
 			<Steps
 				numSteps={2}
-				defaultStep={2}
+				defaultStep={1}
 				styles={classes.container}
 			>
 				<Navbar />
