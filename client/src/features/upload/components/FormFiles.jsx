@@ -27,6 +27,9 @@ const useStyles = createUseStyles((theme) => ({
 			boxShadow: `0 ${spacing['0_25']}px ${spacing['1_5']}px -5px rgba(0,0,0,.1)`,
 		},
 	},
+	formItem: {
+		marginBottom: 5,
+	},
 	info: {
 		'& > a': {
 			...typography.captions,
@@ -86,7 +89,10 @@ const FormFiles = () => {
 	return (
 		<Step step={1}>
 			<QuotaMeter />
-			<Form.Item name='trackList'>
+			<Form.Item
+				className={classes.formItem}
+				name='trackList'
+			>
 				<Upload.Dragger
 					beforeUpload={beforeUpload}
 					className={classes.dragger}
