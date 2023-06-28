@@ -25,15 +25,26 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	container: {},
 	icon: {
+		height: 14,
+		marginRight: 2,
 		width: 14,
 	},
 	iconWrapper: {
-		// border: '1px solid black',
+		'& > span': {
+			...displayFlex,
+			...alignItems.flexStart,
+			...typography.captions,
+			fontSize: 13,
+			height: 14,
+		},
+		...displayFlex,
+		...alignItems.center,
 	},
 	radioGroup: {
 		// border: '1px solid black',
 	},
 	radioWrapper: {
+		...displayFlex,
 		// border: '1px solid black',
 	},
 	title: {
@@ -117,6 +128,7 @@ const MetadataLicense = () => {
 						<NoncommercialIcon className={classes.icon} />
 						<NoDerivativeWorkscon className={classes.icon} />
 						<ShareAlikeIcon className={classes.icon} />
+						<span>Some rights reserved</span>
 					</div>
 				)}
 			</div>
