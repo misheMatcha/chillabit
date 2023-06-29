@@ -172,7 +172,7 @@ const BasicInfo = () => {
 						column
 						formConfig={{
 							label: 'Privacy:',
-							name: 'public',
+							name: 'is_private',
 						}}
 						options={[
 							{
@@ -180,7 +180,7 @@ const BasicInfo = () => {
 								animated: true,
 								label: 'Public',
 								labelDesc: 'Anyone will be able to listen to this track.',
-								value: true,
+								value: false,
 							},
 							{
 								alignFlexStart: true,
@@ -188,7 +188,7 @@ const BasicInfo = () => {
 								label: 'Private',
 								labelDesc:
 									'Only you and people you share a secret link with will be able to listen to this track.',
-								value: false,
+								value: true,
 							},
 							{
 								disabled: true,

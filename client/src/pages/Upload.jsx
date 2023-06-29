@@ -21,6 +21,27 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
+const initialValues = {
+	genre: '',
+	is_private: false,
+	metadata: {
+		license: {
+			attribution: false,
+			derivatives: false,
+			noncommercial: false,
+			share: false,
+			type: 'arr',
+		},
+	},
+	permissions: {
+		download: false,
+		embed: false,
+		offline: false,
+		playback: false,
+		rss: false,
+	},
+};
+
 const Upload = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
@@ -42,11 +63,7 @@ const Upload = () => {
 					className={classes.form}
 					form={form}
 					onFinish={uploadTrack}
-					initialValues={{
-						genre: '',
-						license: 'ARR',
-						public: true,
-					}}
+					initialValues={initialValues}
 				>
 					<FormFiles />
 					<UploadDataLayout />

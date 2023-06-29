@@ -40,7 +40,7 @@ const Metadata = () => {
 					<FormSelect
 						formConfig={{
 							label: 'Contains music',
-							name: 'music',
+							name: ['metadata', 'contains_music'],
 							styles: classes.input,
 						}}
 						options={Y_N_Options}
@@ -48,21 +48,21 @@ const Metadata = () => {
 					<FormInput
 						formConfig={{
 							label: 'Artist',
-							name: 'artist_name',
+							name: ['metadata', 'artist_name'],
 							styles: classes.item,
 						}}
 					/>
 					<FormInput
 						formConfig={{
 							label: 'Publisher',
-							name: 'publisher',
+							name: ['metadata', 'publisher'],
 							styles: classes.item,
 						}}
 					/>
 					<FormInput
 						formConfig={{
 							label: 'ISRC',
-							name: 'isrc',
+							name: ['metadata', 'isrc'],
 							styles: classes.item,
 						}}
 						placeholder='e.g. USS1Z1001234'
@@ -70,14 +70,14 @@ const Metadata = () => {
 					<FormInput
 						formConfig={{
 							label: 'Composer',
-							name: 'composer',
+							name: ['metadata', 'composer'],
 							styles: classes.item,
 						}}
 					/>
 					<FormInput
 						formConfig={{
 							label: 'Release title',
-							name: 'release_title',
+							name: ['metadata', 'release_title'],
 							styles: classes.item,
 						}}
 					/>
@@ -85,7 +85,7 @@ const Metadata = () => {
 				<FormInput
 					formConfig={{
 						label: 'Buy-link',
-						name: 'buy_link',
+						name: ['metadata', 'buy_link'],
 						styles: classes.item,
 					}}
 				/>
@@ -93,21 +93,21 @@ const Metadata = () => {
 					<FormInput
 						formConfig={{
 							label: 'Album title',
-							name: 'album_title',
+							name: ['metadata', 'album_title'],
 							styles: classes.item,
 						}}
 					/>
 					<FormInput
 						formConfig={{
 							label: 'Record label',
-							name: 'record_label',
+							name: ['metadata', 'record_label'],
 							styles: classes.item,
 						}}
 					/>
 					<FormInput
 						formConfig={{
 							label: 'Release date',
-							name: 'release_date',
+							name: ['metadata', 'release_date'],
 							styles: classes.item,
 						}}
 					/>
@@ -116,14 +116,14 @@ const Metadata = () => {
 					<FormInput
 						formConfig={{
 							label: 'Album Barcode',
-							name: 'album_barcode',
+							name: ['metadata', 'album_barcode'],
 							styles: classes.item,
 						}}
 					/>
 					<FormInput
 						formConfig={{
 							label: 'ISWC',
-							name: 'iswc',
+							name: ['metadata', 'iswc'],
 							styles: classes.input,
 						}}
 						placeholder='e.g. T-034.524.680-1'
@@ -133,7 +133,7 @@ const Metadata = () => {
 					<FormInput
 						formConfig={{
 							label: 'P line',
-							name: 'p_line',
+							name: ['metadata', 'p_line'],
 							styles: classes.item,
 						}}
 						placeholder='e.g. 2007 XYZ Record Company Limited'
@@ -141,7 +141,7 @@ const Metadata = () => {
 					<FormSelect
 						formConfig={{
 							label: 'Contains explicit content',
-							name: 'explicit',
+							name: ['metadata', 'explicit'],
 							styles: classes.input,
 						}}
 						options={Y_N_Options}

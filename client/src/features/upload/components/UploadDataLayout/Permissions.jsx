@@ -85,33 +85,43 @@ const Permissions = () => {
 					</div>
 				</>
 			),
+			formConfig: {
+				name: 'download',
+			},
 			label:
 				'This track will not be available for direct download in the original format it was uploaded.',
-			name: 'download',
 			title: 'Enable direct downloads',
 		},
 		{
 			checkedLabel: 'This track can be played on devices without an internet connection.',
+			formConfig: {
+				name: 'offline',
+			},
 			label: 'Playing this track will not be possible on devices without an internet connection.',
-			name: 'offline',
 			title: 'Offline listening',
 		},
 		{
 			checkedLabel: 'This track will be included in your RSS feed if it is public.',
+			formConfig: {
+				name: 'rss',
+			},
 			label: 'This track will not be included in your RSS feed.',
-			name: 'rss',
 			title: 'Include in RSS feed',
 		},
 		{
 			checkedLabel: `This track's embedded-player code will be displayed publicly.`,
+			formConfig: {
+				name: 'embed',
+			},
 			label: `This track's embedded-player code will only be displayed to you.`,
-			name: 'embed',
 			title: 'Display embed code',
 		},
 		{
 			checkedLabel: `This track will be playable outside of ${CHILLABIT} and its apps.`,
+			formConfig: {
+				name: 'playback',
+			},
 			label: `This track will not be playable outside of ${CHILLABIT} and its apps.`,
-			name: 'playback',
 			title: 'Enable app playback',
 		},
 	];
@@ -124,11 +134,11 @@ const Permissions = () => {
 						<FontAwesomeIcon icon={faBan} /> Access
 					</div>
 					<div className={classes.checkboxWrapper}>
-						{checkboxOptions.map(({ formConfig, title, ...option }, i) => (
+						{checkboxOptions.map(({ formConfig: { name }, title, ...option }, i) => (
 							<FormCheckbox
 								special
 								key={`${i}-${title}`}
-								formConfig={formConfig}
+								formConfig={{ name: ['permissions', name], valuePropName: 'checked' }}
 								styles={classes.checkbox}
 								title={title}
 								{...option}

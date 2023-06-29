@@ -72,7 +72,7 @@ const MetadataLicense = () => {
 	const checkboxOptions = [
 		{
 			formConfig: {
-				name: 'Attribution',
+				name: 'attribution',
 			},
 			label:
 				'Allow others to copy, distribute, display and perform your copyrighted work but only if they give credit the way you request.',
@@ -81,7 +81,7 @@ const MetadataLicense = () => {
 		},
 		{
 			formConfig: {
-				name: 'Noncommercial',
+				name: 'noncommercial',
 			},
 			label:
 				'Allow others to distribute, display and perform your work—and derivative works based upon it—but for noncommercial purposes only.',
@@ -91,7 +91,7 @@ const MetadataLicense = () => {
 		},
 		{
 			formConfig: {
-				name: 'NoDerivativeWorks',
+				name: 'derivatives',
 			},
 			label:
 				'Allow others to copy, distribute, display and perform only verbatim copies of your work, not derivative works based upon it.',
@@ -108,7 +108,7 @@ const MetadataLicense = () => {
 		},
 		{
 			formConfig: {
-				name: 'ShareAlike',
+				name: 'share',
 			},
 			label:
 				'Allow others to distribute derivative works only under a license identical to the license that governs your work.',
@@ -134,20 +134,20 @@ const MetadataLicense = () => {
 			</div>
 			<div className={classes.radioWrapper}>
 				<FormRadioGroup
-					onChange={(e) => setDisplayCheckboxes(e.target.value === 'CC' ? true : false)}
-					formConfig={{ name: 'license' }}
+					onChange={(e) => setDisplayCheckboxes(e.target.value === 'cc' ? true : false)}
+					formConfig={{ name: ['metadata', 'license', 'type'] }}
 					options={[
-						{ label: 'All Rights Reserved', styles: classes.radio, value: 'ARR' },
-						{ label: 'Creative Commons', styles: classes.radio, value: 'CC' },
+						{ label: 'All Rights Reserved', styles: classes.radio, value: 'arr' },
+						{ label: 'Creative Commons', styles: classes.radio, value: 'cc' },
 					]}
 				/>
 				{displayCheckboxes && (
 					<div className={classes.iconWrapper}>
 						<AttributionIcon className={classes.icon} />
 						{displayNoncommercialIcon && <NoncommercialIcon className={classes.icon} />}
-						{derivativeOrShare === 'NoDerivativeWorks' ? (
+						{derivativeOrShare === 'derivatives' ? (
 							<NoDerivativeWorkscon className={classes.icon} />
-						) : derivativeOrShare === 'ShareAlike' ? (
+						) : derivativeOrShare === 'share' ? (
 							<ShareAlikeIcon className={classes.icon} />
 						) : (
 							<></>
@@ -163,10 +163,10 @@ const MetadataLicense = () => {
 							{...fadeInAndOut}
 							className={classes.checkboxWrapper}
 						>
-							{checkboxOptions.map(({ formConfig, ...props }, i) => (
+							{checkboxOptions.map(({ formConfig: { name }, ...props }, i) => (
 								<FormCheckbox
 									key={`${i}-${props.label}`}
-									formConfig={{ ...formConfig, valuePropName: 'checked' }}
+									formConfig={{ name: ['metadata', 'license', name], valuePropName: 'checked' }}
 									styles={classes.checkbox}
 									{...props}
 								/>
