@@ -10,12 +10,12 @@ import {
 	FormTags,
 	FormTextarea,
 	FormUrl,
-} from '../../../components/form/index';
-import StyledButton from '../../../components/General/StyledButton';
-import { Step } from '../../../components/steps/index';
-import { TRACK_GENERE_OPTIONS } from '../../../data/trackPlaceholders';
-import { styles } from '../../../utils/styles';
-import useUpload from '../hooks/useUpload';
+} from '../../../../components/form/index';
+import StyledButton from '../../../../components/General/StyledButton';
+import { Step } from '../../../../components/steps/index';
+import { TRACK_GENERE_OPTIONS } from '../../../../data/trackPlaceholders';
+import { styles } from '../../../../utils/styles';
+import useUpload from '../../hooks/useUpload';
 
 const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography } = styles;
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
-import { styles } from '../../../utils/styles';
-import useUpload from '../hooks/useUpload';
+import { styles } from '../../../../utils/styles';
+import useUpload from '../../hooks/useUpload';
 
 const { displayFlex, height, justifyContent, spacing, typography } = styles;
 

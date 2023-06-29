@@ -1,10 +1,10 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import MetadataLicense from './MetadataLicense';
-import { FormInput, FormSelect } from '../../../components/form';
-import { Step } from '../../../components/steps/index';
-import { Y_N_Options } from '../../../data/trackPlaceholders';
-import { styles } from '../../../utils/styles';
+import { FormInput, FormSelect } from '../../../../components/form';
+import { Step } from '../../../../components/steps/index';
+import { Y_N_Options } from '../../../../data/trackPlaceholders';
+import { styles } from '../../../../utils/styles';
 
 const { displayFlex, justifyContent } = styles;
 

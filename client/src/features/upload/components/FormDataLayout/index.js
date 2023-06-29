@@ -6,9 +6,9 @@ import FormNavbar from './FormNavbar';
 import Metadata from './Metadata';
 import Permissions from './Permissions';
 import Status from './Status';
-import StyledButton from '../../../components/General/StyledButton';
-import { Step, Steps } from '../../../components/steps/index';
-import { styles } from '../../../utils/styles';
+import StyledButton from '../../../../components/General/StyledButton';
+import { Step, Steps } from '../../../../components/steps/index';
+import { styles } from '../../../../utils/styles';
 
 const { displayFlex, justifyContent, spacing, typography, weight } = styles;
 

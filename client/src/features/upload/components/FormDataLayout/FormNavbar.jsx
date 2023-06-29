@@ -2,8 +2,8 @@ import React from 'react';
 import * as cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
-import useSteps from '../../../hooks/useSteps';
-import { styles } from '../../../utils/styles';
+import useSteps from '../../../../hooks/useSteps';
+import { styles } from '../../../../utils/styles';
 
 const { alignItems, displayFlex, height, spacing, typography, weight } = styles;
 
