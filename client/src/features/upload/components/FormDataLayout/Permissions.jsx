@@ -2,11 +2,11 @@ import React from 'react';
 import { faBan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
-import { FormCheckbox } from '../../../components/form';
-import StyledLink from '../../../components/General/StyledLink';
-import { Step } from '../../../components/steps/index';
-import { CHILLABIT } from '../../../utils/constants';
-import { styles } from '../../../utils/styles';
+import { FormCheckbox } from '../../../../components/form';
+import StyledLink from '../../../../components/General/StyledLink';
+import { Step } from '../../../../components/steps/index';
+import { CHILLABIT } from '../../../../utils/constants';
+import { styles } from '../../../../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, radius, spacing, textAlign, typography, weight } =
 	styles;

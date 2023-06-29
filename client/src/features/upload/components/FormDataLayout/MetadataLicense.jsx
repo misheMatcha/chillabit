@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'antd/lib/form';
 import { AnimatePresence, motion } from 'framer-motion';
 import { createUseStyles, useTheme } from 'react-jss';
-import { FormRadioGroup, FormCheckbox } from '../../../components/form';
-import { ANIMATE_VARIANTS } from '../../../utils/constants';
-import { styles } from '../../../utils/styles';
-import { ReactComponent as AttributionIcon } from '../assets/ic_by.svg';
-import { ReactComponent as NoDerivativeWorkscon } from '../assets/ic_nc.svg';
-import { ReactComponent as NoncommercialIcon } from '../assets/ic_ncc.svg';
-import { ReactComponent as ShareAlikeIcon } from '../assets/ic_sa.svg';
+import { FormRadioGroup, FormCheckbox } from '../../../../components/form';
+import { ANIMATE_VARIANTS } from '../../../../utils/constants';
+import { styles } from '../../../../utils/styles';
+import { ReactComponent as AttributionIcon } from '../../assets/ic_by.svg';
+import { ReactComponent as NoDerivativeWorkscon } from '../../assets/ic_nc.svg';
+import { ReactComponent as NoncommercialIcon } from '../../assets/ic_ncc.svg';
+import { ReactComponent as ShareAlikeIcon } from '../../assets/ic_sa.svg';
 
 const { fadeInAndOut, openAndClose } = ANIMATE_VARIANTS;
 
