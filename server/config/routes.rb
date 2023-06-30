@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       post 'login', to: 'authenticates#create'
       post 'verify_handle', to: 'authenticates#verify_handle'
       resources :users
+      resources :tracks
     end
   end
 end
