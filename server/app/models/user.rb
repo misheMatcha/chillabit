@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_one_attached :header_bg
   has_one_attached :avatar
 
+  has_many :tracks, class_name: 'Track', foreign_key: 'artist_id'
+
   private
 
   def generate_username

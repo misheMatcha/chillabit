@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_512_003_710) do
+ActiveRecord::Schema[7.0].define(version: 20_230_630_043_141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -43,6 +43,25 @@ ActiveRecord::Schema[7.0].define(version: 20_230_512_003_710) do
     t.index %w[blob_id variation_digest], name: 'index_active_storage_variant_records_uniqueness', unique: true
   end
 
+  create_table 'tracks', force: :cascade do |t|
+    t.string 'title', null: false
+    t.string 'permalink', null: false
+    t.string 'genre'
+    t.string 'tags', default: [], array: true
+    t.text 'desc'
+    t.string 'caption'
+    t.boolean 'is_private', default: false
+    t.jsonb 'metadata', default: {}
+    t.jsonb 'permissions', default: {}
+    t.string 'slug'
+    t.bigint 'artist_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['artist_id'], name: 'index_tracks_on_artist_id'
+    t.index ['permalink'], name: 'index_tracks_on_permalink', unique: true
+    t.index %w[title artist_id], name: 'index_tracks_on_title_and_artist_id', unique: true
+  end
+
   create_table 'users', force: :cascade do |t|
     t.string 'email', null: false
     t.string 'username', null: false
@@ -67,4 +86,5 @@ ActiveRecord::Schema[7.0].define(version: 20_230_512_003_710) do
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'tracks', 'users', column: 'artist_id'
 end

@@ -18,5 +18,28 @@ User.create!([
                  age: 99,
                  gender: 'na',
                  url: 'm'
+               },
+               {
+                 email: 'j@j.com',
+                 username: 'j',
+                 password: '1234567889',
+                 age: 99,
+                 gender: 'na',
+                 url: 'j'
                }
              ])
+
+Track.destroy_all
+
+Track.create!([
+                {
+                  title: 'hi',
+                  artist_id: 1,
+                  permalink: 'hi'
+                },
+                {
+                  title: 'hi',
+                  artist_id: 2,
+                  permalink: 'he'
+                }
+              ])
