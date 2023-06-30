@@ -133,19 +133,19 @@ const FormFiles = () => {
 								className: cn(classes.noBottomMargin, classes.privacy),
 								colon: true,
 								label: 'Privacy',
-								name: 'public',
+								name: 'is_private',
 								topLabel: false,
 							}}
 							options={[
 								{
 									label: 'Public',
 									styles: classes.radioBtn,
-									value: true,
+									value: false,
 								},
 								{
 									label: 'Private',
 									styles: classes.radioBtn,
-									value: false,
+									value: true,
 								},
 							]}
 						/>

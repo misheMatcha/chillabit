@@ -2,7 +2,6 @@ import React from 'react';
 import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Steps } from '../components/steps';
-import { UploadProvider } from '../features/upload/context/UploadContext';
 import { Navbar, UploadDataLayout, FormFiles, Footer } from '../features/upload/index';
 import { styles } from '../utils/styles';
 
@@ -52,25 +51,23 @@ const Upload = () => {
 	};
 
 	return (
-		<UploadProvider>
-			<Steps
-				numSteps={2}
-				defaultStep={1}
-				styles={classes.container}
+		<Steps
+			numSteps={2}
+			defaultStep={1}
+			styles={classes.container}
+		>
+			<Navbar />
+			<Form
+				className={classes.form}
+				form={form}
+				onFinish={uploadTrack}
+				initialValues={initialValues}
 			>
-				<Navbar />
-				<Form
-					className={classes.form}
-					form={form}
-					onFinish={uploadTrack}
-					initialValues={initialValues}
-				>
-					<FormFiles />
-					<UploadDataLayout />
-				</Form>
-				<Footer />
-			</Steps>
-		</UploadProvider>
+				<FormFiles />
+				<UploadDataLayout />
+			</Form>
+			<Footer />
+		</Steps>
 	);
 };
 

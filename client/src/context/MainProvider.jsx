@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
 import { GeneralProvider } from './GeneralContext';
 import { ModalProvider } from './ModalContext';
+import { UploadProvider } from '../features/upload/context/UploadContext';
 import { light } from '../utils/themes';
 
 const MainProvider = ({ children }) => (
@@ -10,7 +11,9 @@ const MainProvider = ({ children }) => (
 		<BrowserRouter>
 			<AuthProvider>
 				<GeneralProvider>
-					<ModalProvider>{children}</ModalProvider>
+					<ModalProvider>
+						<UploadProvider>{children}</UploadProvider>
+					</ModalProvider>
 				</GeneralProvider>
 			</AuthProvider>
 		</BrowserRouter>
