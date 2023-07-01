@@ -17,7 +17,6 @@ class Api::V1::TracksController < ApplicationController
 
   def create
     @track = Track.create(track_params)
-    debugger
     if @track.valid?
       render :show
     else
