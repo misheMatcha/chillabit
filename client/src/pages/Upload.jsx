@@ -3,6 +3,8 @@ import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Steps } from '../components/steps';
 import { Navbar, UploadDataLayout, FormFiles, Footer } from '../features/upload/index';
+import useAuth from '../hooks/useAuth';
+import axios from '../utils/axios';
 import { styles } from '../utils/styles';
 
 const { alignItems, displayFlex, flexDirection, spacing } = styles;
@@ -46,8 +48,38 @@ const Upload = () => {
 	const classes = useStyles({ theme });
 	const [form] = Form.useForm();
 
-	const uploadTrack = (v) => {
-		console.log(v);
+	const { currentUser, token } = useAuth();
+
+	const uploadTrack = async (v) => {
+		try {
+			const config = {
+				headers: {
+					authorization: token,
+					'content-type': 'multipart/form-data',
+				},
+			};
+
+			const response = await axios.post(
+				'/tracks',
+				{
+					track: {
+						artist_id: currentUser.id,
+						...v,
+					},
+				},
+				config
+			);
+
+			console.log(response.data);
+		} catch (err) {
+			const errors = [];
+
+			for (const [key, value] of Object.entries(err.response.data)) {
+				errors.push({ errors: value, name: key });
+			}
+
+			form.setFields(errors);
+		}
 	};
 
 	return (

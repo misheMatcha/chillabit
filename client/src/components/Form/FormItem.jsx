@@ -94,6 +94,7 @@ const FormItem = ({
 			}
 			labelAlign='left'
 			validateFirst={true}
+			validateTrigger={['onchange', 'onsubmit']}
 			wrapperCol={{
 				flex: 1,
 			}}
