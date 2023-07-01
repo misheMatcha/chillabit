@@ -101,7 +101,7 @@ const BasicInfo = () => {
 	return (
 		<Step step={3}>
 			<div className={classes.container}>
-				<FormImageUpload formConfig={{ name: 'track_cover' }} />
+				<FormImageUpload formConfig={{ name: 'cover_image' }} />
 				<div className={classes.inputsWrapper}>
 					<FormInput
 						formConfig={{

@@ -97,8 +97,8 @@ const MetadataLicense = () => {
 				'Allow others to copy, distribute, display and perform only verbatim copies of your work, not derivative works based upon it.',
 			onChange: (e) => {
 				if (e.target.checked) {
-					if (form.getFieldValue('ShareAlike')) form.setFieldValue('ShareAlike', false);
-					setDerivativeOrShare('NoDerivativeWorks');
+					if (form.getFieldValue('share')) form.setFieldValue('share', false);
+					setDerivativeOrShare('derivatives');
 				} else {
 					setDerivativeOrShare('');
 				}
@@ -115,9 +115,8 @@ const MetadataLicense = () => {
 
 			onChange: (e) => {
 				if (e.target.checked) {
-					if (form.getFieldValue('NoDerivativeWorks'))
-						form.setFieldValue('NoDerivativeWorks', false);
-					setDerivativeOrShare('ShareAlike');
+					if (form.getFieldValue('derivatives')) form.setFieldValue('derivatives', false);
+					setDerivativeOrShare('share');
 				} else {
 					setDerivativeOrShare('');
 				}

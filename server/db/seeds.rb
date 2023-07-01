@@ -14,7 +14,7 @@ User.create!([
                  # for quick testing - remove on prod
                  email: 'm@m.com',
                  username: 'm',
-                 password: '1234567889',
+                 password: 'qweasdzxc',
                  age: 99,
                  gender: 'na',
                  url: 'm'
@@ -22,7 +22,7 @@ User.create!([
                {
                  email: 'j@j.com',
                  username: 'j',
-                 password: '1234567889',
+                 password: 'qweasdzxc',
                  age: 99,
                  gender: 'na',
                  url: 'j'

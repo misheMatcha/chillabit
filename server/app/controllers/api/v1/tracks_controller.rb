@@ -17,6 +17,7 @@ class Api::V1::TracksController < ApplicationController
 
   def create
     @track = Track.create(track_params)
+    debugger
     if @track.valid?
       render :show
     else
@@ -45,6 +46,6 @@ class Api::V1::TracksController < ApplicationController
   private
 
   def track_params
-    params.require(:track).permit(:artist_id, :title, :permalink, :genre, :desc, :caption, :is_private, :cover_image, :audio_file, tags: [], metadata: {}, permissions: {})
+    params.require(:track).permit(:artist_id, :title, :permalink, :genre, :desc, :caption, :is_private, :cover_image, :audio_file, metadata: {}, permissions: {}, tags: [])
   end
 end

@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
 import { GeneralProvider } from './GeneralContext';
 import { ModalProvider } from './ModalContext';
+import { TrackProvider } from './TrackContext';
 import { UploadProvider } from '../features/upload/context/UploadContext';
 import { light } from '../utils/themes';
 
@@ -12,7 +13,9 @@ const MainProvider = ({ children }) => (
 			<AuthProvider>
 				<GeneralProvider>
 					<ModalProvider>
-						<UploadProvider>{children}</UploadProvider>
+						<TrackProvider>
+							<UploadProvider>{children}</UploadProvider>
+						</TrackProvider>
 					</ModalProvider>
 				</GeneralProvider>
 			</AuthProvider>

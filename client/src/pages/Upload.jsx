@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Steps } from '../components/steps';
+import useUpload from '../features/upload/hooks/useUpload';
 import { Navbar, UploadDataLayout, FormFiles, Footer } from '../features/upload/index';
 import useAuth from '../hooks/useAuth';
+import useTrack from '../hooks/useTrack';
 import axios from '../utils/axios';
 import { styles } from '../utils/styles';
 
@@ -49,8 +51,17 @@ const Upload = () => {
 	const [form] = Form.useForm();
 
 	const { currentUser, token } = useAuth();
+	const { setTrack, track } = useTrack();
+	const { customGenre, file } = useUpload();
+
+	useEffect(() => {
+		console.log(track);
+		// console.log('' ? true : false);
+	}, [track]);
 
 	const uploadTrack = async (v) => {
+		// console.log(v);
+
 		try {
 			const config = {
 				headers: {
@@ -59,18 +70,23 @@ const Upload = () => {
 				},
 			};
 
+			const newTrack = {
+				artist_id: currentUser.id,
+				audio_file: file,
+				...v,
+			};
+
+			if (customGenre) newTrack.genre = customGenre;
+
 			const response = await axios.post(
 				'/tracks',
 				{
-					track: {
-						artist_id: currentUser.id,
-						...v,
-					},
+					track: newTrack,
 				},
 				config
 			);
 
-			console.log(response.data);
+			setTrack(response.data);
 		} catch (err) {
 			const errors = [];
 
