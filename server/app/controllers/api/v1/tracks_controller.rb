@@ -17,7 +17,7 @@ class Api::V1::TracksController < ApplicationController
 
   def create
     @track = Track.new(track_params)
-    @track.assign_attributes(tags: track_params['tags'].values)
+    @track.assign_attributes(tags: track_params['tags'].values) if track_params['tags']
     if @track.save!
       render :show
     else

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Form from 'antd/lib/form';
 import { createUseStyles, useTheme } from 'react-jss';
+import { useNavigate } from 'react-router-dom';
 import { Steps } from '../components/steps';
 import useUpload from '../features/upload/hooks/useUpload';
 import { Navbar, UploadDataLayout, FormFiles, Footer } from '../features/upload/index';
@@ -54,6 +55,8 @@ const Upload = () => {
 	const { setTrack, track } = useTrack();
 	const { customGenre, file } = useUpload();
 
+	const navigate = useNavigate();
+
 	const uploadTrack = async (v) => {
 		try {
 			const config = {
@@ -80,7 +83,7 @@ const Upload = () => {
 			);
 
 			setTrack(response.data);
-			console.log(response.data);
+			navigate(`/${currentUser.url}/${v.permalink}`);
 		} catch (err) {
 			const errors = [];
 
