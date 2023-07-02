@@ -16,8 +16,9 @@ class Api::V1::TracksController < ApplicationController
   end
 
   def create
-    @track = Track.create(track_params)
-    if @track.valid?
+    @track = Track.new(track_params)
+    @track.assign_attributes(tags: track_params['tags'].values)
+    if @track.save!
       render :show
     else
       render json: @track.errors, status: :unprocessable_entity
@@ -45,6 +46,7 @@ class Api::V1::TracksController < ApplicationController
   private
 
   def track_params
-    params.require(:track).permit(:artist_id, :title, :permalink, :genre, :desc, :caption, :is_private, :cover_image, :audio_file, metadata: {}, permissions: {}, tags: [])
+    params.require(:track).permit(:artist_id, :title, :permalink, :genre, :desc, :caption, :is_private, :cover_image,
+                                  :audio_file, metadata: {}, permissions: {}, tags: {})
   end
 end

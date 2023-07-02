@@ -31,8 +31,8 @@ class Api::V1::UsersController < ApplicationController
 
     if user_params['links'].blank?
       @user.assign_attributes(links: [])
-    else
-      @user.assign_attributes(links: user_params['links'].values) if user_params['links']
+    elsif user_params['links']
+      @user.assign_attributes(links: user_params['links'].values)
     end
 
     if @user.save!

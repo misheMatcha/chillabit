@@ -54,14 +54,7 @@ const Upload = () => {
 	const { setTrack, track } = useTrack();
 	const { customGenre, file } = useUpload();
 
-	useEffect(() => {
-		console.log(track);
-		// console.log('' ? true : false);
-	}, [track]);
-
 	const uploadTrack = async (v) => {
-		// console.log(v);
-
 		try {
 			const config = {
 				headers: {
@@ -87,6 +80,7 @@ const Upload = () => {
 			);
 
 			setTrack(response.data);
+			console.log(response.data);
 		} catch (err) {
 			const errors = [];
 
