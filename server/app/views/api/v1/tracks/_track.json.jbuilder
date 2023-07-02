@@ -1,5 +1,6 @@
 json.id @track.id
 json.artist_id @track.artist_id
+json.artist @track.artist.username
 json.title @track.title
 json.permalink @track.permalink
 json.genre @track.genre

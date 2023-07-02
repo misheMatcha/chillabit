@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Link } from 'react-router-dom';
 import { TRACK_PLACEHOLDER } from '../../../data/trackPlaceholders';
 import useGeneral from '../../../hooks/useGeneral';
+import useTrack from '../../../hooks/useTrack';
 import { styles } from '../../../utils/styles';
 
 const {
@@ -48,7 +49,8 @@ const useStyles = createUseStyles((theme) => ({
 		margin: `${spacing['3_7']}px 10px ${spacing['3_7']}px ${spacing['3_7']}px`,
 	},
 	image: {
-		background: ({ trackCover }) => `url(${trackCover})`,
+		background: ({ track }) => `url(${track.cover_image})`,
+		backgroundSize: 'cover !important',
 		height: 340,
 		margin: spacing['2_5'],
 		minWidth: 340,
@@ -108,7 +110,13 @@ const { artist, date, tags, title, trackCover } = TRACK_PLACEHOLDER;
 const Header = () => {
 	const theme = useTheme();
 	const { user } = useGeneral();
-	const classes = useStyles({ theme, trackCover, user });
+	const { track } = useTrack();
+	const classes = useStyles({ theme, track, user });
+
+	useEffect(() => {
+		console.log(track);
+	});
+
 	return (
 		<div className={classes.container}>
 			<div className={classes.content}>
@@ -120,8 +128,8 @@ const Header = () => {
 							</Link>
 						</div>
 						<div className={classes.trackDesc}>
-							<div className={classes.title}>{title}</div>
-							<div className={classes.artist}>{artist}</div>
+							<div className={classes.title}>{track.title}</div>
+							<div className={classes.artist}>{track.artist}</div>
 						</div>
 					</div>
 					<div className={classes.trackInfo}>

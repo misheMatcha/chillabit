@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { faUserGroup, faUserPlus, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { createUseStyles, useTheme } from 'react-jss';
+import { useLocation } from 'react-router-dom';
 import PageLayoutTemplate from './PageLayoutTemplate';
 import StyledButton from '../components/General/StyledButton';
 import StyledLink from '../components/General/StyledLink';
 import TruncateSection from '../components/General/TruncateSection';
 import { TRACK_PLACEHOLDER, TRACK_USER_PLACEHOLDER } from '../data/trackPlaceholders';
 import { Header, Sidebar } from '../features/track';
+import useTrack from '../hooks/useTrack';
 import { styles } from '../utils/styles';
 
 const { displayFlex, height, spacing, weight } = styles;
@@ -48,11 +50,25 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
+const { avatar, followers, tracks, username } = TRACK_USER_PLACEHOLDER;
+
 const Track = () => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
+	const location = useLocation();
+	const { getTrack, track, setTrack } = useTrack();
 
-	const { avatar, followers, tracks, username } = TRACK_USER_PLACEHOLDER;
+	useEffect(() => {
+		const title = location.pathname.split('/').filter(Boolean)[1];
+		console.log(title);
+		if (!track || track.permalink !== title) {
+			getTrack(title)
+				.then((res) => setTrack(res.data))
+				.catch((err) => console.log(err.response.data));
+		}
+
+		console.log(track);
+	});
 
 	return (
 		<PageLayoutTemplate
