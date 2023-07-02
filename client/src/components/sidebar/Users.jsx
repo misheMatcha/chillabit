@@ -23,7 +23,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const SidebarUsers = ({ users }) => {
+const Users = ({ users }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -47,4 +47,4 @@ const SidebarUsers = ({ users }) => {
 	);
 };
 
-export default SidebarUsers;
+export default Users;

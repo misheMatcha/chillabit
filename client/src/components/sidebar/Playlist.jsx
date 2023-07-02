@@ -30,7 +30,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const SidebarPlaylist = ({ playlist }) => {
+const Playlist = ({ playlist }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -62,4 +62,4 @@ const SidebarPlaylist = ({ playlist }) => {
 	);
 };
 
-export default SidebarPlaylist;
+export default Playlist;

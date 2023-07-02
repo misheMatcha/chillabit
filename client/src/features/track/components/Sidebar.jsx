@@ -1,16 +1,13 @@
 import React from 'react';
 import { faClone, faHeart, faRepeat, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { createUseStyles } from 'react-jss';
-import SidebarPlaylist from '../../components/SidebarSections/SidebarPlaylist';
-import SidebarSection from '../../components/SidebarSections/SidebarSection';
-import SidebarTrack from '../../components/SidebarSections/SidebarTrack';
-import SidebarUsers from '../../components/SidebarSections/SidebarUsers';
+import { Playlist, Section, Tracks, Users } from '../../../components/sidebar';
 import {
 	TRACKS_LIKES_LIST_PLACEHOLDER,
 	TRACKS_PLAYLISTS_PLACEHOLDER,
 	TRACKS_REPOSTS_LIST_PLACEHOLDER,
 	TRACKS_SIDEBAR_LIST_PLACEHOLDER,
-} from '../../data/trackPlaceholders';
+} from '../../../data/trackPlaceholders';
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -18,46 +15,46 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const TrackSidebar = () => {
+const Sidebar = () => {
 	const classes = useStyles();
 	return (
 		<div className={classes.container}>
-			<SidebarSection
+			<Section
 				icon={faWaveSquare}
 				title='Related tracks'
 			>
 				{TRACKS_SIDEBAR_LIST_PLACEHOLDER.map((track, i) => (
-					<SidebarTrack
+					<Tracks
 						key={i}
 						track={track}
 					/>
 				))}
-			</SidebarSection>
-			<SidebarSection
+			</Section>
+			<Section
 				icon={faClone}
 				title='In playlists'
 			>
 				{TRACKS_PLAYLISTS_PLACEHOLDER.map((playlist, i) => (
-					<SidebarPlaylist
+					<Playlist
 						key={i}
 						playlist={playlist}
 					/>
 				))}
-			</SidebarSection>
-			<SidebarSection
+			</Section>
+			<Section
 				icon={faHeart}
 				title='144K likes'
 			>
-				<SidebarUsers users={TRACKS_LIKES_LIST_PLACEHOLDER} />
-			</SidebarSection>
-			<SidebarSection
+				<Users users={TRACKS_LIKES_LIST_PLACEHOLDER} />
+			</Section>
+			<Section
 				icon={faRepeat}
 				title='4,700 reposts'
 			>
-				<SidebarUsers users={TRACKS_REPOSTS_LIST_PLACEHOLDER} />
-			</SidebarSection>
+				<Users users={TRACKS_REPOSTS_LIST_PLACEHOLDER} />
+			</Section>
 		</div>
 	);
 };
 
-export default TrackSidebar;
+export default Sidebar;

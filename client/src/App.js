@@ -11,7 +11,7 @@ import Playlists from './pages/Profile/Pages/Playlists';
 import PopularTracks from './pages/Profile/Pages/PopularTracks';
 import Reposts from './pages/Profile/Pages/Reposts';
 import Tracks from './pages/Profile/Pages/Tracks';
-import Track from './pages/Track/index';
+import Track from './pages/Track';
 import Upload from './pages/Upload';
 
 const App = () => {

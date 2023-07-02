@@ -1,14 +1,13 @@
 import React from 'react';
 import { faUserGroup, faUserPlus, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { createUseStyles, useTheme } from 'react-jss';
-import TrackHeader from './TrackHeader';
-import TrackSidebar from './TrackSidebar';
-import StyledButton from '../../components/General/StyledButton';
-import StyledLink from '../../components/General/StyledLink';
-import TruncateSection from '../../components/General/TruncateSection';
-import { TRACK_PLACEHOLDER, TRACK_USER_PLACEHOLDER } from '../../data/trackPlaceholders';
-import { styles } from '../../utils/styles';
-import PageLayoutTemplate from '../PageLayoutTemplate';
+import PageLayoutTemplate from './PageLayoutTemplate';
+import StyledButton from '../components/General/StyledButton';
+import StyledLink from '../components/General/StyledLink';
+import TruncateSection from '../components/General/TruncateSection';
+import { TRACK_PLACEHOLDER, TRACK_USER_PLACEHOLDER } from '../data/trackPlaceholders';
+import { Header, Sidebar } from '../features/track';
+import { styles } from '../utils/styles';
 
 const { displayFlex, height, spacing, weight } = styles;
 
@@ -57,8 +56,8 @@ const Track = () => {
 
 	return (
 		<PageLayoutTemplate
-			header={<TrackHeader />}
-			sidebar={<TrackSidebar />}
+			header={<Header />}
+			sidebar={<Sidebar />}
 		>
 			<div className={classes.container}>
 				<div className={classes.userInfo}>

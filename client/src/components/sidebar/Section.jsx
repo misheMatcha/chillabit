@@ -33,7 +33,7 @@ const useStyles = createUseStyles((theme) => ({
 	viewAll: {},
 }));
 
-const SidebarSection = ({ children, icon, title, viewAllUrl }) => {
+const Section = ({ children, icon, title, viewAllUrl }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -55,4 +55,4 @@ const SidebarSection = ({ children, icon, title, viewAllUrl }) => {
 	);
 };
 
-export default SidebarSection;
+export default Section;

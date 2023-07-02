@@ -42,7 +42,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const SidebarTrack = ({ track }) => {
+const Tracks = ({ track }) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -107,4 +107,4 @@ const SidebarTrack = ({ track }) => {
 	);
 };
 
-export default SidebarTrack;
+export default Tracks;
