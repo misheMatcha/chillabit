@@ -4,6 +4,7 @@ import * as cn from 'classnames';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
 import FormButton from './FormButton';
+import { FormInput } from '../../../components/form';
 import StyledInput from '../../../components/General/StyledInput';
 import useAuthForm from '../../../hooks/useAuthForm';
 import axios from '../../../utils/axios';
@@ -47,7 +48,13 @@ const Step1 = () => {
 			nextStep();
 			updateFormErrors({});
 		} catch (err) {
-			updateFormErrors(err.response.data);
+			const errors = [];
+
+			for (const [key, value] of Object.entries(err.response.data)) {
+				errors.push({ errors: [value], name: key });
+			}
+
+			form.setFields(errors);
 		}
 	};
 
@@ -58,15 +65,14 @@ const Step1 = () => {
 			})}
 		>
 			<div>
-				<Form.Item
-					className={cn({ [`${classes.spacing}`]: errors.message })}
-					name='email'
-				>
-					<StyledInput
-						error={errors.message}
-						placeholder='Your email address or profile URL'
-					/>
-				</Form.Item>
+				<FormInput
+					formConfig={{
+						name: 'email',
+					}}
+					large
+					onPressEnter={verifyHandle}
+					placeholder='Your email address or profile URL'
+				/>
 			</div>
 			<FormButton onClick={verifyHandle}>Continue</FormButton>
 		</div>

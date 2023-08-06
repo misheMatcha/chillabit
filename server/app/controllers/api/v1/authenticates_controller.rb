@@ -6,13 +6,13 @@ class Api::V1::AuthenticatesController < ApplicationController
 
       render :show, status: :accepted
     else
-      render json: { message: 'This password is incorrect.' }, status: :unauthorized
+      render json: { password: 'This password is incorrect.' }, status: :unauthorized
     end
   end
 
   def verify_handle
     if (authenticate_params[:email] == '' && authenticate_params[:url] == '') || (authenticate_params[:email] != '' && !URI::MailTo::EMAIL_REGEXP.match?(authenticate_params[:email]))
-      return render json: { message: 'Enter a valid email address or profile url.' }, status: :unprocessable_entity
+      return render json: { email: 'Enter a valid email address or profile url.' }, status: :unprocessable_entity
     end
 
     email = nil
@@ -27,7 +27,7 @@ class Api::V1::AuthenticatesController < ApplicationController
       isVerified = true
       email = email.email
     elsif authenticate_params[:url] != ''
-      return render json: { message: 'That profile url does not exist' }, status: :unprocessable_entity
+      return render json: { email: 'That profile url does not exist' }, status: :unprocessable_entity
     elsif authenticate_params[:email] != ''
       email = authenticate_params[:email]
     end
