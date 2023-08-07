@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import RequireAuth from './features/Authenticate/RequireAuth';
+import { RequireAuth } from './features/Authentication';
 import Discover from './pages/Discover';
 import Helmet from './pages/Helmet';
 import Landing from './pages/Landing/index';

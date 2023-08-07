@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import Modal from '../components/UI/Modal';
-import LoginSignUp from '../features/Authenticate/LoginSignUp';
+import Modal from '../components/ui/Modal';
+import { AuthForm, LoginSignUp } from '../features/Authentication';
 import useGeneral from '../hooks/useGeneral';
 import ProfileEditForm from '../pages/Profile/EditForm';
 import { isEmptyObject } from '../utils/general';
@@ -16,7 +16,8 @@ export const ModalProvider = ({ children }) => {
 
 	const openModal = (content, contentConfig, modalConfigOptions) => {
 		if (content === 'auth') {
-			setModal(<LoginSignUp {...contentConfig} />);
+			setModal(<AuthForm {...contentConfig} />);
+			// setModal(<LoginSignUp {...contentConfig} />);
 		} else {
 			setModal(<ProfileEditForm {...contentConfig} />);
 		}

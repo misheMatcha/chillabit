@@ -95,7 +95,7 @@ const CarouselNav = () => {
 				</Button>
 				<Button
 					className={classes.btn}
-					onClick={() => openModal('auth')}
+					onClick={() => openModal('auth', { clickedCreate: true })}
 				>
 					Create account
 				</Button>

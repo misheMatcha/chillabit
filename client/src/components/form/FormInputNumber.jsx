@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from 'antd/lib/form';
-import Input from 'antd/lib/input';
+import InputNumber from 'antd/lib/input-number';
 import * as cn from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -11,34 +11,39 @@ const { radius, spacing, typography, weight } = styles;
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
-		'&:focus, &:focus:hover': {
+		'& .ant-input-number-handler-wrap': {
+			opacity: 1,
+		},
+		'&:focus-within, &:focus-within:hover': {
 			borderColor: '#999',
-			boxShadow: 'none',
 		},
 		'&:hover': {
 			borderColor: '#ccc',
 		},
 		borderColor: '#ccc',
+		boxShadow: 'none',
+		color: '#333',
+		display: 'flex',
+		flexGrow: 1,
 	},
 	error: {
 		borderColor: `${theme.color.error} !important`,
 		boxShadow: 'none !important',
 	},
-	fullWidth: {
-		width: '100%',
-	},
 	large: {
+		'& .ant-input-number-input': {
+			height: spacing[5],
+			lineHeight: spacing[3],
+			padding: `7px 30px 7px 8px`,
+		},
 		borderRadius: 5,
 		fontSize: spacing['2_25'],
-		height: spacing[5],
-		lineHeight: spacing[3],
-		padding: `7px ${spacing[1]}px`,
 	},
 }));
 
 const preventDefault = (e) => e.preventDefault();
 
-const FormInput = ({
+const FormInputNumber = ({
 	formConfig,
 	styles,
 	large = false,
@@ -51,7 +56,7 @@ const FormInput = ({
 
 	return (
 		<FormItem {...formConfig}>
-			<Input
+			<InputNumber
 				className={cn(
 					classes.container,
 					{
@@ -67,4 +72,4 @@ const FormInput = ({
 	);
 };
 
-export default FormInput;
+export default FormInputNumber;

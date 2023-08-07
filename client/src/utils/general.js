@@ -9,3 +9,13 @@ export const hasErrors = (arr) => {
 	}
 	return false;
 };
+
+export const errorsObjToArr = (obj) => {
+	const errors = [];
+
+	for (const [key, value] of Object.entries(obj)) {
+		errors.push({ errors: [value], name: key });
+	}
+
+	return errors;
+};

@@ -8,6 +8,9 @@ const { alignItems, displayFlex, flexDirection, spacing, typography, weight } = 
 
 const useStyles = createUseStyles((theme) => ({
 	container: {
+		'& .ant-form-item-control-input-content': {
+			...displayFlex,
+		},
 		'& .ant-form-item-explain-connected': {
 			marginBottom: spacing[1],
 		},
@@ -18,10 +21,26 @@ const useStyles = createUseStyles((theme) => ({
 			padding: `6px 0`,
 		},
 		marginBottom: spacing[2],
+		width: '100%',
+	},
+	topLabel: {
+		'& .ant-row': {
+			...flexDirection.column,
+		},
 	},
 }));
 
-const FormItem = ({ children, styles, colon = false, ...props }) => {
+const FormItem = ({
+	children,
+	styles,
+	colon = false,
+	labelAlign = 'left',
+	sideLabel = false,
+	wrapperCol = { flex: 1 },
+	validateFirst = true,
+	validateTrigger = ['onChange', 'onSubmit'],
+	...props
+}) => {
 	const theme = useTheme();
 	const classes = useStyles({ theme });
 
@@ -29,8 +48,18 @@ const FormItem = ({ children, styles, colon = false, ...props }) => {
 
 	return (
 		<Form.Item
-			className={cn(classes.container, styles)}
+			className={cn(
+				classes.container,
+				{
+					[`${classes.topLabel}`]: !sideLabel,
+				},
+				styles
+			)}
 			colon={colon}
+			labelAlign={labelAlign}
+			wrapperCol={wrapperCol}
+			validateFirst={validateFirst}
+			validateTrigger={validateTrigger}
 			{...props}
 		>
 			{children}
