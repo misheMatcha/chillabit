@@ -3,11 +3,11 @@ import Form from 'antd/lib/form';
 import * as cn from 'classnames';
 import includes from 'lodash/includes';
 import { createUseStyles } from 'react-jss';
-import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import FormButton from './FormButton';
 import Header from './Header';
 import { FormInput, Steps } from '../../../components/form';
+import { StyledLink } from '../../../components/ui';
 import useSteps from '../../../hooks/useSteps';
 import { verifyHandle } from '../../../utils/apis';
 import { CHILLABIT } from '../../../utils/constants';
@@ -16,13 +16,13 @@ import { styles } from '../../../utils/styles';
 const { displayFlex, flexDirection, justifyContent } = styles;
 
 const useStyles = createUseStyles({
-	container: {
-		...displayFlex,
-		...flexDirection.column,
-		...justifyContent.spaceBetween,
+	container: {},
+	help: {
+		margin: '14px 0 10px',
+		textAlign: 'right',
 	},
-	spacing: {
-		margin: 0,
+	privacy: {
+		marginLeft: 4,
 	},
 });
 
@@ -65,17 +65,21 @@ const Step1 = ({ updateVerification = () => {} }) => {
 			/>
 			<FormButton onClick={checkHandle}>Continue</FormButton>
 			<Footer>
-				<div className={classes.helpLinkWrapper}>
-					<Link className={classes.link}>Need help?</Link>
+				<div className={classes.help}>
+					<StyledLink small>Need help?</StyledLink>
 				</div>
-				<p className={classes.content}>
-					<span>
-						When registering, you agree that we may use your provided data for the registration and
-						to send you notifications on our products and services. You can unsubscribe from
-						notifications at any time in your settings. For additional info please refer to our
-						<Link className={classes.link}>Privacy Policy</Link>.
-					</span>
-				</p>
+				<span>
+					When registering, you agree that we may use your provided data for the registration and to
+					send you notifications on our products and services. You can unsubscribe from
+					notifications at any time in your settings. For additional info please refer to our
+					<StyledLink
+						styles={classes.privacy}
+						small
+					>
+						Privacy Policy
+					</StyledLink>
+					.
+				</span>
 			</Footer>
 		</Steps.Step>
 	);
