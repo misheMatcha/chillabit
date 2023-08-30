@@ -13,10 +13,16 @@ import { loginUser, registerUser } from '../../../utils/apis';
 import { errorsObjToArr } from '../../../utils/general';
 import { styles } from '../../../utils/styles';
 
-const { width } = styles;
+const { alignItems, displayFlex, flexDirection, justifyContent, spacing, typography, width } =
+	styles;
 
 const useStyles = createUseStyles({
-	container: { ...width[100].percentage },
+	container: {
+		...displayFlex,
+		...alignItems.center,
+		...justifyContent.center,
+		minHeight: 400,
+	},
 });
 
 const initialValues = {
@@ -27,7 +33,7 @@ const initialValues = {
 	username: '',
 };
 
-const AuthForm = ({ clickedCreate = false }) => {
+const AuthForm = ({ clickedRegister = false }) => {
 	const [isVerified, setIsVerified] = useState(false);
 	const { loginSetup } = useAuth();
 	const { closeModal } = useModal();
@@ -77,7 +83,7 @@ const AuthForm = ({ clickedCreate = false }) => {
 				<Step1 updateVerification={setIsVerified} />
 				<Step2
 					isVerified={isVerified}
-					clickedCreate={clickedCreate}
+					clickedRegister={clickedRegister}
 				/>
 				<Step3 />
 			</Form>

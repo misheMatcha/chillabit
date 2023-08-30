@@ -55,19 +55,15 @@ const Step1 = ({ updateVerification = () => {} }) => {
 	return (
 		<Steps.Step step={1}>
 			<Header>Sign into {CHILLABIT}</Header>
-			<div className={cn(classes.container)}>
-				<div>
-					<FormInput
-						formConfig={{
-							name: 'email',
-						}}
-						large
-						onPressEnter={checkHandle}
-						placeholder='Your email address or profile URL'
-					/>
-				</div>
-				<FormButton onClick={checkHandle}>Continue</FormButton>
-			</div>
+			<FormInput
+				formConfig={{
+					name: 'email',
+				}}
+				large
+				onPressEnter={checkHandle}
+				placeholder='Your email address or profile URL'
+			/>
+			<FormButton onClick={checkHandle}>Continue</FormButton>
 			<Footer>
 				<div className={classes.helpLinkWrapper}>
 					<Link className={classes.link}>Need help?</Link>

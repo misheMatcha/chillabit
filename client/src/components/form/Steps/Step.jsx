@@ -4,7 +4,10 @@ import { createUseStyles } from 'react-jss';
 import useSteps from '../../../hooks/useSteps';
 
 const useStyles = createUseStyles({
-	container: {},
+	container: {
+		height: '100%',
+		width: '100%',
+	},
 	hide: {
 		display: 'none',
 	},

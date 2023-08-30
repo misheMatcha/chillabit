@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'antd/lib/button';
@@ -11,7 +11,6 @@ import Footer from './Footer';
 import FormButton from './FormButton';
 import Header from './Header';
 import { FormInput, Steps } from '../../../components/form';
-import useAuthForm from '../../../hooks/useAuthForm';
 import useSteps from '../../../hooks/useSteps';
 import { CHILLABIT } from '../../../utils/constants';
 import { styles } from '../../../utils/styles';
@@ -39,6 +38,14 @@ const useStyles = createUseStyles((theme) => ({
 		height: spacing[5],
 		textAlign: textAlign.left,
 	},
+	clickedRegister: {
+		...typography.captions,
+		marginTop: 32,
+		textAlign: 'left',
+	},
+	clickedRegisterSpacing: {
+		marginBottom: 8,
+	},
 	container: {
 		'& > button': {
 			marginBottom: spacing[2],
@@ -63,78 +70,69 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const Step2 = ({ clickedCreate, isVerified }) => {
+const Step2 = ({ clickedRegister, isVerified }) => {
 	const theme = useTheme();
-	const { step } = useAuthForm();
 	const { nextStep, prevStep } = useSteps();
-	const classes = useStyles({ isVerified, step, theme });
+	const classes = useStyles({ isVerified, theme });
 	const form = Form.useFormInstance();
 
 	return (
 		<Steps.Step step={2}>
-			<Header>
+			<Header styles={{ [`${classes.clickedRegisterSpacing}`]: clickedRegister }}>
 				{isVerified ? (
-					<div>
-						<div className={classes.title}>Welcome back!</div>
-						{clickedCreate && (
-							<div className={classes.returningUser}>
+					<>
+						Welcome back!
+						{clickedRegister && (
+							<div className={classes.clickedRegister}>
 								<div>We noticed that an account already exists for this email.</div>
 								<div>Please sign in below</div>
 							</div>
 						)}
-					</div>
+					</>
 				) : (
 					<div className={classes.title}>Create your {CHILLABIT} account</div>
 				)}
 			</Header>
-			<div
-				className={cn(classes.container, {
-					[`${classes.verifiedSpacing}`]: isVerified,
-				})}
+			<Button
+				className={classes.backBtn}
+				onClick={() => {
+					prevStep();
+					form.setFieldValue('password', '');
+				}}
 			>
-				<Button
-					className={classes.backBtn}
-					onClick={() => {
-						prevStep();
-						form.setFieldValue('password', '');
-					}}
-				>
-					<FontAwesomeIcon icon={faCaretLeft} />
-					<span>{form.getFieldValue('email')}</span>
-				</Button>
-				<div>
-					<FormInput
-						formConfig={{
-							name: 'password',
-						}}
-						large
-						placeholder='Your password'
-						type='password'
-					/>
-				</div>
-				<Form.Item className={classes.spacing}>
-					{isVerified ? (
-						<FormButton htmlType='submit'>Sign in</FormButton>
-					) : (
-						<FormButton
-							onClick={(e) => {
-								e.preventDefault();
-								const passwordLength = size(form.getFieldValue('password'));
+				<FontAwesomeIcon icon={faCaretLeft} />
+				<span>{form.getFieldValue('email')}</span>
+			</Button>
+			<FormInput
+				formConfig={{
+					name: 'password',
+				}}
+				large
+				placeholder='Your password'
+				type='password'
+			/>
+			<Form.Item className={classes.spacing}>
+				{isVerified ? (
+					<FormButton htmlType='submit'>Sign in</FormButton>
+				) : (
+					<FormButton
+						onClick={(e) => {
+							e.preventDefault();
+							const passwordLength = size(form.getFieldValue('password'));
 
-								if (passwordLength < 8) {
-									// updateFormErrors({ message: 'Password must be at least 8 characters' });
-								} else if (passwordLength > 72) {
-									// updateFormErrors({ message: 'Password must be less than 72 characters.' });
-								} else {
-									nextStep();
-								}
-							}}
-						>
-							Accept & continue
-						</FormButton>
-					)}
-				</Form.Item>
-			</div>
+							if (passwordLength < 8) {
+								// updateFormErrors({ message: 'Password must be at least 8 characters' });
+							} else if (passwordLength > 72) {
+								// updateFormErrors({ message: 'Password must be less than 72 characters.' });
+							} else {
+								nextStep();
+							}
+						}}
+					>
+						Accept & continue
+					</FormButton>
+				)}
+			</Form.Item>
 			<Footer>
 				{isVerified ? (
 					<div className={classes.passwordReset}>
