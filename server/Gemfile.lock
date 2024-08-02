@@ -184,7 +184,8 @@ GEM
     regexp_parser (2.7.0)
     reline (0.3.3)
       io-console (~> 0.5)
-    rexml (3.2.5)
+    rexml (3.3.3)
+      strscan
     rubocop (1.49.0)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -198,6 +199,7 @@ GEM
     rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
+    strscan (3.1.0)
     thor (1.2.1)
     timeout (0.3.2)
     tzinfo (2.0.6)
